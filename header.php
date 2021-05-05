@@ -338,6 +338,7 @@ div[data-wpfs-amount-row="custom-amount"] {
 		display: none;
 	}
 
+	.td-site-mobile-header,
 	.container.no-print {
 		display: none !important;
 		height: 1px !important;
