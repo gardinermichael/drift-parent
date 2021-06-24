@@ -1425,6 +1425,10 @@ button.search-submit:hover {
         margin-bottom: 3rem;
     }
 
+    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
+        padding: 30px 0px;
+    }
+
 }
 @media(max-width: 1023px) {
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{

@@ -30,30 +30,7 @@ if ($page_imageID == "") {
 
 		<div class="ab_part_l d-flex">
 			<div class="ab_part_linner kudossubscribe">
-				<!-- <div class="subsRadio" style="background: url(<?php echo $page_imageURL; ?>); ">
-				   <ul>
-				    <li>
-					     	<span class="radioSpan"  data-ids="1">
-					     		<input type="radio" name="subscribe_type" class="subscribe_type" id="subscribe_1_year" checked="checked" value="1">
-					     	</span>
-					     	<span class="yearSpan"><label for="wpfs-custom-amount--ZTI4NGY--0" class="active">1 year</label></span>
-					     	<span class="dollarSpan">$30</span>
-				    </li>				   	
-				    <li> 
-				    </li> 			   	
-				    <li>
-					     	<span class="radioSpan" data-ids="3">
-					     		   <input type="radio" name="subscribe_type" class="subscribe_type" id="subscribe_3_year" value="3">
-					     	</span>
-					     	<span class="yearSpan"><label for="wpfs-custom-amount--ZTI4NGY--2">Lifetime</label></span>
-					     	<span class="dollarSpan">$300</span>
-				    	</li>				   	
-				   </ul>			   		
-				</div> -->
-				<!-- <h4 class="text-center" style="font-weight:bold;">Customer information</h4> -->
-				<?php
-                //echo do_shortcode('[fullstripe_form name="subscribe" type="inline_payment"]');
-                ?>
+
 				<?php
                 echo do_shortcode('[fullstripe_form name="subscribe" type="inline_subscription"]');
                 ?>
@@ -99,7 +76,8 @@ if ($page_imageID == "") {
 		});
 			 
 	jQuery('.custom_1').html('<span>1 Year Digital</span><strong>$30</strong>');
-	jQuery('.custom_2').html('<span>Lifetime Digital</span><strong>$300</strong>');
+	jQuery('.custom_2').html('<span>1 Year Print & Digital</span><strong>$50</strong>');
+	jQuery('.custom_3').html('<span>Lifetime Digital</span><strong>$300</strong>');
 	//console.log(jQuery('.wpfs-form-check').find('.wpfs-form-check-label').html());
 	});
 	 
