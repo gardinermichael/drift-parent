@@ -1,16 +1,13 @@
-<?php 
+<?php
 /* Template name: Subscribe page */
 get_header();
 
 $page_imageID = get_post_thumbnail_id($pageID);
-if($page_imageID == "")
-{
-  $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");	
-  $page_imageURL = $page_imageURL[0];
-}
-else
-{
-   $page_imageURL = get_bloginfo('template_url')."/assets/images/subscribe-box-bg.png";
+if ($page_imageID == "") {
+    $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");
+    $page_imageURL = $page_imageURL[0];
+} else {
+    $page_imageURL = get_bloginfo('template_url')."/assets/images/subscribe-box-bg.png";
 }
 ?>
 
@@ -55,32 +52,31 @@ else
 				</div> -->
 				<!-- <h4 class="text-center" style="font-weight:bold;">Customer information</h4> -->
 				<?php
-				//echo do_shortcode('[fullstripe_form name="subscribe" type="inline_payment"]');
-				?>
+                //echo do_shortcode('[fullstripe_form name="subscribe" type="inline_payment"]');
+                ?>
 				<?php
-				echo do_shortcode('[fullstripe_form name="subscribe" type="inline_subscription"]');
-				?>
+                echo do_shortcode('[fullstripe_form name="subscribe" type="inline_subscription"]');
+                ?>
 				 
 			</div>
 		</div>
 
-<?php 
-				$pageID = get_the_id();
-				$subsitle = get_post_meta($pageID, "subsitle", true);
-				?>
+<?php
+                $pageID = get_the_id();
+                $subsitle = get_post_meta($pageID, "subsitle", true);
+                ?>
 		<div class="ab_part_r donate-subscribe_txt">
 			<div class="contact01">
 				<div class="com_heading">
-					<h3><b> Subscribe </b>​<?php if($subsitle != "")
-			{
-				echo "<span class='line_gray'>|</span> ".$subsitle;
-			}?> </h3>
+					<h3><b> Subscribe </b>​<?php if ($subsitle != "") {
+                    echo "<span class='line_gray'>|</span> ".$subsitle;
+                }?> </h3>
 				</div>
-				<?php 
-			 while(have_posts()):the_post();
-			 	the_content();
-			 endwhile;
-			?>	
+				<?php
+             while (have_posts()):the_post();
+                the_content();
+             endwhile;
+            ?>	
 			</div>
 		</div>
 	</div>
@@ -102,8 +98,8 @@ else
 			jQuery("#wpfs-billing-name--MGJjOTB").val(full_name22);
 		});
 			 
-	jQuery('.custom_1').html('<span>1 year </span><strong>$30</strong>');
-	jQuery('.custom_2').html('<span>Lifetime </span><strong>$300</strong>');
+	jQuery('.custom_1').html('<span>1 Year Digital</span><strong>$30</strong>');
+	jQuery('.custom_2').html('<span>Lifetime Digital</span><strong>$300</strong>');
 	//console.log(jQuery('.wpfs-form-check').find('.wpfs-form-check-label').html());
 	});
 	 
@@ -139,6 +135,6 @@ label[for='wpfs-same-billing-and-shipping-address--MGJjOTB']:before {
     box-shadow: none !important;
 }
 </style>
-<?php 
+<?php
 get_footer();
 ?>
