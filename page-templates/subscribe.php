@@ -12,7 +12,7 @@ if ($page_imageID == "") {
 ?>
 
 <style type="text/css">
-	
+
 	label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
 		background: #909090 !important;
 		box-shadow: none !important;
@@ -22,7 +22,7 @@ if ($page_imageID == "") {
 <div class="the-drift-logo-mb" style="display: none;">
     <a href="<?php echo home_url(); ?>">
       <img src="<?php echo home_url(); ?>/wp-content/uploads/2020/05/Logo.png">
-    </a>                     	   	 	       
+    </a>
 </div>
 <section>
 	<div class="container-fluid">
@@ -34,7 +34,7 @@ if ($page_imageID == "") {
 				<?php
                 echo do_shortcode('[fullstripe_form name="subscribe" type="inline_subscription"]');
                 ?>
-				 
+
 			</div>
 		</div>
 
@@ -53,36 +53,36 @@ if ($page_imageID == "") {
              while (have_posts()):the_post();
                 the_content();
              endwhile;
-            ?>	
+            ?>
 			</div>
 		</div>
 	</div>
 </div>
 </section>
-<script type="text/javascript"> 
-	jQuery(document).ready(function(){ 
-		
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+
 			jQuery("#submit--MGJjOTB").on("click", function(){
 				setTimeout(function(){
 				        if(jQuery(".wpfs-form-message--correct").is(':visible') )
 				        {
-				        	jQuery("#submit--MGJjOTB").addClass("disableButton");	        	
-				        } 
+				        	jQuery("#submit--MGJjOTB").addClass("disableButton");
+				        }
 				}, 6000);
 			});
 		jQuery("#wpfs-card-holder-name--MGJjOTB").change(function(){
 			var full_name22 = jQuery(this).val();
 			jQuery("#wpfs-billing-name--MGJjOTB").val(full_name22);
 		});
-			 
-	jQuery('.custom_1').html('<span>1 Year Digital</span><strong>$30</strong>');
-	jQuery('.custom_2').html('<span>1 Year Print & Digital</span><strong>$50</strong>');
-	jQuery('.custom_3').html('<span>Lifetime Digital</span><strong>$300</strong>');
+
+	jQuery('.custom_1').html('<span class="constrained">One-year digital</span><strong>$30</strong>');
+	jQuery('.custom_2').html('<span class="constrained new">One-year print & digital<br/>&nbsp;</span><strong>$50</strong>');
+	jQuery('.custom_3').html('<span class="constrained">Lifetime digital</span><strong>$300</strong>');
 	//console.log(jQuery('.wpfs-form-check').find('.wpfs-form-check-label').html());
 	});
-	 
+
 </script>
-<style type="text/css"> 
+<style type="text/css">
 /*.page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
     background: url(<?php echo $page_imageURL; ?>) !important;
     }*/
