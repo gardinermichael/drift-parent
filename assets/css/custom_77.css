@@ -824,10 +824,14 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     font-weight: 400;
     font-family: proxy-nova !important;
 }
-.ab_part_img_abu div input{}
 
-
-
+.page-template-subscribe .constrained.new::after {
+    content: "(new!)";
+    top: 2.9rem !important;
+    left: 3rem !important;
+    position: absolute;
+    font-weight: 600;
+}
 
 .form01{
     text-align: center;
@@ -1430,14 +1434,16 @@ button.search-submit:hover {
     }
 
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
-        padding: 30px 0px;
+        padding: 5px 0px;
     }
 
-    /* .page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label {
+    .page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label {
+        padding-left: 40px;
+    }
 
-        padding-left: 50px;
-    } */
-
+    .page-template-subscribe .constrained.new::after {
+        left: 2.5rem !important;
+    }
 }
 @media(max-width: 1023px) {
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{
@@ -3901,6 +3907,10 @@ h1.issue_heading b{
     flex: 0 0 28%;
     max-width: 28%;
 	margin: auto;
+}
+
+.page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
+    padding: 30px 0px;
 }
 .support_eading h3 {                                                    /* === ADDED 6.3 === */
     font-size: 41px;
