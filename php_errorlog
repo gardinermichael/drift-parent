@@ -1,8 +1,0 @@
-[25-Aug-2020 15:09:18 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/thedriftmag.com/public_html/wp-content/themes/drift/index.php:18
-Stack trace:
-#0 {main}
-  thrown in /home/customer/www/thedriftmag.com/public_html/wp-content/themes/drift/index.php on line 18
-[25-Aug-2020 15:09:18 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/thedriftmag.com/public_html/wp-content/themes/drift/index.php:18
-Stack trace:
-#0 {main}
-  thrown in /home/customer/www/thedriftmag.com/public_html/wp-content/themes/drift/index.php on line 18
