@@ -77,6 +77,7 @@ if ($page_imageID == "") {
 
 	jQuery('.custom_1').html('<span class="constrained">One-year digital</span><strong>$30</strong>');
 	jQuery('.custom_2').html('<span class="constrained new">One-year print & digital<br/>&nbsp;</span><strong>$50</strong>');
+	jQuery('.custom_4').html('<span class="constrained new">Institutional print <br/>&nbsp;</span><strong>$90</strong>');
 	jQuery('.custom_3').html('<span class="constrained">Lifetime digital</span><strong>$300</strong>');
 	//console.log(jQuery('.wpfs-form-check').find('.wpfs-form-check-label').html());
 	});

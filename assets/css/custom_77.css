@@ -1272,7 +1272,7 @@ display: none;
 /* radio button css*/
 
 .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
-    background: url(https://www.thedriftmag.com/wp-content/uploads/2020/05/subscribe-box-bg.png);
+    background: url("https://driftmag.valet/wp-content/uploads/2021/09/cherimoya-subscribe.jpg");
     width: 100%;
     height: auto;
     position: relative;
