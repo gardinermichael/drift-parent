@@ -4047,6 +4047,10 @@ h1.issue_heading b{
     margin-right: auto;
 }
 
+.poem-pad {
+    padding-left: 30px;
+}
+
 @media(min-width: 768px){
     .postid-2151 .boxzilla-content .serif-hed {
         font-family: Adobe-Caslon; font-size: 32px; line-height: 32px;
@@ -4054,5 +4058,15 @@ h1.issue_heading b{
 
     .postid-2151 .boxzilla-content .sans-serif-hed {
         font-size: 28px; font-family: Avenir-Next-Thin; font-weight: 500; line-height: 32px;
+    }
+
+    .poem-pad {
+        padding-left: 60px;
+    }
+}
+
+@media(min-width: 1024px){
+    .poem-pad {
+        padding-left: 160px;
     }
 }
