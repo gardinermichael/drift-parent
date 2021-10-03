@@ -4008,6 +4008,15 @@ h1.issue_heading b{
     overflow-y: hidden;
 }
 
+.single.postid-2151 .mission_outer p {
+    display: none;
+}
+
+.single.postid-2151 .mission_outer p:nth-of-type(1),
+.single.postid-2151 .mission_outer p:nth-of-type(2) {
+    display: block;
+}
+
 .postid-2151 .boxzilla-overlay {
     background-color: transparent;
 }
