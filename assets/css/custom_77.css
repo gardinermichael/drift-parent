@@ -1444,6 +1444,17 @@ button.search-submit:hover {
     .page-template-subscribe .constrained.new::after {
         left: 2.5rem !important;
     }
+
+    .page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label{
+        display: inline-block;
+        padding-left: 50px;
+        font-size: 18px;
+    }
+
+    .page-template-subscribe .kudossubscribe .wpfs-form-check .wpfs-form-check-label strong {
+        font-size: 18px !important;
+    }
+
 }
 @media(max-width: 1023px) {
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{
@@ -1674,7 +1685,7 @@ ul.social_icons {
 }
 
 @media(max-width: 480px){
-    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{     background-size: 125% !important; }
+    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{     background-size: 135% !important; }
 
 	.mentions_container {
 		padding-right: 0px;
@@ -3911,6 +3922,7 @@ h1.issue_heading b{
 
 .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
     padding: 30px 0px;
+    padding-top: 15px;
 }
 .support_eading h3 {                                                    /* === ADDED 6.3 === */
     font-size: 41px;
@@ -3933,17 +3945,22 @@ h1.issue_heading b{
 
 @media (min-width: 1025px) {                                            /* === ADDED 6.3 === */
 	.donate-subscribe_txt {												/* =========== ADDED 6.9 =========== */
-	margin-top: 0px;
-	padding-left: 50px
-}
+        margin-top: 0px;
+        padding-left: 50px
+    }
 	.issue_div_left {
-    flex: 0 0 35%;
-    padding-right: 0px;
-}
+        flex: 0 0 35%;
+        padding-right: 0px;
+    }
 
-.issue_div_right {
-    flex: 0 0 65%;
-}
+    .issue_div_right {
+        flex: 0 0 65%;
+    }
+
+    .page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label,
+    .page-template-subscribe .kudossubscribe .wpfs-form-check .wpfs-form-check-label strong {
+        font-size: 20px !important;
+    }
 }
 
 @media (max-width:955px)
