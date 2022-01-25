@@ -79,7 +79,7 @@ if ($breakWidth == "") {
 
 		.article_editor > a:hover{ color: inherit; }
 		.more_from_issue a.moreAuhor:hover{ color: #303030; }
-		
+
 		.more_from_issue h1 {			/* ============== ADDED 5.28 =========== */
 			color: #303030;
 			text-transform: lowercase;
@@ -93,7 +93,7 @@ if ($breakWidth == "") {
 		    max-width:640px;
     		margin: 15px auto 0px;
     		padding: 0px;
-		}	
+		}
 		.postid-1208 .mission_inner{max-width:740px;}
 
 		.mission_outer .mission{}
@@ -123,7 +123,7 @@ if ($breakWidth == "") {
 		}
 
 		.about_r{
-			width: 50%;	
+			width: 50%;
 		    max-width: 480px;
 			padding:  0px 0 0 50px;
 		}
@@ -148,7 +148,7 @@ if ($breakWidth == "") {
 				margin-top: -20px;
 				margin-bottom: 0;
 		 }
-		 @media only screen and (max-width: 1400px) 
+		 @media only screen and (max-width: 1400px)
 		 {
 			.single-post .mission_inner blockquote.link_quote {right:-300px;}
 		 }
@@ -188,7 +188,7 @@ figcaption {
 	.pigs_img {
 		margin-bottom: 50px;
 	}
-	.pigs_img img{    
+	.pigs_img img{
 			width: 100%;
     		max-width: unset;
     		height: unset;
@@ -219,7 +219,7 @@ figcaption {
     text-transform: uppercase;
     font-family: proxy-nova;
     margin: 0 0 20px;
-    
+
 }
 .contact01.headong0022  h1 {
     font-size: 36px;
@@ -236,10 +236,10 @@ figcaption {
     font-weight: 600;
     text-transform: uppercase;
     font-family: proxy-nova;
-    
+
 }
 .com_heading span {
-	color: <?php echo $colorPick; ?>;	
+	color: <?php echo $colorPick; ?>;
 }
 /*@media(max-width: 480px){
 	.postid-1208 .mission_inner {
@@ -266,8 +266,8 @@ if ($type_of_titles == "Style 2") {
     $coverClasss = "";
     $coverheading2 = "";
 }
-?>			
-		
+?>
+
 	<div class="ab_part <?php echo $coverClasss; ?> d-flex">
 		<?php
           if ($page_imageID != "") {
@@ -336,7 +336,7 @@ if ($type_of_titles == "Style 2") {
 
 
 				<?php
-                 
+
 
                  if ($type_of_titles == "Style 2") {
                      $pageID = get_the_id();
@@ -374,7 +374,7 @@ if ($type_of_titles == "Style 2") {
                      } ?>
 <!-- COPIED fROM ABOVE-->
 				<div class="postDate desktop_version">
-				
+
 				<b class="issue_title"><?php echo $issue_no; ?></b> |
 					    <?php echo $articleDate; ?>
 				</div>
@@ -391,17 +391,17 @@ if ($type_of_titles == "Style 2") {
 					<?php
                      $post_authors = get_the_terms($pageID, 'authors');
                      $loopNum = 0;
-                      
+
                      if (is_array($post_authors)) { //ADDED
 
-                      
+
                          foreach ($post_authors as $post_author) {
                              $loopNum++;
                              $author_id = $post_author->term_id;
                              $author_link = get_term_link($post_author);
                              $author_name = $post_author->name;
                              $author_description = $post_author->description;
-                        
+
                              if ($loopNum == 1) {
                                  ?>
 		 			 		<a href="<?php echo $author_link; ?>"><?php echo $author_name; ?></a><?php
@@ -453,16 +453,16 @@ if ($type_of_titles == "Style 2") {
                          }
                      } ?>
 				<?php //this section is different for some reason in poems??>
-				
+
 				<div class="postDate desktop_version">
 					<b class="issue_title">
-						<?php echo $issue_no; ?>							
-						</b> 
-					<span class="single_article_pipe" style="color:#ccc;">|</span> 
-					<?php echo $articleDate; ?>    
+						<?php echo $issue_no; ?>
+						</b>
+					<span class="single_article_pipe" style="color:#ccc;">|</span>
+					<?php echo $articleDate; ?>
 				</div>
 				<h3>
-					<b> 
+					<b>
                   <?php
                     $home_pageID = 109;
                      $currenatPostID = get_the_id();
@@ -474,7 +474,7 @@ if ($type_of_titles == "Style 2") {
                          } else {
                              $spanText =  "<span> | </span>".$subsitle;
                          }
-                     } ?>						
+                     } ?>
 					<?php
                         wp_reset_postdata();
                      wp_reset_query();
@@ -489,12 +489,12 @@ if ($type_of_titles == "Style 2") {
                          foreach ($post_authors as $post_author) {
                              $loopNum++;
                              $author_id = $post_author->term_id;
-                        
+
                              $author_link = get_term_link($post_author);
                              $author_name = $post_author->name;
 
                              $author_description = $post_author->description;
-                          
+
                              if ($loopNum == 1) {
                                  ?><a href="<?php echo $author_link; ?>"><?php echo $author_name; ?></a><?php
                              } else {
@@ -521,7 +521,7 @@ if ($type_of_titles == "Style 2") {
                  while (have_posts()):the_post();
                     the_content();
                  endwhile;
-                 ?>				 
+                 ?>
 			    </div>
 
                  <?php
@@ -534,11 +534,11 @@ if ($type_of_titles == "Style 2") {
                     foreach ($post_authors as $post_author) {
                         $loopNum++;
                         $author_id = $post_author->term_id;
-                        
+
                         $author_link = get_term_link($post_author);
                         $author_name = $post_author->name;
                         $author_description = $post_author->description;
-                        
+
                         if ($loopNum == 1) {
                             $author_description = $post_author->description;
                         } else {
@@ -548,8 +548,8 @@ if ($type_of_titles == "Style 2") {
                 }
 
                      $about_editor = get_post_meta($pageID, "about_editor", true);
-                     
-                ?>	
+
+                ?>
 				    <div class="article_editor">
 				    	<?php
                           // echo $about_editor;
@@ -557,20 +557,20 @@ if ($type_of_titles == "Style 2") {
 				    	<?php  echo wpautop($author_description); ?>
 				    </div>
 			    <?php
-                
+
 
                 $share_text = get_post_meta($pageID, "share_text", true);
                 if ($share_text != "") {
                     ?>
 			    	<div class="share_text_container">
-			    	  <!--<h5>Share</h5>-->		    		
+			    	  <!--<h5>Share</h5>-->
 			    	<div class="share_text">
 						  <?php if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
                         ADDTOANY_SHARE_SAVE_KIT(array(
         'buttons' => array( 'facebook', 'twitter', 'email' ),
     ));
                     } ?>
-			    	    <?php echo 	$share_text; ?>			    	  	
+			    	    <?php echo 	$share_text; ?>
 			    	  </div>
 			    	</div>
 			    	<?php
@@ -628,11 +628,11 @@ $issueID_Array = array();
          foreach ($post_authors as $post_author) {
              $loopNum++;
              $author_id = $post_author->term_id;
-                        
+
              $author_link = get_term_link($post_author);
              $author_name = $post_author->name;
              $author_description = $post_author->description;
-                        
+
              if ($loopNum == 1) {
                  $article_editor_name = $post_author->name;
              }
@@ -643,8 +643,8 @@ $issueID_Array = array();
 
          $post_subsitle = get_post_meta($issueID, "post_subsitle", true);
          $post_sitle = get_the_title($issueID);
-         $issueImageID = get_post_thumbnail_id($issueID); ?>	
-	<div class="com_heading01">  
+         $issueImageID = get_post_thumbnail_id($issueID); ?>
+	<div class="com_heading01">
 		<?php
           if ($issueImageID != "") {
               $moreIssueFull_Class = " ";
@@ -652,23 +652,23 @@ $issueID_Array = array();
               $issueImageImageURL = $issueImageImageURL[0]; ?>
 			<div class="moreissue_left">
 			<a href="<?php echo $issue_permalink; ?>">
-			  <img src="<?php echo $issueImageImageURL; ?>">				
-			</a>				
+			  <img src="<?php echo $issueImageImageURL; ?>">
+			</a>
 			</div>
 	    <?php
           } else {
               $moreIssueFull_Class = " moreIssueFull ";
-          } ?> 
+          } ?>
 
 
-		<div class="moreissue_right <?php echo $moreIssueFull_Class; ?>">
+		<div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $issueID; ?>">
 			<h4>
-				<b><a href="<?php echo $issue_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $issue_permalink; ?>"><?php echo $post_subsitle; ?></a><?php } ?>
+				<b><a href="<?php echo $issue_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $issue_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
 			</h4>
 			<?php if ($article_editor_name!= "") {?>
-			    <p><a href="<?php echo $issue_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>	
+			    <p><a href="<?php echo $issue_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
 			<?php } ?>
-			<!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->	
+			<!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->
 	    </div>
 	</div>
 <?php
