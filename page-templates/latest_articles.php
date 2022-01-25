@@ -85,11 +85,11 @@ $wp_query = null; // re-sets query
 					{
 						if(in_array($currenatPostID, $featuredPosts))
 						    {
-					          echo "<span style='".$colorPick."'> | </span> <a href='".$pagePermalink."'>".$subsitle."</a>";
+					          echo "<span style='".$colorPick."'> | </span> <a href='".$pagePermalink."' class='subtitle'>".$subsitle."</a>";
 						    }
 						    else
 						    {
-                              echo "<span> | </span> <a href='".$pagePermalink."'>".$subsitle."</a>";
+                              echo "<span> | </span> <a href='".$pagePermalink."' class='subtitle'>".$subsitle."</a>";
 						    }
 
 					}

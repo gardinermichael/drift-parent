@@ -4083,6 +4083,13 @@ h1.issue_heading b{
     margin-right: auto;
 }
 
+/* formatting for Olúfẹ́mi postid-2274 */
+
+.page-template-latest_articles .postid-2274 a.subtitle,
+body.home .postid-2274 .arti_heading h4 a {
+    font-family: Savoy, serif;
+}
+
 .poem-pad {
     padding-left: 30px;
 }
