@@ -926,6 +926,11 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     font-family: Avenir-Next-Thin;
     /*text-transform: capitalize;*/ 			/*=== CHANGED 6.19 === */
 }
+
+.postid-2274 .com_heading h3 {
+    font-family: Savoy, serif;
+}
+
 .donate-subscribe_txt .com_heading h3 {
 	text-transform: none;
 }
@@ -1972,6 +1977,11 @@ section.mission_outer {
     padding-right: 10px;
     line-height: normal;
 }
+
+.postid-2274 .ab_part_img p.caption {
+    font-family: Savoy, serif;
+}
+
 .issue_outer .issue_l {
     padding-left: 15px !important;
     position: relative;
