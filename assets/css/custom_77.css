@@ -394,10 +394,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .issues_list_ul.row {
     width: 100%;
     counter-reset: section;
+    counter-set: section 1;
 	/*margin-top: -40px*/						/* === ADDED 6.16 ===*/
 }
 .issues_list_ul li::before {
-    counter-increment: section;
+    counter-increment: section 1;
     content: counter(section)'.';
     position: absolute;
     left: -25px;

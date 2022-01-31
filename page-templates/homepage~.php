@@ -534,7 +534,7 @@ else
 </div>
 <hr class="mob-hide-line" />
 <?php
-  $issue_args = array("post_type" => "issue", "posts_per_page" => "4", "order" => "ASC", "orderby" => "date");
+  $issue_args = array("post_type" => "issue", "posts_per_page" => "4", "order" => "ASC", "orderby" => "date", "post__not_in" => array("117"));
   $issue_loop = new wp_query($issue_args);
 ?>
 
@@ -543,7 +543,7 @@ else
 </div>
 <div class="home_issues">
 	<div class="row custom_wrap home_mentions_wrap">
-		   		<ol class="issues_list_ul row">
+		   		<ol class="issues_list_ul row" start="2">
 		   			<?php
 		   			  while($issue_loop->have_posts()):$issue_loop->the_post();
 		   			  	$issuePostID =  get_the_id();
