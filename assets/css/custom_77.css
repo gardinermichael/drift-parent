@@ -1651,10 +1651,12 @@ ul.f_menu.nav {
     flex-wrap: wrap;
 }
 ul.social_icons {
-    width: 100%;
+    width: 140px;
     flex-wrap: wrap;
     justify-content: flex-end;
     margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 10px;
 }
 .footer_outer::after {
@@ -2873,9 +2875,9 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         margin-top: 30px !important;
         line-height: 32px !important;
     }
-    .footerNewSocials ul {
+    /* .footerNewSocials ul {
         margin-right: 0;
-    }
+    } */
 
 }
 @media (max-width: 1152px) {
