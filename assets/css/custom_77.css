@@ -61,6 +61,11 @@
     border: 1px solid #000;
 }
 
+.first-benefit .gform_confirmation_message {
+    background-color: #aff7dfe8;
+    padding: 1rem;
+}
+
 /* {font-size: 20px !important;
 border: 0px solid #000 !important;
   border-bottom-color: rgb(0, 0, 0);
