@@ -1,5 +1,79 @@
 /* James Changes */
 
+.event-heading {
+    font-size: 29px;
+    font-family: "proxy-nova", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1;
+}
+
+.first-benefit_wrapper label {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    clip: rect(1px 1px 1px 1px); // IE 6 and 7
+    clip: rect(1px,1px,1px,1px);
+    clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+    -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+    overflow: hidden !important;
+}
+
+.first-benefit_wrapper .gform_body {
+    width: 65%;
+    max-width: 400px;
+}
+
+.first-benefit_wrapper .gform_footer {
+    width: 18%;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+}
+
+.first-benefit {
+    display: flex;
+    padding-bottom: 4rem;
+}
+
+.gform_wrapper.gravity-theme .first-benefit .ginput_container_email {
+    margin-right: 1rem;
+    border: none;
+}
+
+.gform_wrapper.gravity-theme .first-benefit .ginput_container_email input {
+    text-align: center !important;
+    font-size: 20px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #000 !important;
+    padding: 0;
+    line-height: 2.3rem !important;
+}
+
+.first-benefit .gform_button {
+    margin-bottom: 0 !important;
+    margin-top: auto !important;
+    transition: all 0.23s ease-in-out 0s;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 9px;
+    border: 1px solid #000;
+}
+
+.first-benefit .gform_confirmation_message {
+    background-color: #aff7dfe8;
+    padding: 1rem;
+}
+
+/* {font-size: 20px !important;
+border: 0px solid #000 !important;
+  border-bottom-color: rgb(0, 0, 0);
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+border-bottom: 1px solid #000 !important;
+} */
+
 form.search-form {
     display: flex;
     justify-content: center;
@@ -1422,6 +1496,11 @@ button.search-submit:hover {
 
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
         padding: 60px 0px;
+    }
+
+    .first-benefit .gform_button {
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
     }
 }
 
