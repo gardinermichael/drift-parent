@@ -1030,14 +1030,17 @@ function my_custom_fonts()
   </style>';
 }
 
-add_action( 'pre_get_posts', 'set_posts_per_page_to_10' );
+add_action( 'pre_get_posts', 'manage_posts_per_page' );
 
-function set_posts_per_page_to_10( $query ){
+function manage_posts_per_page( $query ){
   if ( is_admin() ){
     return;
   }
   //Check if this is a search
   if ( $query->is_search() ) {
     $query->set( 'posts_per_page', 10 );
+  }
+  else if ( in_array('authors', $query->query) ) {
+    $query->set( 'posts_per_page', 5 );
   }
 }
