@@ -1030,6 +1030,9 @@ function my_custom_fonts()
   </style>';
 }
 
+// Change # of posts per page for search queries
+add_action( 'pre_get_posts', 'manage_posts_per_page' );
+
 function manage_posts_per_page( $query ){
   if ( is_admin() ){
     return;
