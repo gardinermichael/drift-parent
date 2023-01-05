@@ -1030,17 +1030,16 @@ function my_custom_fonts()
   </style>';
 }
 
-add_action( 'pre_get_posts', 'manage_posts_per_page' );
-
 function manage_posts_per_page( $query ){
   if ( is_admin() ){
     return;
   }
-  //Check if this is a search
+  // Check if this is a search
   if ( $query->is_search() ) {
     $query->set( 'posts_per_page', 10 );
   }
-  else if ( in_array('authors', $query->query) ) {
+  // Or an 'authors' (i.e. contributor)
+  else if ( array_key_exists('authors', $query->query) ) {
     $query->set( 'posts_per_page', 5 );
   }
 }
