@@ -124,7 +124,14 @@ get_header(); ?>
 		</div>
 	</div>
 <?php endwhile; ?>
-	
+
+<div class="page_navigation">
+	<?php
+		wp_pagenavi( array('query'=>$wp_query)) ;
+		wp_reset_postdata();
+	?>
+</div>
+
 </div>
 </div>
 
