@@ -526,6 +526,19 @@ if ($type_of_titles == "Style 2") {
                     </div>
                 </div>
 
+                <?php if( have_rows('corrections') ): ?>
+                    <div class="mission_inner">
+                        <?php
+                        $loopNum = 0;
+                        while ( have_rows('corrections') ) : the_row();
+                            $loopNum++;
+                            $correction_text = get_sub_field('correction');
+                            $correction_anchor = "correction" . $loopNum;?>
+                            <p id="<?php echo $correction_anchor; ?>">*<i><?php echo $correction_text;?> </i></p>
+                        <?php endwhile; ?>
+                    </div>
+                <?php endif; ?>
+
                  <?php
                  wp_reset_postdata();
                  wp_reset_query();
