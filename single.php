@@ -517,12 +517,14 @@ if ($type_of_titles == "Style 2") {
 		<div class="container-fluid">
 			<div class="mission">
 			    <div class="mission_inner">
-                <?php
-                 while (have_posts()):the_post();
-                    the_content();
-                 endwhile;
-                 ?>
-			    </div>
+                    <div class="mission_inner_body">
+                        <?php
+                        while (have_posts()):the_post();
+                            the_content();
+                        endwhile;
+                        ?>
+                    </div>
+                </div>
 
                  <?php
                  wp_reset_postdata();
