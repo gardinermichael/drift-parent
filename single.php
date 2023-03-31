@@ -517,12 +517,27 @@ if ($type_of_titles == "Style 2") {
 		<div class="container-fluid">
 			<div class="mission">
 			    <div class="mission_inner">
-                <?php
-                 while (have_posts()):the_post();
-                    the_content();
-                 endwhile;
-                 ?>
-			    </div>
+                    <div class="mission_inner_body">
+                        <?php
+                        while (have_posts()):the_post();
+                            the_content();
+                        endwhile;
+                        ?>
+                    </div>
+                </div>
+
+                <?php if( have_rows('corrections') ): ?>
+                    <div class="mission_inner">
+                        <?php
+                        $loopNum = 0;
+                        while ( have_rows('corrections') ) : the_row();
+                            $loopNum++;
+                            $correction_text = get_sub_field('correction');
+                            $correction_anchor = "correction" . $loopNum;?>
+                            <i><?php echo $correction_text;?></i>
+                        <?php endwhile; ?>
+                    </div>
+                <?php endif; ?>
 
                  <?php
                  wp_reset_postdata();

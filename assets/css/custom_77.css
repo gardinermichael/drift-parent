@@ -2272,9 +2272,9 @@ section.mission_outer {
     background: #fff;
     top: 0;
 }
-.mission_inner > :last-child::after {
+.mission_inner_body > :last-child::after { /* || after last child in post body */
     content: "||";
-    color: #69A7C2;
+    color: #69A7C2; /* fallback color: generally color is set by issue */
     font-weight: bold;
     position: relative;
     left: 5px;
