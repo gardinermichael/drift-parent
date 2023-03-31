@@ -58,6 +58,12 @@ jobs:
         env:
           WPE_INSTALL_STAGING: ${{ secrets.WPE_INSTALL_STAGING }}
 
+      - name: Deploy - Git Config - Production?
+        if: contains(github.ref, 'master') || contains(github.ref, 'main')
+        run: git remote add wpe git@git.wpengine.com:production/${WPE_INSTALL_PRODUCTION}.git
+        env:
+          WPE_INSTALL_PRODUCTION: ${{ secrets.WPE_INSTALL_PRODUCTION }}
+
       - name: Deploy - Git Config
         run: |
            git config --global user.email "actions@github.com"
