@@ -66,8 +66,8 @@ else
 					<!-- <h4>Customer Information</h4> -->
 					<!-- <img src="<?php //bloginfo('template_url'); ?>/assets/images/support.png"> -->
 					<?php
-				    // echo do_shortcode('[fullstripe_form name="donate" type="inline_payment"]');
-				    echo do_shortcode('[fullstripe_form name="donation" type="inline_payment"]');
+				    echo do_shortcode('[fullstripe_form name="donate" type="inline_payment"]');
+				    //echo do_shortcode('[fullstripe_form name="donation" type="inline_payment"]');
 				    ?>
 <!-- 					<form class="com_inf">
 						<h4> Customer Information </h4>
