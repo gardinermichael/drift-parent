@@ -92,12 +92,12 @@ get_header();
 			font-family: Adobe-Caslon;
 		}
 		.about_r h4{
-			    font-size: 28px;
+			    /* font-size: 28px; */
 			    color: <?php echo $colorPick; ?>;
-			    font-family: 'Roboto', sans-serif;
+			    /* font-family: 'Roboto', sans-serif;
 			    text-align: right;
 			    margin: 0 0 60px;
-			    font-weight: 100 !important;
+			    font-weight: 100 !important; */
 		}
 		.about_r p{
 			font-size: 20px;
