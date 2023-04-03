@@ -240,19 +240,15 @@ if ($logo_url == "") {
 <!-- Scripts
 ================================================== -->
 
-<script src="<?php bloginfo('template_url'); ?>/assets/js/bootstrap.min.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/owl.carousel.min.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/aos.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/imagesloaded.pkgd.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/custom_js_28.js"></script>
+
 <script>
 
 
-    AOS.init({
-    	once: true,
-        delay: 0,
-        duration: 1000
-    });
+    // AOS.init({
+    // 	once: true,
+    //     delay: 0,
+    //     duration: 1000
+    // });
 
 jQuery(document).ready(function(){
 /*

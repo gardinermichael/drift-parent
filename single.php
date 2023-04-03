@@ -99,7 +99,8 @@ if ($breakWidth == "") {
 		.mission_outer .mission{}
 		.mission p{
 		    font-size: 19px;
-		    font-family: savoy;
+		    /* font-family: savoy; */
+            font-family: 'Savoy', 'EB Garamond', Times, serif;
 		    margin-bottom: 35px;
 		    position: relative;
 		}

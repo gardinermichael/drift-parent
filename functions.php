@@ -280,36 +280,6 @@ function twentyseventeen_content_width()
 add_action('template_redirect', 'twentyseventeen_content_width', 0);
 
 /**
- * Register custom fonts.
- */
-function twentyseventeen_fonts_url()
-{
-    $fonts_url = '';
-
-    /*
-     * translators: If there are characters in your language that are not supported
-     * by Libre Franklin, translate this to 'off'. Do not translate into your own language.
-     */
-    $libre_franklin = _x('on', 'Libre Franklin font: on or off', 'twentyseventeen');
-
-    if ('off' !== $libre_franklin) {
-        $font_families = array();
-
-        $font_families[] = 'Libre Franklin:300,300i,400,400i,600,600i,800,800i';
-
-        $query_args = array(
-            'family'  => urlencode(implode('|', $font_families)),
-            'subset'  => urlencode('latin,latin-ext'),
-            'display' => urlencode('fallback'),
-        );
-
-        $fonts_url = add_query_arg($query_args, 'https://fonts.googleapis.com/css');
-    }
-
-    return esc_url_raw($fonts_url);
-}
-
-/**
  * Add preconnect for Google Fonts.
  *
  * @since Twenty Seventeen 1.0
@@ -449,18 +419,51 @@ function twentyseventeen_colors_css_wrap()
 add_action('wp_head', 'twentyseventeen_colors_css_wrap');
 
 /**
+ * Register custom fonts.
+ */
+function twentyseventeen_fonts_url() {
+
+    $font_families = array();
+
+    $font_families[] = 'Libre+Franklin:wght@100;300;700';
+    $font_families[] = 'Lusitana:wght@400;700';
+    $font_families[] = 'Montserrat:wght@100;300';
+    $font_families[] = 'Raleway:wght@100;300';
+    $font_families[] = 'Open+Sans:wght@300;400;700';
+    $font_families[] = 'Libre+Baskerville:wght@400;700';
+    $font_families[] = 'Roboto:wght@100';
+
+    $query_args = array(
+        'family'  => implode( '&family=', $font_families ),
+        'display' => 'swap',
+    );
+
+    $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css2' );
+
+    return esc_url_raw($fonts_url);
+}
+
+/**
  * Enqueues scripts and styles.
  */
-function twentyseventeen_scripts()
-{
+function twentyseventeen_scripts() {
+
     // Add custom fonts, used in the main stylesheet.
-    wp_enqueue_style('twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null);
+    wp_enqueue_style( 'drift-fonts', twentyseventeen_fonts_url(), array(), time() );
 
     // Theme stylesheet.
     wp_enqueue_style('twentyseventeen-style', get_stylesheet_uri(), array(), '20190507');
 
     // Theme block stylesheet.
     wp_enqueue_style('twentyseventeen-block-style', get_theme_file_uri('/assets/css/blocks.css'), array( 'twentyseventeen-style' ), '20190105');
+
+    wp_enqueue_style( 'drift-all-style', get_theme_file_uri( '/assets/css/all.min.css' ), array(), time() );
+    wp_enqueue_style( 'aos-style', get_theme_file_uri( '/assets/css/aos.css' ), array(), time() );
+    wp_enqueue_style( 'bootstrap-style', get_theme_file_uri( '/assets/css/bootstrap.min.css' ), array(), time() );
+    wp_enqueue_style( 'owl-style', get_theme_file_uri( '/assets/css/owl.carousel.min.css' ), array(), time() );
+    // wp_enqueue_style( 'drift-style', get_theme_file_uri( '/assets/css/custom_77.css' ), array(), time() );
+    wp_enqueue_style( 'drift', get_theme_file_uri( '/assets/css/custom-updated.css' ), array( 'bootstrap-style' ), time() );
+
 
     // Load the dark colorscheme.
     if ('dark' === get_theme_mod('colorscheme', 'light') || is_customize_preview()) {
@@ -505,8 +508,21 @@ function twentyseventeen_scripts()
 
     wp_localize_script('twentyseventeen-skip-link-focus-fix', 'twentyseventeenScreenReaderText', $twentyseventeen_l10n);
 
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+
+	wp_enqueue_script( 'bootstrap-script', get_theme_file_uri( '/assets/js/bootstrap.min.js' ), array( 'jquery' ), '2.3.1', true );
+	wp_enqueue_script( 'owl-script', get_theme_file_uri( '/assets/js/owl.carousel.min.js' ), array( 'jquery' ), '2.3.1', true );
+	wp_enqueue_script( 'aos-script', get_theme_file_uri( '/assets/js/aos.js' ), array(), '2.3.1', true );
+    wp_enqueue_script( 'aos-config-script', get_theme_file_uri( '/assets/js/aos-config.js' ), array( 'aos-script' ), '2.3.1', true );
+	wp_enqueue_script( 'imagesloaded-script', get_theme_file_uri( '/assets/js/imagesloaded.pkgd.js' ), array( 'jquery' ), '2.3.1', true );
+	// wp_enqueue_script( 'custom-script', get_theme_file_uri( '/assets/js/custom_js_28.js' ), array( 'jquery' ), '2.3.1', true );
+    wp_enqueue_script( 'custom-script', get_theme_file_uri( '/assets/js/custom-js-28-updated.js' ), array( 'jquery' ), '2.3.1', true );
+
+    global $post;
+    if( is_a( $post, 'WP_Post' ) && ( is_page_template( array( 'page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php' ) ) || has_shortcode( $post->content, 'fullstripe_form' ) ) ) {
+        wp_enqueue_script( 'fullstripe-custom-script', get_theme_file_uri( '/assets/js/wpfs-script.js' ), array( 'jquery' ), '2.3.1', true );
     }
 }
 add_action('wp_enqueue_scripts', 'twentyseventeen_scripts');

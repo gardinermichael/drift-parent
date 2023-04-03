@@ -9,33 +9,10 @@
    $favicon = $theme_option["favicon"]["url"];
 ?>
 <link rel="icon" href="<?php echo $favicon; ?>" type="image/gif" sizes="64x64">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/css/all.min.css">
-	<link href="<?php bloginfo('template_url'); ?>/assets/css/aos.css" rel="stylesheet">
-
-	
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
-	<link href="https://fonts.googleapis.com/css?family=Jockey+One&display=swap&subset=latin-ext" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap&subset=latin-ext" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Noticia+Text&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Oswald:300&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Palanquin&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet">
-	
-	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Enriqueta&display=swap" rel="stylesheet">
-
-
-
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/css/bootstrap.min.css">
-	<link href="<?php bloginfo('template_url'); ?>/assets/css/owl.carousel.min.css" rel="stylesheet" />
-
-	<link  rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/css/custom_77.css?t=<?php echo time();?>"/>
-
 <?php wp_head(); ?>
 
 </head>
@@ -120,14 +97,14 @@ button#submit--OGNhNmM:before {
 label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before { 
 	background: #156ccc !important;
 }
-label[for="wpfs-card-holder-name--ZjFiZTB"]::before,
+/* label[for="wpfs-card-holder-name--ZjFiZTB"]::before,
 label[for="wpfs-card-holder-name--ZTI4NGY"]::before,
 label[for="wpfs-card-holder-name--OGNhNmM"]::before {
 	content: "Full name";
 	font-size: 18px !important;
-}
+} */
 
-label[for="wpfs-card-holder-name--ZjFiZTB"],
+/* label[for="wpfs-card-holder-name--ZjFiZTB"],
 label[for="wpfs-billing-address-line-1--ZjFiZTB"],
 label[for="wpfs-billing-address-line-2--ZjFiZTB"],
 label[for="wpfs-billing-address-line-1--ZTI4NGY"],
@@ -139,14 +116,14 @@ label[for="wpfs-billing-address-line-2--OGNhNmM"],
 label[for="wpfs-shipping-address-line-1--ZTI4NGY"],
 label[for="wpfs-shipping-address-line-2--ZTI4NGY"] { 
 	font-size: 0 !important;
-}
+} */
 
 
-#wpfs-billing-address-panel--OGNhNmM > .wpfs-form-group:nth-child(1) {
+/* #wpfs-billing-address-panel--OGNhNmM > .wpfs-form-group:nth-child(1) {
 	 display: none !important;
-}
+} */
 
-#wpfs-billing-address-panel--ZjFiZTB > div:nth-child(1), 
+/* #wpfs-billing-address-panel--ZjFiZTB > div:nth-child(1), 
 #wpfs-billing-address-panel--ZTI4NGY > div:nth-child(1),
 label[for="wpfs-billing-address-country--ZTI4NGY-button"],
 label[for="wpfs-billing-address-country--ZjFiZTB-button"],
@@ -156,11 +133,11 @@ label[for="wpfs-billing-address-country--OGNhNmM-button"],
 #wpfs-billing-address-panel--OGNhNmM > div:last-child
  {
 	display: none;
-}
-div.wpfs-w-20[data-wpfs-amount-row="custom-amount"]
- { display: none !important; }
+} */
+/* div.wpfs-w-20[data-wpfs-amount-row="custom-amount"]
+ { display: none !important; } */
 
-label[for="wpfs-billing-address-line-1--ZjFiZTB"]::before,
+/* label[for="wpfs-billing-address-line-1--ZjFiZTB"]::before,
 label[for="wpfs-billing-address-line-1--OGNhNmM"]::before
 {
 	content: "Mailing address";
@@ -179,7 +156,7 @@ label[for="wpfs-billing-address-line-2--OGNhNmM"]::before
 label[for="wpfs-billing-address-line-2--ZTI4NGY"]::before,
 label[for="wpfs-billing-address-line-2--OGNhNmM"]::before{content: "Billing address line 2"; font-size: 18px;}
 label[for="wpfs-shipping-address-line-1--ZTI4NGY"]::before{content: "Shipping address"; font-size: 18px;}
-label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping address line 2"; font-size: 18px;}
+label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping address line 2"; font-size: 18px;} */
 #other_amount,#other_amount_temp {
 	float: right !important;
 	width: 101px;
@@ -204,7 +181,7 @@ label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping ad
 	text-align: left;
 	color: #303030;
 	font-size: 23px;
-	font-family: proxy-nova;
+	font-family: proxy-nova, sans-serif;
 	margin-bottom: 11px;
 	position: relative;
 }
@@ -260,9 +237,9 @@ label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping ad
 .subsRadio li span label.active:after { 
 	opacity: 1;
 }
-div[data-wpfs-amount-row="custom-amount"] {
+/* div[data-wpfs-amount-row="custom-amount"] {
 	display: none !important;
-}
+} */
 .form01 { 
 	position: relative;
 }
