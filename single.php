@@ -74,7 +74,7 @@ if ($breakWidth == "") {
 		.share_text_container p strong,
 		.share_text_container h5,
 		.more_from_issue h4:hover b a,
-		.mission_inner > :last-child::after
+		.mission_inner_body > :last-child::after
 		{ color: <?php echo $colorPick; ?>; }
 
 		.article_editor > a:hover{ color: inherit; }
