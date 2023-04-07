@@ -535,7 +535,7 @@ if ($type_of_titles == "Style 2") {
                             $loopNum++;
                             $correction_text = get_sub_field('correction');
                             $correction_anchor = "correction" . $loopNum;?>
-                            <i><?php echo $correction_text;?></i>
+                            <?php echo $correction_text;?>
                         <?php endwhile; ?>
                     </div>
                 <?php endif; ?>
