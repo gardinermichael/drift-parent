@@ -57,114 +57,114 @@ if ($breakWidth == "") {
 
 
 
-	<style type="text/css">
-		.more_heading_pipe {
-     	 text-transform: lowercase;
-     	 color: <?php echo $colorPick; ?>;		/* ============== ADDED 5.28 =========== */
+    <style type="text/css">
+        .more_heading_pipe {
+          text-transform: lowercase;
+          color: <?php echo $colorPick; ?>;		/* ============== ADDED 5.28 =========== */
         }
-		.singleArtiIssue_pipe {
-			padding-left: 2px !important;
-		    font-size: 25px;
-		    position: relative;
-		    top: -2px;
-		    vertical-align: top;
-			color: <?php echo $colorPick; ?>;
+        .singleArtiIssue_pipe {
+            padding-left: 2px !important;
+            font-size: 25px;
+            position: relative;
+            top: -2px;
+            vertical-align: top;
+            color: <?php echo $colorPick; ?>;
         }
         /*b.issue_title{color: <?php //echo $colorPick;?>;}*/
-		.share_text_container p strong,
-		.share_text_container h5,
-		.more_from_issue h4:hover b a,
-		.mission_inner_body > :last-child::after
-		{ color: <?php echo $colorPick; ?>; }
+        .share_text_container p strong,
+        .share_text_container h5,
+        .more_from_issue h4:hover b a,
+        .mission_inner_body > :last-child::after
+        { color: <?php echo $colorPick; ?>; }
 
-		.article_editor > a:hover{ color: inherit; }
-		.more_from_issue a.moreAuhor:hover{ color: #303030; }
+        .article_editor > a:hover{ color: inherit; }
+        .more_from_issue a.moreAuhor:hover{ color: #303030; }
 
-		.more_from_issue h1 {			/* ============== ADDED 5.28 =========== */
-			color: #303030;
-			text-transform: lowercase;
-			text-transform: capitalize;
-		}
+        .more_from_issue h1 {			/* ============== ADDED 5.28 =========== */
+            color: #303030;
+            text-transform: lowercase;
+            text-transform: capitalize;
+        }
 
 
 
-		.more_from_issue h4:hover > a{ color: #303030; }
-		.mission_inner{
-		    max-width:640px;
-    		margin: 15px auto 0px;
-    		padding: 0px;
-		}
-		.postid-1208 .mission_inner{max-width:740px;}
+        .more_from_issue h4:hover > a{ color: #303030; }
+        .mission_inner{
+            max-width:640px;
+            margin: 15px auto 0px;
+            padding: 0px;
+        }
+        .postid-1208 .mission_inner{max-width:740px;}
 
-		.mission_outer .mission{}
-		.mission p{
-		    font-size: 19px;
-		    /* font-family: savoy; */
+        .mission_outer .mission{}
+        .mission p{
+            font-size: 19px;
+            /* font-family: savoy; */
             font-family: 'Savoy', 'EB Garamond', Times, serif;
-		    margin-bottom: 35px;
-		    position: relative;
-		}
-		.about_outer{
-			border-top : 1px solid rgba(0,0,0,0.3);
-		}
-		.about_o {
-			flex-wrap: wrap;
-		}
-		.about_l{
-			width: 50%;
-			padding: 0 40px 0;
-		}
-		.about_l h4{
-			font-size: 29px;
-    		text-align: right;
-    		font-family: proxy-nova;
-		}
-		.about_l h4 span{
-			color: #d8d8d8;
-		}
+            margin-bottom: 35px;
+            position: relative;
+        }
+        .about_outer{
+            border-top : 1px solid rgba(0,0,0,0.3);
+        }
+        .about_o {
+            flex-wrap: wrap;
+        }
+        .about_l{
+            width: 50%;
+            padding: 0 40px 0;
+        }
+        .about_l h4{
+            font-size: 29px;
+            text-align: right;
+            font-family: proxy-nova;
+        }
+        .about_l h4 span{
+            color: #d8d8d8;
+        }
 
-		.about_r{
-			width: 50%;
-		    max-width: 480px;
-			padding:  0px 0 0 50px;
-		}
-		.about_r p a{
-			color: #909090;
-			font-family: Adobe-Caslon;
-		}
+        .about_r{
+            width: 50%;
+            max-width: 480px;
+            padding:  0px 0 0 50px;
+        }
+        .about_r p a{
+            color: #909090;
+            font-family: Adobe-Caslon;
+        }
 
-		.about_r h3{
+        .about_r h3{
 
-		}
-		.about_r p{
-			font-size: 20px;
-		    line-height: 1.4;
-			font-family: Adobe-Caslon;
-		}
-		.single-post .mission_inner blockquote.link_quote {
-				float: right;
-				position: absolute;
-				width: 250px;
-				right: -350px;
-				margin-top: -20px;
-				margin-bottom: 0;
-		 }
-		 @media only screen and (max-width: 1400px)
-		 {
-			.single-post .mission_inner blockquote.link_quote {right:-300px;}
-		 }
-		/*.single-post .mission_inner blockquote.link_quote:nth-child(1) {
-  	       top: 0;
+        }
+        .about_r p{
+            font-size: 20px;
+            line-height: 1.4;
+            font-family: Adobe-Caslon;
+        }
+        .single-post .mission_inner blockquote.link_quote {
+                float: right;
+                position: absolute;
+                width: 250px;
+                right: -350px;
+                margin-top: -20px;
+                margin-bottom: 0;
+         }
+         @media only screen and (max-width: 1400px)
+         {
+            .single-post .mission_inner blockquote.link_quote {right:-300px;}
+         }
+        /*.single-post .mission_inner blockquote.link_quote:nth-child(1) {
+             top: 0;
         }*/
-		.single-post blockquote.link_quote p a{
-		    font-size: 13px !important;
-		    border-left: 6px solid <?php echo $colorPick; ?> !important;
-		    padding-left: 10px;
-		    font-family: Avenir-Next-Thin;
-		    text-decoration: none !important;
-		    line-height: normal;
-		    display: block;
-		}
+        .single-post blockquote.link_quote p a{
+            font-size: 13px !important;
+            border-left: 6px solid <?php echo $colorPick; ?> !important;
+            padding-left: 10px;
+            font-family: Avenir-Next-Thin;
+            text-decoration: none !important;
+            line-height: normal;
+            display: block;
+        }
 .single-post blockquote.link_quote > p{ line-height: normal; }
 
 .com_heading01 h4:hover b a { color:  <?php echo $colorPick; ?>}
@@ -186,19 +186,19 @@ figcaption {
     padding-left: 10px;
 }
 
-	.pigs_img {
-		margin-bottom: 50px;
-	}
-	.pigs_img img{
-			width: 100%;
-    		max-width: unset;
-    		height: unset;
-		}
+    .pigs_img {
+        margin-bottom: 50px;
+    }
+    .pigs_img img{
+            width: 100%;
+            max-width: unset;
+            height: unset;
+        }
 
 
 
 .single-post .ab_part.headong0022_cover{
-	    align-items: flex-end;
+        align-items: flex-end;
 }
 .ab_part.headong0022_cover .ab_part_r {
     width: 50%;
@@ -212,7 +212,7 @@ figcaption {
     margin: 20px 0 0 80px;
 }
 .contact01.headong0022 a:hover {
-	color: <?php echo $colorPick; ?>;
+    color: <?php echo $colorPick; ?>;
 }
 .contact01.headong0022 span {
     font-size: 14px;
@@ -232,7 +232,7 @@ figcaption {
         margin-bottom: 20px !important;             /* === ADDED 6.1 === */
 }
 .contact01.headong0022  h6 {
- 	font-size: 18px;
+     font-size: 18px;
     display: block;
     font-weight: 600;
     text-transform: uppercase;
@@ -240,24 +240,24 @@ figcaption {
 
 }
 .com_heading span {
-	color: <?php echo $colorPick; ?>;
+    color: <?php echo $colorPick; ?>;
 }
 /*@media(max-width: 480px){
-	.postid-1208 .mission_inner {
-	    max-width: 200px;
-	}
+    .postid-1208 .mission_inner {
+        max-width: 200px;
+    }
 }*/
 
 <?php if ($breakWidth != "") {?>
 @media(min-width: 768px)and (max-width: <?php echo $breakWidth; ?>px){
-	/*.ab_part_r h3 span{ display: none; } */	/* === CHANGED 6.3 === */
-	/*.com_heading h3 b{ display: block; }*/	/* === CHANGED 6.3 === */
+    /*.ab_part_r h3 span{ display: none; } */	/* === CHANGED 6.3 === */
+    /*.com_heading h3 b{ display: block; }*/	/* === CHANGED 6.3 === */
 }
 <?php } ?>
-	</style>
+    </style>
 
-	<section class="main_container_custom">
-		<div class="container-fluid">
+    <section class="main_container_custom">
+        <div class="container-fluid">
 <?php
 $type_of_titles = get_post_meta($pageID, "type_of_titles", true);
 if ($type_of_titles == "Style 2") {
@@ -269,13 +269,13 @@ if ($type_of_titles == "Style 2") {
 }
 ?>
 
-	<div class="ab_part <?php echo $coverClasss; ?> d-flex">
-		<?php
+    <div class="ab_part <?php echo $coverClasss; ?> d-flex">
+        <?php
           if ($page_imageID != "") {
               ?>
-		<div class="ab_part_l d-flex">
-			<div class="ab_part_linner">
-				<div class="ab_part_img">
+        <div class="ab_part_l d-flex">
+            <div class="ab_part_linner">
+                <div class="ab_part_img">
 <?php
                     $pageID = get_the_id();
               $date = get_the_date();
@@ -310,33 +310,33 @@ if ($type_of_titles == "Style 2") {
                   }
               } ?>
                  <div class="postDate mobile_version">
-					<b class="issue_title"><?php echo $issue_no; ?>	<span>|</span></b>
-					    <?php echo $articleDate;
+                    <b class="issue_title"><?php echo $issue_no; ?>	<span>|</span></b>
+                        <?php echo $articleDate;
 
               wp_reset_postdata();
               wp_reset_query(); ?>
-				</div>
+                </div>
 
-					<img src="<?php echo $page_imageURL; ?>">
-					<?php
+                    <img src="<?php echo $page_imageURL; ?>">
+                    <?php
                         if ($caption != "") {
                             echo "<p class='caption'>".$caption."</p>";
                         } ?>
-				</div>
-			</div>
-		</div>
-	 <?php
+                </div>
+            </div>
+        </div>
+     <?php
      $singleFull = " ";
           } else {
          $singleFull = " ab_partFULL ";
      }
    ?>
-		<div class="ab_part_r <?php echo $singleFull; ?>">
+        <div class="ab_part_r <?php echo $singleFull; ?>">
 
-			<div class="contact01 <?php echo $coverheading2; ?>">
+            <div class="contact01 <?php echo $coverheading2; ?>">
 
 
-				<?php
+                <?php
 
 
                  if ($type_of_titles == "Style 2") {
@@ -374,22 +374,22 @@ if ($type_of_titles == "Style 2") {
                          }
                      } ?>
 <!-- COPIED fROM ABOVE-->
-				<div class="postDate desktop_version">
+                <div class="postDate desktop_version">
 
-				<b class="issue_title"><?php echo $issue_no; ?></b> |
-					    <?php echo $articleDate; ?>
-				</div>
+                <b class="issue_title"><?php echo $issue_no; ?></b> |
+                        <?php echo $articleDate; ?>
+                </div>
 
-				<h1>
-					<span>	<?php echo $subsitle; ?> </span>
-					<?php
+                <h1>
+                    <span>	<?php echo $subsitle; ?> </span>
+                    <?php
                     wp_reset_postdata();
                      wp_reset_query();
                      echo get_the_title(); ?>
-				</h1>
+                </h1>
 
-				<h6>
-					<?php
+                <h6>
+                    <?php
                      $post_authors = get_the_terms($pageID, 'authors');
                      $loopNum = 0;
 
@@ -405,19 +405,19 @@ if ($type_of_titles == "Style 2") {
 
                              if ($loopNum == 1) {
                                  ?>
-		 			 		<a href="<?php echo $author_link; ?>"><?php echo $author_name; ?></a><?php
+                              <a href="<?php echo $author_link; ?>"><?php echo $author_name; ?></a><?php
                              } else {
                                  ?>, <a href="<?php echo $author_link; ?>"><?php echo $author_name; ?></a><?php
                              }
                          }
                      } ?></h6>
 
-				<?php
+                <?php
                  } else {
                      ?>
 
-			<div class="com_heading">
-				<?php
+            <div class="com_heading">
+                <?php
                     $pageID = get_the_id();
                      $subsitle = get_post_meta($pageID, "post_subsitle", true);
 
@@ -453,17 +453,17 @@ if ($type_of_titles == "Style 2") {
                              $issue_keyID = $issue_key;
                          }
                      } ?>
-				<?php //this section is different for some reason in poems??>
+                <?php //this section is different for some reason in poems??>
 
-				<div class="postDate desktop_version">
-					<b class="issue_title">
-						<?php echo $issue_no; ?>
-						</b>
-					<span class="single_article_pipe" style="color:#ccc;">|</span>
-					<?php echo $articleDate; ?>
-				</div>
-				<h3>
-					<b>
+                <div class="postDate desktop_version">
+                    <b class="issue_title">
+                        <?php echo $issue_no; ?>
+                        </b>
+                    <span class="single_article_pipe" style="color:#ccc;">|</span>
+                    <?php echo $articleDate; ?>
+                </div>
+                <h3>
+                    <b>
                   <?php
                     $home_pageID = 109;
                      $currenatPostID = get_the_id();
@@ -476,14 +476,14 @@ if ($type_of_titles == "Style 2") {
                              $spanText =  "<span> | </span>".$subsitle;
                          }
                      } ?>
-					<?php
+                    <?php
                         wp_reset_postdata();
                      wp_reset_query();
                      echo get_the_title(); ?></b>​<?php echo $spanText; ?></h3>
-			</div>
+            </div>
 
-	        <div class="article_editor" style="margin-top: 65px;">
-					<?php
+            <div class="article_editor" style="margin-top: 65px;">
+                    <?php
                      $post_authors = get_the_terms($pageID, 'authors');
                      $loopNum = 0;
                      if (is_array($post_authors)) {
@@ -503,21 +503,21 @@ if ($type_of_titles == "Style 2") {
                              }
                          }
                      } ?>
-			</div>
+            </div>
 
-	<?php
+    <?php
                  } ?>
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
-	<section class="mission_outer">
-		<div class="container-fluid">
-			<div class="mission">
-			    <div class="mission_inner">
+    <section class="mission_outer">
+        <div class="container-fluid">
+            <div class="mission">
+                <div class="mission_inner">
                     <div class="mission_inner_body">
                         <?php
                         while (have_posts()):the_post();
@@ -566,37 +566,37 @@ if ($type_of_titles == "Style 2") {
                      $about_editor = get_post_meta($pageID, "about_editor", true);
 
                 ?>
-				    <div class="article_editor">
-				    	<?php
+                    <div class="article_editor">
+                        <?php
                           // echo $about_editor;
                         ?>
-				    	<?php  echo wpautop($author_description); ?>
-				    </div>
-			    <?php
+                        <?php  echo wpautop($author_description); ?>
+                    </div>
+                <?php
 
 
                 $share_text = get_post_meta($pageID, "share_text", true);
                 if ($share_text != "") {
                     ?>
-			    	<div class="share_text_container">
-			    	  <!--<h5>Share</h5>-->
-			    	<div class="share_text">
-						  <?php if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
+                    <div class="share_text_container">
+                      <!--<h5>Share</h5>-->
+                    <div class="share_text">
+                          <?php if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
                         ADDTOANY_SHARE_SAVE_KIT(array(
         'buttons' => array( 'facebook', 'twitter', 'email' ),
     ));
                     } ?>
-			    	    <?php echo 	$share_text; ?>
-			    	  </div>
-			    	</div>
-			    	<?php
+                        <?php echo 	$share_text; ?>
+                      </div>
+                    </div>
+                    <?php
                 }
                 ?>
 
-			</div>
+            </div>
 
 <div class="more_from_issue">
-	<?php
+    <?php
 
 $issue_args = array("post_type" => "issue", "posts_per_page" => -1);
 $issue_loop = new wp_query($issue_args);
@@ -625,7 +625,7 @@ echo "</pre>";
       $more_issues_heading = get_post_meta($pageID, "more_issues_heading", true);
       if ($more_issues_heading != "") {
           ?>
-	<h1><span class="more_heading_pipe">l</span> <?php echo $more_issues_heading; ?></h1>
+    <h1><span class="more_heading_pipe">l</span> <?php echo $more_issues_heading; ?></h1>
 <?php
       } ?>
 <?php
@@ -660,33 +660,33 @@ $issueID_Array = array();
          $post_subsitle = get_post_meta($issueID, "post_subsitle", true);
          $post_sitle = get_the_title($issueID);
          $issueImageID = get_post_thumbnail_id($issueID); ?>
-	<div class="com_heading01">
-		<?php
+    <div class="com_heading01">
+        <?php
           if ($issueImageID != "") {
               $moreIssueFull_Class = " ";
               $issueImageImageURL = wp_get_attachment_image_src($issueImageID, "full");
               $issueImageImageURL = $issueImageImageURL[0]; ?>
-			<div class="moreissue_left">
-			<a href="<?php echo $issue_permalink; ?>">
-			  <img src="<?php echo $issueImageImageURL; ?>">
-			</a>
-			</div>
-	    <?php
+            <div class="moreissue_left">
+            <a href="<?php echo $issue_permalink; ?>">
+              <img src="<?php echo $issueImageImageURL; ?>">
+            </a>
+            </div>
+        <?php
           } else {
               $moreIssueFull_Class = " moreIssueFull ";
           } ?>
 
 
-		<div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $issueID; ?>">
-			<h4>
-				<b><a href="<?php echo $issue_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $issue_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
-			</h4>
-			<?php if ($article_editor_name!= "") {?>
-			    <p><a href="<?php echo $issue_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
-			<?php } ?>
-			<!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->
-	    </div>
-	</div>
+        <div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $issueID; ?>">
+            <h4>
+                <b><a href="<?php echo $issue_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $issue_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
+            </h4>
+            <?php if ($article_editor_name!= "") {?>
+                <p><a href="<?php echo $issue_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
+            <?php } ?>
+            <!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->
+        </div>
+    </div>
 <?php
      }
  } ?>
@@ -694,8 +694,8 @@ $issueID_Array = array();
 </div>
 
 
-		</div>
-	</section>
+        </div>
+    </section>
 
 
 <?php
