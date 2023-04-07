@@ -2403,7 +2403,7 @@ section.mission_outer {
     background: #fff;
     top: 0;
 }
-.mission_inner > :last-child::after {
+.mission_inner_body > :last-child::after {
     content: "||";
     color: #69A7C2;
     font-weight: bold;
