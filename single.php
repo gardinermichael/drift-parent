@@ -141,31 +141,43 @@ if ($breakWidth == "") {
             line-height: 1.4;
             font-family: Adobe-Caslon;
         }
-        .single-post .mission_inner blockquote.link_quote {
-                float: right;
-                position: absolute;
-                width: 250px;
-                right: -350px;
-                margin-top: -20px;
-                margin-bottom: 0;
-         }
-         @media only screen and (max-width: 1400px)
-         {
-            .single-post .mission_inner blockquote.link_quote {right:-300px;}
-         }
-        /*.single-post .mission_inner blockquote.link_quote:nth-child(1) {
-             top: 0;
-        }*/
-        .single-post blockquote.link_quote p a{
+
+        .single-post .mission_inner a.no_link_for_margin_block{
+        }
+
+        .single-post .mission_inner blockquote.margin_block {
+            float: right;
+            position: absolute;
+            width: 250px;
+            right: -350px;
+            margin-top: -20px;
+            margin-bottom: 0;
+        }
+        @media only screen and (max-width: 1400px)
+        {
+            .single-post .mission_inner blockquote.margin_block {right:-300px;}
+        }
+        
+        .single-post blockquote.margin_block p{
             font-size: 13px !important;
             border-left: 6px solid <?php echo $colorPick; ?> !important;
             padding-left: 10px;
-            font-family: Avenir-Next-Thin;
             text-decoration: none !important;
             line-height: normal;
             display: block;
+            font-family: Avenir-Next-Thin;
         }
-.single-post blockquote.link_quote > p{ line-height: normal; }
+
+        .single-post blockquote.margin_block p a{
+            font-family: Avenir-Next-Thin;
+            font-size: inherit !important;
+            padding-left: inherit;
+            text-decoration: inherit !important;
+            line-height: inherit;
+            display: inherit;
+        }
+
+.single-post blockquote.margin_block > p{ line-height: normal; }
 
 .com_heading01 h4:hover b a { color:  <?php echo $colorPick; ?>}
 .com_heading01 h4:hover > a { color:  #303030; }

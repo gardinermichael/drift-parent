@@ -5,25 +5,22 @@ jQuery(document).ready(function($){
 		if(start_issue == true)
 		{
 			var i;
-		  for(i=1; i < 11; i++)
-		  {
-		  	var checkIssueNumber = article_foo_anchor.includes('ISSUE '+i);  		  	
-		  	if(checkIssueNumber == true)
-		  	{
-		  		$(this).children().html("ISSUE "+i);
-		  		$(this).attr("href", "https://www.thedriftmag.com/issues/#Issue "+i);
-		  	}
-		  }		   		  
+			for(i=1; i < 11; i++)
+			{
+				var checkIssueNumber = article_foo_anchor.includes('ISSUE '+i);
+				if(checkIssueNumber == true)
+				{
+					$(this).children().html("ISSUE "+i);
+					$(this).attr("href", "https://www.thedriftmag.com/issues/#Issue "+i);
+				}
+			}
 		}
 		else
 		{
 		//	alert("Not found Issue");
 		}
-	});	
+	});
 });
-
-
-
 
 (function() {
   'use strict';
@@ -51,7 +48,7 @@ jQuery(document).ready(function($){
 
 function fixQuoteSpacing()
 {
-	jQuery(".link_quote").each(function()
+	jQuery(".margin_block").each(function()
 	{
 		var this_link = this;
 		var rect = jQuery(this).offset();
@@ -62,9 +59,9 @@ function fixQuoteSpacing()
 			// Check collision with top of element
 			var found_issue = false;
 			var family = document.elementsFromAbsolutePoint(quote_x, quote_y);
-		    jQuery(family).each(function ()
-		    {
-				if (!this.isSameNode(this_link) && this.classList.contains("link_quote"))
+			jQuery(family).each(function ()
+			{
+				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
 				{				
 					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
 					found_issue = true;
@@ -75,12 +72,12 @@ function fixQuoteSpacing()
 			else
 			{
 			// Check collision with bottom of element
-		    var family = document.elementsFromAbsolutePoint(quote_x, quote_y_bottom);
-		    jQuery(family).each(function ()
-		    {
-		    	if (!this.isSameNode(this_link) && this.classList.contains("link_quote"))
-		    	{
-		    		jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
+			var family = document.elementsFromAbsolutePoint(quote_x, quote_y_bottom);
+			jQuery(family).each(function ()
+			{
+				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
+				{
+					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
 					found_issue = true;
 				}
 			});
@@ -100,7 +97,11 @@ jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 
 	if(anchorTitle != "" && anchorTitle != undefined)
 	{
-		jQuery(this).before("<blockquote class='link_quote'><p><a href='"+anchorLink+"'target="+anchorTarget+">"+anchorTitle+"</a></p></blockquote>");
+		if (anchorLink == undefined) { // a margin block used for translations, not actual hyperlinks
+			jQuery(this).before("<blockquote class='margin_block'><p>"+anchorTitle+"</p></blockquote>");
+		} else {
+			jQuery(this).before("<blockquote class='margin_block'><p><a href='"+anchorLink+"'target="+anchorTarget+">"+anchorTitle+"</a></p></blockquote>");
+		}
 	}
 
 	setTimeout(

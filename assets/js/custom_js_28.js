@@ -51,7 +51,7 @@ jQuery(document).ready(function($){
 
 function fixQuoteSpacing()
 {
-	jQuery(".link_quote").each(function()
+	jQuery(".margin_block").each(function()
 	{
 		var this_link = this;
 		var rect = jQuery(this).offset();
@@ -64,7 +64,7 @@ function fixQuoteSpacing()
 			var family = document.elementsFromAbsolutePoint(quote_x, quote_y);
 		    jQuery(family).each(function ()
 		    {
-				if (!this.isSameNode(this_link) && this.classList.contains("link_quote"))
+				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
 				{				
 					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
 					found_issue = true;
@@ -78,7 +78,7 @@ function fixQuoteSpacing()
 		    var family = document.elementsFromAbsolutePoint(quote_x, quote_y_bottom);
 		    jQuery(family).each(function ()
 		    {
-		    	if (!this.isSameNode(this_link) && this.classList.contains("link_quote"))
+		    	if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
 		    	{
 		    		jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
 					found_issue = true;
@@ -100,7 +100,7 @@ jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 
 	if(anchorTitle != "" && anchorTitle != undefined)
 	{
-		jQuery(this).before("<blockquote class='link_quote'><p><a href='"+anchorLink+"'target="+anchorTarget+">"+anchorTitle+"</a></p></blockquote>");
+		jQuery(this).before("<blockquote class='margin_block'><p><a href='"+anchorLink+"'target="+anchorTarget+">"+anchorTitle+"</a></p></blockquote>");
 	}
 
 	setTimeout(
