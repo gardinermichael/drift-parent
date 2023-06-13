@@ -317,7 +317,7 @@ p{
     color: var(--gray);
 }
 
-.single-post .mission_inner blockquote.link_quote p {
+.single-post .mission_inner blockquote.margin_block p {
 	margin-bottom: 4px;
 }
 
@@ -2668,7 +2668,7 @@ div.asl_w .probox .promagnifier .innericon svg {
     margin-bottom: 0;
 }
 .single-post .mission_inner a:hover,
-.single-post blockquote.link_quote p a:hover {
+.single-post blockquote.margin_block p a:hover {
     color: #303030 !important;
 }
 
@@ -4037,7 +4037,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
 	margin-top: 0px;
 	padding-left: 10px
 }
-.single-post .mission_inner blockquote.link_quote{margin-top:-5% !important}
+.single-post .mission_inner blockquote.margin_block{margin-top:-5% !important}
 figcaption{font-size:11px !important; width:125px !important; left:-140px !important}
 /*.bigfigure{margin-left:175px !important;}                                 ==== CHANGED  5.28 */
 .bigfigure{margin-left:175px;}                                              /* =========== ADDED 5.28 =========== */
@@ -4063,7 +4063,7 @@ figcaption{font-size:11px !important; width:125px !important; left:-140px !impor
     .more_from_issue .com_heading01 h4 b > a{font-size:26px}
     /* .more_from_issue .com_heading01 span{display:none;} */           /* ========= CHANGED 5.28 ======= */
     .more_from_issue .com_heading01 span{margin-left: -8px}             /* ========= ADDED 5.28 ======= */
-.single-post .mission_inner blockquote.link_quote{display:none !important}
+.single-post .mission_inner blockquote.margin_block{display:none !important}
 figure figcaption{position:inherit !important;
     width: auto;
     border: 0;
@@ -4125,7 +4125,7 @@ figure figcaption{position:inherit !important;
     /*.single-post figure{right:-30%}
                                     */
     .single-post figure{right:-65px}
-    .single-post .mission_inner blockquote.link_quote{display:none !important}
+    .single-post .mission_inner blockquote.margin_block{display:none !important}
     .container, .container-md, .container-sm{max-width:100%;}
 
 }
@@ -4220,7 +4220,7 @@ h1.issue_heading b{
 
 }
 
-.addtoany_content blockquote.link_quote {
+.addtoany_content blockquote.margin_block {
     display: none;
 }
 
