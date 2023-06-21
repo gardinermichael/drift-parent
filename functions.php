@@ -474,6 +474,11 @@ function twentyseventeen_scripts()
         wp_enqueue_style('single-style', get_theme_file_uri('/assets/css/single.css'), array(), time());
     }
 
+    // Load issue stylesheet for issues plural or singular
+    if (get_current_template() == 'issues.php' | is_singular('issue')) {
+        wp_enqueue_style('issue-style', get_theme_file_uri('/assets/css/issue.css'), array(), time());
+    }
+
     // Load the dark colorscheme.
     if ('dark' === get_theme_mod('colorscheme', 'light') || is_customize_preview()) {
         wp_enqueue_style('twentyseventeen-colors-dark', get_theme_file_uri('/assets/css/colors-dark.css'), array('twentyseventeen-style'), '20190408');
@@ -973,9 +978,6 @@ add_action('after_setup_theme', 'remove_json_api');
 
 /* Remove WP-JSON api ENDS HERE . */
 
-
-
-
 add_action("authors_edit_form_fields", 'add_form_fields_example', 10, 2);
 
 function add_form_fields_example($term, $taxonomy)
@@ -996,7 +998,7 @@ function add_form_fields_example($term, $taxonomy)
 }
 
 /* Redirect individual to issue pages to main Issues page as single issues aren't implemented */
-/**/
+/*
 add_action('template_redirect', 'redirect_cpt_singular_posts');
 function redirect_cpt_singular_posts()
 {
@@ -1006,6 +1008,7 @@ function redirect_cpt_singular_posts()
         exit;
     }
 }
+*/
 
 add_action('admin_enqueue_scripts', 'ds_admin_theme_style');
 add_action('login_enqueue_scripts', 'ds_admin_theme_style');
@@ -1074,6 +1077,24 @@ function manage_posts_per_page($query)
     else if (array_key_exists('authors', $query->query)) {
         $query->set('posts_per_page', 5);
     }
+}
+
+// This dreadful technology is necessary ... for some reason. Still trying to diagnose why, but I think the issues page isn't properly set up as a page in some way
+add_filter('template_include', 'var_template_include', 1000);
+function var_template_include($t)
+{
+    $GLOBALS['current_theme_template'] = basename($t);
+    return $t;
+}
+
+function get_current_template($echo = false)
+{
+    if (!isset($GLOBALS['current_theme_template']))
+        return false;
+    if ($echo)
+        echo $GLOBALS['current_theme_template'];
+    else
+        return $GLOBALS['current_theme_template'];
 }
 
 // As admin, show template being loaded for debugging & development purposes
