@@ -561,11 +561,12 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .home_mentions_wrap{ max-width: 1190px; margin: auto; }
 .home_mentions{ max-width: 1100px; margin: auto; }
 .home_issues {
-    max-width: 1190px;
+    max-width: 92%;
     margin: auto;
     position: relative;
-    /*margin-top: 30px;*/						/* === CHANGED 6.12 === */
+    margin-top: 10px;
 }
+
 .issuesMoreIcon img {
     width: 94px;
 }
@@ -585,6 +586,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .issues_list_ul.row {
     width: 100%;
 }
+
 .issues_list_ul li::before {
     content: counter(list-item)'.';
     position: absolute;
@@ -593,6 +595,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     bottom: 0;
     font-weight: 700;
 }
+
 .home_mentions ul li.more_link a {
     color: #8C00FF;
     font-family: Avenir-Next-Thin;
