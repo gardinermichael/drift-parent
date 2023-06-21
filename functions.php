@@ -461,7 +461,6 @@ function twentyseventeen_scripts() {
     wp_enqueue_style( 'aos-style', get_theme_file_uri( '/assets/css/aos.css' ), array(), time() );
     wp_enqueue_style( 'bootstrap-style', get_theme_file_uri( '/assets/css/bootstrap.min.css' ), array(), time() );
     wp_enqueue_style( 'owl-style', get_theme_file_uri( '/assets/css/owl.carousel.min.css' ), array(), time() );
-    // wp_enqueue_style( 'drift-style', get_theme_file_uri( '/assets/css/custom_77.css' ), array(), time() );
     wp_enqueue_style( 'drift', get_theme_file_uri( '/assets/css/custom-updated.css' ), array( 'bootstrap-style' ), time() );
 
     // Load the stylesheet for single articles
@@ -1065,4 +1064,14 @@ function manage_posts_per_page( $query ){
   else if ( array_key_exists('authors', $query->query) ) {
     $query->set( 'posts_per_page', 5 );
   }
+}
+
+// As admin, show template being loaded for debugging & development purposes
+add_action( 'wp_footer', 'mark_which_template' );
+
+function mark_which_template() {
+	if ( is_super_admin() ) {
+		global $template;
+		print_r( $template );
+    }
 }
