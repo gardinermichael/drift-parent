@@ -546,7 +546,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
 </div>
 <hr class="mob-hide-line" />
 <?php
-$issue_args = array("post_type" => "issue", "posts_per_page" => "4", "order" => "ASC", "orderby" => "date", "post__not_in" => array("117"));
+$issue_args = array("post_type" => "issue", "posts_per_page" => "4", "order" => "DESC", "orderby" => "date");
 $issue_loop = new wp_query($issue_args);
 ?>
 
@@ -555,16 +555,18 @@ $issue_loop = new wp_query($issue_args);
 </div>
 <div class="home_issues">
     <div class="row custom_wrap home_mentions_wrap">
-        <ol class="issues_list_ul row" start="2">
+        <?php
+        $issue_ID = get_post_meta($pageID, "issue_link", "true");
+        $issue_number = get_post_meta($issue_ID, "issue_number", "true");
+        ?>
+        <ol reversed class="issues_list_ul row" start="<?php echo($issue_number); ?>">
             <?php
             while ($issue_loop->have_posts()) : $issue_loop->the_post();
                 $issuePostID =  get_the_id();
                 $issuePostPermalink = get_the_permalink($issuePostID);
 
-                /* ********TESTING hyperlink ******/
                 $issue_title = get_the_title();
                 $issue_hyper_link = esc_url(site_url("/issues/#$issue_title"));
-                /* *** END TESTING hyperlink ****/
 
                 $issuePostImageID = get_post_thumbnail_id($issuePostID);
                 if ($issuePostImageID != "") {
@@ -575,9 +577,6 @@ $issue_loop = new wp_query($issue_args);
                 }
             ?>
                 <li class="col-md-3 issues_image">
-                    <!--ORIGINAL hyperlink
-                                 <a href="<?php echo $issuePostPermalink; ?>"><img src="<?php echo $issuePostImageURL; ?>"></a>-->
-                    <!--TESTING hyperlink -->
                     <a href="<?php echo $issue_hyper_link; ?>"><img src="<?php echo $issuePostImageURL; ?>"></a>
                 </li>
             <?php endwhile; ?>
