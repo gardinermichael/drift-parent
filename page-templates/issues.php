@@ -121,7 +121,7 @@ $issue_color = $theme_option["issue_color"];
         margin-bottom: 50px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 320px) {}
 </style>
 
 <?php
@@ -133,7 +133,7 @@ $issue_args = [
 ];
 $issue_loop = new wp_query($issue_args);
 
-while ($issue_loop->have_posts()) : $issue_loop->the_post();
+while ($issue_loop->have_posts()) : $issue_loop->the_post(); // the main loop over issues
 
     $pageID = get_the_id();
     $bannerImageID = get_post_thumbnail_id($pageID);
@@ -196,7 +196,6 @@ while ($issue_loop->have_posts()) : $issue_loop->the_post();
                                             $loopNum_test++;
                                             //$issueid = $articleValue["article_link_acf"]->ID;
                                             $issueid = $articleValue["article_link_2"][0];
-
 
                                             $issuePermalink = get_the_permalink($issueid);
                                             $issueTitle = get_the_title($issueid); ?>
