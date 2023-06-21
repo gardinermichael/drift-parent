@@ -545,50 +545,41 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
     </div>
 </div>
 <hr class="mob-hide-line" />
+
 <?php
-$issue_args = array("post_type" => "issue", "posts_per_page" => "4", "order" => "DESC", "orderby" => "date");
+$issue_args = array("post_type" => "issue", "posts_per_page" => "-1", "order" => "DESC", "orderby" => "date");
 $issue_loop = new wp_query($issue_args);
 ?>
 
 <div class="latestArticle_Heading td-issues-head">
     <h1>Issues</h1>
 </div>
+
 <div class="home_issues">
-    <div class="row custom_wrap home_mentions_wrap">
+    <?php
+    $issue_ID = get_post_meta($pageID, "issue_link", "true");
+    $issue_number = get_post_meta($issue_ID, "issue_number", "true");
+    ?>
+    <div class="owl-carousel">
         <?php
-        $issue_ID = get_post_meta($pageID, "issue_link", "true");
-        $issue_number = get_post_meta($issue_ID, "issue_number", "true");
-        ?>
-        <ol reversed class="issues_list_ul row" start="<?php echo($issue_number); ?>">
-            <?php
-            while ($issue_loop->have_posts()) : $issue_loop->the_post();
-                $issuePostID =  get_the_id();
-                $issue_number = get_post_meta($issuePostID, "issue_number", "true");
-                $issuePostPermalink = get_the_permalink($issuePostID);
+        while ($issue_loop->have_posts()) : $issue_loop->the_post();
+            $issuePostID =  get_the_id();
+            $issue_number = get_post_meta($issuePostID, "issue_number", "true");
+            $issuePostPermalink = get_the_permalink($issuePostID);
 
-                $issue_hyper_link = esc_url(site_url("/issue/issue-" . $issue_number));
+            $issue_hyper_link = esc_url(site_url("/issue/issue-" . $issue_number));
 
-                $issuePostImageID = get_post_thumbnail_id($issuePostID);
-                if ($issuePostImageID != "") {
-                    $issuePostImageURL = wp_get_attachment_image_src($issuePostImageID, "full");
-                    $issuePostImageURL = $issuePostImageURL[0];
-                } else {
-                    $issuePostImageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
-                }
+            $issuePostImageID = get_post_thumbnail_id($issuePostID);
+            if ($issuePostImageID != "") {
+                $issuePostImageURL = wp_get_attachment_image_src($issuePostImageID, "full");
+                $issuePostImageURL = $issuePostImageURL[0];
+            } else {
+                $issuePostImageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
+            }
             ?>
-                <li class="col-md-3 issues_image">
-                    <a href="<?php echo $issue_hyper_link; ?>"><img src="<?php echo $issuePostImageURL; ?>"></a>
-                </li>
-            <?php endwhile; ?>
-        </ol>
+            <a href="<?php echo $issue_hyper_link; ?>"><img src="<?php echo $issuePostImageURL; ?>"></a>
+        <?php endwhile;?>
     </div>
-
-    <div class="nextIssues">
-        <a href="<?php echo get_the_permalink(14); ?>" class="issuesMoreIcon">
-            <img src="<?php echo get_bloginfo('template_url'); ?>/assets/images/angle-right.png">
-        </a>
-    </div>
-
 </div>
 
 <?php

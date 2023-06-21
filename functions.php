@@ -466,8 +466,12 @@ function twentyseventeen_scripts()
     wp_enqueue_style('drift-all-style', get_theme_file_uri('/assets/css/all.min.css'), array(), time());
     wp_enqueue_style('aos-style', get_theme_file_uri('/assets/css/aos.css'), array(), time());
     wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), time());
-    wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), time());
     wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), time());
+
+    // Load owl carousel stylesheet for homepage
+    if (is_front_page()) {
+        wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), time());
+    }
 
     // Load the stylesheet for single articles
     if (is_single()) {
@@ -527,12 +531,16 @@ function twentyseventeen_scripts()
     }
 
     wp_enqueue_script('bootstrap-script', get_theme_file_uri('/assets/js/bootstrap.min.js'), array('jquery'), '2.3.1', true);
-    wp_enqueue_script('owl-script', get_theme_file_uri('/assets/js/owl.carousel.min.js'), array('jquery'), '2.3.1', true);
     wp_enqueue_script('aos-script', get_theme_file_uri('/assets/js/aos.js'), array(), '2.3.1', true);
     wp_enqueue_script('aos-config-script', get_theme_file_uri('/assets/js/aos-config.js'), array('aos-script'), '2.3.1', true);
     wp_enqueue_script('imagesloaded-script', get_theme_file_uri('/assets/js/imagesloaded.pkgd.js'), array('jquery'), '2.3.1', true);
-    // wp_enqueue_script( 'custom-script', get_theme_file_uri( '/assets/js/custom_js_28.js' ), array( 'jquery' ), '2.3.1', true );
     wp_enqueue_script('custom-script', get_theme_file_uri('/assets/js/custom-js-28-updated.js'), array('jquery'), '2.3.1', true);
+
+    // owl carousel script for the homepage
+    if (is_front_page()) {
+        wp_enqueue_script('owl-script', get_theme_file_uri('/assets/js/owl.carousel.min.js'), array('jquery'), '2.3.1', true);
+        wp_enqueue_script('carousel-script', get_theme_file_uri('/assets/js/carousel.js'), array('jquery'), '2.3.1', true);
+    }
 
     global $post;
     if (is_a($post, 'WP_Post') && (is_page_template(array('page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php')) || has_shortcode($post->content, 'fullstripe_form'))) {
