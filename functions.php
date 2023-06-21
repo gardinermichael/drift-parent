@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Twenty Seventeen functions and definitions
  *
@@ -119,7 +120,7 @@ function twentyseventeen_setup()
      * This theme styles the visual editor to resemble the theme style,
      * specifically font, colors, and column width.
       */
-    add_editor_style(array( 'assets/css/editor-style.css', twentyseventeen_fonts_url() ));
+    add_editor_style(array('assets/css/editor-style.css', twentyseventeen_fonts_url()));
 
     // Load regular editor styles into the new block-based editor.
     add_theme_support('editor-styles');
@@ -264,7 +265,7 @@ function twentyseventeen_content_width()
     }
 
     // Check if is single post and there is no sidebar.
-    if (is_single() && ! is_active_sidebar('sidebar-1')) {
+    if (is_single() && !is_active_sidebar('sidebar-1')) {
         $content_width = 740;
     }
 
@@ -400,7 +401,7 @@ add_action('wp_head', 'twentyseventeen_pingback_header');
  */
 function twentyseventeen_colors_css_wrap()
 {
-    if ('custom' !== get_theme_mod('colorscheme') && ! is_customize_preview()) {
+    if ('custom' !== get_theme_mod('colorscheme') && !is_customize_preview()) {
         return;
     }
 
@@ -411,17 +412,18 @@ function twentyseventeen_colors_css_wrap()
     if (is_customize_preview()) {
         $customize_preview_data_hue = 'data-hue="' . $hue . '"';
     } ?>
-	<style type="text/css" id="custom-theme-colors" <?php echo $customize_preview_data_hue; ?>>
-		<?php echo twentyseventeen_custom_colors_css(); ?>
-	</style>
-	<?php
+    <style type="text/css" id="custom-theme-colors" <?php echo $customize_preview_data_hue; ?>>
+        <?php echo twentyseventeen_custom_colors_css(); ?>
+    </style>
+<?php
 }
 add_action('wp_head', 'twentyseventeen_colors_css_wrap');
 
 /**
  * Register custom fonts.
  */
-function twentyseventeen_fonts_url() {
+function twentyseventeen_fonts_url()
+{
 
     $font_families = array();
 
@@ -434,11 +436,11 @@ function twentyseventeen_fonts_url() {
     $font_families[] = 'Roboto:wght@100';
 
     $query_args = array(
-        'family'  => implode( '&family=', $font_families ),
+        'family'  => implode('&family=', $font_families),
         'display' => 'swap',
     );
 
-    $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css2' );
+    $fonts_url = add_query_arg($query_args, 'https://fonts.googleapis.com/css2');
 
     return esc_url_raw($fonts_url);
 }
@@ -446,41 +448,42 @@ function twentyseventeen_fonts_url() {
 /**
  * Enqueues scripts and styles.
  */
-function twentyseventeen_scripts() {
+function twentyseventeen_scripts()
+{
 
     // Add custom fonts, used in the main stylesheet.
-    wp_enqueue_style( 'drift-fonts', twentyseventeen_fonts_url(), array(), time() );
+    wp_enqueue_style('drift-fonts', twentyseventeen_fonts_url(), array(), time());
 
     // Theme stylesheet.
     wp_enqueue_style('twentyseventeen-style', get_stylesheet_uri(), array(), '20190507');
 
     // Theme block stylesheet.
-    wp_enqueue_style('twentyseventeen-block-style', get_theme_file_uri('/assets/css/blocks.css'), array( 'twentyseventeen-style' ), '20190105');
+    wp_enqueue_style('twentyseventeen-block-style', get_theme_file_uri('/assets/css/blocks.css'), array('twentyseventeen-style'), '20190105');
 
-    wp_enqueue_style( 'drift-all-style', get_theme_file_uri( '/assets/css/all.min.css' ), array(), time() );
-    wp_enqueue_style( 'aos-style', get_theme_file_uri( '/assets/css/aos.css' ), array(), time() );
-    wp_enqueue_style( 'bootstrap-style', get_theme_file_uri( '/assets/css/bootstrap.min.css' ), array(), time() );
-    wp_enqueue_style( 'owl-style', get_theme_file_uri( '/assets/css/owl.carousel.min.css' ), array(), time() );
-    wp_enqueue_style( 'drift', get_theme_file_uri( '/assets/css/custom-updated.css' ), array( 'bootstrap-style' ), time() );
+    wp_enqueue_style('drift-all-style', get_theme_file_uri('/assets/css/all.min.css'), array(), time());
+    wp_enqueue_style('aos-style', get_theme_file_uri('/assets/css/aos.css'), array(), time());
+    wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), time());
+    wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), time());
+    wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), time());
 
     // Load the stylesheet for single articles
     if (is_single()) {
-        wp_enqueue_style( 'single-style', get_theme_file_uri( '/assets/css/single.css' ), array(), time() );
+        wp_enqueue_style('single-style', get_theme_file_uri('/assets/css/single.css'), array(), time());
     }
 
     // Load the dark colorscheme.
     if ('dark' === get_theme_mod('colorscheme', 'light') || is_customize_preview()) {
-        wp_enqueue_style('twentyseventeen-colors-dark', get_theme_file_uri('/assets/css/colors-dark.css'), array( 'twentyseventeen-style' ), '20190408');
+        wp_enqueue_style('twentyseventeen-colors-dark', get_theme_file_uri('/assets/css/colors-dark.css'), array('twentyseventeen-style'), '20190408');
     }
 
     // Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
     if (is_customize_preview()) {
-        wp_enqueue_style('twentyseventeen-ie9', get_theme_file_uri('/assets/css/ie9.css'), array( 'twentyseventeen-style' ), '20161202');
+        wp_enqueue_style('twentyseventeen-ie9', get_theme_file_uri('/assets/css/ie9.css'), array('twentyseventeen-style'), '20161202');
         wp_style_add_data('twentyseventeen-ie9', 'conditional', 'IE 9');
     }
 
     // Load the Internet Explorer 8 specific stylesheet.
-    wp_enqueue_style('twentyseventeen-ie8', get_theme_file_uri('/assets/css/ie8.css'), array( 'twentyseventeen-style' ), '20161202');
+    wp_enqueue_style('twentyseventeen-ie8', get_theme_file_uri('/assets/css/ie8.css'), array('twentyseventeen-style'), '20161202');
     wp_style_add_data('twentyseventeen-ie8', 'conditional', 'lt IE 9');
 
     // Load the html5 shiv.
@@ -490,11 +493,11 @@ function twentyseventeen_scripts() {
     wp_enqueue_script('twentyseventeen-skip-link-focus-fix', get_theme_file_uri('/assets/js/skip-link-focus-fix.js'), array(), '20161114', true);
 
     $twentyseventeen_l10n = array(
-        'quote' => twentyseventeen_get_svg(array( 'icon' => 'quote-right' )),
+        'quote' => twentyseventeen_get_svg(array('icon' => 'quote-right')),
     );
 
     if (has_nav_menu('top')) {
-        wp_enqueue_script('twentyseventeen-navigation', get_theme_file_uri('/assets/js/navigation.js'), array( 'jquery' ), '20161203', true);
+        wp_enqueue_script('twentyseventeen-navigation', get_theme_file_uri('/assets/js/navigation.js'), array('jquery'), '20161203', true);
         $twentyseventeen_l10n['expand']   = __('Expand child menu', 'twentyseventeen');
         $twentyseventeen_l10n['collapse'] = __('Collapse child menu', 'twentyseventeen');
         $twentyseventeen_l10n['icon']     = twentyseventeen_get_svg(
@@ -507,25 +510,25 @@ function twentyseventeen_scripts() {
 
     /*wp_enqueue_script( 'twentyseventeen-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery' ), '20190121', true );*/
 
-    wp_enqueue_script('jquery-scrollto', get_theme_file_uri('/assets/js/jquery.scrollTo.js'), array( 'jquery' ), '2.1.2', true);
+    wp_enqueue_script('jquery-scrollto', get_theme_file_uri('/assets/js/jquery.scrollTo.js'), array('jquery'), '2.1.2', true);
 
     wp_localize_script('twentyseventeen-skip-link-focus-fix', 'twentyseventeenScreenReaderText', $twentyseventeen_l10n);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 
-	wp_enqueue_script( 'bootstrap-script', get_theme_file_uri( '/assets/js/bootstrap.min.js' ), array( 'jquery' ), '2.3.1', true );
-	wp_enqueue_script( 'owl-script', get_theme_file_uri( '/assets/js/owl.carousel.min.js' ), array( 'jquery' ), '2.3.1', true );
-	wp_enqueue_script( 'aos-script', get_theme_file_uri( '/assets/js/aos.js' ), array(), '2.3.1', true );
-    wp_enqueue_script( 'aos-config-script', get_theme_file_uri( '/assets/js/aos-config.js' ), array( 'aos-script' ), '2.3.1', true );
-	wp_enqueue_script( 'imagesloaded-script', get_theme_file_uri( '/assets/js/imagesloaded.pkgd.js' ), array( 'jquery' ), '2.3.1', true );
-	// wp_enqueue_script( 'custom-script', get_theme_file_uri( '/assets/js/custom_js_28.js' ), array( 'jquery' ), '2.3.1', true );
-    wp_enqueue_script( 'custom-script', get_theme_file_uri( '/assets/js/custom-js-28-updated.js' ), array( 'jquery' ), '2.3.1', true );
+    wp_enqueue_script('bootstrap-script', get_theme_file_uri('/assets/js/bootstrap.min.js'), array('jquery'), '2.3.1', true);
+    wp_enqueue_script('owl-script', get_theme_file_uri('/assets/js/owl.carousel.min.js'), array('jquery'), '2.3.1', true);
+    wp_enqueue_script('aos-script', get_theme_file_uri('/assets/js/aos.js'), array(), '2.3.1', true);
+    wp_enqueue_script('aos-config-script', get_theme_file_uri('/assets/js/aos-config.js'), array('aos-script'), '2.3.1', true);
+    wp_enqueue_script('imagesloaded-script', get_theme_file_uri('/assets/js/imagesloaded.pkgd.js'), array('jquery'), '2.3.1', true);
+    // wp_enqueue_script( 'custom-script', get_theme_file_uri( '/assets/js/custom_js_28.js' ), array( 'jquery' ), '2.3.1', true );
+    wp_enqueue_script('custom-script', get_theme_file_uri('/assets/js/custom-js-28-updated.js'), array('jquery'), '2.3.1', true);
 
     global $post;
-    if( is_a( $post, 'WP_Post' ) && ( is_page_template( array( 'page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php' ) ) || has_shortcode( $post->content, 'fullstripe_form' ) ) ) {
-        wp_enqueue_script( 'fullstripe-custom-script', get_theme_file_uri( '/assets/js/wpfs-script.js' ), array( 'jquery' ), '2.3.1', true );
+    if (is_a($post, 'WP_Post') && (is_page_template(array('page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php')) || has_shortcode($post->content, 'fullstripe_form'))) {
+        wp_enqueue_script('fullstripe-custom-script', get_theme_file_uri('/assets/js/wpfs-script.js'), array('jquery'), '2.3.1', true);
     }
 }
 add_action('wp_enqueue_scripts', 'twentyseventeen_scripts');
@@ -564,7 +567,7 @@ function twentyseventeen_content_image_sizes_attr($sizes, $size)
     }
 
     if (is_active_sidebar('sidebar-1') || is_archive() || is_search() || is_home() || is_page()) {
-        if (! (is_page() && 'one-column' === get_theme_mod('page_options')) && 767 <= $width) {
+        if (!(is_page() && 'one-column' === get_theme_mod('page_options')) && 767 <= $width) {
             $sizes = '(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px';
         }
     }
@@ -717,44 +720,44 @@ function wptuts53021_load_admin_script( $hook ){
 
 //hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_topics_hierarchical_taxonomy', 0);
- 
+
 //create a custom taxonomy name it topics for your posts
- 
+
 function create_topics_hierarchical_taxonomy()
 {
- 
-// Add new taxonomy, make it hierarchical like categories
+
+    // Add new taxonomy, make it hierarchical like categories
     //first do the translations part for GUI
- 
+
     $labels = array(
-    'name' => _x('Authors', 'taxonomy general name'),
-    'singular_name' => _x('Author', 'taxonomy singular name'),
-    'search_items' =>  __('Search Authors'),
-    'all_items' => __('All Authors'),
-    'parent_item' => __('Parent Author'),
-    'parent_item_colon' => __('Parent Author:'),
-    'edit_item' => __('Edit Author'),
-    'update_item' => __('Update Author'),
-    'add_new_item' => __('Add New Author'),
-    'new_item_name' => __('New Author Name'),
-    'menu_name' => __('Authors'),
-  );
- 
+        'name' => _x('Authors', 'taxonomy general name'),
+        'singular_name' => _x('Author', 'taxonomy singular name'),
+        'search_items' =>  __('Search Authors'),
+        'all_items' => __('All Authors'),
+        'parent_item' => __('Parent Author'),
+        'parent_item_colon' => __('Parent Author:'),
+        'edit_item' => __('Edit Author'),
+        'update_item' => __('Update Author'),
+        'add_new_item' => __('Add New Author'),
+        'new_item_name' => __('New Author Name'),
+        'menu_name' => __('Authors'),
+    );
+
     // Now register the taxonomy
- 
+
     register_taxonomy('authors', array('post'), array(
-    'hierarchical' => true,
-    'labels' => $labels,
-    'show_ui' => true,
-    'show_admin_column' => true,
-    'query_var' => true,
-    'rewrite' => array( 'slug' => 'article_author' ),
-  ));
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'article_author'),
+    ));
 }
 function get_first_paragraph()
 {
     global $post;
-    
+
     $str = wpautop(get_the_content());
     $str = substr($str, 0, strpos($str, '</p>') + 4);
     $str = strip_tags($str, '<a><strong><em>');
@@ -781,46 +784,46 @@ function my_nav_wrap()
     $gplus_url = $theme_option["gplus_url"];
 
     if ($facebook_url != "") {
-        $socialHTML .= '<li><a href="'.$facebook_url.'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $facebook_url . '" target="_blank"><i class="fab fa-facebook-f"></i></a></li>';
     }
 
     if ($twitter_url != "") {
-        $socialHTML .= '<li><a href="'.$twitter_url.'" target="_blank"><i class="fab fa-twitter"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $twitter_url . '" target="_blank"><i class="fab fa-twitter"></i></a></li>';
     }
 
     if ($instagram_url != "") {
-        $socialHTML .= '<li><a href="'.$instagram_url.'" target="_blank"><i class="fab fa-instagram"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $instagram_url . '" target="_blank"><i class="fab fa-instagram"></i></a></li>';
     }
 
     if ($youtube_url != "") {
-        $socialHTML .= '<li><a href="'.$youtube_url.'" target="_blank"><i class="fab fa-youtube"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $youtube_url . '" target="_blank"><i class="fab fa-youtube"></i></a></li>';
     }
 
     if ($linkedin_url != "") {
-        $socialHTML .= '<li><a href="'.$linkedin_url.'" target="_blank"><i class="fab fa-linkedin"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $linkedin_url . '" target="_blank"><i class="fab fa-linkedin"></i></a></li>';
     }
 
     if ($pinterest_url != "") {
-        $socialHTML .= '<li><a href="'.$pinterest_url.'" target="_blank"><i class="fab fa-pinterest"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $pinterest_url . '" target="_blank"><i class="fab fa-pinterest"></i></a></li>';
     }
 
     if ($gplus_url != "") {
-        $socialHTML .= '<li><a href="'.$gplus_url.'" target="_blank"><i class="fab fa-google-plus-square"></i></a></li>';
+        $socialHTML .= '<li><a href="' . $gplus_url . '" target="_blank"><i class="fab fa-google-plus-square"></i></a></li>';
     }
     $socialHTML .=  '<li id="menu-item-294" class="drift_search_link menu-item menu-item-type-custom menu-item-object-custom menu-item-294"><a><i class="fa fa-search"></i></a></li>';
 
     // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
-  
+
     // open the <ul>, set 'menu_class' and 'menu_id' values
     $wrap  = '<ul id="%1$s" class="%2$s">';
-  
-  
+
+
     // get nav items as configured in /wp-admin/
     $wrap .= '%3$s';
-  
-  
+
+
     // the static link
-    $wrap .= '<li><ul class="social_icons">'.$socialHTML.'</ul></li>';
+    $wrap .= '<li><ul class="social_icons">' . $socialHTML . '</ul></li>';
     // close the <ul>
     $wrap .= '</ul>';
 
@@ -834,9 +837,9 @@ if (!function_exists('redirect_404_to_homepage')) {
 
     function redirect_404_to_homepage()
     {
-        if (is_404()):
+        if (is_404()) :
             wp_safe_redirect(home_url('/'));
-        exit;
+            exit;
         endif;
     }
 }
@@ -876,8 +879,8 @@ $wp_query->is_feed = false;
 
 
 /**
-* Redirect to the homepage all users trying to access feeds STARTS HERE .
-*/
+ * Redirect to the homepage all users trying to access feeds STARTS HERE .
+ */
 function disable_feeds()
 {
     wp_redirect(home_url());
@@ -908,10 +911,12 @@ remove_action('wp_head', 'feed_links_extra', 3);
 /* Redirecting URL */
 function redirect_page()
 {
-    if (isset($_SERVER['HTTPS']) &&
+    if (
+        isset($_SERVER['HTTPS']) &&
         ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
         isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-        $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+        $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
+    ) {
         $protocol = 'https://';
     } else {
         $protocol = 'http://';
@@ -921,16 +926,15 @@ function redirect_page()
     $currenturl_relative = wp_make_link_relative($currenturl);
 
     switch ($currenturl_relative) {
-    
+
         case '/author/rpanovka/':
             $urlto = home_url('/');
             break;
-        
+
         default:
             return;
-    
     }
-    
+
     if ($currenturl != $urlto) {
         exit(wp_redirect($urlto));
     }
@@ -940,29 +944,29 @@ add_action('template_redirect', 'redirect_page');
 /* Redirect from author page ends here*/
 
 /* Remove WP-JSON api STARTS HERE . */
-    function remove_json_api()
-    {
+function remove_json_api()
+{
 
-        // Remove the REST API lines from the HTML Header
-        remove_action('wp_head', 'rest_output_link_wp_head', 10);
-        remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
+    // Remove the REST API lines from the HTML Header
+    remove_action('wp_head', 'rest_output_link_wp_head', 10);
+    remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 
-        // Remove the REST API endpoint.
-        remove_action('rest_api_init', 'wp_oembed_register_route');
+    // Remove the REST API endpoint.
+    remove_action('rest_api_init', 'wp_oembed_register_route');
 
-        // Turn off oEmbed auto discovery.
-        add_filter('embed_oembed_discover', '__return_false');
+    // Turn off oEmbed auto discovery.
+    add_filter('embed_oembed_discover', '__return_false');
 
-        // Don't filter oEmbed results.
-        remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+    // Don't filter oEmbed results.
+    remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
 
-        // Remove oEmbed discovery links.
-        remove_action('wp_head', 'wp_oembed_add_discovery_links');
+    // Remove oEmbed discovery links.
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
 
-        // Remove oEmbed-specific JavaScript from the front-end and back-end.
-        remove_action('wp_head', 'wp_oembed_add_host_js');
-    }
-    add_action('after_setup_theme', 'remove_json_api');
+    // Remove oEmbed-specific JavaScript from the front-end and back-end.
+    remove_action('wp_head', 'wp_oembed_add_host_js');
+}
+add_action('after_setup_theme', 'remove_json_api');
 
 /* Remove WP-JSON api ENDS HERE . */
 
@@ -973,30 +977,32 @@ add_action("authors_edit_form_fields", 'add_form_fields_example', 10, 2);
 
 function add_form_fields_example($term, $taxonomy)
 {
-    ?>
+?>
     <tr valign="top">
         <th scope="row">Author Bio</th>
         <td>
             <?php wp_editor(html_entity_decode($term->description), 'description', array('media_buttons' => false)); ?>
             <script>
-                jQuery(window).ready(function(){
+                jQuery(window).ready(function() {
                     jQuery('label[for=description]').parent().parent().remove();
                 });
             </script>
         </td>
     </tr>
-    <?php
+<?php
 }
 
+/* Redirect individual to issue pages to main Issues page as single issues aren't implemented */
+/**/
 add_action('template_redirect', 'redirect_cpt_singular_posts');
-    function redirect_cpt_singular_posts()
-    {
-        if (is_singular('issue')) {
-            $Issues_pageURL  = get_the_permalink(14);
-            wp_redirect($Issues_pageURL, 302);
-            exit;
-        }
+function redirect_cpt_singular_posts()
+{
+    if (is_singular('issue')) {
+        $Issues_pageURL  = get_the_permalink(14);
+        wp_redirect($Issues_pageURL, 302);
+        exit;
     }
+}
 
 add_action('admin_enqueue_scripts', 'ds_admin_theme_style');
 add_action('login_enqueue_scripts', 'ds_admin_theme_style');
@@ -1004,9 +1010,9 @@ function ds_admin_theme_style()
 {
     if (!current_user_can('manage_options')) {
         echo '<style>
-		   .update-nag, .updated, .error, .is-dismissible { display: none !important; }
+           .update-nag, .updated, .error, .is-dismissible { display: none !important; }
 
-		</style>';
+        </style>';
     }
 }
 
@@ -1050,28 +1056,30 @@ function my_custom_fonts()
 }
 
 // Change # of posts per page for search queries
-add_action( 'pre_get_posts', 'manage_posts_per_page' );
+add_action('pre_get_posts', 'manage_posts_per_page');
 
-function manage_posts_per_page( $query ){
-  if ( is_admin() ){
-    return;
-  }
-  // Check if this is a search
-  if ( $query->is_search() ) {
-    $query->set( 'posts_per_page', 10 );
-  }
-  // Or an 'authors' (i.e. contributor)
-  else if ( array_key_exists('authors', $query->query) ) {
-    $query->set( 'posts_per_page', 5 );
-  }
+function manage_posts_per_page($query)
+{
+    if (is_admin()) {
+        return;
+    }
+    // Check if this is a search
+    if ($query->is_search()) {
+        $query->set('posts_per_page', 10);
+    }
+    // Or an 'authors' (i.e. contributor)
+    else if (array_key_exists('authors', $query->query)) {
+        $query->set('posts_per_page', 5);
+    }
 }
 
 // As admin, show template being loaded for debugging & development purposes
-add_action( 'wp_footer', 'mark_which_template' );
+add_action('wp_footer', 'mark_which_template');
 
-function mark_which_template() {
-	if ( is_super_admin() ) {
-		global $template;
-		print_r( $template );
+function mark_which_template()
+{
+    if (is_super_admin()) {
+        global $template;
+        print_r($template);
     }
 }
