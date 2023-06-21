@@ -467,6 +467,10 @@ function twentyseventeen_scripts() {
     // wp_enqueue_style( 'drift-style', get_theme_file_uri( '/assets/css/custom_77.css' ), array(), time() );
     wp_enqueue_style( 'drift', get_theme_file_uri( '/assets/css/custom-updated.css' ), array( 'bootstrap-style' ), time() );
 
+    // Load the stylesheet for single articles
+    if (is_single()) {
+        wp_enqueue_style( 'single-style', get_theme_file_uri( '/assets/css/single.css' ), array(), time() );
+    }
 
     // Load the dark colorscheme.
     if ('dark' === get_theme_mod('colorscheme', 'light') || is_customize_preview()) {
