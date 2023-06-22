@@ -97,66 +97,7 @@ button#submit--OGNhNmM:before {
 label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before { 
 	background: #156ccc !important;
 }
-/* label[for="wpfs-card-holder-name--ZjFiZTB"]::before,
-label[for="wpfs-card-holder-name--ZTI4NGY"]::before,
-label[for="wpfs-card-holder-name--OGNhNmM"]::before {
-	content: "Full name";
-	font-size: 18px !important;
-} */
 
-/* label[for="wpfs-card-holder-name--ZjFiZTB"],
-label[for="wpfs-billing-address-line-1--ZjFiZTB"],
-label[for="wpfs-billing-address-line-2--ZjFiZTB"],
-label[for="wpfs-billing-address-line-1--ZTI4NGY"],
-label[for="wpfs-billing-address-line-2--ZTI4NGY"],
-label[for="wpfs-card-holder-name--ZTI4NGY"],
-label[for="wpfs-card-holder-name--OGNhNmM"],
-label[for="wpfs-billing-address-line-1--OGNhNmM"],
-label[for="wpfs-billing-address-line-2--OGNhNmM"],
-label[for="wpfs-shipping-address-line-1--ZTI4NGY"],
-label[for="wpfs-shipping-address-line-2--ZTI4NGY"] { 
-	font-size: 0 !important;
-} */
-
-
-/* #wpfs-billing-address-panel--OGNhNmM > .wpfs-form-group:nth-child(1) {
-	 display: none !important;
-} */
-
-/* #wpfs-billing-address-panel--ZjFiZTB > div:nth-child(1), 
-#wpfs-billing-address-panel--ZTI4NGY > div:nth-child(1),
-label[for="wpfs-billing-address-country--ZTI4NGY-button"],
-label[for="wpfs-billing-address-country--ZjFiZTB-button"],
-label[for="wpfs-billing-address-country--OGNhNmM-button"],
-#wpfs-billing-address-country--ZTI4NGY-button, 
-#wpfs-billing-address-panel--ZTI4NGY > div:last-child,
-#wpfs-billing-address-panel--OGNhNmM > div:last-child
- {
-	display: none;
-} */
-/* div.wpfs-w-20[data-wpfs-amount-row="custom-amount"]
- { display: none !important; } */
-
-/* label[for="wpfs-billing-address-line-1--ZjFiZTB"]::before,
-label[for="wpfs-billing-address-line-1--OGNhNmM"]::before
-{
-	content: "Mailing address";
-	font-size: 18px;
-}
-label[for="wpfs-billing-address-line-1--ZTI4NGY"]::before,label[for="wpfs-billing-address-line-1--OGNhNmM"]::before {
-	content: "Billing address"; 
-	font-size: 18px;
-}
-label[for="wpfs-billing-address-line-2--ZjFiZTB"]::before,
-label[for="wpfs-billing-address-line-2--OGNhNmM"]::before
- {
-	content: "Mailing address line 2";
-	font-size: 18px;
-}
-label[for="wpfs-billing-address-line-2--ZTI4NGY"]::before,
-label[for="wpfs-billing-address-line-2--OGNhNmM"]::before{content: "Billing address line 2"; font-size: 18px;}
-label[for="wpfs-shipping-address-line-1--ZTI4NGY"]::before{content: "Shipping address"; font-size: 18px;}
-label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping address line 2"; font-size: 18px;} */
 #other_amount,#other_amount_temp {
 	float: right !important;
 	width: 101px;
@@ -237,9 +178,7 @@ label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping ad
 .subsRadio li span label.active:after { 
 	opacity: 1;
 }
-/* div[data-wpfs-amount-row="custom-amount"] {
-	display: none !important;
-} */
+
 .form01 { 
 	position: relative;
 }

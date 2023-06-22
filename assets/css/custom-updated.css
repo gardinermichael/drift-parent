@@ -558,31 +558,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 	margin: auto; 								/* === ADDED 6.9 === */
 }
 .signup4mail_BG #mc_embed_signup .mc-field-group input#mce-EMAIL{ background: #f5f5f6; }
-.home_mentions_wrap{ max-width: 1190px; margin: auto; }
-.home_mentions{ max-width: 1100px; margin: auto; }
-.home_issues {
-    max-width: 92%;
-    margin: auto;
-    position: relative;
-    margin-top: 10px;
-}
 
 .issuesMoreIcon img {
     width: 94px;
 }
-.home_mentions ul li {
-    float: left;
-    /* font-family: savoy; */
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-    font-size: 20px;
-    margin-bottom: 10px;
-    position: relative;
-}
-.home_mentions ul li a {
-    /* font-family: savoy; */
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-    color: #333;
-}
+
 .issues_list_ul.row {
     width: 100%;
 }
@@ -596,11 +576,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     font-weight: 700;
 }
 
-.home_mentions ul li.more_link a {
-    color: #8C00FF;
-    font-family: Avenir-Next-Thin;
-    margin-left: 7px;
-}
 .issues_list_ul li {
     list-style: none;
     width: 200px;
@@ -611,21 +586,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     width: 185px;
     object-fit: cover;
 }
-.home_mentions ul li.mention_italic {
-    font-style: italic;
-}
-.home_mentions ul li::after {
-    content: "|";
-    font-style: normal;
-    color: #8C00FF;
-    font-size: 20px;
-    font-family: Avenir-Next-Thin;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-.home_mentions li:last-child::after {
-    display: none;
-}
+
 .latestArticle_Heading p {
     font-size: 14px;
     font-family: proxy-nova;
@@ -1475,50 +1436,6 @@ display: none;
     height: 12px !important;
 }
 
-/* radio button css*/
-
-/* .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
-    background: url("https://www.thedriftmag.com/wp-content/uploads/2021/09/cherimoya-subscribe.jpg");
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin-bottom: 30px;
-    background-repeat: no-repeat !important;
-    background-size: 100% !important;
-    background-position: center top !important;
-    padding: 15px 0px;
-}
-
-.page-template-subscribe .kudossubscribe .wpfs-form-check-input[type="radio"] + .wpfs-form-check-label::after {
-    background: #000 !important;
-    top: 5px !important;
-    left: 4px !important;
-    width: 12px !important;
-    height: 12px !important;
-    border: 0px;
-}
-.page-template-subscribe .kudossubscribe .wpfs-form-check-input + .wpfs-form-check-label::before{    height: 20px !important;}
-.page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label{ display: inline-block; padding-left: 50px;font-size: 20px;
-    }
-.page-template-subscribe .ab_part_l .wpfs-form-check-group .wpfs-form-check{    width: 100% !important; max-width: 300px; padding: 0 15px;}
-.page-template-subscribe .kudossubscribe .wpfs-form-check .wpfs-form-check-label strong {
-    margin-left: 20px;font-size: 20px !important;
-    }
-.page-template-subscribe .kudossubscribe .wpfs-form-check .wpfs-form-check-label:focus {
-    outline: none;
-}
-.page-template-subscribe .kudossubscribe form.wpfs-form{ padding-top: 6px !important;     z-index: 0;}
-.page-template-subscribe .kudossubscribe .wpfs-form-check .wpfs-form-check-label:focus:after{ outline: none; }
-.page-template-subscribe .kudossubscribe .wpfs-form-check > input:focus{outline: none;}
-.wpfs-form-check-input[type="radio"]:focus + .wpfs-form-check-label:before, .wpfs-form-check-input[type="radio"]:checked:focus + .wpfs-form-check-label:before {
-    outline: none;    box-shadow: none;
-}
-.page-template-subscribe .kudossubscribe .wpfs-form-check .wpfs-form-check-label{ padding-left: 30px; }
-.page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label span.constrained {
-    width: 125px;
-    display: inline-block;
-} */
-
 /* media css*/
 
 /* James Zone */
@@ -1706,11 +1623,7 @@ ul.f_menu.nav {
     padding-top: 10px;
     padding-bottom: 0;
 }
-.home_mentions ul li {
-    display: inline-block;
-    float: left;
-    font-size: 16px;
-}
+
 .nextIssues {
     position: relative;
     top: unset;
@@ -1734,12 +1647,7 @@ ul.social_icons li {
     left: -20px;
 }
 .issues_list_ul.row{ margin: auto; }
-.home_mentions ul li.more_link {
-    text-align: left;
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-}
+
 .issues_list_ul li {
     width: auto;
     height: auto;
@@ -2131,10 +2039,7 @@ section.mission_outer {
 .page-template-about-page .ab_part  .contact01 {
     margin-top: 0;
 }
-.home_mentions_wrap {
-    max-width: 1190px;
-    margin: auto;
-}
+
 .single-post .ab_part  {
     margin-top: 0;
 }
@@ -2856,7 +2761,7 @@ h1.issue_heading b { 		/* ============= ADDED 5/28 ========= */
     font-family: adobe-caslon, serif;  /* === CHANGED 6.2 === */
     text-transform: none;
     font-size: 50px;
-	padding-right 10px; 	/* ============== ADDED 6/3 ========= */
+	padding-right: 10px; 	/* ============== ADDED 6/3 ========= */
 }
 
 h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
@@ -4022,7 +3927,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
 /*.postid-242 .ab_part.headong0022_cover .ab_part_r{top: -138px !important;}   ==== CHANGED  5.28 */
 .ab_part_r{margin: auto; }     					/* =========== ADDED 5.28 =========== */
 
-.home_issue_page_text {margin-top: 0px;}		/* =========== ADDED 6.3 =========== */
 .contact01.headong0022{margin-left:20px !important}
 .searchPage_Form {margin: 0 auto; float:none;}
 .searchPage_Form_container{border-bottom:0;}
@@ -4101,7 +4005,7 @@ figure figcaption{position:inherit !important;
 	.ab_part_r {
 		padding-top: 30px;
 	}
-	home_issue_page_text {
+    home_issue_page_text {
     margin-top: 15px;
 }
 
