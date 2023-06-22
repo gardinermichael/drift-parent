@@ -462,10 +462,7 @@ $issue_loop = new wp_query($issue_args);
         <?php
         while ($issue_loop->have_posts()) : $issue_loop->the_post();
             $issuePostID =  get_the_id();
-            $issue_number = get_post_meta($issuePostID, "issue_number", "true");
             $issuePostPermalink = get_the_permalink($issuePostID);
-
-            $issue_hyper_link = esc_url(site_url("/issue/issue-" . $issue_number));
 
             $issuePostImageID = get_post_thumbnail_id($issuePostID);
             if ($issuePostImageID != "") {
@@ -475,7 +472,7 @@ $issue_loop = new wp_query($issue_args);
                 $issuePostImageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
             }
             ?>
-            <a href="<?php echo $issue_hyper_link; ?>"><img src="<?php echo $issuePostImageURL; ?>"></a>
+            <a href="<?php echo $issuePostPermalink; ?>"><img src="<?php echo $issuePostImageURL; ?>"></a>
         <?php endwhile;?>
     </div>
 </div>
