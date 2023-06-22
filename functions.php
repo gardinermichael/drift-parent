@@ -468,9 +468,12 @@ function twentyseventeen_scripts()
     wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), time());
     wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), time());
 
-    // Load owl carousel stylesheet for homepage
     if (is_front_page()) {
+        // Load owl carousel stylesheet for homepage
         wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), time());
+
+        // Load front page specific css
+        wp_enqueue_style('home-style', get_theme_file_uri('/assets/css/home.css'), array(), time());
     }
 
     // Load the stylesheet for single articles
