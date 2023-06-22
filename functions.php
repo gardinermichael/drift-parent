@@ -540,6 +540,9 @@ function twentyseventeen_scripts()
     if (is_front_page()) {
         wp_enqueue_script('owl-script', get_theme_file_uri('/assets/js/owl.carousel.min.js'), array('jquery'), '2.3.1', true);
         wp_enqueue_script('carousel-script', get_theme_file_uri('/assets/js/carousel.js'), array('jquery'), '2.3.1', true);
+        // hand the template URL to carousel so it knows where to find chevron images
+        $template_url = get_bloginfo('template_url');
+        wp_localize_script('carousel-script', 'template_url', $template_url);
     }
 
     global $post;
