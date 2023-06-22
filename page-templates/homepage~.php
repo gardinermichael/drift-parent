@@ -5,8 +5,7 @@ $pageID = get_the_id();
 
 $issue_text = get_post_meta($pageID, "issue_text", true);
 $issue_ID = get_post_meta($pageID, "issue_link", "true");
-$issue_IDTest = intval($issue_ID);
-$colorPick = get_post_meta($issue_IDTest, "color_for_current_issue", "true");
+$colorPick = get_post_meta($issue_ID, "color_for_current_issue", "true");
 
 $url = get_the_permalink($issue_ID);
 $page_imageID = get_post_thumbnail_id($pageID);
@@ -27,7 +26,7 @@ if ($page_imageID != "") {
 
 <div class="ab_part d-flex main_container_custom">
     <div class="ab_part_l d-flex">
-        <div∫ class="ab_part_linner">
+        <div class="ab_part_linner">
             <div class="ab_part_img">
                 <?php
                 $pageID = get_the_id();
@@ -40,12 +39,12 @@ if ($page_imageID != "") {
                     $thumbURL = wp_get_attachment_image_src($thumbID, "full");
                     $thumbURL = $thumbURL[0];
                 ?>
-                    <img src="<?php echo $thumbURL; ?>">
+                    <a href="<?php echo ($url);?>"><img src="<?php echo $thumbURL; ?>"></a>
                 <?php
                 }
                 ?>
             </div>
-        </div∫>
+        </div>
 
         <!-- 			<div class="sub_don showInDesktop">
                 <div class="sub_donl">
