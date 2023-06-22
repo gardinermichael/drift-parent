@@ -88,7 +88,7 @@ $sectionLoop = get_field('section_acf');
                     <a href="<?php echo $issuePermalink; ?>" ><b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?></a></h4>
 
 
-   <?php $post_authors = get_the_terms($issueid, 'authors');
+   <?php $post_authors = get_the_terms($articleID, 'authors');
             $loopNum = 0;
             if (is_array($post_authors)) {
                 ?>

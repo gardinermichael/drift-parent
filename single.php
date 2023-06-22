@@ -5,7 +5,8 @@ $page_imageID = get_post_thumbnail_id($pageID);
 
 $captionArray = wp_get_attachment_metadata($pageID);
 $category = get_the_category();
-$issue_no = $category[0]->name . '&nbsp;';
+$issue_no = $category[0]->name;
+$issue_slug = $category[0]->slug;
 
 if ($page_imageID != "") {
     $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");
@@ -18,6 +19,8 @@ if ($page_imageID != "") {
 $issue_args = array("post_type" => "issue", "posts_per_page" => -1);
 $issue_loop = new wp_query($issue_args);
 $article_id_array = array();
+// this ingenious loop (and the one that follows) looks at every post in every issue until it finds the issue this post is in,
+// then concludes that this post is in that issue.
 while ($issue_loop->have_posts()):$issue_loop->the_post();
 
     $issueListId =  get_the_id();
@@ -25,11 +28,13 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
 
     foreach ($sectionLoop as $sectionVal) {
         $add_article = $sectionVal["add_article_acf"];
+        //print_r($add_article);
         if (is_array($add_article)) /*Check Array*/
         {
-       foreach ($add_article as $articleValue) {
-           $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
-       }}
+        foreach ($add_article as $articleValue) {
+            $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
+            print_r(get_permalink($articleValue["article_link_2"][0]."<br>"));
+        }}
     }
 
 endwhile;
@@ -108,6 +113,8 @@ if ($type_of_titles == "Style 2") {
                   if (is_array($add_article)) /*Check Array*/
         {
                        foreach ($add_article as $articleValue) {
+                            // if THIS page is the article (again, we're looking through all articles),
+                            // then conclude ... apparently nothing? I think I can clean up all these loops
                            if ($articleValue["article_link_2"][0] == $pageID) {
                                $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
                            }
@@ -122,7 +129,7 @@ if ($type_of_titles == "Style 2") {
                   }
               } ?>
                  <div class="postDate mobile_version">
-                    <b class="issue_title"><?php echo $issue_no; ?>	<span>|</span></b>
+                    <b class="issue_title"><?php echo $issue_no.'&nbsp;'; ?>	<span>|</span></b>
                         <?php echo $articleDate;
 
               wp_reset_postdata();
@@ -188,7 +195,7 @@ if ($type_of_titles == "Style 2") {
 <!-- COPIED fROM ABOVE-->
                 <div class="postDate desktop_version">
 
-                <b class="issue_title"><?php echo $issue_no; ?></b> |
+                <b class="issue_title"><?php echo $issue_no.'&nbsp;'; ?></b> |
                         <?php echo $articleDate; ?>
                 </div>
 
@@ -269,7 +276,7 @@ if ($type_of_titles == "Style 2") {
 
                 <div class="postDate desktop_version">
                     <b class="issue_title">
-                        <?php echo $issue_no; ?>
+                        <?php echo $issue_no.'&nbsp;'; ?>
                         </b>
                     <span class="single_article_pipe" style="color:#ccc;">|</span>
                     <?php echo $articleDate; ?>
@@ -389,22 +396,40 @@ if ($type_of_titles == "Style 2") {
 
                 $share_text = get_post_meta($pageID, "share_text", true);
                 if ($share_text != "") {
-                    ?>
+                    $subsitle_to_noun = array(
+                        "Fiction" => "story",
+                        "Poetry"  => "poem",
+                        "Article" => "article",
+                    );
+                    $subsitle = get_post_meta($pageID, "post_subsitle", true);
+                    $post_type=$subsitle_to_noun[$subsitle] ?? 'article'; /* always assume we're an article, most real articles won't have subsitles anyway ... */
+                    //print_r(get_the_category());
+                    if (strpos($issue_slug, 'preview')) {
+                        $issue_slug="";
+                    }
+
+                    $issue_args = array("post_type" => "issue", "posts_per_page" => -1);
+                    $issue_loop = new wp_query($issue_args);
+
+
+                    $share_text = '<p>This ' . $post_type . ' appears in <a href="'.home_url().'/donate" style="color:' . $colorPick . '">' . $issue_no . '</a> of The Drift. To support our work, <a href="'.home_url().'/subscribe" style="color:'.$colorPick.'">subscribe</a> or make a tax-deductible <a href="'.home_url().'/donate" style="color:'.$colorPick.'">donation</a>. To receive our latest content, sign up for our email list.</p>';
+                };
+
+                if ($share_text != "") {
+                ?>
                     <div class="share_text_container">
-                      <!--<h5>Share</h5>-->
-                    <div class="share_text">
-                          <?php if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
-                        ADDTOANY_SHARE_SAVE_KIT(array(
-        'buttons' => array( 'facebook', 'twitter', 'email' ),
-    ));
-                    } ?>
-                        <?php echo 	$share_text; ?>
-                      </div>
+                        <div class="share_text">
+                            <?php
+                            if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
+                                ADDTOANY_SHARE_SAVE_KIT(array('buttons' => array( 'facebook', 'twitter', 'email' ),));
+                            }
+                            echo($share_text);
+                            ?>
+                        </div>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
-
             </div>
 
 <div class="more_from_issue">
@@ -427,12 +452,7 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
     }
 
 endwhile;
-/*
 
-echo "<pre>";
-  print_r($article_id_array);
-echo "</pre>";
-*/
 
       $more_issues_heading = get_post_meta($pageID, "more_issues_heading", true);
       if ($more_issues_heading != "") {
@@ -441,17 +461,16 @@ echo "</pre>";
 <?php
       } ?>
 <?php
-$select_issues = get_post_meta($pageID, "select_issues", true);
-$issueID_Array = array();
- if (is_array($select_issues)) {
-     foreach ($select_issues as $select_issue) {
-         $issueID = $select_issue;
-         $issueID_Array[] = $issueID;
-         $issue_permalink = get_the_permalink($issueID);
-         $article_editor_name = get_post_meta($issueID, "article_editor_name", true);
+// for recommended reading, the somewhat poorly named "select_issues" is actually further reading articles
+$select_articles = get_post_meta($pageID, "select_issues", true);
+ if (is_array($select_articles)) {
+     foreach ($select_articles as $select_article) {
+         $articleID = $select_article;
+         $article_permalink = get_the_permalink($articleID);
+         $article_editor_name = get_post_meta($articleID, "article_editor_name", true);
 
 
-         $post_authors = get_the_terms($issueID, 'authors');
+         $post_authors = get_the_terms($articleID, 'authors');
          $loopNum = 0;
          foreach ($post_authors as $post_author) {
              $loopNum++;
@@ -466,12 +485,9 @@ $issueID_Array = array();
              }
          }
 
-
-
-
-         $post_subsitle = get_post_meta($issueID, "post_subsitle", true);
-         $post_sitle = get_the_title($issueID);
-         $issueImageID = get_post_thumbnail_id($issueID); ?>
+         $post_subsitle = get_post_meta($articleID, "post_subsitle", true);
+         $post_sitle = get_the_title($articleID);
+         $issueImageID = get_post_thumbnail_id($articleID); ?>
     <div class="com_heading01">
         <?php
           if ($issueImageID != "") {
@@ -479,7 +495,7 @@ $issueID_Array = array();
               $issueImageImageURL = wp_get_attachment_image_src($issueImageID, "full");
               $issueImageImageURL = $issueImageImageURL[0]; ?>
             <div class="moreissue_left">
-            <a href="<?php echo $issue_permalink; ?>">
+            <a href="<?php echo $article_permalink; ?>">
               <img src="<?php echo $issueImageImageURL; ?>">
             </a>
             </div>
@@ -489,12 +505,12 @@ $issueID_Array = array();
           } ?>
 
 
-        <div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $issueID; ?>">
+        <div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $articleID; ?>">
             <h4>
-                <b><a href="<?php echo $issue_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $issue_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
+                <b><a href="<?php echo $article_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $article_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
             </h4>
             <?php if ($article_editor_name!= "") {?>
-                <p><a href="<?php echo $issue_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
+                <p><a href="<?php echo $article_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
             <?php } ?>
             <!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->
         </div>

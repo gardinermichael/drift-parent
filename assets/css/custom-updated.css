@@ -1508,8 +1508,6 @@ button.search-submit:hover {
     border: 1px solid black;
 }
 
-
-
 .openMobMenuIcon {
     cursor: pointer;
 }
@@ -2249,6 +2247,11 @@ section.mission_outer {
 .share_text_container p strong {
     font-family: inherit !important;
 }
+
+.share_text {
+    text-transform: uppercase;
+}
+
 .search-results .footer_outer {
     margin-top: -100px;
 }
@@ -4010,14 +4013,6 @@ figure figcaption{position:inherit !important;
 }
 
 }
-
-
-
-
-
-
-
-
 
 @media (min-width: 767px) and (max-width:1024px) {
 	.postDate{padding-bottom:2%}
