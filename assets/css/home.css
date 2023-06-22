@@ -17,6 +17,7 @@
     font-size: 20px;
     margin-bottom: 10px;
     position: relative;
+    display: inline-block;
 }
 .home_mentions ul li a {
     /* font-family: savoy; */
@@ -43,12 +44,6 @@
 
 .home_mentions li:last-child::after {
     display: none;
-}
-
-.home_mentions ul li {
-    display: inline-block;
-    float: left;
-    font-size: 16px;
 }
 
 .home_mentions_wrap {
