@@ -28,7 +28,7 @@ if ($logo_url == "") {
          ?>
 
 
-<div class="signup4mail mt_wrap footer_style_new">
+<div class="signup4mail mt_wrap footer_style_new" id="signup4mailanchor">
 	<div class="signup4mail_BG">
 		<div class="row ">
 				<div class="col-md-2 footerNewLogo">
