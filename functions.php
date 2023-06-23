@@ -53,6 +53,8 @@ function twentyseventeen_setup()
      */
     add_theme_support('post-thumbnails');
 
+    add_image_size( 'main-image-on-single', 1400, 933 );
+
     add_image_size('twentyseventeen-featured-image', 2000, 1200, true);
     add_image_size('issue_backgroun_image', 1400, 200, true);
 

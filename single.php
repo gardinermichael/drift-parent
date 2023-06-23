@@ -8,7 +8,7 @@ $category = get_the_category()[0];
 $issue_name = $category->name; // assume only 1 category
 
 if ($page_imageID != "") {
-    $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");
+    $page_imageURL = wp_get_attachment_image_src($page_imageID, "main-image-on-single");
     $page_imageURL = $page_imageURL[0];
 
     $attachment = get_post($page_imageID);
