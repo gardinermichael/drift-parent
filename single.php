@@ -403,7 +403,7 @@ $select_articles = get_post_meta($pageID, "select_issues", true);
         <?php
           if ($issueImageID != "") {
               $moreIssueFull_Class = " ";
-              $issueImageImageURL = wp_get_attachment_image_src($issueImageID, "full");
+              $issueImageImageURL = wp_get_attachment_image_src($issueImageID, "large");
               $issueImageImageURL = $issueImageImageURL[0]; ?>
             <div class="moreissue_left">
             <a href="<?php echo $article_permalink; ?>">
