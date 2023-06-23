@@ -8,15 +8,6 @@ $issue_ID = get_post_meta($pageID, "issue_link", "true");
 $colorPick = get_post_meta($issue_ID, "color_for_current_issue", "true");
 
 $url = get_the_permalink($issue_ID);
-$page_imageID = get_post_thumbnail_id($pageID);
-
-
-if ($page_imageID != "") {
-    $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");
-    $page_imageURL = $page_imageURL[0];
-} else {
-    $page_imageURL = get_bloginfo('template_url') . "/assets/images/about.jpg";
-}
 ?>
 <style type="text/css">
     :root {
@@ -84,9 +75,6 @@ if ($page_imageID != "") {
                 ?>
             </h4>
             <?php
-
-
-
             if ($issue_text != "") {
                 $url = get_the_permalink(14);
             ?>
@@ -213,10 +201,10 @@ $postLoop = new wp_query($postArgs);
         $postID = get_the_id();
         $postLink = get_the_permalink($postID);
         $postTitle = get_the_title($postID);
-        $post_imageID = get_post_thumbnail_id($postID);
+        $post_imageID = get_post_thumbnail_id($postID, 'large');
 
         if ($post_imageID != "") {
-            $post_imageURL = wp_get_attachment_image_src($post_imageID, "full");
+            $post_imageURL = wp_get_attachment_image_src($post_imageID, "large");
             $post_imageURL = $post_imageURL[0];
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
@@ -376,7 +364,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
         $post_imageID = get_post_thumbnail_id($postID);
 
         if ($post_imageID != "") {
-            $post_imageURL = wp_get_attachment_image_src($post_imageID, "full");
+            $post_imageURL = wp_get_attachment_image_src($post_imageID, "large");
             $post_imageURL = $post_imageURL[0];
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
@@ -465,7 +453,7 @@ $issue_loop = new wp_query($issue_args);
 
             $issuePostImageID = get_post_thumbnail_id($issuePostID);
             if ($issuePostImageID != "") {
-                $issuePostImageURL = wp_get_attachment_image_src($issuePostImageID, "full");
+                $issuePostImageURL = wp_get_attachment_image_src($issuePostImageID, "large");
                 $issuePostImageURL = $issuePostImageURL[0];
             } else {
                 $issuePostImageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
