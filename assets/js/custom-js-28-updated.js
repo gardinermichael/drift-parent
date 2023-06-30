@@ -175,7 +175,16 @@ jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 jQuery(window).resize(function()
 {
 	jQuery(".margin_block").each(function() {
-		jQuery(this).removeAttr('style');
+		var current_style = this.getAttribute('style');
+		if (!(current_style === null))
+		{
+			var st = current_style.split(';').map(function (a) {
+				return a.toLowerCase().indexOf('top')>-1 ? '':a;
+			}).join(';');
+			this.setAttribute('style', st);
+			//console.log('TEST: top property == '+ jQuery(this).css('top') + ', style attribute == ' + jQuery(this).attr('style'));
+			jQuery(this).removeAttr('style');
+		}
 	});
 	fixQuoteSpacing();
 });

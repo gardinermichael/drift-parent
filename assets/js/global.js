@@ -227,12 +227,14 @@
 			adjustHeaderHeight();
 		});
 
+
 		// Also want to make sure the navigation is where it should be on resize.
 		$( window ).resize( function() {
 			setNavProps();
 			setTimeout( adjustScrollClass, 500 );
 		});
 	}
+
 
 	$( window ).resize( function() {
 		clearTimeout( resizeTimer );
@@ -241,6 +243,7 @@
 		}, 300 );
 		setTimeout( adjustHeaderHeight, 1000 );
 	});
+
 
 	// Add header video class after the video is loaded.
 	$( document ).on( 'wp-custom-header-video-loaded', function() {
