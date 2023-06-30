@@ -118,9 +118,15 @@ function fixQuoteSpacing()
 		{
 			return 0;
 		}
+
+		higher_height_portion = higher_height/(higher_height+lower_height);
+		//console.log(higher_height_portion);
 		//jQuery(higher_block).css("cssText", "margin-bottom: " + Math.floor(overlap+min_padding)/2 + "px !important;");
-		higher_adjustment = Math.floor(overlap+min_padding)/2;
-		lower_adjustment = higher_adjustment;
+		higher_adjustment = Math.floor(overlap+min_padding)*higher_height_portion;
+		lower_adjustment = higher_adjustment/higher_height_portion*(1-higher_height_portion);
+
+		//higher_adjustment = Math.floor(overlap+min_padding)/2;
+		//lower_adjustment = higher_adjustment;
 
 		//console.log(min_y, higher_top, higher_adjustment);
 		if (higher_top-higher_adjustment > min_y)
