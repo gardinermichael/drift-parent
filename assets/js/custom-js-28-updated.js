@@ -48,50 +48,94 @@ jQuery(document).ready(function($){
 
 function fixQuoteSpacing()
 {
+	// the minimum padding between blocks (or the top block and the header) in pixels
+	var min_padding = 4;
+	// for a fixed width each margin block has a known height based on its line breaks
+	// and no margin block may be placed above the maximum y of the page
+	// the site container is the area below the header, start with that as max y
+	var min_y = 0;
+	jQuery(".site_container").each(function()
+	{
+		var container_top = jQuery(this).offset().top;
+		if (container_top > min_y) {
+			min_y = container_top
+		}
+	});
+	// sort margin blocks by y position of their top: we want higher ones to stay higher
+	// and we will only need to deal with adjacent blocks 
+	const blocks = []
 	jQuery(".margin_block").each(function()
 	{
-		var this_link = this;
 		var rect = jQuery(this).offset();
-		var quote_x = rect.left;
-		var quote_y = rect.top;
-		var quote_y_bottom = rect.top + jQuery(this).height();
-
-		//console.log(this_link, quote_y, quote_y_bottom)
-
-			// Check collision with top of element
-			// This first branch of the code won't work because it adds a top margin to the element that is already on top
-			var found_issue = false;
-			var family = document.elementsFromAbsolutePoint(quote_x, quote_y);
-			jQuery(family).each(function ()
-			{
-				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
-				{
-					console.log(rect, jQuery(this).offset())
-					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
-					found_issue = true;
-				}
-			});
-
-			if (found_issue) { index = -1;} // Reset loop
-			else
-			{
-			// Check collision with bottom of element
-			// This code is goofy because it adds a top margin equal to the height+20 ... when that's uncorrelated to the amount of overlap
-			var family = document.elementsFromAbsolutePoint(quote_x, quote_y_bottom);
-			jQuery(family).each(function ()
-			{
-				console.log(rect, jQuery(this).offset())
-				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
-				{
-					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
-					found_issue = true;
-				}
-			});
-			}
-
-			if (found_issue) { index = -1; } // Reset loop
+		const block_data = [this, rect.top];
+		blocks.push(block_data);
 	});
 
+	blocks.sort(function(a, b)
+	{
+		// index 1 == top is our sort key
+		if (a[1] < b[1])
+		{
+			return -1;
+		}
+		if (a[1] > b[1])
+		{
+			return 1;
+		}
+		return 0;
+	});
+
+	var lower_block = null;
+	blocks.forEach(function(block)
+	{
+		// if this is the first block we've seen, it's our "bottom" block of 2, and we move on
+		// in the next iteration it will be pushed to top status
+
+		// TK TK should discard the old block data for position data because they might have changed due to this loop
+		if (lower_block === null)
+		{
+			[lower_block, _] = block;
+			return 0;
+		}
+		// if we have a low block and have proceeded to iterate, we phase our lower block to be the top block
+		// and introduce the new block as the lower block
+		higher_block = lower_block;
+
+		[lower_block, _] = block;
+		lower_height = jQuery(lower_block).height();
+		lower_top = jQuery(lower_block).offset().top;
+
+		higher_height = jQuery(higher_block).height();
+		higher_top = jQuery(higher_block).offset().top;
+
+		//console.log(lower_block);
+		//console.log(higher_block);
+
+		var higher_bottom = higher_top + higher_height;
+		var overlap = higher_bottom - lower_top;
+		if (overlap < -1*min_padding)
+		{
+			return 0;
+		}
+		//jQuery(higher_block).css("cssText", "margin-bottom: " + Math.floor(overlap+min_padding)/2 + "px !important;");
+		higher_adjustment = Math.floor(overlap+min_padding)/2;
+		lower_adjustment = higher_adjustment;
+
+		console.log(min_y, higher_top, higher_adjustment);
+		if (higher_top-higher_adjustment > min_y)
+		{
+			jQuery(higher_block).offset({top: higher_top-higher_adjustment});
+			jQuery(lower_block).offset({top: lower_top+lower_adjustment});
+			min_y = higher_bottom-higher_adjustment;
+		}
+		else
+		{
+			higher_adjustment=0;
+			lower_adjustment = overlap+min_padding;
+			jQuery(lower_block).offset({top: -1*lower_adjustment});
+			min_y = higher_bottom;
+		}
+	});
 }
 
 jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
