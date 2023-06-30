@@ -91,16 +91,17 @@ function fixQuoteSpacing()
 		// if this is the first block we've seen, it's our "bottom" block of 2, and we move on
 		// in the next iteration it will be pushed to top status
 
-		// TK TK should discard the old block data for position data because they might have changed due to this loop
 		if (lower_block === null)
 		{
 			[lower_block, _] = block;
 			return 0;
 		}
-		// if we have a low block and have proceeded to iterate, we phase our lower block to be the top block
+		// if we have a low block and have proceeded to iterate, we move our old lower block to be the top block
 		// and introduce the new block as the lower block
 		higher_block = lower_block;
 
+		// don't trust the block top y that we used for sorting, because top ys can be changed in this loop
+		// so we want to calculate offsets relative to CURRENT height (we will fetch this parameter later)
 		[lower_block, _] = block;
 		lower_height = jQuery(lower_block).height();
 		lower_top = jQuery(lower_block).offset().top;
@@ -164,4 +165,11 @@ jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 	jQuery(".big-image").parent("figure").addClass("bigfigure");
 });
 
-//jQuery(window).resize(fixQuoteSpacing)
+
+jQuery(window).resize(function()
+{
+	jQuery(".margin_block").each(function() {
+		jQuery(this).removeAttr('style');
+	});
+	fixQuoteSpacing();
+});
