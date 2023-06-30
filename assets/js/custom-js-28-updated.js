@@ -159,7 +159,7 @@ jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 		function() 
 		{
 		fixQuoteSpacing();
-		}, 1000);
+		}, 200);
 	});
 
 	jQuery(".big-image").parent("figure").addClass("bigfigure");
