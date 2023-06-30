@@ -122,7 +122,7 @@ function fixQuoteSpacing()
 		higher_adjustment = Math.floor(overlap+min_padding)/2;
 		lower_adjustment = higher_adjustment;
 
-		console.log(min_y, higher_top, higher_adjustment);
+		//console.log(min_y, higher_top, higher_adjustment);
 		if (higher_top-higher_adjustment > min_y)
 		{
 			jQuery(higher_block).offset({top: higher_top-higher_adjustment});
@@ -133,7 +133,7 @@ function fixQuoteSpacing()
 		{
 			higher_adjustment=0;
 			lower_adjustment = overlap+min_padding;
-			jQuery(lower_block).offset({top: -1*lower_adjustment});
+			jQuery(lower_block).offset({top: lower_top+lower_adjustment});
 			min_y = higher_bottom;
 		}
 	});
