@@ -36,7 +36,7 @@ if ($seo_image_id != '') {
 	$twitter_image_height = $twitter_attachment[2];
 	//echo(get_post_thumbnail_id($page_id));
 } else {
-	echo('HERE BAD');
+	//This is bad! Our post doesn't have a thumbnail. We should tell twitter about our default image, right?
 }
 //print_r(get_post_meta($page_id));
 ?>
