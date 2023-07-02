@@ -25,6 +25,40 @@ endif;
 	<div class="container-fluid">
 	<div class="ab_part d-flex">
 
+	<div class="ab_part_l d-flex">
+		<div class="ab_part_linner kudossubscribe">
+
+		<?php
+		if ( $form = get_post_meta( get_the_ID(), 'form_name', true ) ) {
+			echo do_shortcode( '[fullstripe_form name="' . $form . '" type="inline_subscription"]' );
+		}
+		?>
+
+		</div>
+	</div>
+
+	<div class="ab_part_r donate-subscribe_txt">
+		<div class="contact01">
+			<div class="com_heading">
+				<h3 class="entry-title"><strong><?php the_title(); ?></strong>
+				<?php
+				if ( $subsitle = get_post_meta( get_the_ID(), 'subsitle', true ) ) {
+					echo "<span class='line_gray'>|</span> " . $subsitle;
+				}
+				?>
+				</h3>
+			</div>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				the_content();
+			endwhile;
+			?>
+		</div>
+	</div>
+	</div>
+	<div class="ab_part d-flex">
+
 		<div class="ab_part_l d-flex">
 			<div class="ab_part_linner kudossubscribe">
 
