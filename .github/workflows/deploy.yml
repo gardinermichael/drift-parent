@@ -47,7 +47,7 @@ jobs:
           SSH_KNOWN_HOSTS: ${{ secrets.WPE_SSH_KNOWN_HOSTS }}
 
       - name: Deploy - Git Config - Development?
-        if: startsWith(github.ref, 'dev')
+        if: contains(github.ref, 'dev')
         run: git remote add wpe git@git.wpengine.com:production/${WPE_INSTALL_DEVELOPMENT}.git
         env:
           WPE_INSTALL_DEVELOPMENT: ${{ secrets.WPE_INSTALL_DEVELOPMENT }}
