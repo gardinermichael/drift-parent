@@ -1087,5 +1087,6 @@ function mark_which_template() {
     if ( is_super_admin() ) {
         global $template;
         print_r( $template );
+        print_r(get_current_template());
     }
 }
