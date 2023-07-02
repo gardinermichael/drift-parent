@@ -18,7 +18,7 @@ endif;
 
 <div class="the-drift-logo-mb" style="display: none;">
 	<a href="<?php echo home_url(); ?>">
-	  <img src="<?php echo home_url(); ?>/wp-content/uploads/2020/05/Logo.png">
+		<img src="<?php echo home_url(); ?>/wp-content/uploads/2020/05/Logo.png">
 	</a>
 </div>
 <section>
@@ -27,13 +27,16 @@ endif;
 
 		<div class="ab_part_l d-flex">
 			<div class="ab_part_linner kudossubscribe">
+				<a href="<?php echo home_url(); ?>">
+					<img src="<?php echo(esc_url($image));?>">
+				</a>
+			<a>
 
 			<?php
 			if ( $form = get_post_meta( get_the_ID(), 'form_name', true ) ) {
 				echo do_shortcode( '[fullstripe_form name="' . $form . '" type="inline_subscription"]' );
 			}
 			?>
-				
 			</div>
 		</div>
 
@@ -48,14 +51,14 @@ endif;
 					?>
 					</h3>
 				</div>
-                <div class="prose">
+				<div class="prose">
 				<?php
-                    while ( have_posts() ) :
-                        the_post();
-                        the_content();
-                    endwhile;
-                    ?>
-                </div>
+					while ( have_posts() ) :
+						the_post();
+						the_content();
+					endwhile;
+					?>
+				</div>
 			</div>
 		</div>
 	</div>
