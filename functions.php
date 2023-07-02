@@ -471,7 +471,7 @@ function twentyseventeen_scripts() {
     if (is_page_template(array('page-templates/subscribe.php', 'page-templates/bundle_subscribe.php'))) {
         wp_enqueue_style('subscribe-style', get_theme_file_uri('/assets/css/subscribe.css'), array(), time());
 
-        if (is_page_template('page-templates/bundle_subscribe.php')) {
+        if (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/bundle_subscribe.php'))) {
             wp_enqueue_style('bundle-style', get_theme_file_uri('/assets/css/bundle.css'), array(), time());
         }
     }
