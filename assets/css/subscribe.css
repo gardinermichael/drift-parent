@@ -6,7 +6,7 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
-    /*font-family: Adobe Caslon;*/
+    font-family: Adobe Caslon;
 }
 
 .prose ul>li:before {
@@ -42,6 +42,6 @@
     line-height: 1.75rem;
 }
 
-/*.prose p {
+.prose p {
     font-family: Adobe Caslon;
-}*/
+}
