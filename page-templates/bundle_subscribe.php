@@ -22,10 +22,9 @@ endif;
 	</a>
 </div>
 <section>
-	<div class="container-fluid">
-	<div class="ab_part d-flex">
-
-		<div class="ab_part_l d-flex">
+	<div class="container-fluid max-w-4xl mx-auto">
+	<div class="ab_part d-flex mt-16">
+		<div class="ab_part_l d-flex sm:flex-row sm:px-6 flex">
 			<div class="ab_part_linner kudossubscribe">
 				<a href="<?php echo home_url(); ?>">
 					<img src="<?php echo(esc_url($image));?>">
@@ -40,7 +39,7 @@ endif;
 			</div>
 		</div>
 
-		<div class="ab_part_r donate-subscribe_txt">
+		<div class="ab_part_r donate-subscribe_txt flex">
 			<div class="contact01">
 				<div class="com_heading">
 					<h3 class="entry-title"><strong><?php the_title(); ?></strong>
