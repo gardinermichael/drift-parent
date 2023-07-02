@@ -28,7 +28,7 @@ endif;
 	<div class="ab_part_l d-flex">
 		<div>
 			<a href="<?php echo home_url(); ?>">
-				<img src="<?php echo home_url(); ?>wp-content/uploads/2023/07/BOMB-Drift-Bundle-1.png">
+				<img src="<?php echo home_url(); ?>/wp-content/uploads/2023/07/BOMB-Drift-Bundle-1.png">
 			</a>
 		</div>
 	</div>
@@ -39,16 +39,18 @@ endif;
 				<h3 class="entry-title"><strong>BOMB x The Drift Subscription Bundle</strong>
 				</h3>
 			</div>
-			<p><i><span style="font-weight: 400;">A year of art, essays, fiction, poetry, interviews, and more. </span></i></p>
-			<p><span style="font-weight: 400;">Shake up your summer reading with a subscription to BOMB and </span><i><span style="font-weight: 400;">The Drift</span></i><span style="font-weight: 400;">! For a limited time, you can subscribe to two leading magazines at a discounted rate. Subscribe today and receive the latest in cultural criticism, fiction, poetry, and more delivered straight to your doorstep.</span></p>
-			<p><span style="font-weight: 400;">Your bundled subscription to BOMB and</span><i><span style="font-weight: 400;"> The Drift </span></i><span style="font-weight: 400;">includes:</span></p>
-			<ul>
-			<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">One year print + digital subscription to BOMB (4 issues)</span></li>
-			<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">One year print + digital subscription to </span><i><span style="font-weight: 400;">The Drift </span></i><span style="font-weight: 400;">(3 issues)</span></li>
-			</ul>
-			<p><span style="font-weight: 400;">About the magazines:</span></p>
-			<p><span style="font-weight: 400;">Founded in 1981, BOMB Magazine delivers the artist’s voice. We publish and preserve artist-generated material, spotlighting artists in conversation and offering unique insight into the creative process. </span></p>
-			<p><span style="font-weight: 400;">Founded in June 2020, </span><i><span style="font-weight: 400;">The Drift</span></i><span style="font-weight: 400;"> aims to introduce new work and new ideas by young writers who haven’t yet been absorbed into the media hivemind and don’t feel hemmed in by the boundaries of the existing discourse. Our issues, published three times a year, feature longform essays and cultural criticism, short fiction, poetry, interviews, dispatches, and extremely abbreviated reviews.</span></p>
+			<div class="prose">
+				<p><i><span style="font-weight: 400;">A year of art, essays, fiction, poetry, interviews, and more. </span></i></p>
+				<p><span style="font-weight: 400;">Shake up your summer reading with a subscription to BOMB and </span><i><span style="font-weight: 400;">The Drift</span></i><span style="font-weight: 400;">! For a limited time, you can subscribe to two leading magazines at a discounted rate. Subscribe today and receive the latest in cultural criticism, fiction, poetry, and more delivered straight to your doorstep.</span></p>
+				<p><span style="font-weight: 400;">Your bundled subscription to BOMB and</span><i><span style="font-weight: 400;"> The Drift </span></i><span style="font-weight: 400;">includes:</span></p>
+				<ul>
+					<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">One year print + digital subscription to BOMB (4 issues)</span></li>
+					<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">One year print + digital subscription to </span><i><span style="font-weight: 400;">The Drift </span></i><span style="font-weight: 400;">(3 issues)</span></li>
+				</ul>
+				<p><span style="font-weight: 400;">About the magazines:</span></p>
+				<p><span style="font-weight: 400;">Founded in 1981, BOMB Magazine delivers the artist’s voice. We publish and preserve artist-generated material, spotlighting artists in conversation and offering unique insight into the creative process. </span></p>
+				<p><span style="font-weight: 400;">Founded in June 2020, </span><i><span style="font-weight: 400;">The Drift</span></i><span style="font-weight: 400;"> aims to introduce new work and new ideas by young writers who haven’t yet been absorbed into the media hivemind and don’t feel hemmed in by the boundaries of the existing discourse. Our issues, published three times a year, feature longform essays and cultural criticism, short fiction, poetry, interviews, dispatches, and extremely abbreviated reviews.</span></p>
+			</div>
 		</div>
 	</div>
 	</div>
@@ -77,12 +79,14 @@ endif;
 					?>
 					</h3>
 				</div>
-				<?php
-				while ( have_posts() ) :
-					the_post();
-					the_content();
-				endwhile;
-				?>
+				<div class="prose">
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						the_content();
+					endwhile;
+					?>
+				</div>
 			</div>
 		</div>
 	</div>
