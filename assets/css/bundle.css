@@ -43,7 +43,7 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
-    font-family: Adobe Caslon;
+    font-family: Adobe-Caslon;
 }
 
 .prose ul {
@@ -86,5 +86,5 @@
 }
 
 .prose p {
-    font-family: Adobe Caslon;
+    font-family: Adobe-Caslon;
 }
