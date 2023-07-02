@@ -88,3 +88,11 @@
 .prose p {
     font-family: Adobe-Caslon;
 }
+
+.wp-block-button .wp-block-button__link {
+    margin:auto;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
