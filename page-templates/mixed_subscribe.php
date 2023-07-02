@@ -7,7 +7,7 @@ get_header();
 if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 	?>
 	<style type="text/css">
-		.fieldset.wpfs-form-check-group {
+		form.wpfs-form fieldset.wpfs-form-check-group {
 			background-image: url( <?php echo esc_url( $image ); ?> );
 		}
 	</style>
