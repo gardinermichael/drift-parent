@@ -66,9 +66,6 @@ $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
 	<div class="ab_part d-flex">
 		<div class="ab_part_l d-flex sm:px-6">
 			<div class="ab_part_linner kudossubscribe">
-				<a href="<?php echo home_url(); ?>">
-					<img src="<?php echo(esc_url($image));?>">
-				</a>
 			<?php
 			if ( $form = get_post_meta( get_the_ID(), 'form_name', true ) ) {
 				echo do_shortcode( '[fullstripe_form name="' . $form . '" type="inline_subscription"]' );

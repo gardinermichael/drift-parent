@@ -25,3 +25,12 @@
 }
 
 .ab_part_r{margin: unset; }
+
+@media only screen and (max-width: 767px) {
+    .ab_part_r {
+        order:1
+      }
+    .ab_part_l {
+        order:2
+      }
+}
