@@ -24,8 +24,8 @@ endif;
 <section>
 	<div class="container-fluid max-w-4xl mx-auto mt-16">
 	<div class="ab_part d-flex">
-		<div class="ab_part_l d-flex sm:flex-row sm:px-6 flex">
-			<div class="ab_part_linner kudossubscribe">
+		<div class="ab_part_l d-flex sm:flex-row flex">
+			<div class="ab_part_linner kudossubscribe sm:px-6">
 			<a href="<?php echo home_url(); ?>">
 				<img src="<?php echo(esc_url($image));?>">
 			</a>
