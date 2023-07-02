@@ -1085,16 +1085,3 @@ function get_current_template($echo = false)
          return $GLOBALS['current_theme_template'];
  }
 
- // As admin, show template being loaded for debugging & development purposes
-add_action( 'wp_footer', 'mark_which_template' );
-
-function mark_which_template() {
-    if ( is_super_admin() ) {
-        global $template;
-        print_r( $template );
-        print_r(get_current_template());
-    }
-    if (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/bundle_subscribe.php'))) {
-        echo("YES");
-    }
-}
