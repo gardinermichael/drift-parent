@@ -53,7 +53,7 @@ $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
 				</div>
 				<div class="prose">
 				<?php
-					echo($bundle_content);
+					print_r($bundle_content);
 				?>
 				</div>
                 <div class="wp-block-button"><a href="<?php echo(get_permalink($bundle_id)); ?>" class="wp-block-button__link wp-element-button">BUY THE BUNDLE</a></div>
