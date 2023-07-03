@@ -1,7 +1,5 @@
 <?php
 /* Template name: Mixed subscribe page */
-$meta_bundle = get_post_meta( get_the_ID(), 'promoted-bundle', true );
-print_r($meta_bundle);
 get_header();
 ?>
 
@@ -25,8 +23,8 @@ endif;
 </div>
 <?php
 // Query BOMB bundle subscription page for first section
-$bundle_id = get_page_by_path("/bomb-x-the-drift");
-$bundle_content = $bundle_id->post_content;
+$bundle_id = get_post_meta( get_the_ID(), 'promoted-bundle', true );
+$bundle_content = get_post_meta($bundle_id, 'bundle-teaser');
 $bundle_subsitle = get_post_meta( $bundle_id, 'subsitle', true );
 $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
 
