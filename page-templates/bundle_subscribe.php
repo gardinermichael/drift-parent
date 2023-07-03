@@ -25,7 +25,7 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 	</style>
 
 	<script type="text/javascript">
-		const button = document.getElementById('wpfs-billing-address-country--'+<?php echo($formID);?>+'-button');
+		const button = document.getElementById('wpfs-billing-address-country--+<?php echo($formID);?>-button');
 		button.disabled = "disabled";
 	</script>
 
