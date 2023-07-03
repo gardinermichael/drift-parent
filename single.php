@@ -318,7 +318,7 @@ if ($type_of_titles == "Style 2") {
                     $post_type=$subsitle_to_noun[$subsitle] ?? 'article'; /* always assume we're an article, most real articles won't have subsitles anyway ... */
 
                     $issue_name_for_appeal = ($is_preview) ? $parent->name : $issue_name;
-                    $issue_permalink_for_appeal = ($is_preview) ? get_permalink(get_page_by_title('issues')) : $issue_permalink;
+                    $issue_permalink_for_appeal = ($is_preview) ? get_permalink(get_page_by_title('subscribe')) : $issue_permalink;
                     $appears_text = ($is_preview) ? "will appear" : "appears";
                     $donate_permalink = get_permalink(get_page_by_title('donate'));
                     $subscribe_permalink = get_permalink(get_page_by_title('subscribe'));
