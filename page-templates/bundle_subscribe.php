@@ -27,6 +27,7 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 	<script type="text/javascript">
 		const button = document.getElementById('wpfs-billing-address-country--<?php echo($formID);?>-button');
 		button.disabled = "disabled";
+		button.setAttribute('aria-disabled', 'disabled');
 	</script>
 
 	<?php
