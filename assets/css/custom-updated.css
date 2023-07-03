@@ -95,7 +95,7 @@ form.search-form {
 *, *:focus {
     outline: none;
 }
-.page-template-issues .footer_outerhtml {
+.issues_container .footer_outerhtml {
     overflow-x: hidden;
 }
 @font-face {
@@ -1967,12 +1967,6 @@ section.mission_outer {
     padding-left: 7px;
     padding-right: 7px;
 }
-/*.issue_container h4 a {
-    white-space: nowrap;
-}*/
-/*.single-issue .com_heading01 h4 {
-    white-space: nowrap;
-}*/
 
 .more_from_issue .com_heading01 h4 b a {
     font-family: Adobe-Caslon;
@@ -2053,9 +2047,7 @@ section.mission_outer {
 .page-template-donate .footer_outer {
     margin-top: -200px;
 }
-.single-issue .footer_outer {
-    margin-top: -200px;
-}
+
 .single-issue.postid-198 .footer_outer {
     margin-top: 0;
 }
@@ -2065,7 +2057,7 @@ section.mission_outer {
 .page-template-homepage .footer_outer {
     margin-top: -0px;
 }
-.page-template-issues .footer_outer {
+.issues_container .footer_outer {
     margin-top: -200px;
 }
 .page-template-about-page .footer_outer {
@@ -2101,11 +2093,7 @@ section.mission_outer {
     z-index: 999;
 
 }
-.single-issue .com_heading01,
-.more_from_issue .com_heading01 {
-    position: relative;
-    z-index: 999;
-}
+
 .wpfs-w-60 {
     position: relative;
     z-index: 999;
@@ -2303,7 +2291,7 @@ section.mission_outer {
     position: relative;
     top: 3px;
 }
-.page-template-issues .com_heading01 {
+.issues_container .com_heading01 {
     position: relative;
     z-index: 999;
 }
@@ -2831,16 +2819,13 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     .page-template-donate .footer_outer {
         margin-top: -50px;
     }
-    .single-issue .footer_outer {
-        margin-top: -50px;
-    }
     .single-post .footer_outer {
         margin-top: -50px;
     }
     .page-template-homepage .footer_outer {
         margin-top: -50px;
     }
-    .page-template-issues .footer_outer {
+    .issues_container .footer_outer {
         margin-top: -50px;
     }
     .page-template-about-page .footer_outer {
@@ -3385,9 +3370,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     .issue_container h4 a {
         white-space: inherit;
     }
-    .single-issue .com_heading01 h4 {
-        white-space: inherit;
-    }
     .search_container h1.page-title {
         line-height: 1;
     }
@@ -3892,7 +3874,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         margin-left: auto;
         margin-right: auto;
     }
-    .page-template-issues .com_heading01 h4 {
+    .issues_container .com_heading01 h4 {
         white-space: nowrap;
     }
 
@@ -4127,8 +4109,9 @@ h1.issue_heading b{
 }
 
 /* 515 Media changes */
-.page-template-issues .com_heading01 h4 + .authors a {
-    /* font-family: 'franklin-gothic'; */
+
+/* TODO: de-dupe all this nonsense */
+.issues_container .com_heading01 h4 + .authors a {
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 16px;
     text-transform: uppercase;
@@ -4136,18 +4119,9 @@ h1.issue_heading b{
     display: inline-block;
     padding-top: 0;
 }
-.page-template-issues .com_heading01 h4 + .authors a:after {content:", ";margin-right:7px;}
-.page-template-issues .com_heading01 h4 + .authors a:last-child:after {content:none;}
-.single-issue .com_heading01 h4 + .authors a {
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: normal;
-    display: inline-block;
-    padding-top: 4px;
-}
 
+.issues_container .com_heading01 h4 + .authors a:after {content:", ";margin-right:7px;}
+.issues_container .com_heading01 h4 + .authors a:last-child:after {content:none;}
 
 /* boxzilla zone */
 /* boxzilla zone */

@@ -58,66 +58,70 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
 <?php
 
 $sectionLoop = get_field('section_acf');
-            if (is_array($sectionLoop)) { /* Check Array */
-                foreach ($sectionLoop as $sectionVal) {
-                    $section_name = $sectionVal["section_name_acf"];
-                    $add_article = $sectionVal["add_article_acf"];
-                    $colorPick = get_post_meta($pageID, "color_for_current_issue", true); ?>
-          <div class="issue_container">		  	
-            <div class="cus_post_hea">
-                <h6 style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>"><?php echo $section_name; ?></h6>
-            </div>
+if (is_array($sectionLoop)) /* Check Array */
+{ 
+    foreach ($sectionLoop as $sectionVal)
+    {
+        $section_name = $sectionVal["section_name_acf"];
+        $add_article = $sectionVal["add_article_acf"];
+        $colorPick = get_post_meta($pageID, "color_for_current_issue", true); ?>
+    <div class="issue_container">		  	
+        <div class="cus_post_hea">
+            <h6 style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>"><?php echo $section_name; ?></h6>
+        </div>
 
         <?php
         $loopNum = 0;
-                    if (is_array($add_article)) /*Check Array*/
-             {
-        foreach ($add_article as $articleValue) {
-            $loopNum_test++;
-            //$issueid = $articleValue["article_link_acf"]->ID;
-            $issueid = $articleValue["article_link_2"][0];
-            
+        if (is_array($add_article)) /*Check Array*/
+        {
+            foreach ($add_article as $articleValue) {
+                $loopNum_test++;
+                //$issueid = $articleValue["article_link_acf"]->ID;
+                $articleID = $articleValue["article_link_2"][0];
+                $articlePermalink = get_the_permalink($articleID);
+                $issueTitle = get_the_title($articleID); ?>
+                <style type="text/css">
+                    .issue_container .com_heading01#id_<?php echo $loopNum_test; ?>  a:hover b{ color: <?php echo $colorPick; ?>; }
+                </style>
+                    <div class="com_heading01" id="id_<?php echo $loopNum_test; ?>">
+                        <h4>
+                            <a href="<?php echo $articlePermalink; ?>">
+                                <b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?>
+                            </a>
+                        </h4>
 
-            $issuePermalink = get_the_permalink($issueid);
-            $issueTitle = get_the_title($issueid); ?>
-        <style type="text/css">
-            .issue_container .com_heading01#id_<?php echo $loopNum_test; ?>  a:hover b{ color: <?php echo $colorPick; ?>; }			
-        </style>
-            <div class="com_heading01" id="id_<?php echo $loopNum_test; ?>">  
-                <h4>
-                    <a href="<?php echo $issuePermalink; ?>" ><b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?></a></h4>
+                <?php
+                $post_authors = get_the_terms($articleID, 'authors');
+                //print_r($post_authors);
+                $loopNum = 0;
+                if (is_array($post_authors)) {?>
+                    <div class="authors">
+                        <?php
+                        foreach ($post_authors as $post_author) {
+                            $loopNum++;
+                            $author_id = $post_author->term_id;
 
+                            $author_link = get_term_link($post_author);
+                            $author_name = $post_author->name;
+                            $author_description = $post_author->description;
 
-   <?php $post_authors = get_the_terms($articleID, 'authors');
-            $loopNum = 0;
-            if (is_array($post_authors)) {
-                ?>
-                  <div class="authors">
-                  <?php
-                 foreach ($post_authors as $post_author) {
-                     $loopNum++;
-                     $author_id = $post_author->term_id;
-                    
-                     $author_link = get_term_link($post_author);
-                     $author_name = $post_author->name;
-                     $author_description = $post_author->description;
-                    
-                     if ($loopNum == 1) {
-                         ?><a href="<?php echo $issuePermalink; ?>"><?php echo $author_name; ?></a><?php
-                     } else {
-                         ?><a href="<?php echo $issuePermalink; ?>"><?php echo $author_name; ?></a><?php
-                     }
-                 } ?></div><?php
-            } ?>
-            </div>
-        <?php
-        } } ?>
+                            if ($loopNum == 1)
+                            {
+                                ?><a href="<?php echo $articlePermalink; ?>"><?php echo $author_name; ?></a><?php
+                            } else
+                                {
+                                    ?><a href="<?php echo $articlePermalink; ?>"><?php echo $author_name; ?></a><?php
+                                }
+                            }
+                    ?></div><?php
+                }?>
+                </div><?php
+                } } ?>
+                </div>
+            <?php
+            }
+} ?>
 
-        </div>
-<?php
-                }
-            } ?>			 
-            
 <?php
 $mentionIDs = get_post_meta($pageID, "select_mentions_acf", true);
 ?>

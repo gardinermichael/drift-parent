@@ -72,14 +72,15 @@ $issue_subtitle = get_post_meta($pageID, "issue_subtitle_acf", true);
                                         $issuePermalink = get_the_permalink($issueid);
                                         $issueTitle = get_the_title($issueid); ?>
                                         <style type="text/css">
-                                            .issue_container .com_heading01#id_<?php echo $loopNum_test; ?>a:hover b {
+                                            .issue_container .com_heading01#id_<?php echo $loopNum_test; ?> a:hover b {
                                                 color: <?php echo $colorPick; ?>;
                                             }
                                         </style>
                                         <div class="com_heading01" id="id_<?php echo $loopNum_test; ?>">
                                             <h4>
-                                                <a href="<?php echo $issuePermalink; ?>"><b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") { ?>color:  <?php echo $colorPick;
-                                                                                                                                                                                                                } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?></a>
+                                                <a href="<?php echo $issuePermalink; ?>">
+                                                    <b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") { ?>color:  <?php echo $colorPick; } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?>
+                                                </a>
                                             </h4>
 
 
@@ -125,13 +126,12 @@ $issue_subtitle = get_post_meta($pageID, "issue_subtitle_acf", true);
                             foreach ($mentionIDs as $mentionID) {
                         ?>
                                 <style type="text/css">
-                                    .com_heading01 h4#mention_<?php echo $mentionID; ?>a:hover b {
+                                    .com_heading01 h4#mention_<?php echo $mentionID; ?> a:hover b {
                                         color: <?php echo $colorPick; ?>;
                                     }
 
-                                    .com_heading01 h4#mention_<?php echo $mentionID; ?>a:hover {
+                                    .com_heading01 h4#mention_<?php echo $mentionID; ?> a:hover {
                                         color: #303030;
-                                        ?>;
                                     }
                                 </style>
                                 <h6 class="cus_post_hea" style="padding-top: 40px; margin-bottom: 20px; font-family: proxy-nova; font-size: 17px; font-weight: 700; color:<?php echo $colorPick; ?>">MENTIONS</h6>
