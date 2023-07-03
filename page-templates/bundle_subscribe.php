@@ -5,6 +5,9 @@ get_header();
 
 <?php
 $form = get_post_meta( get_the_ID(), 'form_name', true );
+$formID = get_post_meta( get_the_ID(), 'form_id', true );
+$formID = ($formID) ? $formID[0] : '';
+
 if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 	?>
 	<style type="text/css">
@@ -12,7 +15,7 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 			background-image: url( <?php echo esc_url( $image ); ?> );
 		}
 
-		#wpfs-billing-address-country--<?php echo($form); ?>-button {
+		#wpfs-billing-address-country--<?php echo($formID); ?>-button {
 			aria-disabled:true;
 		}
 	</style>
