@@ -4,11 +4,16 @@ get_header();
 ?>
 
 <?php
+$form = get_post_meta( get_the_ID(), 'form_name', true );
 if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 	?>
 	<style type="text/css">
 		.page-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
 			background-image: url( <?php echo esc_url( $image ); ?> );
+		}
+
+		#wpfs-billing-address-country--<?php echo($form); ?>-button {
+			aria-disabled:true;
 		}
 	</style>
 
@@ -30,7 +35,7 @@ endif;
 					<img src="<?php echo(esc_url($image));?>">
 				</a>
 			<?php
-			if ( $form = get_post_meta( get_the_ID(), 'form_name', true ) ) {
+			if ( $form ) {
 				echo do_shortcode( '[fullstripe_form name="' . $form . '" type="inline_subscription"]' );
 			}
 			?>
