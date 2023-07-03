@@ -6,7 +6,6 @@ get_header();
 <?php
 $form = get_post_meta( get_the_ID(), 'form_name', true );
 $formID = get_post_meta( get_the_ID(), 'form_id', true );
-$formID = ($formID) ? $formID[0] : '';
 
 if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 	?>
@@ -17,6 +16,10 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 
 		#wpfs-billing-address-country--<?php echo($formID); ?>-button {
 			aria-disabled:true;
+		}
+
+		label[for="wpfs-billing-address-country--<?php echo($formID); ?>-button"]::after {
+			content: '(bundle only available in US)'
 		}
 	</style>
 
