@@ -24,7 +24,7 @@ endif;
 <?php
 // Query BOMB bundle subscription page for first section
 $bundle_id = get_post_meta( get_the_ID(), 'promoted-bundle', true );
-$bundle_content = get_post_meta($bundle_id, 'bundle-teaser');
+$bundle_content = get_post_meta($bundle_id, 'bundle-teaser')[0];
 $bundle_subsitle = get_post_meta( $bundle_id, 'subsitle', true );
 $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
 
@@ -53,7 +53,7 @@ $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
 				</div>
 				<div class="prose">
 				<?php
-					print_r($bundle_content);
+					echo($bundle_content);
 				?>
 				</div>
                 <div class="wp-block-button"><a href="<?php echo(get_permalink($bundle_id)); ?>" class="wp-block-button__link wp-element-button">BUY THE BUNDLE</a></div>
