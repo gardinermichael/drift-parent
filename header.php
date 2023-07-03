@@ -15,36 +15,6 @@
 	
 <?php wp_head(); ?>
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="<?php echo(get_the_title());?>"/>
-<?php
-$page_id = get_the_id();
-$seo_page_description = get_post_meta($page_id)['_genesis_description'][0];
-$seo_image_id = get_post_meta($page_id)['_social_image_id'][0];
-// seo image id is '' if we remove selected image in the SEO options in the page/post editor
-if ($seo_image_id != '') {
-	$twitter_image_id = $seo_image_id;
-	$twitter_image_URL = wp_get_attachment_image_src($twitter_image_id)[0];
-	$twitter_image_metadata = wp_get_attachment_metadata($twitter_image_id);
-	$twitter_image_width = $twitter_image_metadata['width'];
-	$twitter_image_height = $twitter_image_metadata['height'];
-} elseif (get_post_thumbnail_id($page_id) != '') {
-	$twitter_image_id = get_post_thumbnail_id($page_id);
-	$twitter_attachment = wp_get_attachment_image_src(get_post_thumbnail_id($page_id), 'twitter-card-sized');
-	$twitter_image_URL = $twitter_attachment[0];
-	$twitter_image_width = $twitter_attachment[1];
-	$twitter_image_height = $twitter_attachment[2];
-	//echo(get_post_thumbnail_id($page_id));
-} else {
-	//This is bad! Our post doesn't have a thumbnail. We should tell twitter about our default image, right?
-}
-//print_r(get_post_meta($page_id));
-?>
-<meta name="twitter:description" content="<?php echo($seo_page_description); ?>"/>
-<meta name="twitter:image" content="<?php echo($twitter_image_URL); ?>" />
-<meta name="twitter:image:width" content="<?php echo($twitter_image_width); ?>"/>
-<meta name="twitter:image:height" content="<?php echo($twitter_image_height); ?>"/>
-
 </head>
 
 <body <?php echo body_class(); ?>>
