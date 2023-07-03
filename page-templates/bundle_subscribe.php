@@ -15,11 +15,12 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 		}
 
 		#wpfs-billing-address-country--<?php echo($formID); ?>-button {
-			aria-disabled:true;
+			/*aria-disabled:true;*/
+			cursor: not-allowed;
 		}
 
 		label[for="wpfs-billing-address-country--<?php echo($formID); ?>-button"]::after {
-			content: '(bundle only available in US)'
+			content: ' (bundle only available in US)'
 		}
 	</style>
 
