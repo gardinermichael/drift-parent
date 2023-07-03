@@ -4587,3 +4587,18 @@ form .wpfs-btn-link,
 form .wpfs-btn-link:visited {
     color: var( --color__highlight );
 }
+
+.thank-you-content .entry-content {
+	max-width: 511px;
+    margin-left: auto;
+    margin-right: auto;
+	padding-bottom: 6rem;
+}
+
+.thank-you-content .entry-content a {
+	text-decoration: underline !important;
+}
+
+.thank-you-content .mission a {
+	text-decoration: underline !important;
+}
