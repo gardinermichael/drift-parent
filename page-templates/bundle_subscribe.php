@@ -24,6 +24,19 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 		}
 	</style>
 
+	<script type="text/javascript">
+		(function(window, document, undefined) {
+			window.onload = init;
+
+			function init(){
+				const button = document.getElementById('wpfs-billing-address-country--<?php echo($formID);?>-button');
+				button.setAttribute('disabled', 'disabled');
+				button.setAttribute('aria-disabled', 'disabled');
+			}
+
+		})(window, document, undefined);
+	</script>
+
 	<?php
 endif;
 ?>
@@ -73,12 +86,6 @@ endif;
 	</div>
 </div>
 </section>
-
-<script type="text/javascript">
-		const button = document.getElementById('wpfs-billing-address-country--<?php echo($formID);?>-button');
-		button.setAttribute('disabled', 'disabled');
-		button.setAttribute('aria-disabled', 'disabled');
-</script>
 
 <?php
 get_footer();
