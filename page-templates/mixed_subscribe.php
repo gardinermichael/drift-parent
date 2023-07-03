@@ -1,6 +1,6 @@
 <?php
 /* Template name: Mixed subscribe page */
-$meta_bundle = get_post_meta( $bundle_id, 'promoted-bundle', true );
+$meta_bundle = get_post_meta( get_the_ID(), 'promoted-bundle', true );
 print_r($meta_bundle);
 get_header();
 ?>
