@@ -31,7 +31,7 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 			function init(){
 				const options = document.querySelectorAll('option');
 				options.forEach(option => {
-					options.setAttribute('disabled', 'disabled');
+					option.setAttribute('disabled', 'disabled');
 				})
 			}
 
