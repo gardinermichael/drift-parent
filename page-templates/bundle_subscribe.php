@@ -29,9 +29,10 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 			window.onload = init;
 
 			function init(){
-				const button = document.getElementById('wpfs-billing-address-country--<?php echo($formID);?>-button');
-				button.setAttribute('disabled', 'disabled');
-				button.setAttribute('aria-disabled', 'true');
+				const options = document.querySelectorAll('option');
+				options.forEach(option => {
+					options.setAttribute('disabled', 'disabled');
+				})
 			}
 
 		})(window, document, undefined);
