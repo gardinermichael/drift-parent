@@ -802,8 +802,6 @@ function my_nav_wrap()
     global $theme_option;
     $issue_color = $theme_option["issue_color"];
 
-
-
     $facebook_url = $theme_option["facebook_url"];
     $twitter_url = $theme_option["twitter_url"];
     $instagram_url = $theme_option["instagram_url"];
@@ -1110,3 +1108,12 @@ function get_current_template($echo = false)
      else
          return $GLOBALS['current_theme_template'];
  }
+
+
+ // This dreadful technology is necessary ... for some reason. Still trying to diagnose why, but I think the issues page isn't properly set up as a page in some way
+add_filter('template_include', 'var_template_include', 1000);
+function var_template_include($t)
+{
+    $GLOBALS['current_theme_template'] = basename($t);
+    return $t;
+}

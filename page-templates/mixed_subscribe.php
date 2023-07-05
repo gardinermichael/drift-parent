@@ -27,8 +27,8 @@ $bundle_id = get_post_meta( get_the_ID(), 'promoted-bundle', true );
 $bundle_content = get_post_meta($bundle_id, 'bundle-teaser')[0];
 $bundle_subsitle = get_post_meta( $bundle_id, 'subsitle', true );
 $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
-
 ?>
+
 <section class="promotion">
 	<div class="container-fluid max-w-4xl mx-auto mt-16">
 	<div class="ab_part d-flex">
