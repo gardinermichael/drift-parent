@@ -58,6 +58,7 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
 <?php
 
 $sectionLoop = get_field('section_acf');
+<<<<<<< HEAD
 if (is_array($sectionLoop)) /* Check Array */
 { 
     foreach ($sectionLoop as $sectionVal)
@@ -69,6 +70,17 @@ if (is_array($sectionLoop)) /* Check Array */
         <div class="cus_post_hea">
             <h6 style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>"><?php echo $section_name; ?></h6>
         </div>
+=======
+            if (is_array($sectionLoop)) { /* Check Array */
+                foreach ($sectionLoop as $sectionVal) {
+                    $section_name = $sectionVal["section_name_acf"];
+                    $add_article = $sectionVal["add_article_acf"];
+                    $colorPick = get_post_meta($pageID, "color_for_current_issue", true); ?>
+          <div class="issue_container">		  	
+            <div class="cus_post_hea">
+                <h6 style=" <?php if ($colorPick != "") {?>color:  <?php echo $colorPick; } ?>"><?php echo $section_name; ?></h6>
+            </div>
+>>>>>>> origin/dev
 
         <?php
         $loopNum = 0;
