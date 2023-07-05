@@ -33,13 +33,7 @@ get_header(); ?>
                         );
                         ?>
                 </div><!-- .entry-content -->
-            </article><!-- #post -->
-            <div>
-
-            <?php the_ID();
-
-            endwhile; // End the loop.
-            ?>
+            </article><!-- #post --><?php endwhile; // End the loop ?>
 
         </main><!-- #main -->
     </div><!-- #primary -->
