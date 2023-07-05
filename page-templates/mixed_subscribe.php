@@ -27,10 +27,10 @@ $bundle_id = get_post_meta( get_the_ID(), 'promoted-bundle', true );
 $bundle_content = get_post_meta($bundle_id, 'bundle-teaser')[0];
 $bundle_subsitle = get_post_meta( $bundle_id, 'subsitle', true );
 $bundle_image = get_the_post_thumbnail_url( $bundle_id, 'large' )
-
 ?>
-<section class="promotion">
-	<div class="container-fluid max-w-4xl mx-auto mt-16">
+
+<section>
+	<div class="container-fluid max-w-4xl mx-auto mt-16 promotion">
 	<div class="ab_part d-flex">
 		<div class="ab_part_l d-flex sm:px-6">
 			<div class="ab_part_linner kudossubscribe">

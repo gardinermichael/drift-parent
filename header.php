@@ -15,6 +15,36 @@
 	
 <?php wp_head(); ?>
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="<?php echo(get_the_title());?>"/>
+<?php
+$page_id = get_the_id();
+$seo_page_description = get_post_meta($page_id)['_genesis_description'][0];
+$seo_image_id = get_post_meta($page_id)['_social_image_id'][0];
+// seo image id is '' if we remove selected image in the SEO options in the page/post editor
+if ($seo_image_id != '') {
+	$twitter_image_id = $seo_image_id;
+	$twitter_image_URL = wp_get_attachment_image_src($twitter_image_id)[0];
+	$twitter_image_metadata = wp_get_attachment_metadata($twitter_image_id);
+	$twitter_image_width = $twitter_image_metadata['width'];
+	$twitter_image_height = $twitter_image_metadata['height'];
+} elseif (get_post_thumbnail_id($page_id) != '') {
+	$twitter_image_id = get_post_thumbnail_id($page_id);
+	$twitter_attachment = wp_get_attachment_image_src(get_post_thumbnail_id($page_id), 'twitter-card-sized');
+	$twitter_image_URL = $twitter_attachment[0];
+	$twitter_image_width = $twitter_attachment[1];
+	$twitter_image_height = $twitter_attachment[2];
+	//echo(get_post_thumbnail_id($page_id));
+} else {
+	//This is bad! Our post doesn't have a thumbnail. We should tell twitter about our default image, right?
+}
+//print_r(get_post_meta($page_id));
+?>
+<meta name="twitter:description" content="<?php echo($seo_page_description); ?>"/>
+<meta name="twitter:image" content="<?php echo($twitter_image_URL); ?>" />
+<meta name="twitter:image:width" content="<?php echo($twitter_image_width); ?>"/>
+<meta name="twitter:image:height" content="<?php echo($twitter_image_height); ?>"/>
+
 </head>
 
 <body <?php echo body_class(); ?>>
@@ -97,66 +127,7 @@ button#submit--OGNhNmM:before {
 label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before { 
 	background: #156ccc !important;
 }
-/* label[for="wpfs-card-holder-name--ZjFiZTB"]::before,
-label[for="wpfs-card-holder-name--ZTI4NGY"]::before,
-label[for="wpfs-card-holder-name--OGNhNmM"]::before {
-	content: "Full name";
-	font-size: 18px !important;
-} */
 
-/* label[for="wpfs-card-holder-name--ZjFiZTB"],
-label[for="wpfs-billing-address-line-1--ZjFiZTB"],
-label[for="wpfs-billing-address-line-2--ZjFiZTB"],
-label[for="wpfs-billing-address-line-1--ZTI4NGY"],
-label[for="wpfs-billing-address-line-2--ZTI4NGY"],
-label[for="wpfs-card-holder-name--ZTI4NGY"],
-label[for="wpfs-card-holder-name--OGNhNmM"],
-label[for="wpfs-billing-address-line-1--OGNhNmM"],
-label[for="wpfs-billing-address-line-2--OGNhNmM"],
-label[for="wpfs-shipping-address-line-1--ZTI4NGY"],
-label[for="wpfs-shipping-address-line-2--ZTI4NGY"] { 
-	font-size: 0 !important;
-} */
-
-
-/* #wpfs-billing-address-panel--OGNhNmM > .wpfs-form-group:nth-child(1) {
-	 display: none !important;
-} */
-
-/* #wpfs-billing-address-panel--ZjFiZTB > div:nth-child(1), 
-#wpfs-billing-address-panel--ZTI4NGY > div:nth-child(1),
-label[for="wpfs-billing-address-country--ZTI4NGY-button"],
-label[for="wpfs-billing-address-country--ZjFiZTB-button"],
-label[for="wpfs-billing-address-country--OGNhNmM-button"],
-#wpfs-billing-address-country--ZTI4NGY-button, 
-#wpfs-billing-address-panel--ZTI4NGY > div:last-child,
-#wpfs-billing-address-panel--OGNhNmM > div:last-child
- {
-	display: none;
-} */
-/* div.wpfs-w-20[data-wpfs-amount-row="custom-amount"]
- { display: none !important; } */
-
-/* label[for="wpfs-billing-address-line-1--ZjFiZTB"]::before,
-label[for="wpfs-billing-address-line-1--OGNhNmM"]::before
-{
-	content: "Mailing address";
-	font-size: 18px;
-}
-label[for="wpfs-billing-address-line-1--ZTI4NGY"]::before,label[for="wpfs-billing-address-line-1--OGNhNmM"]::before {
-	content: "Billing address"; 
-	font-size: 18px;
-}
-label[for="wpfs-billing-address-line-2--ZjFiZTB"]::before,
-label[for="wpfs-billing-address-line-2--OGNhNmM"]::before
- {
-	content: "Mailing address line 2";
-	font-size: 18px;
-}
-label[for="wpfs-billing-address-line-2--ZTI4NGY"]::before,
-label[for="wpfs-billing-address-line-2--OGNhNmM"]::before{content: "Billing address line 2"; font-size: 18px;}
-label[for="wpfs-shipping-address-line-1--ZTI4NGY"]::before{content: "Shipping address"; font-size: 18px;}
-label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping address line 2"; font-size: 18px;} */
 #other_amount,#other_amount_temp {
 	float: right !important;
 	width: 101px;
@@ -237,9 +208,7 @@ label[for="wpfs-shipping-address-line-2--ZTI4NGY"]::before{content: "Shipping ad
 .subsRadio li span label.active:after { 
 	opacity: 1;
 }
-/* div[data-wpfs-amount-row="custom-amount"] {
-	display: none !important;
-} */
+
 .form01 { 
 	position: relative;
 }

@@ -48,44 +48,101 @@ jQuery(document).ready(function($){
 
 function fixQuoteSpacing()
 {
+	// the minimum padding between blocks (or the top block and the header) in pixels
+	var min_padding = 4;
+	// for a fixed width each margin block has a known height based on its line breaks
+	// and no margin block may be placed above the maximum y of the page
+	// the site container is the area below the header, start with that as max y
+	var min_y = 0;
+	jQuery(".site_container").each(function()
+	{
+		var container_top = jQuery(this).offset().top;
+		if (container_top > min_y) {
+			min_y = container_top
+		}
+	});
+	// sort margin blocks by y position of their top: we want higher ones to stay higher
+	// and we will only need to deal with adjacent blocks 
+	const blocks = []
 	jQuery(".margin_block").each(function()
 	{
-		var this_link = this;
 		var rect = jQuery(this).offset();
-		var quote_x = rect.left;
-		var quote_y = rect.top;
-		var quote_y_bottom = rect.top + jQuery(this).height();
-
-			// Check collision with top of element
-			var found_issue = false;
-			var family = document.elementsFromAbsolutePoint(quote_x, quote_y);
-			jQuery(family).each(function ()
-			{
-				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
-				{				
-					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
-					found_issue = true;
-				}
-			});
-
-			if (found_issue) { index = -1;} // Reset loop
-			else
-			{
-			// Check collision with bottom of element
-			var family = document.elementsFromAbsolutePoint(quote_x, quote_y_bottom);
-			jQuery(family).each(function ()
-			{
-				if (!this.isSameNode(this_link) && this.classList.contains("margin_block"))
-				{
-					jQuery(this).css("cssText", "margin-top: " + (parseInt(jQuery(this).css("margin-top")) + jQuery(this).height() + 20) + "px !important;");
-					found_issue = true;
-				}
-			});
-			}
-
-			if (found_issue) { index = -1; } // Reset loop
+		const block_data = [this, rect.top];
+		blocks.push(block_data);
 	});
 
+	blocks.sort(function(a, b)
+	{
+		// index 1 == top is our sort key
+		if (a[1] < b[1])
+		{
+			return -1;
+		}
+		if (a[1] > b[1])
+		{
+			return 1;
+		}
+		return 0;
+	});
+
+	var lower_block = null;
+	blocks.forEach(function(block)
+	{
+		// if this is the first block we've seen, it's our "bottom" block of 2, and we move on
+		// in the next iteration it will be pushed to top status
+
+		if (lower_block === null)
+		{
+			[lower_block, _] = block;
+			return 0;
+		}
+		// if we have a low block and have proceeded to iterate, we move our old lower block to be the top block
+		// and introduce the new block as the lower block
+		higher_block = lower_block;
+
+		// don't trust the block top y that we used for sorting, because top ys can be changed in this loop
+		// so we want to calculate offsets relative to CURRENT height (we will fetch this parameter later)
+		[lower_block, _] = block;
+		lower_height = jQuery(lower_block).height();
+		lower_top = jQuery(lower_block).offset().top;
+
+		higher_height = jQuery(higher_block).height();
+		higher_top = jQuery(higher_block).offset().top;
+
+		//console.log(lower_block);
+		//console.log(higher_block);
+
+		var higher_bottom = higher_top + higher_height;
+		var overlap = higher_bottom - lower_top;
+		if (overlap < -1*min_padding)
+		{
+			return 0;
+		}
+
+		higher_height_portion = higher_height/(higher_height+lower_height);
+		//console.log(higher_height_portion);
+		//jQuery(higher_block).css("cssText", "margin-bottom: " + Math.floor(overlap+min_padding)/2 + "px !important;");
+		higher_adjustment = Math.floor(overlap+min_padding)*higher_height_portion;
+		lower_adjustment = higher_adjustment/higher_height_portion*(1-higher_height_portion);
+
+		//higher_adjustment = Math.floor(overlap+min_padding)/2;
+		//lower_adjustment = higher_adjustment;
+
+		//console.log(min_y, higher_top, higher_adjustment);
+		if (higher_top-higher_adjustment > min_y)
+		{
+			jQuery(higher_block).offset({top: higher_top-higher_adjustment});
+			jQuery(lower_block).offset({top: lower_top+lower_adjustment});
+			min_y = higher_bottom-higher_adjustment;
+		}
+		else
+		{
+			higher_adjustment=0;
+			lower_adjustment = overlap+min_padding;
+			jQuery(lower_block).offset({top: lower_top+lower_adjustment});
+			min_y = higher_bottom;
+		}
+	});
 }
 
 jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
@@ -108,51 +165,26 @@ jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 		function() 
 		{
 		fixQuoteSpacing();
-		}, 1000);
+		}, 200);
 	});
 
-	
-
-jQuery(".big-image").parent("figure").addClass("bigfigure");
-
-	// jQuery("#other_amount").on("change paste keyup", function(){
-	// 	var other_amount = jQuery(this).val();
-	// 	jQuery("#wpfs-custom-amount-unique--ZjFiZTB").val(other_amount).trigger("change");
-	// 	//jQuery("#wpfs-custom-amount-unique--ZjFiZTB").trigger("change");
-	// 	jQuery("#wpfs-custom-amount-unique--ZjFiZTB").prop("disabled", false);
-	// });
-
-	// jQuery("#wpfs-card-holder-name--ZjFiZTB").change(function(){
-	// 	var full_name = jQuery(this).val();
-	//    jQuery("#wpfs-billing-name--ZjFiZTB").val(full_name);	
-	// });
+	jQuery(".big-image").parent("figure").addClass("bigfigure");
+});
 
 
-	// jQuery("#wpfs-card-holder-name--ZTI4NGY").change(function(){
-	// 	var full_name2 = jQuery(this).val();
-	// 	jQuery("#wpfs-billing-name--ZTI4NGY").val(full_name2);
-	// });
-
-	// jQuery("#wpfs-address-switcher--ZTI4NGY").removeClass("wpfs-form-check-group");
-
-	// jQuery('button.navbar-toggle').click(function(){
-	// 	jQuery('.only_mobile_show').toggle();
-	// });
-
-	// jQuery('body').find('.wpfs-selectmenu-menu').children('#wpfs-custom-amount--ZjFiZTB-menu').html('<li class="ui-menu-item" id="ui-id-1" tabindex="-1" role="option"><div class="menu-item-wrapper ui-menu-item-wrapper ui-state-selected">10</div></li><li class="ui-menu-item" id="ui-id-2" tabindex="-1" role="option"><div class="menu-item-wrapper ui-menu-item-wrapper">25</div></li><li class="ui-menu-item" id="ui-id-3" tabindex="-1" role="option"><div class="menu-item-wrapper ui-menu-item-wrapper">50</div></li><li class="ui-menu-item" id="ui-id-4" tabindex="-1" role="option"><div class="menu-item-wrapper ui-menu-item-wrapper">100</div></li><li class="ui-menu-item ui-state-focus" id="ui-id-5" tabindex="-1" role="option"><div class="menu-item-wrapper ui-menu-item-wrapper">250</div></li><li class="ui-menu-item" id="ui-id-6" tabindex="-1" role="option"><div class="menu-item-wrapper ui-menu-item-wrapper">Other</div></li>');
-	
-	// jQuery('input[type=radio][name=same]').change(function() {
-	// 	var selectid = jQuery(this).data('selectid');
-	
-	// 	jQuery('body').find('.wpfs-selectmenu-menu').children().children('#'+selectid).trigger('click');
-
-	// 	jQuery('#wpfs-custom-amount--ZjFiZTB').val(this.value).trigger('change');
-	// 	jQuery('#wpfs-custom-amount--ZjFiZTB-button').attr( 'aria-activedescendant', selectid);
-	// 	jQuery('#wpfs-custom-amount--ZjFiZTB-button').attr( 'aria-labelledby', selectid);
-	// 	jQuery('#wpfs-custom-amount--ZjFiZTB-button').children('.ui-selectmenu-text').text(this.value);
-
-	// });
-
-	// jQuery('.ab_part_linner button[type="submit"]').html("Subscribe now");
-	// jQuery('.ab_part_linner .form01 button[type="submit"]').html("Donate now!");
+jQuery(window).resize(function()
+{
+	jQuery(".margin_block").each(function() {
+		var current_style = this.getAttribute('style');
+		if (!(current_style === null))
+		{
+			var st = current_style.split(';').map(function (a) {
+				return a.toLowerCase().indexOf('top')>-1 ? '':a;
+			}).join(';');
+			this.setAttribute('style', st);
+			//console.log('TEST: top property == '+ jQuery(this).css('top') + ', style attribute == ' + jQuery(this).attr('style'));
+			jQuery(this).removeAttr('style');
+		}
+	});
+	fixQuoteSpacing();
 });

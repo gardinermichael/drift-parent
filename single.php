@@ -4,43 +4,39 @@ $pageID = get_the_id();
 $page_imageID = get_post_thumbnail_id($pageID);
 
 $captionArray = wp_get_attachment_metadata($pageID);
-$category = get_the_category();
-$issue_no = $category[0]->name . '&nbsp;';
+$category = get_the_category()[0];
+$issue_name = $category->name; // assume only 1 category
 
 if ($page_imageID != "") {
-    $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");
+    $page_imageURL = wp_get_attachment_image_src($page_imageID, "main-image-on-single");
     $page_imageURL = $page_imageURL[0];
 
     $attachment = get_post($page_imageID);
     $caption = $attachment->post_excerpt;
 }
 
-$issue_args = array("post_type" => "issue", "posts_per_page" => -1);
-$issue_loop = new wp_query($issue_args);
-$article_id_array = array();
-while ($issue_loop->have_posts()):$issue_loop->the_post();
+// query the issue by the one that matches the slug of the corresponding category
+// this will only work for well-categorized pieces, and for previews,
+// we expect an inheritance structure like Issue 8 Preview < Issue 8
 
-    $issueListId =  get_the_id();
-    $sectionLoop = get_field('section_acf', $issueListId);
+$issue_slug = $category->slug;
+$is_preview = strpos($issue_slug, "preview");
+//print_r($issue_slug);
 
-    foreach ($sectionLoop as $sectionVal) {
-        $add_article = $sectionVal["add_article_acf"];
-        if (is_array($add_article)) /*Check Array*/
-        {
-       foreach ($add_article as $articleValue) {
-           $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
-       }}
-    }
-
-endwhile;
-
-
-foreach ($article_id_array as $key => $article_id_values) {
-    if (in_array($pageID, $article_id_values)) {
-        $issue_Color_ID = $key;
-        $colorPick = get_post_meta($issue_Color_ID, "color_for_current_issue", true);
-    }
+if ($is_preview) {
+    $parent = get_category($category->parent);
+    $issue_slug = $parent->slug;
+    //print_r($parent_slug);
 }
+
+$issue_args = array("post_type" => "issue", "name" => $issue_slug, "posts_per_page" => -1);
+$issue_loop = new wp_query($issue_args);
+
+while ($issue_loop->have_posts()):$issue_loop->the_post();
+    $issue_id = get_the_id();
+    $issue_permalink=get_permalink(($issue_id));
+    $colorPick = get_post_meta($issue_id, "color_for_current_issue", true);
+endwhile;
 
 if ($colorPick == "") {
     $colorPick = "#69a7c2";
@@ -48,6 +44,8 @@ if ($colorPick == "") {
 
 wp_reset_postdata();
 wp_reset_query();
+
+
 $currentPageID = get_the_id();
 $breakWidth = get_post_meta($currentPageID, "break_point_on_device_width", true);
 if ($breakWidth == "") {
@@ -55,218 +53,18 @@ if ($breakWidth == "") {
 }
 ?>
 
-
-
-    <style type="text/css">
-        .more_heading_pipe {
-          text-transform: lowercase;
-          color: <?php echo $colorPick; ?>;		/* ============== ADDED 5.28 =========== */
-        }
-        .singleArtiIssue_pipe {
-            padding-left: 2px !important;
-            font-size: 25px;
-            position: relative;
-            top: -2px;
-            vertical-align: top;
-            color: <?php echo $colorPick; ?>;
-        }
-        /*b.issue_title{color: <?php //echo $colorPick;?>;}*/
-        .share_text_container p strong,
-        .share_text_container h5,
-        .more_from_issue h4:hover b a,
-        .mission_inner_body > :last-child::after
-        { color: <?php echo $colorPick; ?>; }
-
-        .article_editor > a:hover{ color: inherit; }
-        .more_from_issue a.moreAuhor:hover{ color: #303030; }
-
-        .more_from_issue h1 {			/* ============== ADDED 5.28 =========== */
-            color: #303030;
-            text-transform: lowercase;
-            text-transform: capitalize;
-        }
-
-
-
-        .more_from_issue h4:hover > a{ color: #303030; }
-        .mission_inner{
-            max-width:640px;
-            margin: 15px auto 0px;
-            padding: 0px;
-        }
-        .postid-1208 .mission_inner{max-width:740px;}
-
-        .mission_outer .mission{}
-        .mission p{
-            font-size: 19px;
-            /* font-family: savoy; */
-            font-family: 'Savoy', 'EB Garamond', Times, serif;
-            margin-bottom: 35px;
-            position: relative;
-        }
-        .about_outer{
-            border-top : 1px solid rgba(0,0,0,0.3);
-        }
-        .about_o {
-            flex-wrap: wrap;
-        }
-        .about_l{
-            width: 50%;
-            padding: 0 40px 0;
-        }
-        .about_l h4{
-            font-size: 29px;
-            text-align: right;
-            font-family: proxy-nova;
-        }
-        .about_l h4 span{
-            color: #d8d8d8;
-        }
-
-        .about_r{
-            width: 50%;
-            max-width: 480px;
-            padding:  0px 0 0 50px;
-        }
-        .about_r p a{
-            color: #909090;
-            font-family: Adobe-Caslon;
-        }
-
-        .about_r h3{
-
-        }
-        .about_r p{
-            font-size: 20px;
-            line-height: 1.4;
-            font-family: Adobe-Caslon;
-        }
-
-        .single-post .mission_inner a.no_link_for_margin_block{
-        }
-
-        .single-post .mission_inner blockquote.margin_block {
-            float: right;
-            position: absolute;
-            width: 250px;
-            right: -350px;
-            margin-top: -20px;
-            margin-bottom: 0;
-        }
-        @media only screen and (max-width: 1400px)
-        {
-            .single-post .mission_inner blockquote.margin_block {right:-300px;}
-        }
-        
-        .single-post blockquote.margin_block p{
-            font-size: 13px !important;
-            border-left: 6px solid <?php echo $colorPick; ?> !important;
-            padding-left: 10px;
-            text-decoration: none !important;
-            line-height: normal;
-            display: block;
-            font-family: Avenir-Next-Thin;
-        }
-
-        .single-post blockquote.margin_block p a{
-            font-family: Avenir-Next-Thin;
-            font-size: inherit !important;
-            padding-left: inherit;
-            text-decoration: inherit !important;
-            line-height: inherit;
-            display: inherit;
-        }
-
-.single-post blockquote.margin_block > p{ line-height: normal; }
-
-.com_heading01 h4:hover b a { color:  <?php echo $colorPick; ?>}
-.com_heading01 h4:hover > a { color:  #303030; }
-figure {
-    position: relative;
-}
-figcaption {
-    position: absolute;
-    width: 150px;
-    left: -165px;
-    bottom: 0;
-    border-right: 6px solid <?php echo $colorPick; ?>;
-    padding-right: 10px;
-    font-size: 13px;
-    text-align: right;
-    line-height: normal;
-    font-family: Avenir-Next-Thin;
-    padding-left: 10px;
-}
-
-    .pigs_img {
-        margin-bottom: 50px;
+<style type="text/css">
+    :root {
+        --issue_color: <?php echo $colorPick; ?>;
     }
-    .pigs_img img{
-            width: 100%;
-            max-width: unset;
-            height: unset;
-        }
 
-
-
-.single-post .ab_part.headong0022_cover{
-        align-items: flex-end;
-}
-.ab_part.headong0022_cover .ab_part_r {
-    width: 50%;
-    position: relative;
-    top: -35px;
-}
-
-.contact01.headong0022 {
-    border-left: 3px solid <?php echo $colorPick; ?>;
-    padding-left: 15px !important;
-    margin: 20px 0 0 80px;
-}
-.contact01.headong0022 a:hover {
-    color: <?php echo $colorPick; ?>;
-}
-.contact01.headong0022 span {
-    font-size: 14px;
-    display: block;
-    text-transform: uppercase;
-    font-family: proxy-nova;
-    margin: 0 0 20px;
-
-}
-.contact01.headong0022  h1 {
-    font-size: 36px;
-    /* text-transform: capitalize; */
-    color: #000;
-    font-weight: 600;
-    font-family: Adobe-Caslon;
-        /*margin-bottom: 50px !important; */        /* === CHANGED === */
-        margin-bottom: 20px !important;             /* === ADDED 6.1 === */
-}
-.contact01.headong0022  h6 {
-     font-size: 18px;
-    display: block;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-family: proxy-nova;
-
-}
-.com_heading span {
-    color: <?php echo $colorPick; ?>;
-}
-/*@media(max-width: 480px){
-    .postid-1208 .mission_inner {
-        max-width: 200px;
+    <?php if ($breakWidth != "") {?>
+    @media(min-width: 768px)and (max-width: <?php echo $breakWidth; ?>px){
+        /*.ab_part_r h3 span{ display: none; } */	/* === CHANGED 6.3 === */
+        /*.com_heading h3 b{ display: block; }*/	/* === CHANGED 6.3 === */
     }
-}*/
-
-<?php if ($breakWidth != "") {?>
-@media(min-width: 768px)and (max-width: <?php echo $breakWidth; ?>px){
-    /*.ab_part_r h3 span{ display: none; } */	/* === CHANGED 6.3 === */
-    /*.com_heading h3 b{ display: block; }*/	/* === CHANGED 6.3 === */
-}
-<?php } ?>
-    </style>
+    <?php } ?>
+</style>
 
     <section class="main_container_custom">
         <div class="container-fluid">
@@ -294,35 +92,9 @@ if ($type_of_titles == "Style 2") {
               $articleDate = date('F j, Y', strtotime(CFS()->get('article_date', $pageID)));
               if ($articleDate == "" || $articleDate ==  "January 1, 1970") {
                   $articleDate = $date;
-              }
-
-              $issue_args = array("post_type" => "issue", "posts_per_page" => -1);
-              $issue_loop = new wp_query($issue_args);
-              $article_id_array = array();
-              while ($issue_loop->have_posts()):$issue_loop->the_post();
-
-              $issueListId =  get_the_id();
-              $sectionLoop = get_field('section_acf', $issueListId);
-              foreach ($sectionLoop as $sectionVal) {
-                  $add_article = $sectionVal["add_article_acf"];
-                  if (is_array($add_article)) /*Check Array*/
-        {
-                       foreach ($add_article as $articleValue) {
-                           if ($articleValue["article_link_2"][0] == $pageID) {
-                               $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
-                           }
-                       }}
-              }
-
-              endwhile;
-
-              if (!empty($article_id_array)) {
-                  foreach ($article_id_array as $issue_key => $currentPost) {
-                      $issue_keyID = $issue_key;
-                  }
-              } ?>
+              }?>
                  <div class="postDate mobile_version">
-                    <b class="issue_title"><?php echo $issue_no; ?>	<span>|</span></b>
+                    <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?>	<span>|</span></b>
                         <?php echo $articleDate;
 
               wp_reset_postdata();
@@ -358,37 +130,11 @@ if ($type_of_titles == "Style 2") {
                      $articleDate = date('F j, Y', strtotime(CFS()->get('article_date', $pageID)));
                      if ($articleDate == "" || $articleDate ==  "January 1, 1970") {
                          $articleDate = $date;
-                     }
-
-                     $issue_args = array("post_type" => "issue", "posts_per_page" => -1);
-                     $issue_loop = new wp_query($issue_args);
-                     $article_id_array = array();
-                     while ($issue_loop->have_posts()):$issue_loop->the_post();
-
-                     $issueListId =  get_the_id();
-                     $sectionLoop = get_field('section_acf', $issueListId);
-                     foreach ($sectionLoop as $sectionVal) {
-                         $add_article = $sectionVal["add_article_acf"];
-                         if (!empty($add_article)) {
-                             foreach ($add_article as $articleValue) {
-                                 if ($articleValue["article_link_2"][0] == $pageID) {
-                                     $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
-                                 }
-                             }
-                         }
-                     }
-
-                     endwhile;
-
-                     if (!empty($article_id_array)) {
-                         foreach ($article_id_array as $issue_key => $currentPost) {
-                             $issue_keyID = $issue_key;
-                         }
                      } ?>
 <!-- COPIED fROM ABOVE-->
                 <div class="postDate desktop_version">
 
-                <b class="issue_title"><?php echo $issue_no; ?></b> |
+                <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?></b> |
                         <?php echo $articleDate; ?>
                 </div>
 
@@ -437,39 +183,12 @@ if ($type_of_titles == "Style 2") {
                      $articleDate = date('F j, Y', strtotime(CFS()->get('article_date', $pageID)));
                      if ($articleDate == "" || $articleDate ==  "January 1, 1970") {
                          $articleDate = $date;
-                     }
-
-
-                     $issue_args = array("post_type" => "issue", "posts_per_page" => -1);
-                     $issue_loop = new wp_query($issue_args);
-                     $article_id_array = array();
-                     while ($issue_loop->have_posts()):$issue_loop->the_post();
-
-                     $issueListId =  get_the_id();
-                     $sectionLoop = get_field('section_acf', $issueListId);
-                     foreach ($sectionLoop as $sectionVal) {
-                         $add_article = $sectionVal["add_article_acf"];
-                         if (is_array($add_article)) /*Check Array*/
-        {
-                       foreach ($add_article as $articleValue) {
-                           if ($articleValue["article_link_2"][0] == $pageID) {
-                               $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
-                           }
-                       }}
-                     }
-
-                     endwhile;
-
-                     if (!empty($article_id_array)) {
-                         foreach ($article_id_array as $issue_key => $currentPost) {
-                             $issue_keyID = $issue_key;
-                         }
                      } ?>
                 <?php //this section is different for some reason in poems??>
 
                 <div class="postDate desktop_version">
                     <b class="issue_title">
-                        <?php echo $issue_no; ?>
+                        <?php echo $issue_name.'&nbsp;'; ?>
                         </b>
                     <span class="single_article_pipe" style="color:#ccc;">|</span>
                     <?php echo $articleDate; ?>
@@ -489,9 +208,9 @@ if ($type_of_titles == "Style 2") {
                          }
                      } ?>
                     <?php
-                        wp_reset_postdata();
-                     wp_reset_query();
-                     echo get_the_title(); ?></b>​<?php echo $spanText; ?></h3>
+                    wp_reset_postdata();
+                    wp_reset_query();
+                    echo get_the_title(); ?></b>​<?php echo $spanText; ?></h3>
             </div>
 
             <div class="article_editor" style="margin-top: 65px;">
@@ -588,23 +307,40 @@ if ($type_of_titles == "Style 2") {
 
 
                 $share_text = get_post_meta($pageID, "share_text", true);
+                if ($share_text == "") {
+                    $subsitle_to_noun = array(
+                        "Fiction" => "story",
+                        "Poetry"  => "poem",
+                        "Article" => "article",
+                        "Dispatches" => "feature",
+                    );
+                    $subsitle = get_post_meta($pageID, "post_subsitle", true);
+                    $post_type=$subsitle_to_noun[$subsitle] ?? 'article'; /* always assume we're an article, most real articles won't have subsitles anyway ... */
+
+                    $issue_name_for_appeal = ($is_preview) ? $parent->name : $issue_name;
+                    $issue_permalink_for_appeal = ($is_preview) ? get_permalink(get_page_by_title('subscribe')) : $issue_permalink;
+                    $appears_text = ($is_preview) ? "will appear" : "appears";
+                    $donate_permalink = get_permalink(get_page_by_title('donate'));
+                    $subscribe_permalink = get_permalink(get_page_by_title('subscribe'));
+
+                    $share_text = '<p>This ' . $post_type . ' ' . $appears_text . ' in <a href="'.$issue_permalink_for_appeal.'">' . $issue_name_for_appeal . '</a> of The Drift. To support our work, <a href="'.$subscribe_permalink.'">subscribe</a> or make a tax-deductible <a href="'.$donate_permalink.'">donation</a>. To receive our latest content, sign up for our <a href="#signup4mailanchor">email list</a>.</p>';
+                };
+
                 if ($share_text != "") {
-                    ?>
+                ?>
                     <div class="share_text_container">
-                      <!--<h5>Share</h5>-->
-                    <div class="share_text">
-                          <?php if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
-                        ADDTOANY_SHARE_SAVE_KIT(array(
-        'buttons' => array( 'facebook', 'twitter', 'email' ),
-    ));
-                    } ?>
-                        <?php echo 	$share_text; ?>
-                      </div>
+                        <div class="share_text">
+                            <?php
+                            if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
+                                ADDTOANY_SHARE_SAVE_KIT(array('buttons' => array( 'facebook', 'twitter', 'email' ),));
+                            }
+                            echo($share_text);
+                            ?>
+                        </div>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
-
             </div>
 
 <div class="more_from_issue">
@@ -627,12 +363,7 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
     }
 
 endwhile;
-/*
 
-echo "<pre>";
-  print_r($article_id_array);
-echo "</pre>";
-*/
 
       $more_issues_heading = get_post_meta($pageID, "more_issues_heading", true);
       if ($more_issues_heading != "") {
@@ -641,17 +372,16 @@ echo "</pre>";
 <?php
       } ?>
 <?php
-$select_issues = get_post_meta($pageID, "select_issues", true);
-$issueID_Array = array();
- if (is_array($select_issues)) {
-     foreach ($select_issues as $select_issue) {
-         $issueID = $select_issue;
-         $issueID_Array[] = $issueID;
-         $issue_permalink = get_the_permalink($issueID);
-         $article_editor_name = get_post_meta($issueID, "article_editor_name", true);
+// for recommended reading, the somewhat poorly named "select_issues" is actually further reading articles
+$select_articles = get_post_meta($pageID, "select_issues", true);
+ if (is_array($select_articles)) {
+     foreach ($select_articles as $select_article) {
+         $articleID = $select_article;
+         $article_permalink = get_the_permalink($articleID);
+         $article_editor_name = get_post_meta($articleID, "article_editor_name", true);
 
 
-         $post_authors = get_the_terms($issueID, 'authors');
+         $post_authors = get_the_terms($articleID, 'authors');
          $loopNum = 0;
          foreach ($post_authors as $post_author) {
              $loopNum++;
@@ -666,20 +396,17 @@ $issueID_Array = array();
              }
          }
 
-
-
-
-         $post_subsitle = get_post_meta($issueID, "post_subsitle", true);
-         $post_sitle = get_the_title($issueID);
-         $issueImageID = get_post_thumbnail_id($issueID); ?>
+         $post_subsitle = get_post_meta($articleID, "post_subsitle", true);
+         $post_sitle = get_the_title($articleID);
+         $issueImageID = get_post_thumbnail_id($articleID); ?>
     <div class="com_heading01">
         <?php
           if ($issueImageID != "") {
               $moreIssueFull_Class = " ";
-              $issueImageImageURL = wp_get_attachment_image_src($issueImageID, "full");
+              $issueImageImageURL = wp_get_attachment_image_src($issueImageID, "large");
               $issueImageImageURL = $issueImageImageURL[0]; ?>
             <div class="moreissue_left">
-            <a href="<?php echo $issue_permalink; ?>">
+            <a href="<?php echo $article_permalink; ?>">
               <img src="<?php echo $issueImageImageURL; ?>">
             </a>
             </div>
@@ -689,12 +416,12 @@ $issueID_Array = array();
           } ?>
 
 
-        <div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $issueID; ?>">
+        <div class="moreissue_right <?php echo $moreIssueFull_Class . ' postid-' . $articleID; ?>">
             <h4>
-                <b><a href="<?php echo $issue_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $issue_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
+                <b><a href="<?php echo $article_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $article_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
             </h4>
             <?php if ($article_editor_name!= "") {?>
-                <p><a href="<?php echo $issue_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
+                <p><a href="<?php echo $article_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
             <?php } ?>
             <!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->
         </div>

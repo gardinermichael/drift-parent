@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -11,222 +12,141 @@
  */
 
 get_header();
- global $theme_option;
- $issue_color = $theme_option["issue_color"];
+global $theme_option;
+$issue_color = $theme_option["issue_color"];
+$pageID=get_the_id();
+$bannerImageID = get_post_thumbnail_id($pageID);
+if ($bannerImageID != "") {
+    $bannerImageURL = wp_get_attachment_image_src($bannerImageID, "full");
+    $bannerImageURL = $bannerImageURL[0];
+}
+$issue_subtitle = get_post_meta($pageID, "issue_subtitle_acf", true);
 ?>
 
-<style type="text/css">
-.com_heading01 .cfs-hyperlink span{ color: #000; } 
-h4 {
-    font-size: 22px;
-    letter-spacing: 0px;
-    font-weight: 400;
-    line-height: 1.2;
-    position: relative;
-    padding: 0px 0 0px;
-    text-align: left;
-    color: #303030;
-    margin: 0;
-    font-family: proxy-nova;
-}
-.com_heading01 span{
-    font-family: Avenir-Next-Thin;
-    font-size: 17px;
-    position: relative;
-    top: -3px;
-    font-weight: 500;
-	color: <?php echo $issue_color; ?>;;
-}
-.com_heading01 h4 b {
-    font-weight: 600;
-    font-family: Adobe-Caslon;
-    
-}
-.com_heading01 p{
-    font-size: 17px;
-    letter-spacing: 0px;
-    line-height: 1.6em;
-    margin-bottom: 25px;
-}
+<div class="row issues_container">
+    <div class=" col-md-6 issue_div_left">
+        <img src="<?php echo $bannerImageURL; ?>">
+    </div>
 
-.cus_post_hea h6{
-	font-size: 17px;
-    letter-spacing: 0px;
-    line-height: 1.6em;
-    margin-bottom: 15px;
-    color: <?php echo $issue_color; ?>;
-    font-weight: 700;
-    text-transform: uppercase;
-  	font-family: proxy-nova;
-}
+    <div class=" col-md-6 issue_div_right">
+        <section class="cus_post_outer">
+            <div class="container">
 
-.bredcrum01{
-	position: relative;
-	height: 120px;
-	background-repeat: no-repeat; 
-	background-image: url( '<?php echo site_url(); ?>/wp-content/uploads/2020/04/bredcrum01.png '); 
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-.bredcrum01::after {
-    display: block;
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.75);
-}
-.bredcrum01 .container{
-	position: relative;
-	z-index: 99;
-}
-.bredcrum01 h2 {
-    font-size: 50px;
-    font-weight: 700;
-    font-family: Adobe-Caslon;
-    line-height: 1em;
-    margin: 0;
-    padding: 10px 0 0 0;
-    color: #303030;
-}
-.bredcrum01 h4 {
-    font-size: 25px;
-    font-weight: 500;
-    font-family: proxy-nova;
-    line-height: 1em;
-    margin: 0 0 5px 0;
-    padding: 0;
-    color: #303030;
-}
-.issue_container {
-    margin-top: 20px;
-}
-</style>
-<?php 
-  $pageID = get_the_id();
-  $issue_subtitle = get_post_meta($pageID, "issue_subtitle_acf", true);  
+                <div class="cus_post">
+                    <?php
+                    $date = get_the_date('F j, Y');
+                    $articleDate = date('F j, Y', strtotime(CFS()->get('current_issue_date', $pageID)));
+                    if ($articleDate == "" || $articleDate ==  "January 1970") {
+                        $articleDate = $date;
+                    }
 
-  $bread_imageID = get_post_thumbnail_id($pageID);
-  if($bread_imageID != "")
-  {
-  	$bread_imageURL = wp_get_attachment_image_src($bread_imageID, "full");
-  	$bread_imageURL = $bread_imageURL[0];
-  }  
-  else
-  {
-  	$bread_imageURL = site_url()."/wp-content/uploads/2020/04/bredcrum01.png";
-  }
-?>
+                    $current_issue_subtitle = get_post_meta($pageID, "current_issue_subtitle", true);
+                    ?>
+                    <a id="<?php echo get_the_title(); ?>"></a> <!-- TESTING HYPERLINK from HomePage Issues -->
+                    <h1 class="issue_heading"><b><?php echo get_the_title(); ?></b> <br /> <?php if ($current_issue_subtitle != "") { ?><span>|</span> <?php echo $articleDate;
+                                                                                                                                                    } ?>
+                    </h1>
 
-<div class="bredcrum01 main_container_custom" style="background: url(<?php echo $bread_imageURL; ?>)">
-	<div class="container">	
-		<h2><?php echo get_the_title(); ?></h2>
-		<?php 
-		 if($issue_subtitle != "")
-		 {
-		 	?>
-		 	<h4><?php echo $issue_subtitle; ?></h4>
-		 	<?php
-		 }
-		?>
+                    <?php
+
+                    $sectionLoop = get_field('section_acf');
+                    if (is_array($sectionLoop)) { /* Check Array */
+                        foreach ($sectionLoop as $sectionVal) {
+                            $section_name = $sectionVal["section_name_acf"];
+                            $add_article = $sectionVal["add_article_acf"];
+                            $colorPick = get_post_meta($pageID, "color_for_current_issue", true); ?>
+                            <div class="issue_container">
+                                <div class="cus_post_hea">
+                                    <h6 style=" <?php if ($colorPick != "") { ?>color:  <?php echo $colorPick;
+                                                                                    } ?>"><?php echo $section_name; ?></h6>
+                                </div>
+
+                                <?php
+                                $loopNum = 0;
+                                if (is_array($add_article)) /*Check Array*/ {
+                                    foreach ($add_article as $articleValue) {
+                                        $loopNum_test++;
+                                        //$issueid = $articleValue["article_link_acf"]->ID;
+                                        $issueid = $articleValue["article_link_2"][0];
+
+                                        $issuePermalink = get_the_permalink($issueid);
+                                        $issueTitle = get_the_title($issueid); ?>
+                                        <style type="text/css">
+                                            .issue_container .com_heading01#id_<?php echo $loopNum_test; ?> a:hover b {
+                                                color: <?php echo $colorPick; ?>;
+                                            }
+                                        </style>
+                                        <div class="com_heading01" id="id_<?php echo $loopNum_test; ?>">
+                                            <h4>
+                                                <a href="<?php echo $issuePermalink; ?>">
+                                                    <b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") { ?>color:  <?php echo $colorPick; } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?>
+                                                </a>
+                                            </h4>
+
+
+                                            <?php $post_authors = get_the_terms($issueid, 'authors');
+                                            $loopNum = 0;
+                                            if (is_array($post_authors)) {
+                                            ?>
+                                                <div class="authors">
+                                                    <?php
+                                                    foreach ($post_authors as $post_author) {
+                                                        $loopNum++;
+                                                        $author_id = $post_author->term_id;
+
+                                                        $author_link = get_term_link($post_author);
+                                                        $author_name = $post_author->name;
+                                                        $author_description = $post_author->description;
+
+                                                        if ($loopNum == 1) {
+                                                    ?><a href="<?php echo $issuePermalink; ?>"><?php echo $author_name; ?></a><?php
+                                                                                                                            } else {
+                                                                                                                                ?><a href="<?php echo $issuePermalink; ?>"><?php echo $author_name; ?></a><?php
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                        } ?></div><?php
+                                                                                                                                                                                                                } ?>
+                                        </div>
+                                <?php
+                                    }
+                                } ?>
+
+                            </div>
+                    <?php
+                        }
+                    } ?>
+
+                    <?php
+                    $mentionIDs = get_post_meta($pageID, "select_mentions_acf", true);
+                    ?>
+
+
+                    <div class="com_heading01">
+                        <?php
+                        if (is_array($mentionIDs)) /*Check Array*/ {
+                            foreach ($mentionIDs as $mentionID) {
+                        ?>
+                                <style type="text/css">
+                                    .com_heading01 h4#mention_<?php echo $mentionID; ?> a:hover b {
+                                        color: <?php echo $colorPick; ?>;
+                                    }
+
+                                    .com_heading01 h4#mention_<?php echo $mentionID; ?> a:hover {
+                                        color: #303030;
+                                    }
+                                </style>
+                                <h6 class="cus_post_hea" style="padding-top: 40px; margin-bottom: 20px; font-family: proxy-nova; font-size: 17px; font-weight: 700; color:<?php echo $colorPick; ?>">MENTIONS</h6>
+                                <h4 id="mention_<?php echo $mentionID; ?>"><a href="<?php echo get_the_permalink($mentionID); ?>"><b>Extremely Abbreviated Reviews</b>​</a> <span style="color:<?php echo $colorPick; ?>">|</span> <a href="<?php echo get_the_permalink($mentionID); ?>"><?php echo get_the_title($mentionID); ?></a> </h4>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
 </div>
-</div>
-
-<section class="cus_post_outer">
-	<div class="container">
-
-		<div class="cus_post">
-<?php 
-$sectionLoop = get_field('section_acf');
-foreach($sectionLoop as $sectionVal)
-{
-	
-	$section_name = $sectionVal["section_name_acf"];
-	$add_article = $sectionVal["add_article_acf"];
-	$colorPick = get_post_meta($pageID, "color_for_current_issue", true);
-?>
-		  <div class="issue_container">
-
-			<div class="cus_post_hea">
-				<h6 style=" <?php if($colorPick != "") {?>color:  <?php echo $colorPick; } ?>"><?php echo $section_name; ?></h6>
-			</div>
-
-		<?php 
-		foreach($add_article as $articleValue){							
-			$issueid = $articleValue["article_link_acf"]->ID;
-
-			$issuePermalink = get_the_permalink($issueid);
-			$issueTitle = get_the_title($issueid);
-		?>
-			<div class="com_heading01">  
-				<h4><b><a href="<?php echo $issuePermalink; ?>"><?php echo $articleValue["title_acf"]; ?></a></b>​ <span class="single_issue_pipe" style="color: <?php echo $colorPick; ?>"> | </span> <a href="<?php echo $issuePermalink; ?>"> <?php echo $articleValue["subtitle_acf"]; ?> </a></h4>
-
-
-   <?php $post_authors = get_the_terms( $issueid, 'authors' );
- 			 $loopNum = 0;
- 			 foreach($post_authors as $post_author)
- 			 {
- 			 	$loopNum++;
- 			 	$author_id = $post_author->term_id;
- 			 	
- 			 	$author_link = get_term_link($post_author);
- 			 	$author_name = $post_author->name;
- 			 	$author_description = $post_author->description;
- 			 	
- 			 	if($loopNum == 1)
- 			 	{
- 			 		?>
- 			 		<a href="<?php echo $author_link; ?>">
-						<?php echo $author_name;?>
-					</a>
- 			 		<?php
- 			 	}
- 			 	else
- 			 	{
- 			 		?>
-	 			 		<a href="<?php echo $author_link; ?>">
-							<?php echo $author_name;?>
-						</a>, 
- 			 		<?php
- 			 	}
- 			 }
-		
-?>
-
-
-
-			</div>
-		<?php } ?>
-
-		</div>
-<?php } ?>			 
-			
-<?php 
-$mentionIDs = get_post_meta($pageID, "select_mentions_acf", true);
-?>
-	<div class="com_heading01">  
-		<?php 
-		  foreach($mentionIDs as $mentionID)
-		  {
-		?>
-		<style type="text/css">
-			.com_heading01 h4#mention_<?php echo $mentionID; ?>   a:hover{ color: <?php echo $colorPick; ?>; }			
-		</style>
-		  <h4 id="mention_<?php echo $mentionID; ?>"><b style="color:<?php echo $colorPick; ?>;"> Extremely Abbreviated Reviews</b>​ <span style="color: <?php echo $colorPick; ?>">|</span> <a href="<?php echo get_the_permalink($mentionID);?>"><?php echo get_the_title($mentionID); ?></a> </h4>
-		<?php
-		  }
-		?>
-	</div>
-		</div>	
-	</div>	
-
-</section>
 <?php
 get_footer();
 ?>
