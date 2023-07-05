@@ -471,6 +471,11 @@ function twentyseventeen_scripts()
     wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), time());
     wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), time());
 
+    // Load subscribe css for bundle
+    if (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/bundle_subscribe.php'))) {
+        wp_enqueue_style('subscribe-style', get_theme_file_uri('/assets/css/subscribe.css'), array(), time());
+        wp_enqueue_style('bundle-style', get_theme_file_uri('/assets/css/bundle.css'), array(), time());
+    }
     if (is_front_page()) {
         // Load owl carousel stylesheet for homepage
         wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), time());
@@ -1096,20 +1101,12 @@ function manage_posts_per_page($query)
     }
 }
 
-// This dreadful technology is necessary ... for some reason. Still trying to diagnose why, but I think the issues page isn't properly set up as a page in some way
-add_filter('template_include', 'var_template_include', 1000);
-function var_template_include($t)
-{
-    $GLOBALS['current_theme_template'] = basename($t);
-    return $t;
-}
-
 function get_current_template($echo = false)
-{
-    if (!isset($GLOBALS['current_theme_template']))
-        return false;
-    if ($echo)
-        echo $GLOBALS['current_theme_template'];
-    else
-        return $GLOBALS['current_theme_template'];
-}
+ {
+     if (!isset($GLOBALS['current_theme_template']))
+         return false;
+     if ($echo)
+         echo $GLOBALS['current_theme_template'];
+     else
+         return $GLOBALS['current_theme_template'];
+ }
