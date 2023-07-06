@@ -137,6 +137,7 @@ if($colorPick == "")
 		.marb65 {margin-bottom: 65px;}
 		.about_outer {	
 			padding-top: 80px;
+			border-top : none;
 	}
 
 	@media (max-width: 767px) {
