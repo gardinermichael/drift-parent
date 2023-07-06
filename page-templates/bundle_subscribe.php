@@ -40,7 +40,9 @@ if ( $image = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) :
 			function init(){
 				const options = document.querySelectorAll('option');
 				options.forEach(option => {
-					option.setAttribute('disabled', 'disabled');
+					if (option.value != 'US') {
+						option.setAttribute('disabled', 'disabled');
+					}
 				})
 			}
 
