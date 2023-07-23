@@ -100,3 +100,25 @@
 section .promotion {
     outline: 2px solid black;
 }
+
+.constrained.new::after {
+    content: "(new!)";
+    top: 2.9rem !important;
+    left: 3rem !important;
+    position: absolute;
+    font-weight: 600;
+}
+
+@media(min-width: 768px){
+    .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
+        padding: 5px 0px;
+    }
+
+    .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label {
+        padding-left: 40px;
+    }
+
+    .page-template-subscribe .constrained.new::after {
+        left: 2.5rem !important;
+    }
+}
