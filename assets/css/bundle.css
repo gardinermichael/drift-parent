@@ -118,7 +118,7 @@ section .promotion {
         padding-left: 40px;
     }
 
-    .page-template-subscribe .constrained.new::after {
+    .constrained.new::after {
         left: 2.5rem !important;
     }
 }
