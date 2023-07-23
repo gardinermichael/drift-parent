@@ -473,7 +473,6 @@ function twentyseventeen_scripts()
 
     // Load subscribe css for bundle
     if (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/bundle_subscribe.php'))) {
-        wp_enqueue_style('subscribe-style', get_theme_file_uri('/assets/css/subscribe.css'), array(), time());
         wp_enqueue_style('bundle-style', get_theme_file_uri('/assets/css/bundle.css'), array(), time());
     }
     if (is_front_page()) {
@@ -557,7 +556,7 @@ function twentyseventeen_scripts()
     }
 
     global $post;
-    if (is_a($post, 'WP_Post') && (is_page_template(array('page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php')) || has_shortcode($post->content, 'fullstripe_form'))) {
+    if (is_a($post, 'WP_Post') && (is_page_template(array('page-templates/mixed-subscribe.php', 'page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php')) || has_shortcode($post->content, 'fullstripe_form'))) {
         wp_enqueue_script('fullstripe-custom-script', get_theme_file_uri('/assets/js/wpfs-script.js'), array('jquery'), '2.3.1', true);
     }
 }
