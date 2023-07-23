@@ -12,7 +12,7 @@
 }
 
 .max-w-4xl {
-    max-width: 68rem;
+    max-width: 66rem;
 }
 
 .mx-auto {
@@ -121,4 +121,9 @@ section .promotion {
     .constrained.new::after {
         left: 2.5rem !important;
     }
+}
+
+.ab_part_l .wpfs-form-check-group .wpfs-form-check {
+    width: 100% !important;
+    max-width: 300px;
 }
