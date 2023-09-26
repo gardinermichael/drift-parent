@@ -46,7 +46,7 @@
             let $label = $( this ).find( '.wpfs-form-check-label' );
             let $amount =  $input.data( 'wpfs-plan-amount' );
             let $currency = $input.data( 'wpfs-currency' );
-            let $planName = $input.data( 'wpfs-plan-name' );
+            let $planName = $input.data( 'wpfs-product-name' );
 
             let amount = new Intl.NumberFormat( 'en-US', { 
                 style: 'currency', 
