@@ -77,14 +77,6 @@
     padding: 1rem;
 }
 
-/* {font-size: 20px !important;
-border: 0px solid #000 !important;
-  border-bottom-color: rgb(0, 0, 0);
-  border-bottom-style: solid;
-  border-bottom-width: 0px;
-border-bottom: 1px solid #000 !important;
-} */
-
 form.search-form {
     display: flex;
     justify-content: center;
@@ -111,15 +103,6 @@ form.search-form {
   font-family: proxy-nova;
   src: url(../font/proxy/proxy.ttf);
 }
-/* @font-face {
-  font-family: savoy;
-  src: url(../font/savoy.ttf);
-}
-
-@font-face {
-    font-family: savoy-bold, savoy;
-    src: url(../font/savoy-bold.ttf);
-} */
 
 @font-face {
   font-family: franklin-gothic;
@@ -387,11 +370,9 @@ ul{
 }
 
 .menu_box_two img{
-    /*max-height: 80px;*/				/* === CHANGED ===*/
-	max-height: 65px;					/* === CHANGED 6.9 ===*/
+	max-height: 65px;
     position: relative;
-    /*top: 20px;*/						/* === CHANGED ===*/
-    top: 10px;							/* === CHANGED ===*/
+    top: 10px;
     transition: 1s ease all;
     -webkit-transition: 1s ease all;
 }
@@ -416,7 +397,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .sub_don.showInMobile .sub_donl {
     width: 100%;
 }
-#ajaxsearchlite1{ /*display: none; */}
 
 .wpfs-form-actions button.wpfs-btn:hover {
     background: #CBCBCB !important;
@@ -478,16 +458,15 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     font-size: 19px;
     top: -4px;
     position: relative;
-    /*color: purple;*/						/* === CHANGED 6.18 === */
     font-weight: bold;
 }
 .arti_heading h4 a strong {
     font-family: Adobe-Caslon;
-    /*display: inline-block;*/				/* === CHANGED 6.12 === */
 }
 .arti_heading {
     margin-top: 30px;
 }
+
 .arti_sub_heading{ margin-top: 10px; }
 .signup4mail_Left::before
  {
@@ -502,21 +481,17 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     content: "|";
     position: absolute;
     font-size: 52px;
-    /*top: 32px;*/						/* === CHANGED 6.9 === */
 	top: 20px;
     color: #9800ff;
     font-weight: bold;
 }
 .support_us_pipe{color: #9800ff;}
 .support_heading h3 {
-    /*margin-top: 13px;*/				/* === CHANGED === */
     font-family: Avenir-Next-Thin;
-    /*text-transform: uppercase;*/       /* ======== ADDED 6.1 ======== */
-    font-size: 40px;                     /* ======== ADDED 6.3 ======== */
-    /*padding-left: 0; */
-	padding-left: 38px;					/* === CHANGED 6.9 === */
-	/*color: #9800ff;*/                  /* ======== ADDED 6.1 ========= */
+    font-size: 40px;
+	padding-left: 38px;
 }
+
 .signup4mail_Right #mc_embed_signup {
     margin-top: 20px;
 }
@@ -555,7 +530,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .support_content p {
     font-size: 18px;
     font-family: Avenir-Next-Thin;
-	margin: auto; 								/* === ADDED 6.9 === */
+	margin: auto;
 }
 .signup4mail_BG #mc_embed_signup .mc-field-group input#mce-EMAIL{ background: #f5f5f6; }
 
@@ -658,9 +633,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     top: 24%;
     right: 3%;
 }
-/*.main_container_custom.padding_top{
-    margin-top: 70px;
-}*/
+
 .searchPage_Form_container {
     border-bottom: 1px solid;
     padding-bottom: 30px;
@@ -1318,7 +1291,6 @@ ul.social_icons li  i.fab{
 }
 
 
-
 .but62:hover,
 .but63:hover{
     color: var(--white) !important;;
@@ -1350,16 +1322,6 @@ ul.social_icons li  i.fab{
 
 
 .page-template-page-templatessubscribe-php #wpfs-form-get-parameters--ZTI4NGY ~ .wpfs-form-check-group{display: none;}
-
-.ab_part_l .wpfs-form-check-group::after{
-    /* Let's not make the form inaccessible */
-    /* display: block;
-    content: "";
-    top: 0;left: 0;width: 100%;height: 100%;
-    position: absolute;
-    background: rgba(255,255,255,0.7); */
-}
-
 
 .ab_part_l .wpfs-form-check-group .wpfs-form-check-group-title {
 display: none;
