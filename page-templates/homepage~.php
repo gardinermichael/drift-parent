@@ -56,12 +56,6 @@ $url = get_the_permalink($issue_ID);
     </div>
     <div class="ab_part_r home_issue_page_text">
         <div class="diff_font">
-            <?php
-            $text_loops = get_field('h_loop', $issue_ID);
-            $text_line = $text_loop["text"];
-            $article_linkID = $text_loop["article_link"];
-            $article_link = get_the_permalink($article_linkID);
-            ?>
             <h4>
                 <?php
                 $issueArgs = array("post_type" => "issue");
