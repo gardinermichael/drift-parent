@@ -4,11 +4,6 @@
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<?php
-   global $theme_option;
-   $favicon = $theme_option["favicon"]["url"];
-?>
-<link rel="icon" href="<?php echo $favicon; ?>" type="image/gif" sizes="64x64">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -275,10 +270,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
 </style>
 
 <div class="site_container">
-<?php
-  $getID = $_GET["id"];
-?>
-    <div class="sectionID" data-value="<?php echo $getID; ?>"></div>
  <section class="hed-wrap">
     <div class="Container" id="tf-hide-mob" style="display: none;">
 
