@@ -19,11 +19,6 @@
 
 <body <?php echo body_class(); ?>>
 
-<?php
-  global $theme_option;
-  $issue_color = $theme_option["issue_color"];
- ?>
-
 <style type="text/css">
 .form01 form .wpfs-w-20 {
     max-width: 100% !important;
@@ -188,9 +183,7 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
     border: 10px solid #fff;
     transform: rotate(64deg);
 }
-.diff_font h2 a {
-    color: <?php echo $issue_color; ?> !important;
-}
+
 .cus_post_outer .container,
 .bredcrum01 .container { 
     max-width: 900px;
@@ -281,11 +274,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
 }
 </style>
 
-<?php
-  global $theme_option;
-  $logo = $theme_option["logo_image"];
-  $logo = $logo["url"];
-?>
 <div class="site_container">
 <?php
   $getID = $_GET["id"];
@@ -316,7 +304,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
 
         <div class="menu_box_two">
             <a class="navbar-brand" href="<?php echo site_url(); ?>">
-              <img src="<?php echo $logo; ?>">
             </a>         
             <?php
               $pageID = get_the_id();
@@ -375,7 +362,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
                         <?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_3x.png'; ?> 3x"
                     type="image/png" >
                     <img
-                    src="<?php _($logo) ?>"
                     type="image/png"
                     alt="The Drift Magazine">
                 </picture>
@@ -401,7 +387,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
                             <?php echo get_theme_file_uri() . '/assets/images/drift_logo_mobile_3x.png'; ?> 3x"
                         type="image/png" >
                         <img
-                        src="<?php _($logo) ?>"
                         type="image/png"
                         alt="The Drift Magazine">
                     </picture>
