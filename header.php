@@ -313,20 +313,8 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
               }
             ?> 	       
             </div>
-<?php
-      $pageID = get_the_id();
-      if ($pageID != 6 && $pageID != 8) {?>
-            
-                <div class="menu_box_three">					
-                    <?php
-                        wp_nav_menu(array("menu" => "Top Right", "menu_class" => "menu-top-right", "menu_class" => "nav d-flex", 'items_wrap' => my_nav_wrap()))
-                    ?>
-                </div>
-<?php } ?>	   
       </div>
 <?php  ?>
-
-
       <div class="only_mobile_show">
           <ul id="menu-top-left" class="nav d-flex">
             <li><a href="<?php echo home_url(); ?>/about/">about</a></li>
