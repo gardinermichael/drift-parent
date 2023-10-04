@@ -1,27 +1,3 @@
-jQuery(document).ready(function($){
-	$(".share_text em a").each(function(){
-		var article_foo_anchor = $(this).children().html();
-		var start_issue = article_foo_anchor.includes('ISSUE');  
-		if(start_issue == true)
-		{
-			var i;
-			for(i=1; i < 11; i++)
-			{
-				var checkIssueNumber = article_foo_anchor.includes('ISSUE '+i);
-				if(checkIssueNumber == true)
-				{
-					$(this).children().html("ISSUE "+i);
-					$(this).attr("href", "https://www.thedriftmag.com/issues/#Issue "+i);
-				}
-			}
-		}
-		else
-		{
-		//	alert("Not found Issue");
-		}
-	});
-});
-
 (function() {
   'use strict';
   var api;
