@@ -61,9 +61,7 @@ $url = get_the_permalink($issue_ID);
                 </a>
             <?php } ?>
         </div>
-
     </div>
-
 </div>
 
 <section class="mission_outer">
@@ -77,9 +75,6 @@ $url = get_the_permalink($issue_ID);
         </div>
     </div>
 </section>
-
-
-
 
 <div class="signup4mail mt_wrap">
     <div class="signup4mail_BG">
@@ -166,8 +161,7 @@ $postLoop = new wp_query($postArgs);
         $post_imageID = get_post_thumbnail_id($postID, 'large');
 
         if ($post_imageID != "") {
-            $post_imageURL = wp_get_attachment_image_src($post_imageID, "large");
-            $post_imageURL = $post_imageURL[0];
+            list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
         }
@@ -196,7 +190,7 @@ $postLoop = new wp_query($postArgs);
 
             <div class="arti_feaImage ">
                 <a href="<?php echo $postLink; ?>">
-                    <img src="<?php echo $post_imageURL; ?>">
+                    <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
                 </a>
             </div>
 
@@ -326,8 +320,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
         $post_imageID = get_post_thumbnail_id($postID);
 
         if ($post_imageID != "") {
-            $post_imageURL = wp_get_attachment_image_src($post_imageID, "large");
-            $post_imageURL = $post_imageURL[0];
+            list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
         }
@@ -358,7 +351,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
 
             <div class="arti_feaImage">
                 <a href="<?php echo $postLink; ?>">
-                    <img src="<?php echo $post_imageURL; ?>">
+                    <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
                 </a>
             </div>
 
