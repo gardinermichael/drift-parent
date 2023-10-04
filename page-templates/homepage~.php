@@ -37,22 +37,6 @@ $url = get_the_permalink($issue_ID);
             </div>
         </div>
 
-        <!-- 			<div class="sub_don showInDesktop">
-                <div class="sub_donl">
-                    <a href="<?php // echo get_the_permalink(8);
-                                ?>">
-                        <h4>SUBSCRIBE</h4>
-                        <p>Read all of <i>The Drift online and—as soon as the world is up and running again—in</i> print.</p>
-                    </a>
-                </div>
-                <div class="sub_donl">
-                    <a href="<?php // echo get_the_permalink(6);
-                                ?>">
-                        <h4>DONATE </h4>
-                        <p>Help us pay our contributors and keep this new venture afloat.</p>
-                    </a>
-                </div>
-            </div> -->
     </div>
     <div class="ab_part_r home_issue_page_text">
         <div class="diff_font">
@@ -78,22 +62,6 @@ $url = get_the_permalink($issue_ID);
             <?php } ?>
         </div>
 
-    </div>
-
-
-    <div class="sub_don showInMobile">
-        <div class="sub_donl">
-            <a href="<?php echo get_the_permalink(8); ?>">
-                <h4>SUBSCRIBE</h4>
-                <p>Read all of <i>The Drift online and—as soon as the world is up and running again—in</i> print.</p>
-            </a>
-        </div>
-        <div class="sub_donl">
-            <a href="<?php echo get_the_permalink(6); ?>">
-                <h4>DONATE </h4>
-                <p>Help us pay our contributors and keep this new venture afloat.</p>
-            </a>
-        </div>
     </div>
 
 </div>
