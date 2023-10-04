@@ -746,17 +746,6 @@ require_once get_template_directory() . '/redux/sample-config.php';
 require_once get_template_directory() . '/post_type.php';/*
 
 
-add_action('admin_enqueue_scripts','wptuts53021_load_admin_script');
-function wptuts53021_load_admin_script( $hook ){
-    wp_enqueue_script(
-        'wptuts53021_script', //unique handle
-        get_template_directory_uri().'/admin-scripts.js', //location
-        array('jquery')  //dependencies
-     );
-}*/
-
-
-
 //hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_topics_hierarchical_taxonomy', 0);
 
@@ -816,40 +805,6 @@ if (!function_exists('redirect_404_to_homepage')) {
         endif;
     }
 }
-/*404 Page redirect to HOMEPAGE code STARTS here */
-
-
-/* Search Page redirect to HOMEPAGE code STARTS here *//*
-add_action('template_redirect', 'bwp_template_redirect');
-function bwp_template_redirect()
-{
-global $wp_query, $post;
-
-if (is_author() || is_attachment() || is_day() || is_search() || is_multi_author() )
-{
-wp_redirect(get_option('home'));
-exit;
-}
-
-if (is_feed())
-{
-$author = get_query_var('author_name');
-$attachment = get_query_var('attachment');
-$attachment = (empty($attachment)) ? get_query_var('attachment_id') : $attachment;
-$day = get_query_var('day');
-$search = get_query_var('s');
-
-if (!empty($author) || !empty($attachment) || !empty($day) || !empty($search))
-{
-$wp_query->set_404();
-$wp_query->is_feed = false;
-}
-}
-}*/
-/* Search Page redirect to HOMEPAGE code ENDS here */
-
-
-
 
 /**
  * Redirect to the homepage all users trying to access feeds STARTS HERE .
@@ -961,19 +916,6 @@ function add_form_fields_example($term, $taxonomy)
     </tr>
 <?php
 }
-
-/* Redirect individual to issue pages to main Issues page as single issues aren't implemented */
-/*
-add_action('template_redirect', 'redirect_cpt_singular_posts');
-function redirect_cpt_singular_posts()
-{
-    if (is_singular('issue')) {
-        $Issues_pageURL  = get_the_permalink(14);
-        wp_redirect($Issues_pageURL, 302);
-        exit;
-    }
-}
-*/
 
 add_action('admin_enqueue_scripts', 'ds_admin_theme_style');
 add_action('login_enqueue_scripts', 'ds_admin_theme_style');
