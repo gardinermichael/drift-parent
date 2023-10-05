@@ -421,7 +421,7 @@ $select_articles = get_post_meta($pageID, "select_issues", true);
                 <b><a href="<?php echo $article_permalink; ?>"><?php echo $post_sitle; ?></a></b>​ <?php if ($post_subsitle != "") {?><span class="singleArtiIssue_pipe"> |</span><a href="<?php echo $article_permalink; ?>" class="mr-subtitle"><?php echo $post_subsitle; ?></a><?php } ?>
             </h4>
             <?php if ($article_editor_name!= "") {?>
-                <p><a href="<?php echo $article_permalink; ?>" class="moreAuhor"><?php echo $article_editor_name; ?></a></p>
+                <p><a href="<?php echo $article_permalink; ?>" class="moreAuthor"><?php echo $article_editor_name; ?></a></p>
             <?php } ?>
             <!-- <div class="text-treview"><?php  // echo  wp_trim_words( get_the_content(), 35, '...' );?></div>		 -->
         </div>

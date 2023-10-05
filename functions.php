@@ -466,31 +466,40 @@ function twentyseventeen_scripts()
     // Theme block stylesheet.
     wp_enqueue_style('twentyseventeen-block-style', get_theme_file_uri('/assets/css/blocks.css'), array('twentyseventeen-style'), '20190105');
 
-    wp_enqueue_style('drift-all-style', get_theme_file_uri('/assets/css/all.min.css'), array(), time());
-    wp_enqueue_style('aos-style', get_theme_file_uri('/assets/css/aos.css'), array(), time());
-    wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), time());
-    wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), time());
+    $drift_all_style_path = get_theme_file_path('/assets/css/all.min.css');
+    wp_enqueue_style('drift-all-style', get_theme_file_uri('/assets/css/all.min.css'), array(), filemtime($drift_all_style_path));
+    $aos_style_path = get_theme_file_path('/assets/css/aos.css');
+    wp_enqueue_style('aos-style', get_theme_file_uri('/assets/css/aos.css'), array(), filemtime($aos_style_path));
+    $bootstrap_style_path = get_theme_file_path('/assets/css/bootstrap.min.css');
+    wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), filemtime($bootstrap_style_path));
+    $drift_custom_path = get_theme_file_path('/assets/css/custom-updated.css');
+    wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), filemtime($drift_custom_path));
 
     // Load subscribe css for bundle
     if (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/bundle_subscribe.php'))) {
-        wp_enqueue_style('bundle-style', get_theme_file_uri('/assets/css/bundle.css'), array(), time());
+        $bundle_style_path = get_theme_file_path('/assets/css/bundle.css');
+        wp_enqueue_style('bundle-style', get_theme_file_uri('/assets/css/bundle.css'), array(), filemtime($bundle_style_path));
     }
     if (is_front_page()) {
         // Load owl carousel stylesheet for homepage
-        wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), time());
+        $owl_style_path = get_theme_file_path('/assets/css/owl.carousel.min.css');
+        wp_enqueue_style('owl-style', get_theme_file_uri('/assets/css/owl.carousel.min.css'), array(), filemtime($owl_style_path));
 
         // Load front page specific css
-        wp_enqueue_style('home-style', get_theme_file_uri('/assets/css/home.css'), array(), time());
+        $home_style_path = get_theme_file_path('/assets/css/home.css');
+        wp_enqueue_style('home-style', get_theme_file_uri('/assets/css/home.css'), array(), filemtime($home_style_path));
     }
 
     // Load the stylesheet for single articles
     if (is_single()) {
-        wp_enqueue_style('single-style', get_theme_file_uri('/assets/css/single.css'), array(), time());
+        $single_style_path = get_theme_file_path('/assets/css/single.css');
+        wp_enqueue_style('single-style', get_theme_file_uri('/assets/css/single.css'), array(), filemtime($single_style_path));
     }
 
     // Load issue stylesheet for issues plural or singular
     if (get_current_template() == 'issues.php' | is_singular('issue')) {
-        wp_enqueue_style('issue-style', get_theme_file_uri('/assets/css/issue.css'), array(), time());
+        $issues_style_path = get_theme_file_path('/assets/css/issue.css');
+        wp_enqueue_style('issue-style', get_theme_file_uri('/assets/css/issue.css'), array(), filemtime($issues_style_path));
     }
 
     // Load the dark colorscheme.
@@ -544,7 +553,8 @@ function twentyseventeen_scripts()
     wp_enqueue_script('aos-script', get_theme_file_uri('/assets/js/aos.js'), array(), '2.3.1', true);
     wp_enqueue_script('aos-config-script', get_theme_file_uri('/assets/js/aos-config.js'), array('aos-script'), '2.3.1', true);
     wp_enqueue_script('imagesloaded-script', get_theme_file_uri('/assets/js/imagesloaded.pkgd.js'), array('jquery'), '2.3.1', true);
-    wp_enqueue_script('custom-script', get_theme_file_uri('/assets/js/custom-js-28-updated.js'), array('jquery'), '2.3.2', true);
+    $custom_js_path = get_theme_file_path('/assets/js/custom-js.js');
+    wp_enqueue_script('custom-script', get_theme_file_uri('/assets/js/custom-js.js'), array('jquery'), filemtime($custom_js_path), true);
 
     // owl carousel script for the homepage
     if (is_front_page()) {
@@ -736,17 +746,6 @@ require_once get_template_directory() . '/redux/sample-config.php';
 require_once get_template_directory() . '/post_type.php';/*
 
 
-add_action('admin_enqueue_scripts','wptuts53021_load_admin_script');
-function wptuts53021_load_admin_script( $hook ){
-    wp_enqueue_script(
-        'wptuts53021_script', //unique handle
-        get_template_directory_uri().'/admin-scripts.js', //location
-        array('jquery')  //dependencies
-     );
-}*/
-
-
-
 //hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_topics_hierarchical_taxonomy', 0);
 
@@ -806,40 +805,6 @@ if (!function_exists('redirect_404_to_homepage')) {
         endif;
     }
 }
-/*404 Page redirect to HOMEPAGE code STARTS here */
-
-
-/* Search Page redirect to HOMEPAGE code STARTS here *//*
-add_action('template_redirect', 'bwp_template_redirect');
-function bwp_template_redirect()
-{
-global $wp_query, $post;
-
-if (is_author() || is_attachment() || is_day() || is_search() || is_multi_author() )
-{
-wp_redirect(get_option('home'));
-exit;
-}
-
-if (is_feed())
-{
-$author = get_query_var('author_name');
-$attachment = get_query_var('attachment');
-$attachment = (empty($attachment)) ? get_query_var('attachment_id') : $attachment;
-$day = get_query_var('day');
-$search = get_query_var('s');
-
-if (!empty($author) || !empty($attachment) || !empty($day) || !empty($search))
-{
-$wp_query->set_404();
-$wp_query->is_feed = false;
-}
-}
-}*/
-/* Search Page redirect to HOMEPAGE code ENDS here */
-
-
-
 
 /**
  * Redirect to the homepage all users trying to access feeds STARTS HERE .
@@ -951,19 +916,6 @@ function add_form_fields_example($term, $taxonomy)
     </tr>
 <?php
 }
-
-/* Redirect individual to issue pages to main Issues page as single issues aren't implemented */
-/*
-add_action('template_redirect', 'redirect_cpt_singular_posts');
-function redirect_cpt_singular_posts()
-{
-    if (is_singular('issue')) {
-        $Issues_pageURL  = get_the_permalink(14);
-        wp_redirect($Issues_pageURL, 302);
-        exit;
-    }
-}
-*/
 
 add_action('admin_enqueue_scripts', 'ds_admin_theme_style');
 add_action('login_enqueue_scripts', 'ds_admin_theme_style');

@@ -37,22 +37,6 @@ $url = get_the_permalink($issue_ID);
             </div>
         </div>
 
-        <!-- 			<div class="sub_don showInDesktop">
-                <div class="sub_donl">
-                    <a href="<?php // echo get_the_permalink(8);
-                                ?>">
-                        <h4>SUBSCRIBE</h4>
-                        <p>Read all of <i>The Drift online and—as soon as the world is up and running again—in</i> print.</p>
-                    </a>
-                </div>
-                <div class="sub_donl">
-                    <a href="<?php // echo get_the_permalink(6);
-                                ?>">
-                        <h4>DONATE </h4>
-                        <p>Help us pay our contributors and keep this new venture afloat.</p>
-                    </a>
-                </div>
-            </div> -->
     </div>
     <div class="ab_part_r home_issue_page_text">
         <div class="diff_font">
@@ -77,25 +61,7 @@ $url = get_the_permalink($issue_ID);
                 </a>
             <?php } ?>
         </div>
-
     </div>
-
-
-    <div class="sub_don showInMobile">
-        <div class="sub_donl">
-            <a href="<?php echo get_the_permalink(8); ?>">
-                <h4>SUBSCRIBE</h4>
-                <p>Read all of <i>The Drift online and—as soon as the world is up and running again—in</i> print.</p>
-            </a>
-        </div>
-        <div class="sub_donl">
-            <a href="<?php echo get_the_permalink(6); ?>">
-                <h4>DONATE </h4>
-                <p>Help us pay our contributors and keep this new venture afloat.</p>
-            </a>
-        </div>
-    </div>
-
 </div>
 
 <section class="mission_outer">
@@ -109,9 +75,6 @@ $url = get_the_permalink($issue_ID);
         </div>
     </div>
 </section>
-
-
-
 
 <div class="signup4mail mt_wrap">
     <div class="signup4mail_BG">
@@ -198,8 +161,7 @@ $postLoop = new wp_query($postArgs);
         $post_imageID = get_post_thumbnail_id($postID, 'large');
 
         if ($post_imageID != "") {
-            $post_imageURL = wp_get_attachment_image_src($post_imageID, "large");
-            $post_imageURL = $post_imageURL[0];
+            list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
         }
@@ -228,7 +190,7 @@ $postLoop = new wp_query($postArgs);
 
             <div class="arti_feaImage ">
                 <a href="<?php echo $postLink; ?>">
-                    <img src="<?php echo $post_imageURL; ?>">
+                    <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
                 </a>
             </div>
 
@@ -358,8 +320,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
         $post_imageID = get_post_thumbnail_id($postID);
 
         if ($post_imageID != "") {
-            $post_imageURL = wp_get_attachment_image_src($post_imageID, "large");
-            $post_imageURL = $post_imageURL[0];
+            list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
         }
@@ -390,7 +351,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
 
             <div class="arti_feaImage">
                 <a href="<?php echo $postLink; ?>">
-                    <img src="<?php echo $post_imageURL; ?>">
+                    <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
                 </a>
             </div>
 

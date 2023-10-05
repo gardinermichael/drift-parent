@@ -393,10 +393,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     background: #f6f6f6 !important;
     border-radius: 0 !important;
 }
-.sub_don.showInMobile { display: none; }
-.sub_don.showInMobile .sub_donl {
-    width: 100%;
-}
 
 .wpfs-form-actions button.wpfs-btn:hover {
     background: #CBCBCB !important;
@@ -1635,8 +1631,7 @@ ul.social_icons li {
 .arti_heading{ margin-top: 10px; }
 
 .signup4mail_Left h3{ padding-left: 0;  font-size: 24px; margin-bottom: 0; }
-.sub_don.showInDesktop { display: none; }
-.sub_don.showInMobile { display: none; }
+
 .drift_container {
     padding-top: 0px;
 }
@@ -2064,10 +2059,7 @@ section.mission_outer {
     position: relative;
     z-index: 999;
 }
-.sub_donl {
-    position: relative;
-    z-index: 999;
-}
+
 .about_r {
     position: relative;
     z-index: 999;
@@ -3437,9 +3429,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         /*padding: 20px !important;*/
 		padding: 0px 10px 20px 15px !important;
     }
-    .sub_donl {
-        padding: 25px !important;
-    }
+    
     .mission p {
         text-align: left !important;
     }
