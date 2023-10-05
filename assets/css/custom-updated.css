@@ -419,6 +419,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .arti_feaImage {
     width: 100%;
 }
+
 .arti_feaImage img {
     height: 275px;
     width: 100%;
@@ -2669,10 +2670,7 @@ div.asl_w .probox .promagnifier .innericon svg {
     font-family: 'Avenir-Next-Thin';
     font-size: 16px;
 }
-.desktop_new_menu .desktop-logo img {
-    height: 65px;
-    width: auto;
-}
+
 .desktop_new_menu .desktop-logo {
     justify-content: center;
     display: flex;
@@ -3091,10 +3089,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         content: '';
         clear: both;
     }
-    .td-mobile-logo img {
-        height: 50px;
-        width: auto;
-    }
+
     .td-mobile-menus span {
         color: #303030;
         font-size: 36px;
