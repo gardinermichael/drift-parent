@@ -136,76 +136,78 @@ else
 		<div class="container">
 <?php 
  $about_options =  CFS()->get( 'about_content_section', $pageID );
- $sizeofAbout = sizeof($about_options);
- $loopNum = 0;
- foreach($about_options as $about_option)
- { 
- 	$loopNum++;
- 	if($loopNum == $sizeofAbout)
- 	{
- 		$contact_id = "contact_".$loopNum;
- 	}
- 	else
- 	{
- 		$contact_id = "";
- 	}
- 	$a_heading = $about_option["heading_line"];
- 	$about_subtitle = $about_option["about_subtitle"];
- 	$submit_content = $about_option["submit_content"];
-?>			
-			<div class="about_outer" id="<?php echo $contact_id; ?>">
+ if ($about_options) {
+	$sizeofAbout = sizeof($about_options);
+	$loopNum = 0;
+	foreach($about_options as $about_option)
+	{ 
+		$loopNum++;
+		if($loopNum == $sizeofAbout)
+		{
+			$contact_id = "contact_".$loopNum;
+		}
+		else
+		{
+			$contact_id = "";
+		}
+		$a_heading = $about_option["heading_line"];
+		$about_subtitle = $about_option["about_subtitle"];
+		$submit_content = $about_option["submit_content"];
+	?>			
+				<div class="about_outer" id="<?php echo $contact_id; ?>">
+
+					<?php 
+					if($a_heading != "" || $about_subtitle != "")
+					{
+					?>
+					<div class="about_o d-flex">
+						<div class="about_l">
+							
+						</div>
+						<div class="about_r submit_heading">
+							<h3 id="contact"> 
+								<?php if($a_heading != ""){?><b> <?php echo $a_heading; ?> </b> <?php } ?> 
+								<?php if($about_subtitle != ""){ echo "<span class='submit_span'>|</span> ".$about_subtitle; } ?> 
+							</h3>
+						</div>
+					</div>
+				<?php  }  ?>
+
 
 				<?php 
-				 if($a_heading != "" || $about_subtitle != "")
-				 {
+					foreach($submit_content as $content_value)
+					{
+						$about_title = $content_value["about_title"];
+						$about_text = $content_value["about_text"];
 				?>
-				<div class="about_o d-flex">
-					<div class="about_l">
+					<div class="about_o d-flex">
+
+						<div class="about_l">
+
+							<?php if($about_title != "") {  ?>
+							<h4><?php echo $about_title; ?> <span>|</span></h4>
+							<?php } ?>
+
+						</div>
+
+						<div class="about_r">
+							<?php 
+							if($about_text != "")
+							{
+							?>
+							<p>
+								<?php echo $about_text; ?>						   		
+							</p>
+						<?php } ?>
+
+						</div>
 						
 					</div>
-					<div class="about_r submit_heading">
-						<h3 id="contact"> 
-							<?php if($a_heading != ""){?><b> <?php echo $a_heading; ?> </b> <?php } ?> 
-							<?php if($about_subtitle != ""){ echo "<span class='submit_span'>|</span> ".$about_subtitle; } ?> 
-						</h3>
-					</div>
-				</div>
-			<?php  }  ?>
-
-
-			<?php 
-				foreach($submit_content as $content_value)
-				{
-					$about_title = $content_value["about_title"];
-					$about_text = $content_value["about_text"];
-			?>
-				<div class="about_o d-flex">
-
-					<div class="about_l">
-
-						<?php if($about_title != "") {  ?>
-						   <h4><?php echo $about_title; ?> <span>|</span></h4>
-					    <?php } ?>
-
-					</div>
-
-					<div class="about_r">
-						<?php 
-						  if($about_text != "")
-						  {
-						?>
-						   <p>
-						   	<?php echo $about_text; ?>						   		
-						   </p>
-					   <?php } ?>
-
-					</div>
+				<?php } ?>
 					
 				</div>
-			<?php } ?>
-				
-			</div>
-<?php   } ?>
+	<?php   } ?>
+<?php }?>
 
 
 		</div>
