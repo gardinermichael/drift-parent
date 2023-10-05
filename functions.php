@@ -557,7 +557,7 @@ function twentyseventeen_scripts()
 
     global $post;
     if (is_a($post, 'WP_Post') && (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/subscribe.php', 'page-templates/donate.php', 'page-templates/subscribe_template.php')) || has_shortcode($post->content, 'fullstripe_form'))) {
-        wp_enqueue_script('fullstripe-custom-script', get_theme_file_uri('/assets/js/wpfs-script.js'), array('jquery'), '2.3.1', true);
+        wp_enqueue_script('fullstripe-custom-script', get_theme_file_uri('/assets/js/wpfs-script.js'), array('jquery'), '2.3.2', true);
     }
 }
 add_action('wp_enqueue_scripts', 'twentyseventeen_scripts');
@@ -792,70 +792,6 @@ function get_first_paragraph()
     $str = strip_tags($str, '<a><strong><em>');
 
     return '<p>' . $str . '</p>';
-}
-
-
-
-function my_nav_wrap()
-{
-    global $theme_option;
-    $issue_color = $theme_option["issue_color"];
-
-    $facebook_url = $theme_option["facebook_url"];
-    $twitter_url = $theme_option["twitter_url"];
-    $instagram_url = $theme_option["instagram_url"];
-
-    $youtube_url = $theme_option["youtube_url"];
-    $linkedin_url = $theme_option["linkedin_url"];
-    $pinterest_url = $theme_option["pinterest_url"];
-    $gplus_url = $theme_option["gplus_url"];
-
-    if ($facebook_url != "") {
-        $socialHTML .= '<li><a href="' . $facebook_url . '" target="_blank"><i class="fab fa-facebook-f"></i></a></li>';
-    }
-
-    if ($twitter_url != "") {
-        $socialHTML .= '<li><a href="' . $twitter_url . '" target="_blank"><i class="fab fa-twitter"></i></a></li>';
-    }
-
-    if ($instagram_url != "") {
-        $socialHTML .= '<li><a href="' . $instagram_url . '" target="_blank"><i class="fab fa-instagram"></i></a></li>';
-    }
-
-    if ($youtube_url != "") {
-        $socialHTML .= '<li><a href="' . $youtube_url . '" target="_blank"><i class="fab fa-youtube"></i></a></li>';
-    }
-
-    if ($linkedin_url != "") {
-        $socialHTML .= '<li><a href="' . $linkedin_url . '" target="_blank"><i class="fab fa-linkedin"></i></a></li>';
-    }
-
-    if ($pinterest_url != "") {
-        $socialHTML .= '<li><a href="' . $pinterest_url . '" target="_blank"><i class="fab fa-pinterest"></i></a></li>';
-    }
-
-    if ($gplus_url != "") {
-        $socialHTML .= '<li><a href="' . $gplus_url . '" target="_blank"><i class="fab fa-google-plus-square"></i></a></li>';
-    }
-    $socialHTML .=  '<li id="menu-item-294" class="drift_search_link menu-item menu-item-type-custom menu-item-object-custom menu-item-294"><a><i class="fa fa-search"></i></a></li>';
-
-    // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
-
-    // open the <ul>, set 'menu_class' and 'menu_id' values
-    $wrap  = '<ul id="%1$s" class="%2$s">';
-
-
-    // get nav items as configured in /wp-admin/
-    $wrap .= '%3$s';
-
-
-    // the static link
-    $wrap .= '<li><ul class="social_icons">' . $socialHTML . '</ul></li>';
-    // close the <ul>
-    $wrap .= '</ul>';
-
-    // return the result
-    return $wrap;
 }
 
 /*404 Page redirect to HOMEPAGE code STARTS here */

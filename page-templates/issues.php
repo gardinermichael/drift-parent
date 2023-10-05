@@ -1,8 +1,6 @@
 <?php
 /* Template name: Issues page */
 get_header();
-global $theme_option;
-$issue_color = $theme_option["issue_color"];
 ?>
 
 <?php

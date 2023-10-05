@@ -12,8 +12,6 @@
  */
 
 get_header();
-global $theme_option;
-$issue_color = $theme_option["issue_color"];
 $pageID=get_the_id();
 $bannerImageID = get_post_thumbnail_id($pageID);
 if ($bannerImageID != "") {

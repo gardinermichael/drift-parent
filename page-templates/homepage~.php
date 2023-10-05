@@ -56,12 +56,6 @@ $url = get_the_permalink($issue_ID);
     </div>
     <div class="ab_part_r home_issue_page_text">
         <div class="diff_font">
-            <?php
-            $text_loops = get_field('h_loop', $issue_ID);
-            $text_line = $text_loop["text"];
-            $article_linkID = $text_loop["article_link"];
-            $article_link = get_the_permalink($article_linkID);
-            ?>
             <h4>
                 <?php
                 $issueArgs = array("post_type" => "issue");
@@ -298,15 +292,15 @@ $mentionSubHeading = get_post_meta($pageID, "mention_subheading", true);
 
                 $mention_textValue = $mention_text["mention_text"];
                 $mention_link  = $mention_text["mention_link"];
-                $mention_mention_style = $mention_text["mention_style"]["Italic"];
-                $men_textValue_filtered = filter_var($mention_textValue, FILTER_SANITIZE_STRING);
+                $mention_is_italic = array_key_exists("Italic", $mention_text["mention_style"]);
+                $men_textValue_filtered = filter_var($mention_textValue, FILTER_UNSAFE_RAW);
 
                 if ($mention_link == "") {
                     //$mention_link = "#";
                     $mention_link = esc_url(site_url("/mentions/#$mention_textValue"));
                     //$mention_link = esc_url("/mentions/#$men_textValue_filtered");
                 }
-                if ($mention_mention_style == "Italic") {
+                if ($mention_is_italic) {
                     $mentionClass = " mention_italic ";
                 } else {
                     $mentionClass = "";
