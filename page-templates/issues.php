@@ -17,8 +17,7 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
   $pageID = get_the_id();
   $bannerImageID = get_post_thumbnail_id($pageID);
   if ($bannerImageID != "") {
-      $bannerImageURL = wp_get_attachment_image_src($bannerImageID, "full");
-      $bannerImageURL = $bannerImageURL[0];
+      list($bannerImageURL, $banner_width, $banner_height) = wp_get_attachment_image_src($bannerImageID, "full");
   }
 
   $issue_subtitle = get_post_meta($pageID, "issue_subtitle_acf", true);
@@ -31,7 +30,7 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
 ?>
 <div class="row issues_container">
 <div class=" col-md-6 issue_div_left">
-  <img src="<?php echo $bannerImageURL; ?>">
+  <img src="<?php echo $bannerImageURL; ?>" width="<?php echo $banner_width; ?>" height="<?php echo $banner_height; ?>">
 </div>
 
 <div class=" col-md-6 issue_div_right">

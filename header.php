@@ -342,7 +342,9 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
                     type="image/png" >
                     <img
                     type="image/png"
-                    alt="The Drift Magazine">
+                    alt="The Drift Magazine"
+                    width="136"
+                    height="65">
                 </picture>
             </a> 
         </div>
@@ -356,7 +358,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
         <div class="container no-print">
             <div class="td-mobile-logo">
                 <a href="<?php echo home_url(); ?>">
-
                     <picture>
                         <source
                         media="(max-width: 1023px)"
@@ -367,7 +368,9 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
                         type="image/png" >
                         <img
                         type="image/png"
-                        alt="The Drift Magazine">
+                        alt="The Drift Magazine"
+                        width="104"
+                        height="50">
                     </picture>
                 </a> 
             </div>

@@ -743,7 +743,7 @@ require get_parent_theme_file_path('/inc/customizer.php');
 require get_parent_theme_file_path('/inc/icon-functions.php');
 
 require_once get_template_directory() . '/redux/sample-config.php';
-require_once get_template_directory() . '/post_type.php';/*
+require_once get_template_directory() . '/post_type.php';
 
 
 //hook into the init action and call create_book_taxonomies when it fires
@@ -781,16 +781,6 @@ function create_topics_hierarchical_taxonomy()
         'query_var' => true,
         'rewrite' => array('slug' => 'article_author'),
     ));
-}
-function get_first_paragraph()
-{
-    global $post;
-
-    $str = wpautop(get_the_content());
-    $str = substr($str, 0, strpos($str, '</p>') + 4);
-    $str = strip_tags($str, '<a><strong><em>');
-
-    return '<p>' . $str . '</p>';
 }
 
 /*404 Page redirect to HOMEPAGE code STARTS here */
