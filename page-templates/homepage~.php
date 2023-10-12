@@ -115,7 +115,8 @@ $url = get_the_permalink($issue_ID);
                         </div>
                     </form>
                 </div>
-                <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+                <!-- uncomment if the mc-validate script is ever removed from footer -->
+                <!-- <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script> -->
                 <script type='text/javascript'>
                     (function($) {
                         window.fnames = new Array();
