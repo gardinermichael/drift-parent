@@ -27,10 +27,9 @@ $url = get_the_permalink($issue_ID);
                     <img src="<?php bloginfo('template_url'); ?>/assets/images/shot1.png">
                 <?php
                 } else {
-                    $thumbURL = wp_get_attachment_image_src($thumbID, "full");
-                    $thumbURL = $thumbURL[0];
+                    list($thumbURL, $width, $height) = wp_get_attachment_image_src($thumbID, "full");
                 ?>
-                    <a href="<?php echo ($url);?>"><img src="<?php echo $thumbURL; ?>"></a>
+                    <a href="<?php echo ($url);?>"><img src="<?php echo $thumbURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"></a>
                 <?php
                 }
                 ?>

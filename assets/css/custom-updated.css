@@ -317,6 +317,16 @@ img{
     height: auto;
 }
 
+.td-mobile-logo img {
+    width: inherit;
+    height: inherit;
+}
+
+.desktop-logo img {
+    width: inherit;
+    height: inherit;
+}
+
 ul{
     text-decoration: none;list-style: none;
     margin: 0px;
