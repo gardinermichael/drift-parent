@@ -8,8 +8,7 @@ $category = get_the_category()[0];
 $issue_name = $category->name; // assume only 1 category
 
 if ($page_imageID != "") {
-    $page_imageURL = wp_get_attachment_image_src($page_imageID, "main-image-on-single");
-    $page_imageURL = $page_imageURL[0];
+    list($page_imageURL, $width, $height) = wp_get_attachment_image_src($page_imageID, "main-image-on-single");
 
     $attachment = get_post($page_imageID);
     $caption = $attachment->post_excerpt;
@@ -101,7 +100,7 @@ if ($type_of_titles == "Style 2") {
               wp_reset_query(); ?>
                 </div>
 
-                    <img src="<?php echo $page_imageURL; ?>">
+                    <img src="<?php echo $page_imageURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
                     <?php
                         if ($caption != "") {
                             echo "<p class='caption'>".$caption."</p>";
