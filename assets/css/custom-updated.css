@@ -1,5 +1,3 @@
-/* Pea Changes 8/25/2022 */
-
 /* Self-Hosted Google Fonts not picking up roboto */
 .page-template-mentions .about_r h4 {
     font-size: 28px;
@@ -563,7 +561,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     padding: 30px;
 }
 
-.com_logo{}
 .com_logo img{
     margin: auto;
     display: block;
@@ -744,13 +741,12 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     border-color: var(--secondary-color);
     box-shadow: 0px 0px 0px 1px var(--black) !important;
 }
-.ab_part{}
+
 .ab_part_l {
     width: 50%;
     justify-content: flex-end;
     text-align: right;
-     /*top: -15px;                       /* === CHANGED === */
-    top: 0px;                           /* === ADDED 6.3 === */
+    top: 0px;
     position: relative;
 }
 .wpfs-form-control:not(.wpfs-form-control--error).wpfs-form-control--focus, .wpfs-form-control:not(.wpfs-form-control--error):focus {
@@ -762,8 +758,7 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     margin-left: -15px;
 }
 .ab_part_img{
-    /*right: 0;*/                       /* === CHANGED === */
-    right: 10px;                        /* === ADDED 6.3 === */
+    right: 10px;
     position: relative;
 }
 .ab_part_img img {
@@ -826,18 +821,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     font-family: proxy-nova;
 }
 
-.form01 form {}
-/*.form01 form #wpfs-form-get-parameters--ZjFiZTB ~ .wpfs-form-group{
-    display: none;
-}*/
-
-/*.form01 form .wpfs-form-select{display:none;}*/
-
-
-/*.form01 form .wpfs-form-select,
-.form01 form .ui-selectmenu-button,
-.form01 form .wpfs-form-select select{display:none !important;}*/
-
 .wpfs-form-label[for="wpfs-custom-amount--ZjFiZTB-button"],
 .form01 form .wpfs-form-label[for="wpfs-custom-amount--ZjFiZTB-button"] {
     display: none;
@@ -866,7 +849,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 }
 
 input.unfocus_email::placeholder { font-size: 0; }
-
 
 input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--gray);font-family: proxy-nova;
@@ -900,22 +882,15 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     margin: 0px 0;
 }
 
-.wpfs-btn-primary--loader:after{
-    /** Let's not hide the loader - **/
-    /* display:none !important;  */
-}
-
 .ab_part_r{
     width: 50%;
 }
 .com_heading h3 {
     font-size: 36px;
     font-family: Avenir-Next-Thin;
-    /*text-transform: capitalize;*/ 			/*=== CHANGED 6.19 === */
 }
 
 .postid-2274 .com_heading h3 {
-    /* font-family: savoy, serif; */
     font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
 
@@ -925,7 +900,6 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 
 .com_heading h3 b,
 .com_heading h3 strong {
-    /** Let's add strong too **/
     font-size: 40px;
     font-weight: bold;
     font-family: Adobe-Caslon;
@@ -1063,7 +1037,6 @@ ul.social_icons li  i.fab{
     font-size: 32px;
 }
 
-
 .but62{
     border: 1px solid var(--gray);
     text-transform: capitalize;
@@ -1107,20 +1080,6 @@ ul.social_icons li  i.fab{
     padding: 0 !important;
     left: 0 !important;
 }
-.news_l .but62, {
-    border: 1px solid var(--gray) !important;
-    text-transform: capitalize;
-    padding: 6px 45px !important;
-    border-radius: 13px !important;
-    cursor: pointer !important;
-    font-size: 20px !important;
-    color: var(--gray) !important;
-    height: auto !important;
-    width: auto !important;
-    background: transparent !important;
-    line-height: 1em !important;
-}
-
 
 .wpfs-form-actions{
     float: right !important;
@@ -1143,11 +1102,6 @@ ul.social_icons li  i.fab{
     box-shadow: none !important;
     border-radius: 9px !important;
 }
-.wpfs-form-actions button.wpfs-btn {
-    /** Let's not reset the margin - Pea **/
-    /* margin-right: 0 !important; */
-}
-
 
 .but62:hover,
 .but63:hover{
@@ -1161,13 +1115,10 @@ ul.social_icons li  i.fab{
     max-width: 100% !important;
 }
 
-/* SUB SCRIBE */
-.ab_part_l {}
-
+/* SUBSCRIBE */
 
 #wpfs-form-get-parameters--ZTI4NGY ~ .wpfs-form-check-group {
     position: relative;
-
     background-color: rgba(255,255,255,1);
     padding: 45px;
     background-repeat: no-repeat;
@@ -1193,7 +1144,6 @@ display: none;
 }
 .page-template-subscribe .ab_part_l .wpfs-form-check-group .wpfs-form-check {
     position: relative;
-   /* z-index: 9;*/
     width: 45% !important;
     display: block;
     float: none;
@@ -1365,7 +1315,6 @@ button.search-submit:hover {
     }
 }
 
-
 @media(min-width: 768px){
 
     .only_mobile_show {display: none; }
@@ -1413,10 +1362,9 @@ button.search-submit:hover {
     .issues_list_ul li {
         margin-right: 50px;
         margin-bottom: 30px;
-		/*margin-top: -30px; */					/* === ADDED 6.16 === */
     }
 }
-@media (min-width: 768px)and (max-width:1025px){	/* === ADDED 6.19 ===*/
+@media (min-width: 768px)and (max-width:1025px){
 	.issues_list_ul.row {
 	margin-top: 0px
 }
@@ -1829,12 +1777,12 @@ section.mission_outer {
 .page-template-donate .menu_box_two {
     width: 100%;
     justify-content: center;
-	display: none;							/* === ADDED 6.9 === */
+	display: none;
 }
 .page-template-subscribe .menu_box_two {
     width: 100%;
     justify-content: center;
-	display: none;							/* === ADDED 6.9 === */
+	display: none;
 }
 .page-template-about-page .ab_part {
     align-items: center;
@@ -1892,9 +1840,8 @@ section.mission_outer {
 .ab_part_img p.caption {
     font-size: 13px;
     margin-bottom: 0;
-    /*padding-left: 10px;*/
-    padding-left: 30px;				/* === CHANGED 6.11 === */
-	margin-top: 10px;				/* === ADDED 6.11 === */
+    padding-left: 30px;
+	margin-top: 10px;
     text-align: left;
     padding-right: 10px;
     line-height: normal;
@@ -2006,8 +1953,7 @@ section.mission_outer {
 }
 .search-term-list .list-feature-info span {
     color: #909090;
-    /* font-size: 19px;                         ========== CHANGED 5.28 ========= */
-    font-size: 21px;                            /* ========== ADDED 5.28 ========= */
+    font-size: 21px;
     position: relative;
     top: 1px;
     vertical-align: top;
@@ -2143,7 +2089,6 @@ section.mission_outer {
     font-size: 16px;
 }
 .menu_outer ul.social_icons li a i.fa-search {
-    /* font-size: 30px; */
      font-size: 22px;
 }
 .page-template-coming_soon .Container {
@@ -2284,7 +2229,6 @@ section.mission_outer {
 }
 label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
     line-height: 24px;
-    vertical-align: middle;
     display: block;
     padding-left: 30px;
 }
@@ -2318,7 +2262,6 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
 }
 
 .article_editor a {
-    /* font-family: 'franklin-gothic'; */
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     font-weight: normal;
@@ -2326,7 +2269,6 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
 .single-mention .contact01 p {
     line-height: 1.4em;
     font-size: 16px;
-    /* font-family: 'franklin-gothic'; */
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-weight: normal;
 }
@@ -2384,7 +2326,6 @@ div.asl_w .probox .promagnifier .innericon svg {
 }
 
 .arti_sub_heading a {
-    /* font-family: 'franklin-gothic'; */
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-weight: normal;
     font-size: 18px;
@@ -2403,7 +2344,7 @@ div.asl_w .probox .promagnifier .innericon svg {
     color: #000 !important;
 }
 [id*="mention_"] a:hover b {
-    color: #303030 /*!important*/;
+    color: #303030;
 }
 .signup4mail_Right #mc_embed_signup #mce-error-response {
     margin-top: 0 !important;
@@ -2431,48 +2372,36 @@ div.asl_w .probox .promagnifier .innericon svg {
 }
 .single-post .mission b,
 .single-post .mission strong {
-    /* font-family: savoy; */
     font-family: 'Savoy-Bold', 'EB Garamond Bold', Times, serif;
-    /* font-weight: bold; */
 }
 .wp-pagenavi {
     text-align: center;
 }
 
-.wp-pagenavi span, a {                 /* ======= ADDED 5.28 ========= */
+.wp-pagenavi span, a {
     border: none !important;
-    /*margin: 5px !important;*/
-    /*margin: 5px 5px 0px 0px; */ 			/* ======= ADDED 6.3 ========= */
 }
 
-.wp-pagenavi  {            					/* ======= ADDED 6.19 ========= */
+.wp-pagenavi  {
     margin: 5px 5px 0px 0px;
 }
 
 
 
 .single-post .article_editor p {
-    /* font-family: franklin-gothic; */
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     padding-top: 50px;
 }
 .single-post .article_editor p b {
-    /* font-family: 'franklin-gothic'; */
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
 }
 .search-term-list .list-feature-info {
     padding-left: 25px;
     padding-right: 25px;
-	/*margin-top: 20px; */                          /* ========== ADDED 5.29 =========== */
+}
 
-}
-/*
-.single-post figure {
-    width: 100% !important;
-}
- */
 .postDate {
     text-transform: uppercase;
     font-size: 14px;
@@ -2490,20 +2419,13 @@ div.asl_w .probox .promagnifier .innericon svg {
     top: -15px;
 }
 .issue_div_left {
-    /*padding-left: 0;*/            /* === CHANGED === */
-    /*padding-right: 0;*/           /* === CHANGED === */
-    padding-top: 30px;              /* === ADDED 6.1 === */
-    padding-right: 30px;            /* === ADDED 6.1 === */
-    text-align: right;              /* === ADDED 6.1 === */
-}
-.issue_div_left img {               /* === ADDED 6.1 === */
-    /*max-width: 65% !important;  	/* === ADDED 6.1 === */
-    /*min-width: 390px;           	/* === ADDED 6.1 === */
-
+    padding-top: 30px;
+    padding-right: 30px;
+    text-align: right;
 }
 .issue_div_right {
     margin-top: 25px;
-	max-width: 55%;					/* === ADDED 6.12 === */
+	max-width: 55%;
 }
 .desktop_new_menu {
     position: relative;
@@ -2535,12 +2457,6 @@ div.asl_w .probox .promagnifier .innericon svg {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.page-template-subscribe .desktop_new_menu {
-    /*display: none;*/							/* === CHANGED 6.9 === */
-}
-.page-template-donate .desktop_new_menu {
-    /*display: none;*/							/* === CHANGED 6.9 === */
-}
 .page-template-subscribe #tf-hide-mob {
     display: block !important;
 }
@@ -2550,28 +2466,24 @@ div.asl_w .probox .promagnifier .innericon svg {
 
 h1.issue_heading {
     margin-bottom: 0;
-    /*font-size: 14px;
-    color: #ccc;*/
-    /*font-family: 'proxy-nova';    /* ========= CHANGED 6.2 ======== */
     text-transform: uppercase;
-    font-size: 27px; 	/* ============= ADDED 5/28 ========= */
-    color: #000;  		/* ============= ADDED 5/28 ========= */
+    font-size: 27px;
+    color: #000;
     font-weight: 600;
 
 }
 
-h1.issue_heading b { 		/* ============= ADDED 5/28 ========= */
-    /*font-family: adobe-caslon-w01-smbd, serif;*/
-    font-family: adobe-caslon, serif;  /* === CHANGED 6.2 === */
+h1.issue_heading b {
+    font-family: adobe-caslon, serif;
     text-transform: none;
     font-size: 50px;
-	padding-right: 10px; 	/* ============== ADDED 6/3 ========= */
+	padding-right: 10px;
 }
 
-h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
+h1.issue_heading span {
     color: #ccc;
-	font-size: 36px;        /* ============== ADDED 6/1 ========= */
-	display: none;          /* ============== ADDED 6/3 ========= */
+	font-size: 36px;
+	display: none;
 }
 
 
@@ -2589,11 +2501,10 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     margin-left: 92px;
 }
 .mission_outer .mission + .more_from_issue {
-    /*padding-top: 60px;*/						/* === CHANGED 6.18 === */
 	padding-top: 30px;
 }
 
-.postid-435 .mission + .more_from_issue {					/* === ADDED 6.18 === */
+.postid-435 .mission + .more_from_issue {
 	padding-top: 0px;
 }
 .mission p span {
@@ -2614,7 +2525,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         width: 150px !important;
         max-width: 100%;
     }
-    /* .footerNewLogo img{ width: 85%; } */
   }
 
  @media (max-width: 1199px) {
@@ -2661,7 +2571,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
   }
 
 @media (max-width: 1024px) {
-	.support_heading h3 {				/* ======== ADDED 6.9 ======== */
+	.support_heading h3 {
     font-family: Avenir-Next-Thin;
     font-size: 40px;
     padding-left: 0;
@@ -2681,8 +2591,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         display: none;
     }
     .contact01.headong0022 h1 {
-        /*margin-bottom: 50px !important;*/     /* ==== CHANGED 6.1 === */
-        margin-bottom: 20px !important;         /* ==== ADDED 6.1 === */
+        margin-bottom: 20px !important;
     }
     .support_subheadings h3 {
         text-align: left;
@@ -2795,10 +2704,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         margin-top: 30px !important;
         line-height: 32px !important;
     }
-    /* .footerNewSocials ul {
-        margin-right: 0;
-    } */
-
 }
 @media (max-width: 1152px) {
     .drift_search_link {
@@ -2848,12 +2753,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     }
     .desktop_new_menu {
         display: none;
-    }
-    .page-template-subscribe .td-site-mobile-header {
-        /*display: none !important;*/				/* === CHANGED 6.11 === */
-    }
-    .page-template-donate .td-site-mobile-header {
-        /*display: none !important;*/				/* === CHANGED 6.11 === */
     }
     .page-template-coming_soon .td-site-mobile-header {
         display: none !important;
@@ -2991,41 +2890,30 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         position: relative;
         top: 45px;
         width: 100%;
-        /* text-align: center;                  ========= CHANGED 5.28 ======== */
         padding-left: 20px;
         padding-right: 20px;
-    }
-    .td-overlay-box ul {
-        /*text-align: center;                   ========= CHANGED 5.28 ======== */
     }
     .td-overlay-box li {
         list-style: none;
         display: block;
         line-height: normal;
-        /*padding: 20px 10px;*/
-         padding: 10px 10px 10px 30px;			/* === CHANGED 6.9 === */
+         padding: 10px 10px 10px 30px;
     }
     .td-overlay-box ul li a {
         text-decoration: none;
-        /*font-size: 22px;*/
-		font-size: 20px;						/* === CHANGED 6.9 === */
+		font-size: 20px;
         color: #303030;
         transition: 0.3s;
         display: inline-block;
         letter-spacing: normal;
-        /*font-weight: normal;*/
-		font-weight: bolder;					/* === CHANGED 6.9 === */
-        /*text-transform: uppercase;*/			/* === CHANGED 6.9 === */
+		font-weight: bolder;
         font-family: Avenir-Next-Thin;
     }
-    .td-overlay-box li.current-menu-item a {
-        /*color: #07dbdb;*/						/* === CHANGED 6.9 === */
-    }
+
     .td-overlay-box .closebtn {
         position: absolute;
         top: 10px;
-        /*left: 15px;                       ============ CHANGED 5.28 ========= */
-        right: 15px;                        /* ========= ADDED 5.28 =========== */
+        right: 15px;
         font-size: 46px;
         color: #303030;
         text-decoration: none;
@@ -3082,18 +2970,13 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     #mc_embed_signup .mc-field-group input[type="submit"] {
         margin-left: 20px !important;
     }
-    .page-template-coming_soon .td-site-mobile-header, 	/*removed .page-template-subscribe .td-site-mobile-header */
-      {	/* removed .page-template-donate .td-site-mobile-header*/
-        display: none !important;
-    }
     .page-template-donate .the-drift-logo-mb,
     .page-template-subscribe .the-drift-logo-mb {
-        /*display: block !important; */			/* === CHANGED 6.11 */
         text-align: center;
         position: relative;
         z-index: 9999;
         top: 15px;
-		display: none;					/* === ADDED 6.11 === */
+		display: none;
     }
     .the-drift-logo-mb img {
         height: 45px;
@@ -3278,7 +3161,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     }
     .diff_font {
         max-width: 100% !important;
-        /*padding: 20px !important;*/
 		padding: 0px 10px 20px 15px !important;
     }
     
@@ -3311,7 +3193,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         margin-bottom: 10px !important;
     }
     .search-term-list .list-feature-img {
-        /*padding-right: 10px;                      ========== CHANGED 5.29 ======= */
         padding-right: 15px;
     }
     .search-term-list .list-feature-img img {
@@ -3343,13 +3224,12 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     .page-template-donate .ab_part,
     .page-template-subscribe .ab_part {
         flex-direction: column-reverse;
-        /*padding-top: 25px;*/			/* === CHANGED 6.11 === */
         padding-bottom: 25px;
     }
     .page-template-donate .ab_part .ab_part_r,
     .page-template-subscribe .ab_part .ab_part_r {
         margin-bottom: 20px;
-		padding-top: 0px; 				/* === ADDED 6.11 === */
+		padding-top: 0px;
     }
     #mc-embedded-subscribe ~ .mce_inline_error {
         width: 100%;
@@ -3364,9 +3244,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         width: 100%;
     }
     .contact01.headong0022 h1 {
-        /*margin-bottom: 50px !important; */        /* === CHANGED === */
-        margin-bottom: 20px !important;             /* === ADDED 6.1 === */
-        /*margin-top: 30px;*/                       /* === CHANGED === */
+        margin-bottom: 20px !important;
         margin-top: 10px;
     }
     .ab_part.headong0022_cover .ab_part_r {
@@ -3378,7 +3256,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     }
     .arti_feaImage img {
         height: auto;
-		/*padding-right: 10px;*/                    /* === ADDED 6.2 === */
     }
     .footerNew_middle h4 {
         text-align: center;
