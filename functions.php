@@ -451,6 +451,21 @@ function twentyseventeen_fonts_url()
     return esc_url_raw($fonts_url);
 }
 
+add_filter( 'deferred_stylesheets', function( $handles ) {
+    $handles[] = 'fonts';
+    return $handles;
+}, 10, 1 );
+
+function add_onload_to_defered_sheet($html, $handle) {
+    $deferred = apply_filters('deferred_stylesheets', array());
+    if ( in_array($handle, $deferred) ) {
+        $html = str_replace("/>", 'onload="this.media=\'all\'"/>', $html);
+    }
+    return $html;
+}
+
+add_filter('style_loader_tag', 'add_onload_to_defered_sheet', 10, 2);
+
 /**
  * Enqueues scripts and styles.
  */
@@ -474,6 +489,9 @@ function twentyseventeen_scripts()
     wp_enqueue_style('bootstrap-style', get_theme_file_uri('/assets/css/bootstrap.min.css'), array(), filemtime($bootstrap_style_path));
     $drift_custom_path = get_theme_file_path('/assets/css/custom-updated.css');
     wp_enqueue_style('drift', get_theme_file_uri('/assets/css/custom-updated.css'), array('bootstrap-style'), filemtime($drift_custom_path));
+    $fonts_path = get_theme_file_path('/assets/css/fonts.css');
+    wp_enqueue_style('fonts', get_theme_file_uri('/assets/css/fonts.css'), array('bootstrap-style'), filemtime($fonts_path), 'print');
+
 
     // Load subscribe css for bundle
     if (is_page_template(array('page-templates/mixed_subscribe.php', 'page-templates/bundle_subscribe.php'))) {

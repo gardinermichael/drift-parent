@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Adobe-Caslon;
+    src: url(../font/adobe/ACaslonPro-Regular.otf);
+}
+
+@font-face {
+font-family: proxy-nova;
+src: url(../font/proxy/proxy.ttf);
+}
+@font-face {
+font-family: franklin-gothic;
+src: url(../font/franklin-gothic.ttf);
+}
+@font-face {
+font-family: Avenir-Next-Thin;
+src: url(../font/avenir-next-thin.ttf);
+font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../font/EBGaramond/EBGaramond-Italic.woff2') format('woff2'),
+        url('../font/EBGaramond/EBGaramond-Italic.woff') format('woff'),
+        url('../font/EBGaramond/EBGaramond-Italic.svg#EBGaramond-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond Bold';
+    src: url('../font/EBGaramond/EBGaramond-BoldItalic.woff2') format('woff2'),
+        url('../font/EBGaramond/EBGaramond-BoldItalic.woff') format('woff'),
+        url('../font/EBGaramond/EBGaramond-BoldItalic.svg#EBGaramond-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Libre Franklin';
+    src: url('../font/LibreFranklin/LibreFranklin-Thin.woff2') format('woff2'),
+        url('../font/LibreFranklin/LibreFranklin-ThinItalic.woff') format('woff'),
+        url('../font/EBGaramond//LibreFranklin/LibreFranklin-ThinItalic.svg#LibreFranklin-ThinItalic') format('svg');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Savoy';
+    src: url('../font/Savoy/Savoy-Regular.woff') format('woff'),
+        url('../font/Savoy/Savoy-Regular.woff.svg#Savoy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Savoy-Bold';
+    src: url('../font/Savoy/SavoyBold.woff2') format('woff2'),
+        url('../font/Savoy/SavoyBold.woff') format('woff'),
+        url('../font/Savoy/SavoyBold.woff.svg#Savoy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
