@@ -15,6 +15,228 @@
     line-height: 1;
 }
 
+body {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p,a{
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.arti_heading h4 a strong {
+    font-family: Adobe-Caslon;
+}
+.latestArticle_Heading p {
+    font-family: proxy-nova;
+}
+#footerFullMenu li {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.copyrightSpan {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.searchPage_Form_Button {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.newsletter .news_l input[type="submit"]{
+    font-family: proxy-nova;
+}
+.ab_part  label.wpfs-form-check-label strong,
+.ab_part  label.wpfs-form-check-label,
+.ab_part_img_abu div label{
+    font-family: proxy-nova !important;
+}
+.form01 h4 {
+    font-family: proxy-nova;
+}
+.form01 input{
+    font-family: proxy-nova;
+}
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--gray);font-family: proxy-nova;
+}
+  
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--gray);font-family: proxy-nova;
+}
+
+input::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--gray);font-family: proxy-nova;
+}
+.postid-2274 .com_heading h3 {
+    font-family: 'Savoy', 'EB Garamond', Times, serif;
+}
+.com_heading h3 strong {
+    font-family: Adobe-Caslon;
+}
+.com_heading span {
+    font-family: Adobe-Caslon;
+}
+.sig_up form input{
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+#mc-embedded-subscribe {
+    font-family: proxy-nova;
+}
+.wpfs-form-actions button.wpfs-btn, .but63 {
+    font-family: Avenir-Next-Thin !important;
+}
+.ab_part_img_abu div label {
+    font-family: proxy-nova;
+}
+button.search-submit {
+    font-family: sans-serif;
+}
+.nextIssues::after {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.more_link a {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.diff_font h2 a {
+    font-family: proxy-nova !important;
+}
+.single-post .mission_inner a {
+    font-family: initial;
+}
+.share_text_container p {
+    font-family: Avenir-Next-Thin !important;
+}
+.more_from_issue .text-treview {
+    font-family: 'georgia';
+}
+.more_from_issue .com_heading01 p a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.more_from_issue .com_heading01 h4 b a {
+    font-family: Adobe-Caslon;
+}
+.issue_container .com_heading01 h4 b a {
+    font-family: Adobe-Caslon;
+}
+.postid-2274 .ab_part_img p.caption {
+    font-family: 'Savoy', 'EB Garamond', Times, serif;
+}
+.search-term-list .list-feature-info h2 a:first-child {
+    font-family: Adobe-Caslon;
+}
+.search-term-list .list-feature-info h3 a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.search-term-list .list-feature-info p {
+    font-family: georgia;
+}
+.search_container h1.page-title {
+    font-family: Adobe-Caslon;
+}
+.tax-authors .search_container h1.page-title span.author_desc {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.about_edtitor b {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif !important;
+}
+.share_text_container p strong {
+    font-family: inherit !important;
+}
+.issue_rg ul li a {
+    font-family: proxy-nova;
+}
+.issue_rg ul li a:first-child {
+    font-family: Adobe-Caslon;
+}
+.mission_inner_body > :last-child::after {
+    font-family: Adobe-Caslon;
+}
+#ajaxsearchlite1 .probox .proinput input::-webkit-input-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+#ajaxsearchlite1 .probox .proinput input::-moz-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+#ajaxsearchlite1 .probox .proinput input:-ms-input-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+#ajaxsearchlite1 .probox .proinput input:-moz-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+.search-term-list .list-feature-info p a {
+    font-family: georgia;
+}
+.about_r h3 {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.article_editor a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.single-mention .contact01 p {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+div.asl_w .probox .proinput input {
+    font-family: Avenir-Next-Thin !important;
+}
+.arti_sub_heading a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.single-post .mission strong {
+    font-family: 'Savoy-Bold', 'EB Garamond Bold', Times, serif;
+}
+.single-post .article_editor p {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.single-post .article_editor p b {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.postDate {
+    font-family: proxy-nova;
+}
+.desktop_new_menu ul li a {
+    font-family: 'Avenir-Next-Thin';
+}
+h1.issue_heading b {
+    font-family: adobe-caslon, serif;
+}
+.issue_date {
+    font-family: 'proxy-nova';
+}
+@media (max-width: 1024px) {
+    .support_heading h3 {
+        font-family: Avenir-Next-Thin, sans-serif;
+    }
+}
+@media (max-width: 1023px) {
+    .td-overlay-box ul li a {
+        font-family: Avenir-Next-Thin, sans-serif;
+    }
+}
+.page-template-mentions .ab_part_mobile p{
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.issues_container .com_heading01 h4 + .authors a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.postid-2151 .boxzilla-content .serif-hed {
+    font-family: Adobe-Caslon;
+}
+.postid-2151 .boxzilla-content .sans-serif-hed {
+    font-family: Avenir-Next-Thin,
+}
+/* formatting for Olúfẹ́mi postid-2274 */
+.moreissue_right.postid-2274 .mr-subtitle,
+.page-template-latest_articles .postid-2274 a.subtitle,
+body.home .postid-2274 .arti_heading h4 a {
+    font-family: 'Savoy', 'EB Garamond', Times, serif;
+}
+@media(min-width: 768px){
+    .postid-2151 .boxzilla-content .serif-hed {
+        font-family: Adobe-Caslon;
+    }
+    .postid-2151 .boxzilla-content .sans-serif-hed {
+        font-family: Avenir-Next-Thin, sans-serif;
+    }
+}
+
 .first-benefit_wrapper label {
     position: absolute;
     height: 1px;
@@ -105,18 +327,14 @@ form.search-form {
 }
 
 body {
-    font-family: Avenir-Next-Thin;
     letter-spacing: 0.03em;
     line-height: 1.6em;
     color: #333;
 }
 
 h1,h2,h3,h4,h5,h6,p,a{
-    font-family: Avenir-Next-Thin;
     color: #303030;
 }
-
-
 
 h2 {
     font-size: 45px;
@@ -292,14 +510,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .latestArticle_Heading {
     margin-top: 50px;
 }
-.arti_heading h4 a{
-    font-family: Avenir-Next-Thin;
-}
+
 .arti_sub_heading strong {
     font-weight: normal;
 }
 .latestArticle_Heading h1 {
-    font-family: Avenir-Next-Thin;
     margin-bottom: 0px;
 }
 .arti_heading h4 a:hover{ color: #303030; }
@@ -316,9 +531,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     position: relative;
     font-weight: bold;
 }
-.arti_heading h4 a strong {
-    font-family: Adobe-Caslon;
-}
+
 .arti_heading {
     margin-top: 30px;
 }
@@ -343,7 +556,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 }
 .support_us_pipe{color: #9800ff;}
 .support_heading h3 {
-    font-family: Avenir-Next-Thin;
     font-size: 40px;
 	padding-left: 38px;
 }
@@ -364,7 +576,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     padding: 30px 10px;
 }
 .signup4mail_Left h3 {
-    font-family: Avenir-Next-Thin;
     padding-left: 38px;
     padding-bottom: 8px;
     padding-top: 13px;
@@ -373,7 +584,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .support_subheadings h3 {
     text-transform: uppercase;
     font-size: 29px;
-    font-family: Avenir-Next-Thin;
     margin-top: 23px;
     font-weight: 600;
     text-align: right;
@@ -385,7 +595,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 }
 .support_content p {
     font-size: 18px;
-    font-family: Avenir-Next-Thin;
 	margin: auto;
 }
 .signup4mail_BG #mc_embed_signup .mc-field-group input#mce-EMAIL{ background: #f5f5f6; }
@@ -420,7 +629,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 
 .latestArticle_Heading p {
     font-size: 14px;
-    font-family: proxy-nova;
 }
 .footerNewLogo img {
     width: 145px;
@@ -438,7 +646,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     float: left;
     display: inline-block;
     font-size: 22px;
-    font-family: Avenir-Next-Thin;
     font-weight: 500;
     margin-bottom: 0;
     width: 280px;
@@ -471,9 +678,9 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     padding-left: 70px;
     padding-right: 70px;
 }
+
 #footerFullMenu li {
     font-size: 14px;
-    font-family: Avenir-Next-Thin;
 }
 
 .copyrightSpan {
@@ -481,7 +688,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     color: #fff;
     float: right;
     font-weight: 500;
-    font-family: Avenir-Next-Thin;
     padding-right: 40px;
 }
 .nextIssues {
@@ -518,12 +724,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     font-size: 18px;
     top: 20px;
 }
+
 .searchPage_Form_Button {
     border: none;
     padding: 10px;
-    font-size: 20px;
     font-size: 21px;
-    font-family: Avenir-Next-Thin;
     padding: 10px 28px;
 }
 .searchPage_Form_Button {
@@ -713,7 +918,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 
 .newsletter .news_l input[type="submit"]{
     font-size: 14px !important;
-    font-family: proxy-nova;
 }
 
 .but61{
@@ -800,7 +1004,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     font-size: 18px;
     color: #303030;
     font-weight: 400;
-    font-family: proxy-nova !important;
 }
 
 .page-template-subscribe .constrained.new::after {
@@ -818,7 +1021,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 
 .form01 h4 {
     font-size: 30px;
-    font-family: proxy-nova;
 }
 
 .wpfs-form-label[for="wpfs-custom-amount--ZjFiZTB-button"],
@@ -845,23 +1047,9 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     margin: 0 auto 25px !important;
     background: #f6f6f6 !important;
     border: 1px solid #f6f6f6 !important;
-    font-family: proxy-nova;
 }
 
 input.unfocus_email::placeholder { font-size: 0; }
-
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--gray);font-family: proxy-nova;
-
-}
-
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: var(--gray);font-family: proxy-nova;
-}
-
-input::-ms-input-placeholder { /* Microsoft Edge */
-  color: var(--gray);font-family: proxy-nova;
-}
 
 .radio02{
     display: flex;
@@ -887,11 +1075,6 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 }
 .com_heading h3 {
     font-size: 36px;
-    font-family: Avenir-Next-Thin;
-}
-
-.postid-2274 .com_heading h3 {
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
 
 .donate-subscribe_txt .com_heading h3 {
@@ -902,7 +1085,6 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 .com_heading h3 strong {
     font-size: 40px;
     font-weight: bold;
-    font-family: Adobe-Caslon;
 }
 
 .single-mention .com_heading h3 b{ font-size: 50px; }
@@ -915,7 +1097,6 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 .com_heading span {
     font-size: 30px;
     top: 5px;
-    font-family: Adobe-Caslon;
 }
 
 .single-mention .com_heading span {		/*=== ADDED 6.18 === */
@@ -1014,10 +1195,8 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     width: 450px;
     font-size: 18px;
     background: transparent;
-    font-family: Avenir-Next-Thin;
     border-bottom: 1px solid var(--gray);;
 }
-
 
 .f_three{justify-content: flex-end;}
 
@@ -1063,8 +1242,8 @@ ul.social_icons li  i.fab{
     padding-right: 20px !important;
     border: 1px solid !important;
     border-radius: 9px !important;
-    font-family: proxy-nova;
 }
+
 #mc-embedded-subscribe ~ .mce_inline_error {
     position: absolute;
     top: 80%;
@@ -1098,7 +1277,6 @@ ul.social_icons li  i.fab{
     transition: all 0.3s ease-out !important;
     height: unset !important;
     font-weight: 400 !important;
-    font-family: Avenir-Next-Thin !important;
     box-shadow: none !important;
     border-radius: 9px !important;
 }
@@ -1157,9 +1335,9 @@ display: none;
 }
 .ab_part_img_abu div label {
     font-size: 19px !important;
-    font-family: proxy-nova;
     color: #fff;
 }
+
 .ab_part_img_inner > div input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -1265,7 +1443,6 @@ button.search-submit {
     font-size: 15px;
     font-weight: normal;
     height: 32px;
-    font-family: sans-serif;
     line-height: 32px;
     padding: 0 22px;
     text-align: center;
@@ -1407,11 +1584,11 @@ ul.social_icons li {
 .nextIssues::after {
     content: "More Issues";
     font-size: 32px;
-    font-family: Avenir-Next-Thin;
     position: relative;
     top: 6px;
     left: -20px;
 }
+
 .issues_list_ul.row{ margin: auto; }
 
 .issues_list_ul li {
@@ -1421,11 +1598,11 @@ ul.social_icons li {
 }
 .more_link a {
     color: #8C00FF;
-    font-family: Avenir-Next-Thin;
     margin-left: 7px;
     font-size: 30px;
     margin: auto;
 }
+
 .latest_articles .single_article {
     padding-left: 0;
     padding-right: 0;
@@ -1596,8 +1773,8 @@ ul.social_icons {
     color: #69A7C2 !important;
     margin-top: 20px !important;
     display: block !important;
-    font-family: proxy-nova !important;
 }
+
 .footer_outer:after {
     background-image: url(/wp-content/uploads/2020/04/the_drift_arrow.png);
     content: '';
@@ -1615,9 +1792,9 @@ ul.social_icons {
 
 .single-post .mission_inner a {
     text-decoration: underline !important;
-    font-family: initial;
     position: relative;
 }
+
 .single-post .mission_inner a:hover {
     color: #69a7c2;
 }
@@ -1658,8 +1835,8 @@ ul.social_icons {
     font-size: 15px !important;
     text-transform: uppercase;
     font-style: italic;
-    font-family: Avenir-Next-Thin !important;
 }
+
 .more_from_issue {
     padding-top: 75px;
 }
@@ -1716,15 +1893,14 @@ section.mission_outer {
 }
 .more_from_issue .text-treview {
     margin-top: 10px;
-    font-family: 'georgia';
     line-height: 1.6em;
     font-size: 16px;
 }
+
 .more_from_issue .com_heading01 p a {
     display: block;
     margin-top: 0px;
     font-weight: normal;
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
 }
@@ -1734,11 +1910,7 @@ section.mission_outer {
     padding-right: 7px;
 }
 
-.more_from_issue .com_heading01 h4 b a {
-    font-family: Adobe-Caslon;
-}
 .issue_container .com_heading01 h4 b a {
-    font-family: Adobe-Caslon;
     font-weight: 600;
 }
 .issue_container .com_heading01 h4 b a:hover {
@@ -1847,10 +2019,6 @@ section.mission_outer {
     line-height: normal;
 }
 
-.postid-2274 .ab_part_img p.caption {
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-}
-
 .issue_outer .issue_l {
     padding-left: 15px !important;
     position: relative;
@@ -1911,8 +2079,8 @@ section.mission_outer {
     padding-bottom: 0;
     margin-bottom: 5px;
 }
+
 .search-term-list .list-feature-info h2 a:first-child {
-    font-family: Adobe-Caslon;
     font-weight: 600;
 }
 .search-term-list .list-feature-info h3 {
@@ -1924,14 +2092,13 @@ section.mission_outer {
     margin-bottom: 0;
     text-transform: capitalize;
 }
+
 .search-term-list .list-feature-info h3 a {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     font-weight: normal;
     font-size: 18px;
 }
 .search-term-list .list-feature-info p {
-    font-family: georgia;
     font-size: 16px;
     margin-top: 20px;
     margin-bottom: 0;
@@ -1961,16 +2128,15 @@ section.mission_outer {
 }
 .search_container h1.page-title {
     font-size: 36px;
-    font-family: Adobe-Caslon;
     font-weight: 600;
     padding-bottom: 30px;
     margin-bottom: 0;
     position: relative;
     line-height: 0.85;
 }
+
 .tax-authors .search_container h1.page-title span.author_desc {
     font-size: 20px;
-    font-family: Avenir-Next-Thin;
     display: inline;
     position: relative;
     margin-left: 10px;
@@ -1986,12 +2152,6 @@ section.mission_outer {
 }
 .search-term-list .list-feature-info a:hover {
     color: inherit;
-}
-.about_edtitor b {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif !important;
-}
-.share_text_container p strong {
-    font-family: inherit !important;
 }
 
 .share_text {
@@ -2016,10 +2176,10 @@ section.mission_outer {
 .drift_searchForm {
     display: none;
 }
+
 .issue_rg ul li a {
     display: inline-block !important;
     border: none !important;
-    font-family: proxy-nova;
     padding-top: 3px;
     padding-bottom: 3px;
     font-size: 20px !important;
@@ -2038,9 +2198,7 @@ section.mission_outer {
 .issue_rg ul li a:hover {
     color: #2A8A9D !important;
 }
-.issue_rg ul li a:first-child {
-    font-family: Adobe-Caslon;
-}
+
 .single-issue .com_heading01 {
     margin-bottom: 20px;
 }
@@ -2060,13 +2218,13 @@ section.mission_outer {
     background: #fff;
     top: 0;
 }
+
 .mission_inner_body > :last-child::after {
     content: "||";
     color: #69A7C2;
     font-weight: bold;
     position: relative;
     left: 5px;
-    font-family: Adobe-Caslon;
 }
 .bredcrum01 {
     margin-top: -15px;
@@ -2134,22 +2292,7 @@ section.mission_outer {
 .page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-moz-placeholder {
     color: #4D788C !important;
 }
-#ajaxsearchlite1 .probox .proinput input::-webkit-input-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
-#ajaxsearchlite1 .probox .proinput input::-moz-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
-#ajaxsearchlite1 .probox .proinput input:-ms-input-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
-#ajaxsearchlite1 .probox .proinput input:-moz-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
+
 .f_logo > p {
     visibility: hidden;
 }
@@ -2178,8 +2321,8 @@ section.mission_outer {
 .search_container.article_container .search-term-list .list-feature-info h3 {
     margin-top: 15px;
 }
+
 .search-term-list .list-feature-info p a {
-    font-family: georgia;
     text-decoration: underline !important;
 }
 .search_container.article_container .search-term-list .list-feature-img img {
@@ -2253,7 +2396,6 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
     color: #07dbdb !important;
 }
 .about_r h3 {
-    font-family: Avenir-Next-Thin;
     font-size: 28px;
 }
 .about_r h3 b {
@@ -2262,14 +2404,12 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
 }
 
 .article_editor a {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     font-weight: normal;
 }
 .single-mention .contact01 p {
     line-height: 1.4em;
     font-size: 16px;
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-weight: normal;
 }
 div.asl_r.vertical {
@@ -2299,8 +2439,8 @@ div.asl_w .probox .proinput input {
     font-size: 14px !important;
     text-shadow: none !important;
     color: #303030 !important;
-    font-family: Avenir-Next-Thin !important;
 }
+
 div.asl_m .probox .proloading {
     display: none !important;
 }
@@ -2326,7 +2466,6 @@ div.asl_w .probox .promagnifier .innericon svg {
 }
 
 .arti_sub_heading a {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-weight: normal;
     font-size: 18px;
     text-transform: uppercase;
@@ -2371,9 +2510,7 @@ div.asl_w .probox .promagnifier .innericon svg {
     display: none;
 }
 .single-post .mission b,
-.single-post .mission strong {
-    font-family: 'Savoy-Bold', 'EB Garamond Bold', Times, serif;
-}
+
 .wp-pagenavi {
     text-align: center;
 }
@@ -2386,15 +2523,12 @@ div.asl_w .probox .promagnifier .innericon svg {
     margin: 5px 5px 0px 0px;
 }
 
-
-
 .single-post .article_editor p {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     padding-top: 50px;
 }
+
 .single-post .article_editor p b {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
 }
 .search-term-list .list-feature-info {
@@ -2407,7 +2541,6 @@ div.asl_w .probox .promagnifier .innericon svg {
     font-size: 14px;
     padding-bottom: 60px;
     font-weight: 600;
-    font-family: proxy-nova;
     color: #ccc;
 }
 .article_editor {
@@ -2446,7 +2579,6 @@ div.asl_w .probox .promagnifier .innericon svg {
     text-transform: uppercase;
     color: #303030;
     display: block;
-    font-family: 'Avenir-Next-Thin';
     font-size: 16px;
 }
 
@@ -2474,7 +2606,6 @@ h1.issue_heading {
 }
 
 h1.issue_heading b {
-    font-family: adobe-caslon, serif;
     text-transform: none;
     font-size: 50px;
 	padding-right: 10px;
@@ -2486,9 +2617,7 @@ h1.issue_heading span {
 	display: none;
 }
 
-
 .issue_date {
-    font-family: 'proxy-nova';
     font-size: 14px;
     font-weight: 600;
     color: #ccc;
@@ -2569,10 +2698,9 @@ h1.issue_heading span {
         right: -2%;
     }
   }
-
+  
 @media (max-width: 1024px) {
 	.support_heading h3 {
-    font-family: Avenir-Next-Thin;
     font-size: 40px;
     padding-left: 0;
 	text-align: left;
@@ -2907,7 +3035,6 @@ h1.issue_heading span {
         display: inline-block;
         letter-spacing: normal;
 		font-weight: bolder;
-        font-family: Avenir-Next-Thin;
     }
 
     .td-overlay-box .closebtn {
@@ -3580,8 +3707,6 @@ h1.issue_heading span {
 }
 .page-template-mentions .men_content p, 
 .page-template-mentions .ab_part_mobile p{
-    /* font-family:'franklin-gothic';  */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 18px
 }
 .page-template-mentions .ab_part_mobile, .page-template-mentions .about_l span.subtitle-mention{display:none;}
@@ -3793,7 +3918,6 @@ h1.issue_heading b{
 
 /* TODO: de-dupe all this nonsense */
 .issues_container .com_heading01 h4 + .authors a {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: normal;
@@ -3848,11 +3972,14 @@ h1.issue_heading b{
 }
 
 .postid-2151 .boxzilla-content .serif-hed {
-    font-family: Adobe-Caslon; font-size: 26px; line-height: 26px;
+    font-size: 26px;
+    line-height: 26px;
 }
 
 .postid-2151 .boxzilla-content .sans-serif-hed {
-    font-size: 22px; font-family: Avenir-Next-Thin; font-weight: 500; line-height: 26px;
+    font-size: 22px;
+    sans-serif; font-weight: 500;
+    line-height: 26px;
 }
 
 .postid-2151 .boxzilla-content {
@@ -3865,26 +3992,20 @@ h1.issue_heading b{
     margin-right: auto;
 }
 
-/* formatting for Olúfẹ́mi postid-2274 */
-
-.moreissue_right.postid-2274 .mr-subtitle,
-.page-template-latest_articles .postid-2274 a.subtitle,
-body.home .postid-2274 .arti_heading h4 a {
-    /* font-family: savoy, serif; */
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-}
-
 .poem-pad {
     padding-left: 30px;
 }
 
 @media(min-width: 768px){
     .postid-2151 .boxzilla-content .serif-hed {
-        font-family: Adobe-Caslon; font-size: 32px; line-height: 32px;
+        font-size: 32px;
+        line-height: 32px;
     }
 
     .postid-2151 .boxzilla-content .sans-serif-hed {
-        font-size: 28px; font-family: Avenir-Next-Thin; font-weight: 500; line-height: 32px;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 32px;
     }
 
     .poem-pad {
