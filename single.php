@@ -56,13 +56,6 @@ if ($breakWidth == "") {
     :root {
         --issue_color: <?php echo $colorPick; ?>;
     }
-
-    <?php if ($breakWidth != "") {?>
-    @media(min-width: 768px)and (max-width: <?php echo $breakWidth; ?>px){
-        /*.ab_part_r h3 span{ display: none; } */	/* === CHANGED 6.3 === */
-        /*.com_heading h3 b{ display: block; }*/	/* === CHANGED 6.3 === */
-    }
-    <?php } ?>
 </style>
 
     <section class="main_container_custom">

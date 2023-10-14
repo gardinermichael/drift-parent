@@ -17,6 +17,9 @@
 body,h1,h2,h3,h4,h5,h6,p,a{
     font-family: Avenir-Next-Thin, sans-serif;
 }
+h1.issue_heading b {
+    font-family: adobe-caslon, serif;
+}
 .arti_heading h4 a strong {
     font-family: Adobe-Caslon;
 }
@@ -40,28 +43,15 @@ body,h1,h2,h3,h4,h5,h6,p,a{
 .ab_part_img_abu div label{
     font-family: proxy-nova !important;
 }
-.form01 h4 {
+.form01 h4, input {
     font-family: proxy-nova;
-}
-.form01 input{
-    font-family: proxy-nova;
-}
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: var(--gray);font-family: proxy-nova;
-}
-  
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: var(--gray);font-family: proxy-nova;
 }
 
-input::-ms-input-placeholder { /* Microsoft Edge */
-    color: var(--gray);font-family: proxy-nova;
-}
-.com_heading h3 strong {
-    font-family: Adobe-Caslon;
-}
-.com_heading span {
-    font-family: Adobe-Caslon;
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+/* Microsoft Edge; Internet Explorer 10-11 */
+input::placeholder, input:-ms-input-placeholder {
+    color: var(--gray);
+    font-family: proxy-nova;
 }
 .sig_up form input{
     font-family: Avenir-Next-Thin, sans-serif;
@@ -105,6 +95,7 @@ button.search-submit {
 .issue_container .com_heading01 h4 b a {
     font-family: Adobe-Caslon;
 }
+/* Caption with Femi's name */
 .postid-2274 .ab_part_img p.caption {
     font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
@@ -187,9 +178,6 @@ div.asl_w .probox .proinput input {
 .desktop_new_menu ul li a {
     font-family: 'Avenir-Next-Thin';
 }
-h1.issue_heading b {
-    font-family: adobe-caslon, serif;
-}
 .issue_date {
     font-family: 'proxy-nova';
 }
@@ -215,6 +203,12 @@ h1.issue_heading b {
 }
 .postid-2151 .boxzilla-content .sans-serif-hed {
     font-family: Avenir-Next-Thin,
+}
+.com_heading h3 strong, b {
+    font-family: Adobe-Caslon;
+}
+.com_heading span {
+    font-family: Adobe-Caslon;
 }
 
 .first-benefit_wrapper label {
