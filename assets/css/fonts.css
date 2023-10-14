@@ -65,3 +65,14 @@ font-display: swap;
     font-style: normal;
     font-display: swap;
 }
+
+/* Currently used only for typesetting Femi's name: should find a less costly solution than including it with all fonts */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat/Montserrat-Thin.woff2') format('woff2'),
+        url('../font/Montserrat/Montserrat-Thin.woff') format('woff'),
+        url('../font/Montserrat/Montserrat-Thin.svg#Montserrat-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
