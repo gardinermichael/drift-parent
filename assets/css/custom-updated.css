@@ -14,11 +14,7 @@
     font-family: "proxy-nova", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1;
 }
-
-body {
-    font-family: Avenir-Next-Thin, sans-serif;
-}
-h1,h2,h3,h4,h5,h6,p,a{
+body,h1,h2,h3,h4,h5,h6,p,a{
     font-family: Avenir-Next-Thin, sans-serif;
 }
 .arti_heading h4 a strong {
@@ -60,9 +56,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10-11 */
 
 input::-ms-input-placeholder { /* Microsoft Edge */
     color: var(--gray);font-family: proxy-nova;
-}
-.postid-2274 .com_heading h3 {
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
 .com_heading h3 strong {
     font-family: Adobe-Caslon;
@@ -216,25 +209,12 @@ h1.issue_heading b {
 .issues_container .com_heading01 h4 + .authors a {
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
 }
+/* 2151 = editor's note explaining first issue in print */
 .postid-2151 .boxzilla-content .serif-hed {
     font-family: Adobe-Caslon;
 }
 .postid-2151 .boxzilla-content .sans-serif-hed {
     font-family: Avenir-Next-Thin,
-}
-/* formatting for Olúfẹ́mi postid-2274 */
-.moreissue_right.postid-2274 .mr-subtitle,
-.page-template-latest_articles .postid-2274 a.subtitle,
-body.home .postid-2274 .arti_heading h4 a {
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-}
-@media(min-width: 768px){
-    .postid-2151 .boxzilla-content .serif-hed {
-        font-family: Adobe-Caslon;
-    }
-    .postid-2151 .boxzilla-content .sans-serif-hed {
-        font-family: Avenir-Next-Thin, sans-serif;
-    }
 }
 
 .first-benefit_wrapper label {
