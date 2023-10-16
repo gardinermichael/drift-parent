@@ -58,7 +58,7 @@ else
 		    display: inline;
 		    font-size: 19px;
 		    line-height: normal;
-		    font-family: Avenir-Next-Thin;
+		    font-family: Avenir-Next-Thin, Arial, sans-serif;
 		    vertical-align: top;
 		    position: relative;
 		    top: 1px;

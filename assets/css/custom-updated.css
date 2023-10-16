@@ -1,5 +1,3 @@
-/* Pea Changes 8/25/2022 */
-
 /* Self-Hosted Google Fonts not picking up roboto */
 .page-template-mentions .about_r h4 {
     font-size: 28px;
@@ -15,6 +13,202 @@
     font-size: 29px;
     font-family: "proxy-nova", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1;
+}
+body,h1,h2,h3,h4,h5,h6,p,a{
+    font-family: Avenir-Next-Thin, Arial, sans-serif;
+}
+h1.issue_heading b {
+    font-family: adobe-caslon, serif;
+}
+.arti_heading h4 a strong {
+    font-family: Adobe-Caslon;
+}
+.latestArticle_Heading p {
+    font-family: proxy-nova;
+}
+#footerFullMenu li {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.copyrightSpan {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.searchPage_Form_Button {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.newsletter .news_l input[type="submit"]{
+    font-family: proxy-nova;
+}
+.ab_part  label.wpfs-form-check-label strong,
+.ab_part  label.wpfs-form-check-label,
+.ab_part_img_abu div label{
+    font-family: proxy-nova !important;
+}
+.form01 h4, input {
+    font-family: proxy-nova;
+}
+
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+/* Microsoft Edge; Internet Explorer 10-11 */
+input::placeholder, input:-ms-input-placeholder {
+    color: var(--gray);
+    font-family: proxy-nova;
+}
+.sig_up form input{
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+#mc-embedded-subscribe {
+    font-family: proxy-nova;
+}
+.wpfs-form-actions button.wpfs-btn, .but63 {
+    font-family: Avenir-Next-Thin !important;
+}
+.ab_part_img_abu div label {
+    font-family: proxy-nova;
+}
+button.search-submit {
+    font-family: sans-serif;
+}
+.nextIssues::after {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.more_link a {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.diff_font h2 a {
+    font-family: proxy-nova !important;
+}
+.single-post .mission_inner a {
+    font-family: initial;
+}
+.share_text_container p {
+    font-family: Avenir-Next-Thin !important;
+}
+.more_from_issue .text-treview {
+    font-family: 'georgia';
+}
+.more_from_issue .com_heading01 p a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.more_from_issue .com_heading01 h4 b a {
+    font-family: Adobe-Caslon;
+}
+.issue_container .com_heading01 h4 b a {
+    font-family: Adobe-Caslon;
+}
+/* Caption with Femi's name */
+.postid-2274 .ab_part_img p.caption {
+    font-family: 'Savoy', 'EB Garamond', Times, serif;
+}
+.search-term-list .list-feature-info h2 a:first-child {
+    font-family: Adobe-Caslon;
+}
+.search-term-list .list-feature-info h3 a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.search-term-list .list-feature-info p {
+    font-family: georgia;
+}
+.search_container h1.page-title {
+    font-family: Adobe-Caslon;
+}
+.tax-authors .search_container h1.page-title span.author_desc {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.about_edtitor b {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif !important;
+}
+.share_text_container p strong {
+    font-family: inherit !important;
+}
+.issue_rg ul li a {
+    font-family: proxy-nova;
+}
+.issue_rg ul li a:first-child {
+    font-family: Adobe-Caslon;
+}
+.mission_inner_body > :last-child::after {
+    font-family: Adobe-Caslon;
+}
+#ajaxsearchlite1 .probox .proinput input::-webkit-input-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+#ajaxsearchlite1 .probox .proinput input::-moz-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+#ajaxsearchlite1 .probox .proinput input:-ms-input-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+#ajaxsearchlite1 .probox .proinput input:-moz-placeholder {
+    font-family: Avenir-Next-Thin, sans-serif;
+    color: #909090;
+}
+.search-term-list .list-feature-info p a {
+    font-family: georgia;
+}
+.about_r h3 {
+    font-family: Avenir-Next-Thin, sans-serif;
+}
+.article_editor a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.single-mention .contact01 p {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+div.asl_w .probox .proinput input {
+    font-family: Avenir-Next-Thin !important;
+}
+.arti_sub_heading a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.single-post .mission strong {
+    font-family: 'Savoy-Bold', 'EB Garamond Bold', Times, serif;
+}
+.single-post .article_editor p {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.single-post .article_editor p b {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.postDate {
+    font-family: proxy-nova;
+}
+.desktop_new_menu ul li a {
+    font-family: 'Avenir-Next-Thin';
+}
+.issue_date {
+    font-family: 'proxy-nova';
+}
+@media (max-width: 1024px) {
+    .support_heading h3 {
+        font-family: Avenir-Next-Thin, sans-serif;
+    }
+}
+@media (max-width: 1023px) {
+    .td-overlay-box ul li a {
+        font-family: Avenir-Next-Thin, sans-serif;
+    }
+}
+.page-template-mentions .ab_part_mobile p{
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+.issues_container .com_heading01 h4 + .authors a {
+    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
+}
+/* 2151 = editor's note explaining first issue in print */
+.postid-2151 .boxzilla-content .serif-hed {
+    font-family: Adobe-Caslon;
+}
+.postid-2151 .boxzilla-content .sans-serif-hed {
+    font-family: Avenir-Next-Thin,
+}
+.com_heading h3 strong, b {
+    font-family: Adobe-Caslon;
+}
+.com_heading span {
+    font-family: Adobe-Caslon;
 }
 
 .first-benefit_wrapper label {
@@ -90,120 +284,14 @@ form.search-form {
 .issues_container .footer_outerhtml {
     overflow-x: hidden;
 }
-@font-face {
-  font-family: Avenir-Light;
-  src: url(../font/Avenir-Light.ttf);
-}
-@font-face {
-  font-family: Adobe-Caslon;
-  src: url(../font/adobe/ACaslonPro-Regular.otf);
-}
 
+/* fonts were here */
+/* now just mission critical fonts */
 @font-face {
-  font-family: proxy-nova;
-  src: url(../font/proxy/proxy.ttf);
-}
-
-@font-face {
-  font-family: franklin-gothic;
-  src: url(../font/franklin-gothic.ttf);
-}
-@font-face {
-  font-family: Avenir-UltraLight;
-  src: url(../font/Avenir-UltraLight.ttf);
-}
-@font-face {
-  font-family: big-caslon;
-  src: url(../font/big-caslon.ttf);
-}
-@font-face {
-  font-family: AvenirLTStd-Light;
-  src: url(../font/AvenirLTStd-Light.otf);
-}
-@font-face {
-  font-family: AvenirLTStd-Roman;
-  src: url(../font/AvenirLTStd-Roman.otf);
-}
-@font-face {
-  font-family: Avenir-Roman;
-  src: url(../font/Avenir-Roman.ttf);
-}
-@font-face {
-  font-family: AvenirLTStd-Book;
-  src: url(../font/AvenirLTStd-Book.otf);
-}
-@font-face {
-  font-family: Avenir-Book;
-  src: url(../font/Avenir-Book.ttf);
-}
-@font-face {
-  font-family: Avenir-Thin;
-  src: url(../font/avenir_thin.ttf);
-}
-@font-face {
-  font-family: Avenir-Next-Thin;
-  src: url(../font/avenir-next-thin.ttf);
-}
-
-@font-face {
-    font-family: 'EB Garamond';
-    src: url('../font/EBGaramond/EBGaramond-Regular.woff2') format('woff2'),
-        url('../font/EBGaramond/EBGaramond-Regular.woff') format('woff'),
-        url('../font/EBGaramond/EBGaramond-Regular.svg#EBGaramond-Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    font-family: Avenir-Next-Thin;
+    src: url(../font/avenir-next-thin.ttf);
     font-display: swap;
-}
-
-@font-face {
-    font-family: 'EB Garamond';
-    src: url('../font/EBGaramond/EBGaramond-Italic.woff2') format('woff2'),
-        url('../font/EBGaramond/EBGaramond-Italic.woff') format('woff'),
-        url('../font/EBGaramond/EBGaramond-Italic.svg#EBGaramond-Italic') format('svg');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'EB Garamond Bold';
-    src: url('../font/EBGaramond/EBGaramond-Bold.woff2') format('woff2'),
-        url('../font/EBGaramond/EBGaramond-Bold.woff') format('woff'),
-        url('../font/EBGaramond/EBGaramond-Bold.svg#EBGaramond-Bold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'EB Garamond Bold';
-    src: url('../font/EBGaramond/EBGaramond-BoldItalic.woff2') format('woff2'),
-        url('../font/EBGaramond/EBGaramond-BoldItalic.woff') format('woff'),
-        url('../font/EBGaramond/EBGaramond-BoldItalic.svg#EBGaramond-BoldItalic') format('svg');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Libre Franklin';
-    src: url('../font/LibreFranklin/LibreFranklin-Thin.woff2') format('woff2'),
-        url('../font/LibreFranklin/LibreFranklin-Thin.woff') format('woff'),
-        url('../font/LibreFranklin/LibreFranklin-Thin.svg#LibreFranklin-Thin') format('svg');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Libre Franklin';
-    src: url('../font/LibreFranklin/LibreFranklin-Thin.woff2') format('woff2'),
-        url('../font/LibreFranklin/LibreFranklin-ThinItalic.woff') format('woff'),
-        url('../font/EBGaramond//LibreFranklin/LibreFranklin-ThinItalic.svg#LibreFranklin-ThinItalic') format('svg');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-}
+    }
 
 @font-face {
     font-family: 'Savoy';
@@ -213,38 +301,6 @@ form.search-form {
     font-style: normal;
     font-display: swap;
 }
-
-@font-face {
-    font-family: 'Savoy-Bold';
-    src: url('../font/Savoy/SavoyBold.woff2') format('woff2'),
-        url('../font/Savoy/SavoyBold.woff') format('woff'),
-        url('../font/Savoy/SavoyBold.woff.svg#Savoy') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../font/Montserrat/Montserrat-Thin.woff2') format('woff2'),
-        url('../font/Montserrat/Montserrat-Thin.woff') format('woff'),
-        url('../font/Montserrat/Montserrat-Thin.svg#Montserrat-Thin') format('svg');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: local('Montserrat Thin Italic'), local('Montserrat-ThinItalic'),
-        url('../font/Montserrat-ThinItalic.woff2') format('woff2'),
-        url('../font/Montserrat-ThinItalic.woff') format('woff'),
-        url('../font/Montserrat-ThinItalic.svg#Montserrat-ThinItalic') format('svg');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-}
-
 
 :root{
     --white:#fff;
@@ -260,18 +316,14 @@ form.search-form {
 }
 
 body {
-    font-family: Avenir-Next-Thin;
     letter-spacing: 0.03em;
     line-height: 1.6em;
     color: #333;
 }
 
 h1,h2,h3,h4,h5,h6,p,a{
-    font-family: Avenir-Next-Thin;
     color: #303030;
 }
-
-
 
 h2 {
     font-size: 45px;
@@ -447,14 +499,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .latestArticle_Heading {
     margin-top: 50px;
 }
-.arti_heading h4 a{
-    font-family: Avenir-Next-Thin;
-}
+
 .arti_sub_heading strong {
     font-weight: normal;
 }
 .latestArticle_Heading h1 {
-    font-family: Avenir-Next-Thin;
     margin-bottom: 0px;
 }
 .arti_heading h4 a:hover{ color: #303030; }
@@ -471,9 +520,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     position: relative;
     font-weight: bold;
 }
-.arti_heading h4 a strong {
-    font-family: Adobe-Caslon;
-}
+
 .arti_heading {
     margin-top: 30px;
 }
@@ -498,7 +545,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 }
 .support_us_pipe{color: #9800ff;}
 .support_heading h3 {
-    font-family: Avenir-Next-Thin;
     font-size: 40px;
 	padding-left: 38px;
 }
@@ -519,7 +565,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     padding: 30px 10px;
 }
 .signup4mail_Left h3 {
-    font-family: Avenir-Next-Thin;
     padding-left: 38px;
     padding-bottom: 8px;
     padding-top: 13px;
@@ -528,7 +573,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .support_subheadings h3 {
     text-transform: uppercase;
     font-size: 29px;
-    font-family: Avenir-Next-Thin;
     margin-top: 23px;
     font-weight: 600;
     text-align: right;
@@ -540,7 +584,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 }
 .support_content p {
     font-size: 18px;
-    font-family: Avenir-Next-Thin;
 	margin: auto;
 }
 .signup4mail_BG #mc_embed_signup .mc-field-group input#mce-EMAIL{ background: #f5f5f6; }
@@ -575,7 +618,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 
 .latestArticle_Heading p {
     font-size: 14px;
-    font-family: proxy-nova;
 }
 .footerNewLogo img {
     width: 145px;
@@ -593,7 +635,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     float: left;
     display: inline-block;
     font-size: 22px;
-    font-family: Avenir-Next-Thin;
     font-weight: 500;
     margin-bottom: 0;
     width: 280px;
@@ -626,9 +667,9 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     padding-left: 70px;
     padding-right: 70px;
 }
+
 #footerFullMenu li {
     font-size: 14px;
-    font-family: Avenir-Next-Thin;
 }
 
 .copyrightSpan {
@@ -636,7 +677,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     color: #fff;
     float: right;
     font-weight: 500;
-    font-family: Avenir-Next-Thin;
     padding-right: 40px;
 }
 .nextIssues {
@@ -673,12 +713,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     font-size: 18px;
     top: 20px;
 }
+
 .searchPage_Form_Button {
     border: none;
     padding: 10px;
-    font-size: 20px;
     font-size: 21px;
-    font-family: Avenir-Next-Thin;
     padding: 10px 28px;
 }
 .searchPage_Form_Button {
@@ -716,7 +755,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     padding: 30px;
 }
 
-.com_logo{}
 .com_logo img{
     margin: auto;
     display: block;
@@ -869,7 +907,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 
 .newsletter .news_l input[type="submit"]{
     font-size: 14px !important;
-    font-family: proxy-nova;
 }
 
 .but61{
@@ -897,13 +934,12 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     border-color: var(--secondary-color);
     box-shadow: 0px 0px 0px 1px var(--black) !important;
 }
-.ab_part{}
+
 .ab_part_l {
     width: 50%;
     justify-content: flex-end;
     text-align: right;
-     /*top: -15px;                       /* === CHANGED === */
-    top: 0px;                           /* === ADDED 6.3 === */
+    top: 0px;
     position: relative;
 }
 .wpfs-form-control:not(.wpfs-form-control--error).wpfs-form-control--focus, .wpfs-form-control:not(.wpfs-form-control--error):focus {
@@ -915,8 +951,7 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     margin-left: -15px;
 }
 .ab_part_img{
-    /*right: 0;*/                       /* === CHANGED === */
-    right: 10px;                        /* === ADDED 6.3 === */
+    right: 10px;
     position: relative;
 }
 .ab_part_img img {
@@ -958,7 +993,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     font-size: 18px;
     color: #303030;
     font-weight: 400;
-    font-family: proxy-nova !important;
 }
 
 .page-template-subscribe .constrained.new::after {
@@ -976,20 +1010,7 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 
 .form01 h4 {
     font-size: 30px;
-    font-family: proxy-nova;
 }
-
-.form01 form {}
-/*.form01 form #wpfs-form-get-parameters--ZjFiZTB ~ .wpfs-form-group{
-    display: none;
-}*/
-
-/*.form01 form .wpfs-form-select{display:none;}*/
-
-
-/*.form01 form .wpfs-form-select,
-.form01 form .ui-selectmenu-button,
-.form01 form .wpfs-form-select select{display:none !important;}*/
 
 .wpfs-form-label[for="wpfs-custom-amount--ZjFiZTB-button"],
 .form01 form .wpfs-form-label[for="wpfs-custom-amount--ZjFiZTB-button"] {
@@ -1015,24 +1036,9 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     margin: 0 auto 25px !important;
     background: #f6f6f6 !important;
     border: 1px solid #f6f6f6 !important;
-    font-family: proxy-nova;
 }
 
 input.unfocus_email::placeholder { font-size: 0; }
-
-
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--gray);font-family: proxy-nova;
-
-}
-
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: var(--gray);font-family: proxy-nova;
-}
-
-input::-ms-input-placeholder { /* Microsoft Edge */
-  color: var(--gray);font-family: proxy-nova;
-}
 
 .radio02{
     display: flex;
@@ -1053,23 +1059,11 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     margin: 0px 0;
 }
 
-.wpfs-btn-primary--loader:after{
-    /** Let's not hide the loader - **/
-    /* display:none !important;  */
-}
-
 .ab_part_r{
     width: 50%;
 }
 .com_heading h3 {
     font-size: 36px;
-    font-family: Avenir-Next-Thin;
-    /*text-transform: capitalize;*/ 			/*=== CHANGED 6.19 === */
-}
-
-.postid-2274 .com_heading h3 {
-    /* font-family: savoy, serif; */
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
 
 .donate-subscribe_txt .com_heading h3 {
@@ -1078,10 +1072,8 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 
 .com_heading h3 b,
 .com_heading h3 strong {
-    /** Let's add strong too **/
     font-size: 40px;
     font-weight: bold;
-    font-family: Adobe-Caslon;
 }
 
 .single-mention .com_heading h3 b{ font-size: 50px; }
@@ -1094,7 +1086,6 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 .com_heading span {
     font-size: 30px;
     top: 5px;
-    font-family: Adobe-Caslon;
 }
 
 .single-mention .com_heading span {		/*=== ADDED 6.18 === */
@@ -1193,10 +1184,8 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     width: 450px;
     font-size: 18px;
     background: transparent;
-    font-family: Avenir-Next-Thin;
     border-bottom: 1px solid var(--gray);;
 }
-
 
 .f_three{justify-content: flex-end;}
 
@@ -1215,7 +1204,6 @@ ul.social_icons li  i.fa,
 ul.social_icons li  i.fab{
     font-size: 32px;
 }
-
 
 .but62{
     border: 1px solid var(--gray);
@@ -1243,8 +1231,8 @@ ul.social_icons li  i.fab{
     padding-right: 20px !important;
     border: 1px solid !important;
     border-radius: 9px !important;
-    font-family: proxy-nova;
 }
+
 #mc-embedded-subscribe ~ .mce_inline_error {
     position: absolute;
     top: 80%;
@@ -1260,20 +1248,6 @@ ul.social_icons li  i.fab{
     padding: 0 !important;
     left: 0 !important;
 }
-.news_l .but62, {
-    border: 1px solid var(--gray) !important;
-    text-transform: capitalize;
-    padding: 6px 45px !important;
-    border-radius: 13px !important;
-    cursor: pointer !important;
-    font-size: 20px !important;
-    color: var(--gray) !important;
-    height: auto !important;
-    width: auto !important;
-    background: transparent !important;
-    line-height: 1em !important;
-}
-
 
 .wpfs-form-actions{
     float: right !important;
@@ -1292,15 +1266,9 @@ ul.social_icons li  i.fab{
     transition: all 0.3s ease-out !important;
     height: unset !important;
     font-weight: 400 !important;
-    font-family: Avenir-Next-Thin !important;
     box-shadow: none !important;
     border-radius: 9px !important;
 }
-.wpfs-form-actions button.wpfs-btn {
-    /** Let's not reset the margin - Pea **/
-    /* margin-right: 0 !important; */
-}
-
 
 .but62:hover,
 .but63:hover{
@@ -1314,13 +1282,10 @@ ul.social_icons li  i.fab{
     max-width: 100% !important;
 }
 
-/* SUB SCRIBE */
-.ab_part_l {}
-
+/* SUBSCRIBE */
 
 #wpfs-form-get-parameters--ZTI4NGY ~ .wpfs-form-check-group {
     position: relative;
-
     background-color: rgba(255,255,255,1);
     padding: 45px;
     background-repeat: no-repeat;
@@ -1346,7 +1311,6 @@ display: none;
 }
 .page-template-subscribe .ab_part_l .wpfs-form-check-group .wpfs-form-check {
     position: relative;
-   /* z-index: 9;*/
     width: 45% !important;
     display: block;
     float: none;
@@ -1360,9 +1324,9 @@ display: none;
 }
 .ab_part_img_abu div label {
     font-size: 19px !important;
-    font-family: proxy-nova;
     color: #fff;
 }
+
 .ab_part_img_inner > div input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -1468,7 +1432,6 @@ button.search-submit {
     font-size: 15px;
     font-weight: normal;
     height: 32px;
-    font-family: sans-serif;
     line-height: 32px;
     padding: 0 22px;
     text-align: center;
@@ -1518,7 +1481,6 @@ button.search-submit:hover {
     }
 }
 
-
 @media(min-width: 768px){
 
     .only_mobile_show {display: none; }
@@ -1566,10 +1528,9 @@ button.search-submit:hover {
     .issues_list_ul li {
         margin-right: 50px;
         margin-bottom: 30px;
-		/*margin-top: -30px; */					/* === ADDED 6.16 === */
     }
 }
-@media (min-width: 768px)and (max-width:1025px){	/* === ADDED 6.19 ===*/
+@media (min-width: 768px)and (max-width:1025px){
 	.issues_list_ul.row {
 	margin-top: 0px
 }
@@ -1612,11 +1573,11 @@ ul.social_icons li {
 .nextIssues::after {
     content: "More Issues";
     font-size: 32px;
-    font-family: Avenir-Next-Thin;
     position: relative;
     top: 6px;
     left: -20px;
 }
+
 .issues_list_ul.row{ margin: auto; }
 
 .issues_list_ul li {
@@ -1626,11 +1587,11 @@ ul.social_icons li {
 }
 .more_link a {
     color: #8C00FF;
-    font-family: Avenir-Next-Thin;
     margin-left: 7px;
     font-size: 30px;
     margin: auto;
 }
+
 .latest_articles .single_article {
     padding-left: 0;
     padding-right: 0;
@@ -1801,8 +1762,8 @@ ul.social_icons {
     color: #69A7C2 !important;
     margin-top: 20px !important;
     display: block !important;
-    font-family: proxy-nova !important;
 }
+
 .footer_outer:after {
     background-image: url(/wp-content/uploads/2020/04/the_drift_arrow.png);
     content: '';
@@ -1820,9 +1781,9 @@ ul.social_icons {
 
 .single-post .mission_inner a {
     text-decoration: underline !important;
-    font-family: initial;
     position: relative;
 }
+
 .single-post .mission_inner a:hover {
     color: #69a7c2;
 }
@@ -1863,8 +1824,8 @@ ul.social_icons {
     font-size: 15px !important;
     text-transform: uppercase;
     font-style: italic;
-    font-family: Avenir-Next-Thin !important;
 }
+
 .more_from_issue {
     padding-top: 75px;
 }
@@ -1921,16 +1882,14 @@ section.mission_outer {
 }
 .more_from_issue .text-treview {
     margin-top: 10px;
-    font-family: 'georgia';
     line-height: 1.6em;
     font-size: 16px;
 }
+
 .more_from_issue .com_heading01 p a {
     display: block;
     margin-top: 0px;
     font-weight: normal;
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
 }
@@ -1940,11 +1899,7 @@ section.mission_outer {
     padding-right: 7px;
 }
 
-.more_from_issue .com_heading01 h4 b a {
-    font-family: Adobe-Caslon;
-}
 .issue_container .com_heading01 h4 b a {
-    font-family: Adobe-Caslon;
     font-weight: 600;
 }
 .issue_container .com_heading01 h4 b a:hover {
@@ -1983,12 +1938,12 @@ section.mission_outer {
 .page-template-donate .menu_box_two {
     width: 100%;
     justify-content: center;
-	display: none;							/* === ADDED 6.9 === */
+	display: none;
 }
 .page-template-subscribe .menu_box_two {
     width: 100%;
     justify-content: center;
-	display: none;							/* === ADDED 6.9 === */
+	display: none;
 }
 .page-template-about-page .ab_part {
     align-items: center;
@@ -2046,17 +2001,11 @@ section.mission_outer {
 .ab_part_img p.caption {
     font-size: 13px;
     margin-bottom: 0;
-    /*padding-left: 10px;*/
-    padding-left: 30px;				/* === CHANGED 6.11 === */
-	margin-top: 10px;				/* === ADDED 6.11 === */
+    padding-left: 30px;
+	margin-top: 10px;
     text-align: left;
     padding-right: 10px;
     line-height: normal;
-}
-
-.postid-2274 .ab_part_img p.caption {
-    /* font-family: savoy, serif; */
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
 
 .issue_outer .issue_l {
@@ -2119,8 +2068,8 @@ section.mission_outer {
     padding-bottom: 0;
     margin-bottom: 5px;
 }
+
 .search-term-list .list-feature-info h2 a:first-child {
-    font-family: Adobe-Caslon;
     font-weight: 600;
 }
 .search-term-list .list-feature-info h3 {
@@ -2132,15 +2081,13 @@ section.mission_outer {
     margin-bottom: 0;
     text-transform: capitalize;
 }
+
 .search-term-list .list-feature-info h3 a {
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     font-weight: normal;
     font-size: 18px;
 }
 .search-term-list .list-feature-info p {
-    font-family: georgia;
     font-size: 16px;
     margin-top: 20px;
     margin-bottom: 0;
@@ -2162,8 +2109,7 @@ section.mission_outer {
 }
 .search-term-list .list-feature-info span {
     color: #909090;
-    /* font-size: 19px;                         ========== CHANGED 5.28 ========= */
-    font-size: 21px;                            /* ========== ADDED 5.28 ========= */
+    font-size: 21px;
     position: relative;
     top: 1px;
     vertical-align: top;
@@ -2171,16 +2117,15 @@ section.mission_outer {
 }
 .search_container h1.page-title {
     font-size: 36px;
-    font-family: Adobe-Caslon;
     font-weight: 600;
     padding-bottom: 30px;
     margin-bottom: 0;
     position: relative;
     line-height: 0.85;
 }
+
 .tax-authors .search_container h1.page-title span.author_desc {
     font-size: 20px;
-    font-family: Avenir-Next-Thin;
     display: inline;
     position: relative;
     margin-left: 10px;
@@ -2196,13 +2141,6 @@ section.mission_outer {
 }
 .search-term-list .list-feature-info a:hover {
     color: inherit;
-}
-.about_edtitor b {
-    /* font-family: 'franklin-gothic' !important; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif !important;
-}
-.share_text_container p strong {
-    font-family: inherit !important;
 }
 
 .share_text {
@@ -2227,10 +2165,10 @@ section.mission_outer {
 .drift_searchForm {
     display: none;
 }
+
 .issue_rg ul li a {
     display: inline-block !important;
     border: none !important;
-    font-family: proxy-nova;
     padding-top: 3px;
     padding-bottom: 3px;
     font-size: 20px !important;
@@ -2249,9 +2187,7 @@ section.mission_outer {
 .issue_rg ul li a:hover {
     color: #2A8A9D !important;
 }
-.issue_rg ul li a:first-child {
-    font-family: Adobe-Caslon;
-}
+
 .single-issue .com_heading01 {
     margin-bottom: 20px;
 }
@@ -2271,13 +2207,13 @@ section.mission_outer {
     background: #fff;
     top: 0;
 }
+
 .mission_inner_body > :last-child::after {
     content: "||";
     color: #69A7C2;
     font-weight: bold;
     position: relative;
     left: 5px;
-    font-family: Adobe-Caslon;
 }
 .bredcrum01 {
     margin-top: -15px;
@@ -2300,7 +2236,6 @@ section.mission_outer {
     font-size: 16px;
 }
 .menu_outer ul.social_icons li a i.fa-search {
-    /* font-size: 30px; */
      font-size: 22px;
 }
 .page-template-coming_soon .Container {
@@ -2346,22 +2281,7 @@ section.mission_outer {
 .page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-moz-placeholder {
     color: #4D788C !important;
 }
-#ajaxsearchlite1 .probox .proinput input::-webkit-input-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
-#ajaxsearchlite1 .probox .proinput input::-moz-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
-#ajaxsearchlite1 .probox .proinput input:-ms-input-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
-#ajaxsearchlite1 .probox .proinput input:-moz-placeholder {
-    font-family: Avenir-Next-Thin;
-    color: #909090;
-}
+
 .f_logo > p {
     visibility: hidden;
 }
@@ -2390,8 +2310,8 @@ section.mission_outer {
 .search_container.article_container .search-term-list .list-feature-info h3 {
     margin-top: 15px;
 }
+
 .search-term-list .list-feature-info p a {
-    font-family: georgia;
     text-decoration: underline !important;
 }
 .search_container.article_container .search-term-list .list-feature-img img {
@@ -2441,7 +2361,6 @@ section.mission_outer {
 }
 label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
     line-height: 24px;
-    vertical-align: middle;
     display: block;
     padding-left: 30px;
 }
@@ -2466,7 +2385,6 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
     color: #07dbdb !important;
 }
 .about_r h3 {
-    font-family: Avenir-Next-Thin;
     font-size: 28px;
 }
 .about_r h3 b {
@@ -2475,16 +2393,12 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
 }
 
 .article_editor a {
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     font-weight: normal;
 }
 .single-mention .contact01 p {
     line-height: 1.4em;
     font-size: 16px;
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-weight: normal;
 }
 div.asl_r.vertical {
@@ -2514,8 +2428,8 @@ div.asl_w .probox .proinput input {
     font-size: 14px !important;
     text-shadow: none !important;
     color: #303030 !important;
-    font-family: Avenir-Next-Thin !important;
 }
+
 div.asl_m .probox .proloading {
     display: none !important;
 }
@@ -2541,8 +2455,6 @@ div.asl_w .probox .promagnifier .innericon svg {
 }
 
 .arti_sub_heading a {
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-weight: normal;
     font-size: 18px;
     text-transform: uppercase;
@@ -2560,7 +2472,7 @@ div.asl_w .probox .promagnifier .innericon svg {
     color: #000 !important;
 }
 [id*="mention_"] a:hover b {
-    color: #303030 /*!important*/;
+    color: #303030;
 }
 .signup4mail_Right #mc_embed_signup #mce-error-response {
     margin-top: 0 !important;
@@ -2587,55 +2499,37 @@ div.asl_w .probox .promagnifier .innericon svg {
     display: none;
 }
 .single-post .mission b,
-.single-post .mission strong {
-    /* font-family: savoy; */
-    font-family: 'Savoy-Bold', 'EB Garamond Bold', Times, serif;
-    /* font-weight: bold; */
-}
+
 .wp-pagenavi {
     text-align: center;
 }
 
-.wp-pagenavi span, a {                 /* ======= ADDED 5.28 ========= */
+.wp-pagenavi span, a {
     border: none !important;
-    /*margin: 5px !important;*/
-    /*margin: 5px 5px 0px 0px; */ 			/* ======= ADDED 6.3 ========= */
 }
 
-.wp-pagenavi  {            					/* ======= ADDED 6.19 ========= */
+.wp-pagenavi  {
     margin: 5px 5px 0px 0px;
 }
 
-
-
 .single-post .article_editor p {
-    /* font-family: franklin-gothic; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
     padding-top: 50px;
 }
+
 .single-post .article_editor p b {
-    /* font-family: 'franklin-gothic'; */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     text-transform: uppercase;
 }
 .search-term-list .list-feature-info {
     padding-left: 25px;
     padding-right: 25px;
-	/*margin-top: 20px; */                          /* ========== ADDED 5.29 =========== */
+}
 
-}
-/*
-.single-post figure {
-    width: 100% !important;
-}
- */
 .postDate {
     text-transform: uppercase;
     font-size: 14px;
     padding-bottom: 60px;
     font-weight: 600;
-    font-family: proxy-nova;
     color: #ccc;
 }
 .article_editor {
@@ -2647,20 +2541,13 @@ div.asl_w .probox .promagnifier .innericon svg {
     top: -15px;
 }
 .issue_div_left {
-    /*padding-left: 0;*/            /* === CHANGED === */
-    /*padding-right: 0;*/           /* === CHANGED === */
-    padding-top: 30px;              /* === ADDED 6.1 === */
-    padding-right: 30px;            /* === ADDED 6.1 === */
-    text-align: right;              /* === ADDED 6.1 === */
-}
-.issue_div_left img {               /* === ADDED 6.1 === */
-    /*max-width: 65% !important;  	/* === ADDED 6.1 === */
-    /*min-width: 390px;           	/* === ADDED 6.1 === */
-
+    padding-top: 30px;
+    padding-right: 30px;
+    text-align: right;
 }
 .issue_div_right {
     margin-top: 25px;
-	max-width: 55%;					/* === ADDED 6.12 === */
+	max-width: 55%;
 }
 .desktop_new_menu {
     position: relative;
@@ -2681,7 +2568,6 @@ div.asl_w .probox .promagnifier .innericon svg {
     text-transform: uppercase;
     color: #303030;
     display: block;
-    font-family: 'Avenir-Next-Thin';
     font-size: 16px;
 }
 
@@ -2692,12 +2578,6 @@ div.asl_w .probox .promagnifier .innericon svg {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.page-template-subscribe .desktop_new_menu {
-    /*display: none;*/							/* === CHANGED 6.9 === */
-}
-.page-template-donate .desktop_new_menu {
-    /*display: none;*/							/* === CHANGED 6.9 === */
-}
 .page-template-subscribe #tf-hide-mob {
     display: block !important;
 }
@@ -2707,33 +2587,26 @@ div.asl_w .probox .promagnifier .innericon svg {
 
 h1.issue_heading {
     margin-bottom: 0;
-    /*font-size: 14px;
-    color: #ccc;*/
-    /*font-family: 'proxy-nova';    /* ========= CHANGED 6.2 ======== */
     text-transform: uppercase;
-    font-size: 27px; 	/* ============= ADDED 5/28 ========= */
-    color: #000;  		/* ============= ADDED 5/28 ========= */
+    font-size: 27px;
+    color: #000;
     font-weight: 600;
 
 }
 
-h1.issue_heading b { 		/* ============= ADDED 5/28 ========= */
-    /*font-family: adobe-caslon-w01-smbd, serif;*/
-    font-family: adobe-caslon, serif;  /* === CHANGED 6.2 === */
+h1.issue_heading b {
     text-transform: none;
     font-size: 50px;
-	padding-right: 10px; 	/* ============== ADDED 6/3 ========= */
+	padding-right: 10px;
 }
 
-h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
+h1.issue_heading span {
     color: #ccc;
-	font-size: 36px;        /* ============== ADDED 6/1 ========= */
-	display: none;          /* ============== ADDED 6/3 ========= */
+	font-size: 36px;
+	display: none;
 }
-
 
 .issue_date {
-    font-family: 'proxy-nova';
     font-size: 14px;
     font-weight: 600;
     color: #ccc;
@@ -2746,11 +2619,10 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     margin-left: 92px;
 }
 .mission_outer .mission + .more_from_issue {
-    /*padding-top: 60px;*/						/* === CHANGED 6.18 === */
 	padding-top: 30px;
 }
 
-.postid-435 .mission + .more_from_issue {					/* === ADDED 6.18 === */
+.postid-435 .mission + .more_from_issue {
 	padding-top: 0px;
 }
 .mission p span {
@@ -2771,7 +2643,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         width: 150px !important;
         max-width: 100%;
     }
-    /* .footerNewLogo img{ width: 85%; } */
   }
 
  @media (max-width: 1199px) {
@@ -2816,10 +2687,9 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         right: -2%;
     }
   }
-
+  
 @media (max-width: 1024px) {
-	.support_heading h3 {				/* ======== ADDED 6.9 ======== */
-    font-family: Avenir-Next-Thin;
+	.support_heading h3 {
     font-size: 40px;
     padding-left: 0;
 	text-align: left;
@@ -2838,8 +2708,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         display: none;
     }
     .contact01.headong0022 h1 {
-        /*margin-bottom: 50px !important;*/     /* ==== CHANGED 6.1 === */
-        margin-bottom: 20px !important;         /* ==== ADDED 6.1 === */
+        margin-bottom: 20px !important;
     }
     .support_subheadings h3 {
         text-align: left;
@@ -2952,10 +2821,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         margin-top: 30px !important;
         line-height: 32px !important;
     }
-    /* .footerNewSocials ul {
-        margin-right: 0;
-    } */
-
 }
 @media (max-width: 1152px) {
     .drift_search_link {
@@ -3005,12 +2870,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     }
     .desktop_new_menu {
         display: none;
-    }
-    .page-template-subscribe .td-site-mobile-header {
-        /*display: none !important;*/				/* === CHANGED 6.11 === */
-    }
-    .page-template-donate .td-site-mobile-header {
-        /*display: none !important;*/				/* === CHANGED 6.11 === */
     }
     .page-template-coming_soon .td-site-mobile-header {
         display: none !important;
@@ -3148,41 +3007,29 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         position: relative;
         top: 45px;
         width: 100%;
-        /* text-align: center;                  ========= CHANGED 5.28 ======== */
         padding-left: 20px;
         padding-right: 20px;
-    }
-    .td-overlay-box ul {
-        /*text-align: center;                   ========= CHANGED 5.28 ======== */
     }
     .td-overlay-box li {
         list-style: none;
         display: block;
         line-height: normal;
-        /*padding: 20px 10px;*/
-         padding: 10px 10px 10px 30px;			/* === CHANGED 6.9 === */
+         padding: 10px 10px 10px 30px;
     }
     .td-overlay-box ul li a {
         text-decoration: none;
-        /*font-size: 22px;*/
-		font-size: 20px;						/* === CHANGED 6.9 === */
+		font-size: 20px;
         color: #303030;
         transition: 0.3s;
         display: inline-block;
         letter-spacing: normal;
-        /*font-weight: normal;*/
-		font-weight: bolder;					/* === CHANGED 6.9 === */
-        /*text-transform: uppercase;*/			/* === CHANGED 6.9 === */
-        font-family: Avenir-Next-Thin;
+		font-weight: bolder;
     }
-    .td-overlay-box li.current-menu-item a {
-        /*color: #07dbdb;*/						/* === CHANGED 6.9 === */
-    }
+
     .td-overlay-box .closebtn {
         position: absolute;
         top: 10px;
-        /*left: 15px;                       ============ CHANGED 5.28 ========= */
-        right: 15px;                        /* ========= ADDED 5.28 =========== */
+        right: 15px;
         font-size: 46px;
         color: #303030;
         text-decoration: none;
@@ -3239,18 +3086,13 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     #mc_embed_signup .mc-field-group input[type="submit"] {
         margin-left: 20px !important;
     }
-    .page-template-coming_soon .td-site-mobile-header, 	/*removed .page-template-subscribe .td-site-mobile-header */
-      {	/* removed .page-template-donate .td-site-mobile-header*/
-        display: none !important;
-    }
     .page-template-donate .the-drift-logo-mb,
     .page-template-subscribe .the-drift-logo-mb {
-        /*display: block !important; */			/* === CHANGED 6.11 */
         text-align: center;
         position: relative;
         z-index: 9999;
         top: 15px;
-		display: none;					/* === ADDED 6.11 === */
+		display: none;
     }
     .the-drift-logo-mb img {
         height: 45px;
@@ -3435,7 +3277,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     }
     .diff_font {
         max-width: 100% !important;
-        /*padding: 20px !important;*/
 		padding: 0px 10px 20px 15px !important;
     }
     
@@ -3468,7 +3309,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         margin-bottom: 10px !important;
     }
     .search-term-list .list-feature-img {
-        /*padding-right: 10px;                      ========== CHANGED 5.29 ======= */
         padding-right: 15px;
     }
     .search-term-list .list-feature-img img {
@@ -3500,13 +3340,12 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     .page-template-donate .ab_part,
     .page-template-subscribe .ab_part {
         flex-direction: column-reverse;
-        /*padding-top: 25px;*/			/* === CHANGED 6.11 === */
         padding-bottom: 25px;
     }
     .page-template-donate .ab_part .ab_part_r,
     .page-template-subscribe .ab_part .ab_part_r {
         margin-bottom: 20px;
-		padding-top: 0px; 				/* === ADDED 6.11 === */
+		padding-top: 0px;
     }
     #mc-embedded-subscribe ~ .mce_inline_error {
         width: 100%;
@@ -3521,9 +3360,7 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
         width: 100%;
     }
     .contact01.headong0022 h1 {
-        /*margin-bottom: 50px !important; */        /* === CHANGED === */
-        margin-bottom: 20px !important;             /* === ADDED 6.1 === */
-        /*margin-top: 30px;*/                       /* === CHANGED === */
+        margin-bottom: 20px !important;
         margin-top: 10px;
     }
     .ab_part.headong0022_cover .ab_part_r {
@@ -3535,7 +3372,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
     }
     .arti_feaImage img {
         height: auto;
-		/*padding-right: 10px;*/                    /* === ADDED 6.2 === */
     }
     .footerNew_middle h4 {
         text-align: center;
@@ -3860,8 +3696,6 @@ h1.issue_heading span { 	/* ============= ADDED 5/28 ========= */
 }
 .page-template-mentions .men_content p, 
 .page-template-mentions .ab_part_mobile p{
-    /* font-family:'franklin-gothic';  */
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 18px
 }
 .page-template-mentions .ab_part_mobile, .page-template-mentions .about_l span.subtitle-mention{display:none;}
@@ -4073,7 +3907,6 @@ h1.issue_heading b{
 
 /* TODO: de-dupe all this nonsense */
 .issues_container .com_heading01 h4 + .authors a {
-    font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: normal;
@@ -4128,11 +3961,14 @@ h1.issue_heading b{
 }
 
 .postid-2151 .boxzilla-content .serif-hed {
-    font-family: Adobe-Caslon; font-size: 26px; line-height: 26px;
+    font-size: 26px;
+    line-height: 26px;
 }
 
 .postid-2151 .boxzilla-content .sans-serif-hed {
-    font-size: 22px; font-family: Avenir-Next-Thin; font-weight: 500; line-height: 26px;
+    font-size: 22px;
+    sans-serif; font-weight: 500;
+    line-height: 26px;
 }
 
 .postid-2151 .boxzilla-content {
@@ -4145,26 +3981,20 @@ h1.issue_heading b{
     margin-right: auto;
 }
 
-/* formatting for Olúfẹ́mi postid-2274 */
-
-.moreissue_right.postid-2274 .mr-subtitle,
-.page-template-latest_articles .postid-2274 a.subtitle,
-body.home .postid-2274 .arti_heading h4 a {
-    /* font-family: savoy, serif; */
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-}
-
 .poem-pad {
     padding-left: 30px;
 }
 
 @media(min-width: 768px){
     .postid-2151 .boxzilla-content .serif-hed {
-        font-family: Adobe-Caslon; font-size: 32px; line-height: 32px;
+        font-size: 32px;
+        line-height: 32px;
     }
 
     .postid-2151 .boxzilla-content .sans-serif-hed {
-        font-size: 28px; font-family: Avenir-Next-Thin; font-weight: 500; line-height: 32px;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 32px;
     }
 
     .poem-pad {

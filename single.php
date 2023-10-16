@@ -8,8 +8,7 @@ $category = get_the_category()[0];
 $issue_name = $category->name; // assume only 1 category
 
 if ($page_imageID != "") {
-    $page_imageURL = wp_get_attachment_image_src($page_imageID, "main-image-on-single");
-    $page_imageURL = $page_imageURL[0];
+    list($page_imageURL, $width, $height) = wp_get_attachment_image_src($page_imageID, "main-image-on-single");
 
     $attachment = get_post($page_imageID);
     $caption = $attachment->post_excerpt;
@@ -57,13 +56,6 @@ if ($breakWidth == "") {
     :root {
         --issue_color: <?php echo $colorPick; ?>;
     }
-
-    <?php if ($breakWidth != "") {?>
-    @media(min-width: 768px)and (max-width: <?php echo $breakWidth; ?>px){
-        /*.ab_part_r h3 span{ display: none; } */	/* === CHANGED 6.3 === */
-        /*.com_heading h3 b{ display: block; }*/	/* === CHANGED 6.3 === */
-    }
-    <?php } ?>
 </style>
 
     <section class="main_container_custom">
@@ -101,7 +93,7 @@ if ($type_of_titles == "Style 2") {
               wp_reset_query(); ?>
                 </div>
 
-                    <img src="<?php echo $page_imageURL; ?>">
+                    <img src="<?php echo $page_imageURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
                     <?php
                         if ($caption != "") {
                             echo "<p class='caption'>".$caption."</p>";
