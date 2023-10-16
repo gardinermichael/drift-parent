@@ -15,7 +15,7 @@
     line-height: 1;
 }
 body,h1,h2,h3,h4,h5,h6,p,a{
-    font-family: Avenir-Next-Thin, sans-serif;
+    font-family: Avenir-Next-Thin, Arial, sans-serif;
 }
 h1.issue_heading b {
     font-family: adobe-caslon, serif;
@@ -286,6 +286,21 @@ form.search-form {
 }
 
 /* fonts were here */
+/* now just mission critical fonts */
+@font-face {
+    font-family: Avenir-Next-Thin;
+    src: url(../font/avenir-next-thin.ttf);
+    font-display: swap;
+    }
+
+@font-face {
+    font-family: 'Savoy';
+    src: url('../font/Savoy/Savoy-Regular.woff') format('woff'),
+        url('../font/Savoy/Savoy-Regular.woff.svg#Savoy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root{
     --white:#fff;

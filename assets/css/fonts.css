@@ -11,11 +11,6 @@ src: url(../font/proxy/proxy.ttf);
 font-family: franklin-gothic;
 src: url(../font/franklin-gothic.ttf);
 }
-@font-face {
-font-family: Avenir-Next-Thin;
-src: url(../font/avenir-next-thin.ttf);
-font-display: swap;
-}
 
 @font-face {
     font-family: 'EB Garamond';
@@ -44,15 +39,6 @@ font-display: swap;
         url('../font/EBGaramond//LibreFranklin/LibreFranklin-ThinItalic.svg#LibreFranklin-ThinItalic') format('svg');
     font-weight: 100;
     font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Savoy';
-    src: url('../font/Savoy/Savoy-Regular.woff') format('woff'),
-        url('../font/Savoy/Savoy-Regular.woff.svg#Savoy') format('svg');
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
 }
 
