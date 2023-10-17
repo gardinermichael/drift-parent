@@ -176,7 +176,7 @@ div.asl_w .probox .proinput input {
     font-family: proxy-nova;
 }
 .desktop_new_menu ul li a {
-    font-family: 'Avenir-Next-Thin';
+    font-family: Avenir-Next-Thin, Arial, sans-serif;
 }
 .issue_date {
     font-family: 'proxy-nova';
