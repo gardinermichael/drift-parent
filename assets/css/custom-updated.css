@@ -369,12 +369,12 @@ img{
     height: auto;
 }
 
-.td-mobile-logo img {
-    width: inherit;
-    height: inherit;
+.desktop-logo {
+    width: 8.5rem;
+    margin: auto;
 }
 
-.desktop-logo img {
+.td-mobile-logo img {
     width: inherit;
     height: inherit;
 }
