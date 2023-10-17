@@ -325,9 +325,7 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
               <div class="drift_searchForm"><?php echo get_search_form();?></div>
         </ul>
     </div>
-
     </div>
-
 
     <div class="desktop_new_menu">
         <div class="desktop-logo">
@@ -350,20 +348,12 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
         <div class="container no-print">
             <div class="td-mobile-logo">
                 <a href="<?php echo home_url(); ?>">
-                    <picture>
-                        <source
-                        media="(max-width: 1023px)"
-                        srcset="
-                            <?php echo get_theme_file_uri() . '/assets/images/drift_logo_mobile_1x.png'; ?> 1x, 
-                            <?php echo get_theme_file_uri() . '/assets/images/drift_logo_mobile_2x.png'; ?> 2x, 
-                            <?php echo get_theme_file_uri() . '/assets/images/drift_logo_mobile_3x.png'; ?> 3x"
-                        type="image/png" >
-                        <img
-                        type="image/png"
-                        alt="The Drift Magazine"
-                        width="104"
-                        height="50">
-                    </picture>
+                    <img
+                    src="<?php echo get_theme_file_uri() . '/assets/images/drift_logo_mobile_2x.png'; ?>"
+                    type="image/png"
+                    alt="The Drift Magazine"
+                    width="209"
+                    height="100">
                 </a> 
             </div>
             <div class="td-mobile-menus">
