@@ -3133,6 +3133,7 @@ h1.issue_heading span {
     .issue_div_right {
         padding-left: 0;
         padding-right: 0;
+        max-width: 100% !important;
     }
     .issue_div_left img {               /* === ADDED 6.1 === */
         max-width: 100% !important;
