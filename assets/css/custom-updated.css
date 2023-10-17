@@ -361,8 +361,6 @@ a {
     text-decoration: none!important;
 }
 
-
-
 img{
     width: auto;
     max-width: 100%;
@@ -375,8 +373,7 @@ img{
 }
 
 .td-mobile-logo img {
-    width: inherit;
-    height: inherit;
+    width: 100%;
 }
 
 .issue_div_left img {
