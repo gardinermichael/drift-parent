@@ -332,20 +332,12 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
     <div class="desktop_new_menu">
         <div class="desktop-logo">
             <a href="<?php echo home_url(); ?>">
-                <picture>
-                    <source
-                    media="(min-width: 1024px)"
-                    srcset="
-                        <?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_1x.png'; ?> 1x, 
-                        <?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_2x.png'; ?> 2x, 
-                        <?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_3x.png'; ?> 3x"
-                    type="image/png" >
-                    <img
-                    type="image/png"
-                    alt="The Drift Magazine"
-                    width="136"
-                    height="65">
-                </picture>
+                <img
+                src="<?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_2x.png'; ?>"
+                type="image/png"
+                alt="The Drift Magazine"
+                width="272"
+                height="130">
             </a> 
         </div>
       <?php
