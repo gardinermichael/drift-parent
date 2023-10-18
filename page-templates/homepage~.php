@@ -29,7 +29,7 @@ $url = get_the_permalink($issue_ID);
                 } else {
                     list($thumbURL, $width, $height) = wp_get_attachment_image_src($thumbID, "full");
                 ?>
-                    <a href="<?php echo ($url);?>"><img src="<?php echo $thumbURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"></a>
+                    <a href="<?php echo ($url);?>"><img fetchpriority="high" src="<?php echo $thumbURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"></a>
                 <?php
                 }
                 ?>
