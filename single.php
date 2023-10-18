@@ -93,7 +93,7 @@ if ($type_of_titles == "Style 2") {
               wp_reset_query(); ?>
                 </div>
 
-                    <img src="<?php echo $page_imageURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
+                    <img fetchpriority="high" src="<?php echo $page_imageURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
                     <?php
                         if ($caption != "") {
                             echo "<p class='caption'>".$caption."</p>";
