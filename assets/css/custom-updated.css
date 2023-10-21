@@ -2445,7 +2445,16 @@ div.asl_w .probox .promagnifier .innericon svg {
     width: 100%;
     margin-top: 100px;
     margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.ab_part_r.ab_partFULL .contact01, .ab_part_r.ab_partFULL h3 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .single-post .mission_inner a:hover,
 .single-post blockquote.margin_block p a:hover {
     color: #303030 !important;
@@ -3285,6 +3294,9 @@ h1.issue_heading span {
         text-align: left !important;
         margin-bottom: 0;
         padding-bottom: 0;
+    }
+    .ab_partFULL .com_heading h3, .ab_partFULL .article_editor {
+        text-align: center !important;
     }
     .article_editor {
         text-align: left !important;
