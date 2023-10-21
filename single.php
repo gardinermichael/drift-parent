@@ -73,25 +73,23 @@ if ($type_of_titles == "Style 2") {
 
     <div class="ab_part <?php echo $coverClasss; ?> d-flex">
         <?php
-          if ($page_imageID != "") {
-              ?>
+        $has_image = ($page_imageID);
+        if ($has_image) {
+        ?>
         <div class="ab_part_l d-flex">
             <div class="ab_part_linner">
                 <div class="ab_part_img">
-<?php
-                    $pageID = get_the_id();
-              $date = get_the_date();
-              $articleDate = date('F j, Y', strtotime(CFS()->get('article_date', $pageID)));
-              if ($articleDate == "" || $articleDate ==  "January 1, 1970") {
-                  $articleDate = $date;
-              }?>
-                 <div class="postDate mobile_version">
-                    <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?>	<span>|</span></b>
-                        <?php echo $articleDate;
-
-              wp_reset_postdata();
-              wp_reset_query(); ?>
-                </div>
+            <?php
+            $pageID = get_the_id();
+            $date = get_the_date();
+            $articleDate = date('F j, Y', strtotime(CFS()->get('article_date', $pageID)));
+            if ($articleDate == "" || $articleDate ==  "January 1, 1970") {
+                $articleDate = $date;
+            }?>
+                    <div class="postDate mobile_version">
+                        <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?>	<span>|</span></b>
+                        <?php echo $articleDate; wp_reset_postdata(); wp_reset_query(); ?>
+                    </div>
 
                     <img fetchpriority="high" src="<?php echo $page_imageURL; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
                     <?php
@@ -108,13 +106,8 @@ if ($type_of_titles == "Style 2") {
      }
    ?>
         <div class="ab_part_r <?php echo $singleFull; ?>">
-
             <div class="contact01 <?php echo $coverheading2; ?>">
-
-
                 <?php
-
-
                  if ($type_of_titles == "Style 2") {
                      $pageID = get_the_id();
                      $subsitle = get_post_meta($pageID, "post_subsitle", true);
@@ -125,10 +118,16 @@ if ($type_of_titles == "Style 2") {
                      } ?>
 <!-- COPIED fROM ABOVE-->
                 <div class="postDate desktop_version">
-
-                <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?></b> |
+                    <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?></b> |
                         <?php echo $articleDate; ?>
                 </div>
+                <?php if (!$has_image); { ?>
+                    <div class="postDate mobile_version">
+                        <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?>	<span>|</span></b>
+                        <?php echo $articleDate; wp_reset_postdata(); wp_reset_query(); ?>
+                    </div>
+                <?php
+                }?>
 
                 <h1>
                     <span>	<?php echo $subsitle; ?> </span>
@@ -178,6 +177,13 @@ if ($type_of_titles == "Style 2") {
                      } ?>
                 <?php //this section is different for some reason in poems??>
 
+                <?php if (!$has_image); { ?>
+                    <div class="postDate mobile_version">
+                        <b class="issue_title"><?php echo $issue_name.'&nbsp;'; ?>	<span>|</span></b>
+                        <?php echo $articleDate; wp_reset_postdata(); wp_reset_query(); ?>
+                    </div>
+                <?php
+                }?>
                 <div class="postDate desktop_version">
                     <b class="issue_title">
                         <?php echo $issue_name.'&nbsp;'; ?>
