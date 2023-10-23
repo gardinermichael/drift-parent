@@ -1,6 +1,6 @@
 .more_heading_pipe {
     text-transform: lowercase;
-    color: var(--issue_color); /* ============== ADDED 5.28 =========== */
+    color: var(--issue_color);
 }
 .singleArtiIssue_pipe {
     padding-left: 2px !important;
@@ -10,7 +10,6 @@
     vertical-align: top;
     color: var(--issue_color);
 }
-/*b.issue_title{color: <?php //echo $colorPick;?>;}*/
 .share_text_container p strong,
 .share_text_container h5,
 .more_from_issue h4:hover b a,
@@ -20,7 +19,7 @@
 .article_editor > a:hover{ color: inherit; }
 .more_from_issue a.moreAuhor:hover{ color: #303030; }
 
-.more_from_issue h1 { /* ============== ADDED 5.28 =========== */
+.more_from_issue h1 {
     color: #303030;
     text-transform: lowercase;
     text-transform: capitalize;
@@ -34,10 +33,8 @@
 }
 .postid-1208 .mission_inner{max-width:740px;}
 
-.mission_outer .mission{}
 .mission p{
     font-size: 19px;
-    /* font-family: savoy; */
     font-family: 'Savoy', 'EB Garamond', Times, serif;
     margin-bottom: 35px;
     position: relative;
@@ -71,16 +68,10 @@
     font-family: Adobe-Caslon;
 }
 
-.about_r h3{
-    
-}
 .about_r p{
     font-size: 20px;
     line-height: 1.4;
     font-family: Adobe-Caslon;
-}
-
-.single-post .mission_inner a.no_link_for_margin_block{
 }
 
 .single-post .mission_inner blockquote.margin_block {
@@ -156,9 +147,21 @@ figcaption {
 
 .contact01.headong0022 {
     border-left: 3px solid var(--issue_color);
-    padding-left: 15px !important;
+    padding-left: 15px;
     margin: 20px 0 0 80px;
 }
+
+.ab_partFULL .contact01.headong0022 {
+    border-left: none;
+    margin-left: auto !important;
+    padding-left: 0;
+}
+.ab_partFULL .contact01.headong0022 .postDate {
+    margin-left: auto;
+    width: 100%;
+    max-width: 490px;
+}
+
 .contact01.headong0022 a:hover {
     color: var(--issue_color);
 }
@@ -170,14 +173,13 @@ figcaption {
     margin: 0 0 20px;
     
 }
-.contact01.headong0022  h1 {
+
+.contact01.headong0022 h1 {
     font-size: 36px;
-    /* text-transform: capitalize; */
     color: #000;
     font-weight: 600;
     font-family: Adobe-Caslon;
-    /*margin-bottom: 50px !important; */        /* === CHANGED === */
-    margin-bottom: 20px !important;             /* === ADDED 6.1 === */
+    margin-bottom: 20px !important;
 }
 .contact01.headong0022  h6 {
     font-size: 18px;
