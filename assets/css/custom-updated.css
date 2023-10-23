@@ -43,7 +43,8 @@ h1.issue_heading b {
 .ab_part_img_abu div label{
     font-family: proxy-nova !important;
 }
-.form01 h4, input {
+.form01 h4,
+.form01 input {
     font-family: proxy-nova;
 }
 
@@ -204,7 +205,8 @@ div.asl_w .probox .proinput input {
 .postid-2151 .boxzilla-content .sans-serif-hed {
     font-family: Avenir-Next-Thin,
 }
-.com_heading h3 strong, b {
+.com_heading h3 strong,
+.com_heading h3 b {
     font-family: Adobe-Caslon;
 }
 .com_heading span {
