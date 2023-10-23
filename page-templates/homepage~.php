@@ -159,10 +159,10 @@ $postLoop = new wp_query($postArgs);
         $postTitle = get_the_title($postID);
         $post_imageID = get_post_thumbnail_id($postID, 'large');
 
-        if ($post_imageID != "") {
+        if ($post_imageID) {
             list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
         } else {
-            $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
+            $post_imageURL = get_bloginfo("template_url") . "/assets/images/support.png";
         }
 
         $postSubtitle = get_post_meta($postID, "post_subsitle", true);
@@ -318,7 +318,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
         $postTitle = get_the_title($postID);
         $post_imageID = get_post_thumbnail_id($postID);
 
-        if ($post_imageID != "") {
+        if ($post_imageID) {
             list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
         } else {
             $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
