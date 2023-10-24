@@ -164,7 +164,7 @@ div.asl_w .probox .proinput input {
 .arti_sub_heading a {
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
 }
-.single-post .mission strong {
+.single-post .mission strong, .single-post .mission b {
     font-family: 'Savoy-Bold', 'EB Garamond Bold', Times, serif;
 }
 .single-post .article_editor p {
