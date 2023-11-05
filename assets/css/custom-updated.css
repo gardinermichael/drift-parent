@@ -2953,6 +2953,13 @@ h1.issue_heading span {
         z-index: 99999999;
         padding-bottom: 10px;
     }
+    .td-site-mobile-header-blocking-box {
+        padding-bottom: 123.2px;
+        display: block;
+    }
+    .td-site-mobile-header-blocking-box.hidden {
+        display: none;
+    }
     .td-site-mobile-header.sticky .td-overlay-box {
         top: 80px;
     }
