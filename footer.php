@@ -95,14 +95,6 @@ if (true) {
 				jQuery(this).addClass("with-four");;
 			}
 		});
-
-		jQuery(".subsRadio li span label").on("click", function(){
-			jQuery(".subsRadio li span label").removeClass("active");
-			jQuery(this).addClass("active");
-		});
-
-
-
 	});
 
 	</script>
