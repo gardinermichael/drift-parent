@@ -238,6 +238,8 @@ button#submit--OGNhNmM:before {
       <div class="drift_searchForm"><?php echo get_search_form();?></div>	
     </div>
 </section>
+<header class="td-site-mobile-header-blocking-box hidden">
+</header>
 <header class="td-site-mobile-header" style="display: none;">
         <div class="container no-print">
             <div class="td-mobile-logo">
