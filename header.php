@@ -41,34 +41,12 @@ button#submit--OGNhNmM:before {
     display: block;
     margin-top: 20%;
 }
-.wpfs-form-check-input + .wpfs-form-check-label::before {
-    width: 20px !important;
-    height: 22px !important;
-    border: 0 !important;
-    font-size: 14px !important;
-}
-.wpfs-form-check-input[type="radio"] + .wpfs-form-check-label::after {
-    background: #000 !important;
-    top: 5px !important;
-    left: 3px !important;
-    width: 14px !important;
-    height: 14px !important;
-    border: 0px;
-}
-.wpfs-form-label {
-    margin-bottom: 8px;
-    font-size: 18px !important;
-    font-weight: normal !important;
-    color: #303030  !important;
-}
+
 .com_heading h3 b { 
     font-weight: 600;
   }
 .ab_part_img_inner > div:nth-child(2n+1) {
     width: 29%;
-}
-label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before { 
-    background: #156ccc !important;
 }
 
 #other_amount,#other_amount_temp {
@@ -80,76 +58,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
     border: 1px solid;
     height: 29px;
     padding-left: 10px;
-}
-.subsRadio {
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin-bottom: 30px;
-    background-repeat: no-repeat !important;
-    background-size: 100% !important;
-    background-position: center top !important;
-}
-.subsRadio li {
-    display: block;
-    text-align: left;
-    color: #303030;
-    font-size: 23px;
-    font-family: proxy-nova, sans-serif;
-    margin-bottom: 11px;
-    position: relative;
-}
-.subsRadio li:last-child {
-    margin-bottom: 0;
-}
-.subsRadio li span {
-    margin-right: 10px;
-    margin-left: 20px;
-    font-size: 20px;
-}
-.subsRadio li span.yearSpan {
-    width: 75px;
-    display: inline-block;
-    margin-left: 34px;
-}
-.subsRadio ul {
-    padding-top: 80px;
-    width: 300px;
-    margin: 5px auto;
-    z-index: 99999 !important;
-    position: relative;
-    padding-bottom: 80px;
-}
-.subsRadio li span.radioSpan { 
-    position: relative;
-}
-.subsRadio li span.radioSpan input {
-    display: none;
-}
-.subsRadio li span label::before {
-    position: absolute;
-    background: #fff;
-    content: "";
-    left: 20px;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    top: 4px;
-    border-radius: 50%;
-}
-.subsRadio li span label::after {
-    background: #303030;
-    position: absolute;
-    left: 23px;
-    top: 7px;
-    width: 15px;
-    height: 15px;
-    content: "";
-    border-radius: 50%;
-    opacity: 0;
-}
-.subsRadio li span label.active:after { 
-    opacity: 1;
 }
 
 .form01 { 
@@ -252,17 +160,6 @@ label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before {
         width: 115px !important;
         margin-left: 35px !important;
      }
-}
-
-@media (max-width: 767px) {
-    .subsRadio {
-        background-size: auto !important;
-    }
-}
-@media (max-width: 480px) {
-    .subsRadio {
-        background-size: 125% !important;
-    }
 }
 </style>
 
