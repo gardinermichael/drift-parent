@@ -2936,7 +2936,6 @@ h1.issue_heading span {
         display: none;
     }
     .td-site-mobile-header {
-        display: block !important;
         background-color: #fff;
         padding-top: 20px;
         padding-bottom: 20px;
