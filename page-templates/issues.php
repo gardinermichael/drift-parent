@@ -36,7 +36,6 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
 <div class=" col-md-6 issue_div_right">
 <section class="cus_post_outer">
     <div class="container">
-
         <div class="cus_post">
 
 <?php
