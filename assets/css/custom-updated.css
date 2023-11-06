@@ -987,17 +987,9 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 .ab_part  label.wpfs-form-check-label strong,
 .ab_part  label.wpfs-form-check-label,
 .ab_part_img_abu div label{
-    font-size: 18px;
+    font-size: 18px !important;
     color: #303030;
     font-weight: 400;
-}
-
-.page-template-subscribe .constrained.new::after {
-    content: "(new!)";
-    top: 2.9rem !important;
-    left: 3rem !important;
-    position: absolute;
-    font-weight: 600;
 }
 
 .form01{
@@ -1025,14 +1017,7 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
 
 .ab_part_linner .wpfs-form-check > input,
 .form01 input{
-    font-size: 18px !important;
-    padding: 0 10px !important;
-    display: block !important;
-    width: 100% !important;
-    height: 40px !important;
-    margin: 0 auto 25px !important;
-    background: #f6f6f6 !important;
-    border: 1px solid #f6f6f6 !important;
+    width: 50% !important;
 }
 
 input.unfocus_email::placeholder { font-size: 0; }
@@ -1091,6 +1076,17 @@ input.unfocus_email::placeholder { font-size: 0; }
 
 .mentions .com_heading span {		/*=== ADDED 6.18 ===*/
     font-size: 35px;
+}
+
+.high-title {
+    width: 100%;
+    top: 0px;
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.high-title h3 {
+    padding: 0;
 }
 
 .page-template-subscribe .contact01,
@@ -1281,6 +1277,8 @@ ul.social_icons li  i.fab{
 
 /* SUBSCRIBE */
 
+
+
 #wpfs-form-get-parameters--ZTI4NGY ~ .wpfs-form-check-group {
     position: relative;
     background-color: rgba(255,255,255,1);
@@ -1312,10 +1310,7 @@ ul.social_icons li  i.fab{
     display: block;
     float: none;
 }
-.page-template-subscribe .ab_part_l .wpfs-form-check-group::after {
-    position: unset !important;
 
-}
 .ab_part_img_inner > div {
     margin: 0rem;
 }
@@ -1328,6 +1323,7 @@ ul.social_icons li  i.fab{
     position: absolute;
     opacity: 0;
 }
+
 .ab_part_img_inner > div input[type="radio"] + label::before {
     content: '';
     background: #f4f4f4;
@@ -1361,13 +1357,6 @@ ul.social_icons li  i.fab{
 }
 .ab_part_img_inner > div input[type="radio"] +  label:empty:before {
     margin-right: 0;
-}
-.subsRadio li span label::after {
-    background: #000 !important;
-    left: 24px !important;
-    top: 8px !important;
-    width: 12px !important;
-    height: 12px !important;
 }
 
 /* media css*/
@@ -1461,15 +1450,10 @@ button.search-submit:hover {
     overflow-y: hidden;
 }
 
-
 @media (min-width: 515px) {
     input[id*='search-form'] {
         width: 50%;
         max-width: 500px;
-    }
-
-    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
-        padding: 60px 0px;
     }
 
     .first-benefit .gform_button {
@@ -1543,6 +1527,11 @@ button.search-submit:hover {
 }
 
 @media(max-width: 767px) {
+    .page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label{
+        display: inline-block;
+        padding-left: 50px;
+        font-size: 18px;
+    }
     .signup4mail_Left::before {
         font-size: 19px;
         top: 12px;
@@ -1734,8 +1723,6 @@ button.search-submit:hover {
 }
 
 @media(max-width: 480px){
-    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{     background-size: 135% !important; }
-
     .mentions_container {
         padding-right: 0px;
         padding-left: 0px;
@@ -2949,7 +2936,6 @@ h1.issue_heading span {
         display: none;
     }
     .td-site-mobile-header {
-        display: block !important;
         background-color: #fff;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -2965,6 +2951,13 @@ h1.issue_heading span {
         left: 0;
         z-index: 99999999;
         padding-bottom: 10px;
+    }
+    .td-site-mobile-header-blocking-box {
+        padding-bottom: 123.2px;
+        display: block;
+    }
+    .td-site-mobile-header-blocking-box.hidden {
+        display: none;
     }
     .td-site-mobile-header.sticky .td-overlay-box {
         top: 80px;
@@ -3360,14 +3353,13 @@ h1.issue_heading span {
     }
     .page-template-donate .ab_part .ab_part_r,
     .page-template-subscribe .ab_part .ab_part_r {
-        margin-bottom: 20px;
         padding-top: 0px;
     }
     #mc-embedded-subscribe ~ .mce_inline_error {
         width: 100%;
     }
-    .page-template-subscribe .com_heading h3 {
-        margin-bottom: 15px !important;
+    .high-title {
+        border-bottom: none;
     }
     .page-template-donate .com_heading h3 {
         margin-bottom: 15px !important;
@@ -3493,7 +3485,7 @@ h1.issue_heading span {
         padding-left: 20px;
         padding-right: 20px;
     }
-    .featuredArticleMore {				/* === ADDED 6.17 === */
+    .featuredArticleMore {
         margin-bottom: 2px;
     }
 
@@ -3579,12 +3571,17 @@ h1.issue_heading span {
         width: 75% !important;
     }
 
-    h1.issue_heading {                  /* ========== ADDED 5.29 ========== */
+    h1.issue_heading {
         max-width: 200px;
     }
 
 }
-
+@media (min-width: 992px) {
+    .page-template-subscribe .container-fluid,
+    .page-template-donate .container-fluid {
+        max-width: 960px;
+    }
+}
 @media (min-width: 1200px) {
     .page-template-homepage .ab_part {
         max-width: 1450px;
@@ -3593,8 +3590,7 @@ h1.issue_heading span {
         margin-right: auto;
     }
     .issues_container {
-        /*margin-left: 200px;*/
-        margin-left: 160px;			/* === CHANGED 6.12 === */
+        margin-left: 160px;
     }
 }
 
@@ -3614,15 +3610,9 @@ h1.issue_heading span {
     }
     .page-template-homepage .diff_font {
         max-width: 100% !important;
-        /*padding: 35px !important;*/
-        padding: 0px 35px 35px 35px !important;					/* === CHANGED 6.1 === */
+        padding: 0px 35px 35px 35px !important;
     }
-    /*  .page-template-homepage .ab_part {
-        max-width: 1920px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }*/
+
     .ab_part_linner {
         width: calc(100% + 30px);
         margin-left: -15px;
@@ -3631,12 +3621,16 @@ h1.issue_heading span {
         right: 0;
     }
 
-    .donate_img {												/* === ADDED 6.9 === */
+    .donate_img {
         top: 10px;
     }
     .ab_part_img img {
         width: 100%;
         display: block;
+    }
+    .page-template-subscribe .container-fluid,
+    .page-template-donate .container-fluid {
+        max-width: 1140px;
     }
     .page-template-subscribe .ab_part_linner {
         width: 485px;
@@ -3832,7 +3826,6 @@ h1.issue_heading span {
     }
 
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group {
-        padding: 30px 0px;
         padding-top: 15px;
     }
     .support_eading h3 {
@@ -4018,31 +4011,12 @@ label[for^="wpfs-same-billing-and-shipping-address"]:before,
 
 /** Product Selection **/
 form.wpfs-form fieldset.wpfs-form-check-group {
-    background-color: var( --color__field-background );
     width: 100%;
     height: auto;
     position: relative;
     margin-bottom: 30px;
     background-repeat: no-repeat !important;
     background-size: cover;
-    /* background-size: 100% !important;
-    background-position: center top !important; */
-    /* padding: 15px 0px; */
-}
-
-.page-template-subscribe form.wpfs-form fieldset.wpfs-form-check-group,
-.page-subscribe form.wpfs-form fieldset.wpfs-form-check-group {
-    background-image: url("https://www.thedriftmag.com/wp-content/uploads/2021/09/cherimoya-subscribe.jpg");
-}
-
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group,
-.page-donate form.wpfs-form fieldset.wpfs-form-check-group {
-    background-image: url(../images/donate-box-bg.png);
-}
-
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group label,
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group label strong {
-    color: var( --white );
 }
 
 .page-template-donate form.wpfs-form fieldset.wpfs-form-check-group .constrained {
@@ -4050,13 +4024,52 @@ form.wpfs-form fieldset.wpfs-form-check-group {
 }
 
 /* Radio Buttons */
+.page-template-subscribe .ab_part_l .wpfs-form-check-group::after {
+    position: unset !important;
+}
+
+.page-template-subscribe .ab_part_l .wpfs-form-check-group .wpfs-form-check {
+    width: 100% !important;
+    max-width: 300px;
+    padding: 0 15px;
+}
+
+label[for='wpfs-same-billing-and-shipping-address--ZTI4NGY']:before { 
+    background: #156ccc !important;
+}
+
+.wpfs-form-check-input + .wpfs-form-check-label::before {
+    width: 20px !important;
+    height: 22px !important;
+}
+
+.page-template-subscribe .wpfs-form-check-input + .wpfs-form-check-label::before {
+    top: 8px !important;
+}
 .wpfs-form-check-input[type="radio"] + .wpfs-form-check-label::after {
     background: #000 !important;
-    top: 5px !important;
-    left: 4px !important;
-    width: 12px !important;
-    height: 12px !important;
-    border: 0px;
+    top: 11px !important;
+    left: 3px !important;
+    width: 14px !important;
+    height: 14px !important;
+    border: 1px solid;
+    border-radius: 50%;
+    border-color: black;
+}
+
+.wpfs-form-check-input[type=radio]:checked + .wpfs-form-check-label:before {
+    border-color: black !important;
+}
+
+.page-template-donate .wpfs-form-check-input[type="radio"] + .wpfs-form-check-label::after {
+    top: 4px !important;
+}
+
+.wpfs-form-label {
+    margin-bottom: 8px;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    color: #303030  !important;
 }
 
 .page-template-donate .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label {
@@ -4073,15 +4086,8 @@ form.wpfs-form fieldset.wpfs-form-check-group {
     font-size: 20px;
 }
 
-.page-template-subscribe .ab_part_l .wpfs-form-check-group .wpfs-form-check {
-    width: 100% !important;
-    max-width: 300px;
-    padding: 0 15px;
-}
-
 .wpfs-form-check .wpfs-form-check-label strong {
     margin-left: 20px;
-    font-size: 20px !important;
 }
 
 .wpfs-form-check .wpfs-form-check-label:focus {
@@ -4107,6 +4113,12 @@ form.wpfs-form {
     box-shadow: none;
 }
 
+.wpfs-form-check-input[type="checkbox"] + .wpfs-form-check-label:before {
+    top: 0 !important;
+    font-size: 11pt !important;
+    padding-top: 2px !important;
+}
+
 .wpfs-form-check .wpfs-form-check-label {
     padding-left: 30px;
 }
@@ -4127,41 +4139,33 @@ div[data-wpfs-amount-row="custom-amount"] {
 }
 
 /** Donation Form Styling - Pea **/
-.page-template-donate .wpfs-form-check-group .wpfs-form-check input,
-.page-donate .wpfs-form-check-group .wpfs-form-check input {
+.page-template-donate .wpfs-form-check-group .wpfs-form-check input {
     margin-bottom: 0 !important;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper,
-.page-donate .wpfs-form-check-group .fieldset-wrapper {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper {
     width: 100%;
     max-width: 75%;
+    padding-top: 10px;
     margin: 1rem auto;
-    margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check,
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
     margin: .5rem 0;
     width: 100%;
 }
 
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
     width: 100%;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
     /* margin-left: 35%; */
     max-width: 100% !important;
     width: 65%;
@@ -4172,75 +4176,56 @@ div[data-wpfs-amount-row="custom-amount"] {
 }
 
 @media screen and ( min-width: 495px ) {
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper {
-        margin: 25% auto 1rem auto;
-    }
-
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
         margin: .5rem 0;
         width: 35%;
     }
 
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-    .page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
         width: 65%;
     }
 
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-    .page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
         margin-left: 35%;
     }
 }
 
 @media screen and ( min-width: 580px ) and ( max-width: 767px ) {
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7) {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7) {
         width: 25%;
     }
 
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-    .page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
         width: 40%;
         /* max-width: 20%; */
         margin: .5rem 0;
     }
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group,
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] .wpfs-input-group {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group {
     display: block;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group input,
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] .wpfs-input-group input {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group input {
     width: 100%;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] input,
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] input {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] input {
     border: 1px solid var( --color__field-border );
     height: 29px;
     border-radius: 0 !important;
     padding: 0 .25rem;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-input-group-prepend,
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-input-group-prepend {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-input-group-prepend {
     display: none !important;
 }
 
-.page-template-donate input.wpfs-form-control,
-.page-donate input.wpfs-form-control {
+.page-template-donate input.wpfs-form-control {
     border-color: var( --color__gray-field ) !important;
 }
 
