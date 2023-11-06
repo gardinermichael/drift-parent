@@ -95,14 +95,6 @@ if (true) {
 				jQuery(this).addClass("with-four");;
 			}
 		});
-
-		jQuery(".subsRadio li span label").on("click", function(){
-			jQuery(".subsRadio li span label").removeClass("active");
-			jQuery(this).addClass("active");
-		});
-
-
-
 	});
 
 	</script>
@@ -246,9 +238,11 @@ if (true) {
 	jQuery(window).scroll(function() {
 		if (jQuery(this).scrollTop() > 1){
 			jQuery('.td-site-mobile-header').addClass("sticky");
+			jQuery('.td-site-mobile-header-blocking-box').removeClass("hidden");
 		}
 		else{
 			jQuery('.td-site-mobile-header').removeClass("sticky");
+			jQuery('.td-site-mobile-header-blocking-box').addClass("hidden");
 		}
 
 	});
