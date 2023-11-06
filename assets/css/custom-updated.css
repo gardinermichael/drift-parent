@@ -2860,7 +2860,7 @@ h1.issue_heading span {
     }
 }
 @media (max-width: 1023px) {
-    .single-post .contact01 .article_editor a {
+    .single-post .contact01 .article_editor {
         position: relative;
         top: -20px;
     }
