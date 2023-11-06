@@ -3578,7 +3578,8 @@ h1.issue_heading span {
 
 }
 @media (min-width: 992px) {
-    .page-template-subscribe .container-fluid {
+    .page-template-subscribe .container-fluid,
+    .page-template-donate .container-fluid {
         max-width: 960px;
     }
 }
@@ -3628,7 +3629,8 @@ h1.issue_heading span {
         width: 100%;
         display: block;
     }
-    .page-template-subscribe .container-fluid {
+    .page-template-subscribe .container-fluid,
+    .page-template-donate .container-fluid {
         max-width: 1140px;
     }
     .page-template-subscribe .ab_part_linner {
@@ -4018,15 +4020,6 @@ form.wpfs-form fieldset.wpfs-form-check-group {
     background-size: cover;
 }
 
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group {
-    background-image: url(../images/donate-box-bg.png);
-}
-
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group label,
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group label strong {
-    color: var( --white );
-}
-
 .page-template-donate form.wpfs-form fieldset.wpfs-form-check-group .constrained {
     display: none !important;
 }
@@ -4152,8 +4145,8 @@ div[data-wpfs-amount-row="custom-amount"] {
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper {
     width: 100%;
     max-width: 75%;
+    padding-top: 10px;
     margin: 1rem auto;
-    margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -4182,10 +4175,6 @@ div[data-wpfs-amount-row="custom-amount"] {
 }
 
 @media screen and ( min-width: 495px ) {
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper {
-        margin: 25% auto 1rem auto;
-    }
-
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
         margin: .5rem 0;
         width: 35%;
