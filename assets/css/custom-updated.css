@@ -4115,6 +4115,8 @@ form.wpfs-form {
 
 .wpfs-form-check-input[type="checkbox"] + .wpfs-form-check-label:before {
     top: 0 !important;
+    font-size: 11pt !important;
+    padding-top: 2px !important;
 }
 
 .wpfs-form-check .wpfs-form-check-label {
