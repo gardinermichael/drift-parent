@@ -4018,8 +4018,7 @@ form.wpfs-form fieldset.wpfs-form-check-group {
     background-size: cover;
 }
 
-.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group,
-.page-donate form.wpfs-form fieldset.wpfs-form-check-group {
+.page-template-donate form.wpfs-form fieldset.wpfs-form-check-group {
     background-image: url(../images/donate-box-bg.png);
 }
 
@@ -4150,8 +4149,7 @@ div[data-wpfs-amount-row="custom-amount"] {
     margin-bottom: 0 !important;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper,
-.page-donate .wpfs-form-check-group .fieldset-wrapper {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper {
     width: 100%;
     max-width: 75%;
     margin: 1rem auto;
@@ -4161,25 +4159,19 @@ div[data-wpfs-amount-row="custom-amount"] {
     justify-content: flex-start;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check,
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
     margin: .5rem 0;
     width: 100%;
 }
 
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
 .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
     width: 100%;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
     /* margin-left: 35%; */
     max-width: 100% !important;
     width: 65%;
@@ -4190,75 +4182,60 @@ div[data-wpfs-amount-row="custom-amount"] {
 }
 
 @media screen and ( min-width: 495px ) {
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper {
         margin: 25% auto 1rem auto;
     }
 
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
         margin: .5rem 0;
         width: 35%;
     }
 
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(odd),
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-    .page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
         width: 65%;
     }
 
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-    .page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
         margin-left: 35%;
     }
 }
 
 @media screen and ( min-width: 580px ) and ( max-width: 767px ) {
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7),
-    .page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7) {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7) {
         width: 25%;
     }
 
-    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"],
-    .page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
+    .page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] {
         width: 40%;
         /* max-width: 20%; */
         margin: .5rem 0;
     }
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group,
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] .wpfs-input-group {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group {
     display: block;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group input,
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] .wpfs-input-group input {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"]  .wpfs-input-group input {
     width: 100%;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] input,
-.page-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] input {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper div[data-wpfs-amount-row="custom-amount"] input {
     border: 1px solid var( --color__field-border );
     height: 29px;
     border-radius: 0 !important;
     padding: 0 .25rem;
 }
 
-.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-input-group-prepend,
-.page-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-input-group-prepend {
+.page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-input-group-prepend {
     display: none !important;
 }
 
-.page-template-donate input.wpfs-form-control,
-.page-donate input.wpfs-form-control {
+.page-template-donate input.wpfs-form-control {
     border-color: var( --color__gray-field ) !important;
 }
 
