@@ -190,7 +190,7 @@ else
 				<h3><b>Mentions</b> <span style="color:<?php echo $colorPick; ?>" > | </span> <?php echo get_the_title(); ?> </b>​
 			 </h3>
 			</div>
-			<div class="men_content">
+			<div class="mention_authors">
 				<?php
 				    the_content();
 				?>
