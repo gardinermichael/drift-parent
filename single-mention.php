@@ -171,7 +171,7 @@ if($colorPick == "")
 				<h3><b>Mentions</b> <span style="color:<?php echo $colorPick; ?>"> | </span> <?php echo get_the_title(); ?> </b>​				
 			 </h3>
 			</div>
-			<div class="men_content">
+			<div class="mention_authors">
 				<?php 
 				  while(have_posts()):the_post();
 				    the_content(); 
