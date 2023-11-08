@@ -155,7 +155,7 @@ button.search-submit {
 .article_editor a {
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
 }
-.mention_authors {
+.mention_authors p {
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
 }
 div.asl_w .probox .proinput input {
@@ -1364,7 +1364,7 @@ ul.social_icons li  i.fab{
 /* James Zone */
 
 .log-in-alert a {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 .account-managment .wpfs-form-actions {
@@ -2384,7 +2384,7 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
     text-transform: uppercase;
     font-weight: normal;
 }
-.mention_authors {
+.mention_authors p {
     line-height: 1.4em;
     font-size: 16px;
     font-weight: normal;
@@ -3704,9 +3704,7 @@ h1.issue_heading span {
 .signup4mail_Right #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill:active  {
     transition: background-color 5000s ease-in-out 0s;
 }
-.page-template-mentions .mention_authors p {
-    font-size: 16px
-}
+
 .page-template-mentions .ab_part_mobile p{
     font-size: 18px
 }
