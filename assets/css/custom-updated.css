@@ -3488,10 +3488,6 @@ h1.issue_heading span {
     margin-right: auto;
 }
 
-.poem-pad {
-    padding-left: 30px;
-}
-
 @media(min-width: 768px){
     .postid-2151 .boxzilla-content .serif-hed {
         font-size: 32px;
@@ -3503,18 +3499,7 @@ h1.issue_heading span {
         font-weight: 500;
         line-height: 32px;
     }
-
-    .poem-pad {
-        padding-left: 60px;
-    }
 }
-
-@media(min-width: 1024px){
-    .poem-pad {
-        padding-left: 160px;
-    }
-}
-
 
 /* New form styling */
 
@@ -3765,4 +3750,18 @@ form .wpfs-btn-link:visited {
 
 .thank-you-content .mission a {
     text-decoration: underline !important;
+}
+
+@media(min-width: 768px){
+    .poem-pad {
+        padding-left: 60px;
+    }
+}
+@media(min-width: 1024px){
+    .poem-pad {
+        padding-left: 160px;
+    }
+}
+.poem-pad {
+    padding-left: 30px;
 }
