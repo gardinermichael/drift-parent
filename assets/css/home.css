@@ -66,25 +66,115 @@
     margin: auto;
 }
 
-.home_issue_page_text {margin-top: 0px;}
-
 /* end home page merge */
 
-.diff_font a {
+/* for the front page copy */
+h2#read_more {
+    display: block;
+}
+h2#read_more a {
+    display: inline-block;
+    border-bottom: 2px solid;
+    line-height: 48px;
+    margin-top: 40px;
+}
+
+.home_issue_page_text {
+    margin-top: 0px;
+    position: relative;
+    z-index: 999;
+}
+.home_issue_page_text a {
     color: var(--issue_color);
 }
-
-.ab_part_l {
-    flex-wrap: wrap;
+.home_issue_page_text h2 a {
+    color: #000;
 }
 
-.diff_font {
+.home_issue_page_text p {
+    display: inline;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    margin-bottom: 0;
+    color: inherit;
+}
+
+.home_issue_page_text h4 {
+    font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+    .home_issue_page_text {
+        padding-top: 0 !important;
+        padding-right: 25px !important;
+        padding-left: 25px !important;
+    }
+    .home_issue_page_text h4 {
+        font-size: 20px !important;
+    }
+    h2#read_more a {
+        font-size: 30px !important;
+        margin-top: 30px !important;
+        line-height: 32px !important;
+    }
+}
+@media (max-width: 992px) {
+    .home_issue_page_text {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+}
+@media (max-width: 767px) {
+    .home_issue_page_text {
+        max-width: 100% !important;
+        padding: 0px 10px 20px 15px !important;
+    }
+    .home_issue_page_text h2 a {
+        font-size: 36px;
+        margin-top: 10px;
+    }
+    .home_issue_page_text h4 {
+        font-size: 22px !important;
+        line-height: normal !important;
+    }
+    h2#read_more a {
+        font-size: 30px !important;
+        margin-top: 20px !important;
+        line-height: 35px !important;
+    }
+}
+@media (min-width: 767px) {
+    .page-template-homepage .home_issue_page_text h4 {
+        font-size: 28px;
+    }
+    .page-template-homepage .home_issue_page_text {
+        max-width: 100% !important;
+        padding: 0px 35px 35px 35px !important;
+    }
+}
+
+.home_issue_page_text {
     max-width: 620px;
     padding: 0px 0 0 35px;
 }
 
-.diff_font h4 {
+.home_issue_page_text h4 {
     font-size: 25px;
+}
+.home_issue_page_text h4 {
+    display: inline;
+}
+
+.home_issue_page_text h2 {
+    font-size: 48px;
+    font-weight: normal;
+}
+
+/* bot */
+
+.ab_part_l {
+    flex-wrap: wrap;
 }
 
 .sub_don {
@@ -107,16 +197,6 @@
 .sub_donl p {
     font-size: 16px;
     line-height: 1.2;
-}
-
-.diff_font h4 {
-    display: inline;
-}
-
-.diff_font h2 a,
-.diff_font h2 {
-    font-size: 48px;
-    font-weight: normal;
 }
 
 .sub_donl a:hover h4 {

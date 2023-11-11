@@ -38,28 +38,26 @@ $url = get_the_permalink($issue_ID);
 
     </div>
     <div class="ab_part_r home_issue_page_text">
-        <div class="diff_font">
-            <h4>
-                <?php
-                $issueArgs = array("post_type" => "issue");
-                $issueLoop = new wp_query($issueArgs);
-                while ($issueLoop->have_posts()) : $issueLoop->the_post();
-                    $issuePostID = get_the_id();
-                    if ($issuePostID == $issue_ID) {
-                        echo get_the_content();
-                    }
-                endwhile;
-                ?>
-            </h4>
+        <h4>
             <?php
-            if ($issue_text != "") {
-                $url = get_the_permalink(14);
+            $issueArgs = array("post_type" => "issue");
+            $issueLoop = new wp_query($issueArgs);
+            while ($issueLoop->have_posts()) : $issueLoop->the_post();
+                $issuePostID = get_the_id();
+                if ($issuePostID == $issue_ID) {
+                    echo get_the_content();
+                }
+            endwhile;
             ?>
-                <a href="<?php echo $url; ?>" class="issue_moreButt">
-                    <h2 style=" color:  #000 !important; "> <?php echo $issue_text; ?> </h2>
-                </a>
-            <?php } ?>
-        </div>
+        </h4>
+        <?php
+        if ($issue_text != "") {
+            $url = get_the_permalink(14);
+        ?>
+        <h2 id="read_more">
+            <a href="<?php echo $url; ?>"><?php echo $issue_text; ?></a>
+        </h2>
+        <?php } ?>
     </div>
 </div>
 
