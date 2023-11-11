@@ -35,13 +35,6 @@ button#submit--OGNhNmM:before {
     content: "Donate now";
     font-size: 22px;
 }
-.loaderImage {
-    margin: auto;
-    width: auto;
-    display: block;
-    margin-top: 20%;
-}
-
 .com_heading h3 b { 
     font-weight: 600;
   }

@@ -945,7 +945,7 @@ add_action('admin_enqueue_scripts', 'pw_load_scripts');
 
 function set_paywall_cookie()
 {
-    $cookie_name = "dpp_stripeaccount";
+    $cookie_name = "dpp_stripeaccount_137";
     $cookie_value = "true";
     setcookie($cookie_name, $cookie_value, time() + (86400 * 180), "/"); // 86400 = 1 day
 }
