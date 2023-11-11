@@ -20,7 +20,7 @@ body,h1,h2,h3,h4,h5,h6,p,a{
 h1.issue_heading b {
     font-family: adobe-caslon, serif;
 }
-.arti_heading h4 a strong {
+.article_heading h4 a strong {
     font-family: Adobe-Caslon;
 }
 .latestArticle_Heading p {
@@ -147,7 +147,7 @@ button.search-submit {
 div.asl_w .probox .proinput input {
     font-family: Avenir-Next-Thin !important;
 }
-.arti_sub_heading a {
+.article_sub_heading a {
     font-family: 'franklin-gothic', 'Libre Franklin', sans-serif;
 }
 .single-post .mission strong, .single-post .mission b {
@@ -451,11 +451,11 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .latest_articles .single_article {
     padding: 0 28px;
 }
-.arti_feaImage {
+.article_feaImage {
     width: 100%;
 }
 
-.arti_feaImage img {
+.article_feaImage img {
     height: 275px;
     width: 100%;
     object-fit: cover;
@@ -469,32 +469,32 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     margin-top: 50px;
 }
 
-.arti_sub_heading strong {
+.article_sub_heading strong {
     font-weight: normal;
 }
 .latestArticle_Heading h1 {
     margin-bottom: 0px;
 }
-.arti_heading h4 a:hover{ color: #303030; }
-.arti_heading a:hover {
+.article_heading h4 a:hover{ color: #303030; }
+.article_heading a:hover {
     color: #303030;
 }
 .mt_wrap {
     margin-top: 30px;
 }
 .custom_wrap{ width: 94%;  margin:auto; }
-.arti_span {
+.article_span {
     font-size: 19px;
     top: -4px;
     position: relative;
     font-weight: bold;
 }
 
-.arti_heading {
+.article_heading {
     margin-top: 30px;
 }
 
-.arti_sub_heading{ margin-top: 10px; }
+.article_sub_heading{ margin-top: 10px; }
 .signup4mail_Left::before
 {
     content: "|";
@@ -1461,7 +1461,7 @@ button.search-submit:hover {
     .latestArticle_Heading {
         margin-top: 30px;
     }
-    .arti_heading{ margin-top: 10px; }
+    .article_heading{ margin-top: 10px; }
 
     .signup4mail_Left h3{ padding-left: 0;  font-size: 24px; margin-bottom: 0; }
 
@@ -2228,12 +2228,12 @@ div.asl_w .probox .promagnifier .innericon svg {
     color: #303030 !important;
 }
 
-.arti_sub_heading a {
+.article_sub_heading a {
     font-weight: normal;
     font-size: 18px;
     text-transform: uppercase;
 }
-.arti_sub_heading a:hover {
+.article_sub_heading a:hover {
     color: #303030;
 }
 .footerNew_middle_inner {
@@ -2740,7 +2740,7 @@ h1.issue_heading span {
         max-width: 400px;
     }
 
-    .arti_feaImage img {
+    .article_feaImage img {
         height: auto;
     }
     #mc_embed_signup .mc-field-group input[type="submit"] {
@@ -3015,7 +3015,7 @@ h1.issue_heading span {
     .single-post .mission_inner {
         margin-top: 50px !important;
     }
-    .arti_feaImage img {
+    .article_feaImage img {
         height: auto;
     }
     .footerNew_middle h4 {

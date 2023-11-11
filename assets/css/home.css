@@ -141,8 +141,6 @@ h2#read_now a {
     }
 }
 
-/* bot */
-
 .ab_part_l {
     flex-wrap: wrap;
 }
@@ -177,7 +175,7 @@ h2#read_now a {
     color: var(--issue_color);
 }
 
-.arti_span {
+.article_span {
     /* === ADDED 6.8 === */
     color: var(--issue_color);
 }

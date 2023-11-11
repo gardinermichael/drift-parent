@@ -185,20 +185,20 @@ $postLoop = new wp_query($postArgs);
     ?>
         <div class="col-md-4 single_article  <?php echo "postid-" . $postID; ?>">
 
-            <div class="arti_feaImage ">
+            <div class="article_feaImage ">
                 <a href="<?php echo $postLink; ?>">
                     <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
                 </a>
             </div>
 
-            <div class="arti_heading">
+            <div class="article_heading">
                 <h4>
                     <a href="<?php echo $postLink; ?>">
                         <strong><?php echo $postTitle; ?></strong>
                         <?php
                         if ($postSubtitle != "") {
                         ?>
-                            <span class="arti_span">|</span> <?php echo $postSubtitle; ?>
+                            <span class="article_span">|</span> <?php echo $postSubtitle; ?>
                         <?php
                         }
                         ?>
@@ -209,7 +209,7 @@ $postLoop = new wp_query($postArgs);
             <?php
             if ($article_editor_name != "") {
             ?>
-                <div class="arti_sub_heading">
+                <div class="article_sub_heading">
                     <strong><a href="<?php echo $postLink; ?>"><?php echo $article_editor_name; ?></a></strong>
                 </div>
             <?php } ?>
@@ -346,20 +346,20 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
     ?>
         <div class="col-md-4 single_article <?php echo "postid-" . $postID; ?>">
 
-            <div class="arti_feaImage">
+            <div class="article_feaImage">
                 <a href="<?php echo $postLink; ?>">
                     <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
                 </a>
             </div>
 
-            <div class="arti_heading">
+            <div class="article_heading">
                 <h4>
                     <a href="<?php echo $postLink; ?>">
                         <strong><?php echo $postTitle; ?></strong>
                         <?php
                         if ($postSubtitle != "") {
                         ?>
-                            <span class="arti_span">|</span> <?php echo $postSubtitle; ?>
+                            <span class="article_span">|</span> <?php echo $postSubtitle; ?>
                         <?php
                         }
                         ?>
@@ -370,7 +370,7 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
             <?php
             if ($article_editor_name != "") {
             ?>
-                <div class="arti_sub_heading">
+                <div class="article_sub_heading">
                     <strong><a href="<?php echo $postLink; ?>"><?php echo $article_editor_name; ?></a></strong>
                 </div>
             <?php } ?>
