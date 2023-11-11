@@ -83,13 +83,13 @@
     display: inline;
 }
 
-#read_now {
+.read_now {
     font-size: 48px;
     font-weight: normal;
     line-height: 48px;
     margin-top: 40px;
 }
-#read_now a {
+.read_now a {
     border-bottom: 2px solid;
     display: inline-block;
     color: #000;
@@ -104,7 +104,7 @@
     .home_issue_page_text h4 {
         font-size: 20px;
     }
-    #read_now a {
+    .read_now a {
         font-size: 30px;
         margin-top: 30px;
         line-height: 32px;
@@ -121,7 +121,7 @@
         max-width: 100%;
         padding: 0px 10px 20px 15px;
     }
-    #read_now a {
+    .read_now a {
         font-size: 30px;
         margin-top: 20px;
         line-height: 35px;
