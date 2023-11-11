@@ -35,9 +35,6 @@ h1.issue_heading b {
 .searchPage_Form_Button {
     font-family: Avenir-Next-Thin, sans-serif;
 }
-.newsletter .news_l input[type="submit"]{
-    font-family: "proxy-nova", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
 .ab_part  label.wpfs-form-check-label strong,
 .ab_part  label.wpfs-form-check-label,
 .ab_part_img_abu div label{
@@ -738,26 +735,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     display: block;
     max-height: 80px;
 }
-.page-template-coming_soon {
-    background-color: #f5dfbe;
-    background-image: url(../images/bg_gradient_splash.png);
-    background-repeat: repeat-x;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input[type="submit"] {
-    background-color: transparent !important;
-    border-color: #000 !important;
-    color: #4D788C !important;
-    position: relative;
-    z-index: 999;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input[type="submit"]:hover {
-    background-color: #cbcbcb !important;
-    color: #000 !important;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input {
-    background-color: transparent !important;
-    text-align: center !important;
-}
 .drift_container h6{
     font-size: 25px;
     font-weight: 300;
@@ -793,28 +770,7 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     justify-content: center;
     width: 100%;
 }
-.page-template-coming_soon #mc_embed_signup #mce-error-response {
-    color: #b70404;
-    text-align: center;
-    font-size: 13px;
-    padding-top: 0;
-    margin-top: 0;
-}
-.page-template-coming_soon #mc_embed_signup #mce-success-response {
-    padding-top: 0;
-    text-align: center;
-    font-size: 0;
-    margin-top: 0;
-    width: calc(490px - 265px);
-    max-width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-    left: 0 !important;
-}
-.page-template-coming_soon #mc_embed_signup #mce-success-response:after {
-    content: 'Thanks!';
-    font-size: 13px;
-}
+
 .wpfs-form-actions button.wpfs-btn.disableButton {
     pointer-events: none;
     background: #CBCBCB !important;
@@ -839,32 +795,9 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     font-size: 32px;
 }
 
-.newsletter{
-    text-align: center;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
 .news_l {
 
     align-items: center;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL {
-    color: #4D788C !important;
-    padding-bottom: 4px !important;
-}
-
-.newsletter p{
-    color: #000;
-    font-size: 25px;
-    margin: 0 0 13px;
-    margin-bottom: 0;
-    text-align: center;
 }
 
 .news_l label{display: none !important;}
@@ -875,17 +808,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     border-bottom: 1px solid #000 !important;
 }
 .footer_inner .news_l input{ width: 550px !important; }
-
-.newsletter .news_l input[type="email"]{
-    font-size: 18px !important;
-    border-radius: 0px !important;
-    margin-right: 0 !important;
-    padding: 10px 20px !important;
-}
-
-.newsletter .news_l input[type="submit"]{
-    font-size: 14px !important;
-}
 
 .but61{
 
@@ -1086,9 +1008,6 @@ input.unfocus_email::placeholder { font-size: 0; }
 .contact01 p{
     line-height: 1.3em;
     font-size: 20px;
-}
-.newsletter #mc_embed_signup {
-    width: 100%;
 }
 
 .ab_part_img_inner.ba_part02 {
@@ -2168,14 +2087,6 @@ section.mission_outer {
 .menu_outer ul.social_icons li a i.fa-search {
     font-size: 22px;
 }
-.page-template-coming_soon .Container {
-    display: none !important;
-}
-.page-template-coming_soon .the-drift-logo {
-    justify-content: center;
-    display: flex;
-    margin-bottom: 75px;
-}
 .page-template-donate .footer_outer {
     display: none;
 }
@@ -2198,18 +2109,6 @@ section.mission_outer {
 }
 #mc_embed_signup .mc-field-group input#mce-EMAIL:-moz-placeholder {
     color: #909090 !important;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL::-webkit-input-placeholder {
-    color: #4D788C !important;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL::-moz-placeholder {
-    color: #4D788C !important;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-ms-input-placeholder {
-    color: #4D788C !important;
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-moz-placeholder {
-    color: #4D788C !important;
 }
 
 .f_logo > p {
@@ -2250,30 +2149,6 @@ section.mission_outer {
 .menu_outer .nav>li.only-for-space a {
     color: #fff;
     font-size: 0;
-}
-.left-branch-img .branch_img_01 {
-    position: absolute;
-    top: 50px;
-    left: -15px;
-    width: 450px;
-    height: auto;
-    max-width: 100%;
-}
-.left-branch-img .branch_img_02 {
-    position: absolute;
-    bottom: 15px;
-    left: -50px;
-    width: 420px;
-    height: auto;
-    max-width: 100%;
-}
-.right-women-img .women_img_01 {
-    position: absolute;
-    top: 8%;
-    right: -5%;
-    width: auto;
-    height: 600px;
-    max-width: 90%;
 }
 .page-template-subscribe input.wpfs-form-control {
     border-color: #f6f6f6 !important;
@@ -2365,14 +2240,6 @@ div.asl_m .probox .proloading {
 }
 div.asl_w .probox .promagnifier .innericon svg {
     width: 18px !important;
-}
-.page-template-coming_soon #mc_embed_signup #mce-error-response {
-    font-size: 0;
-}
-.page-template-coming_soon #mc_embed_signup #mce-error-response:after {
-    font-size: 13px;
-    content: 'This email address is already in use.';
-    float: left;
 }
 .ab_part_r.ab_partFULL {
     width: 100%;
@@ -2609,18 +2476,6 @@ h1.issue_heading span {
     .footer_inner {
         padding-bottom: 20px !important;
     }
-    .left-branch-img .branch_img_01 {
-        width: 350px;
-        top: 100px;
-    }
-    .left-branch-img .branch_img_02 {
-        width: 350px;
-        bottom: 50px;
-    }
-    .right-women-img .women_img_01 {
-        height: 575px;
-        right: -2%;
-    }
 }
 
 @media (max-width: 1024px) {
@@ -2662,20 +2517,6 @@ h1.issue_heading span {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
-    .coming-soon-wrapper .container {
-        max-width: 100%;
-    }
-    .coming-soon-wrapper .drift_container {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        position: static;
-        transform: none;
-        margin-top: 50px;
-    }
-    .page-template-coming_soon {
-        overflow-x: hidden;
-    }
     .drift_container h6 {
         font-size: 20px;
         max-width: 390px;
@@ -2693,26 +2534,6 @@ h1.issue_heading span {
     }
     .social_link li:first-child {
         line-height: 22px;
-    }
-    .newsletter p {
-        font-size: 20px;
-    }
-    .newsletter {
-        max-width: 450px;
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
-    .right-women-img .women_img_01 {
-        height: 500px;
-        top: 20%;
-        right: -2%;
-    }
-    .left-branch-img .branch_img_02,
-    .left-branch-img .branch_img_01 {
-        width: 350px;
-    }
-    .page-template-coming_soon {
-        background-size: 100% 100%;
     }
     .footerNewLogo {
         display: none;
@@ -2791,9 +2612,6 @@ h1.issue_heading span {
     .desktop_new_menu {
         display: none;
     }
-    .page-template-coming_soon .td-site-mobile-header {
-        display: none !important;
-    }
     ul.f_menu.nav {
         width: 100%;
     }
@@ -2805,42 +2623,6 @@ h1.issue_heading span {
     }
     .drift_title {
         font-size: 36px;
-    }
-    .left-branch-img .branch_img_01,
-    .left-branch-img .branch_img_02 {
-        display: none;
-    }
-    section.coming-soon-wrapper {
-        position: relative;
-    }
-    .coming-soon-wrapper .drift_container {
-        padding-top: 0;
-        margin-top: 35px;
-    }
-    .left-branch-img {
-        background-image: url(/wp-content/uploads/2020/05/branch-images_2.png);
-        background-size: 100%;
-        height: 285px;
-        width: calc(100% + 30px);
-        margin-left: -15px;
-        background-repeat: no-repeat;
-        background-position: center top;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    .right-women-img .women_img_01 {
-        position: static;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        margin-top: 35px;
-        height: 400px;
-    }
-    .newsletter {
-        max-width: 550px;
-    }
-    .newsletter p {
-        line-height: normal;
     }
     .search_container {
         padding-left: 15px;
@@ -2981,9 +2763,6 @@ h1.issue_heading span {
     }
     #footerFullMenu li {
         font-size: 12px;
-    }
-    .left-branch-img {
-        height: 235px;
     }
     .ab_part_img_inner > div {
         padding-left: 10px !important;
@@ -3245,9 +3024,6 @@ h1.issue_heading span {
     .search_container.article_container .search-term-list .list-feature-img img {
         height: auto;
     }
-    .page-template-coming_soon #mc_embed_signup .mc-field-group input[type="submit"] {
-        width: auto !important;
-    }
     .page-template-donate .ab_part,
     .page-template-subscribe .ab_part {
         flex-direction: column-reverse;
@@ -3265,9 +3041,6 @@ h1.issue_heading span {
     }
     .page-template-donate .com_heading h3 {
         margin-bottom: 15px !important;
-    }
-    .page-template-coming_soon #mc_embed_signup #mce-success-response {
-        width: 100%;
     }
     .contact01.headong0022 h1 {
         margin-bottom: 20px !important;
@@ -3353,13 +3126,6 @@ h1.issue_heading span {
     .single-post .mission_inner {
         max-width: 100%;
     }
-    .coming-soon-wrapper .drift_container {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .left-branch-img {
-        height: 180px;
-    }
     .latest_articles .single_article {
         padding-left: 0;
         padding-right: 0;
@@ -3397,9 +3163,6 @@ h1.issue_heading span {
     .footer_outer ul.social_icons li:last-child {
         padding-right: 5px;
     }
-    .left-branch-img {
-        height: 150px;
-    }
     .ab_part_img_abu div label {
         font-size: 16px !important;
     }
@@ -3415,9 +3178,6 @@ h1.issue_heading span {
 }
 
 @media (max-width: 480px) {
-    .left-branch-img {
-        height: 135px;
-    }
     .single-post figcaption{ font-size: 11px; padding-left: 0; }
     .more_from_issue h1{ font-size: 25px; }
     #footerFullMenu li {
@@ -3442,10 +3202,6 @@ h1.issue_heading span {
     .footer_inner .nav > li > a {
         font-size: 10px;
     }
-    .left-branch-img {
-        height: 115px;
-    }
-
 }
 
 @media (max-width: 375px) {
@@ -3525,17 +3281,7 @@ h1.issue_heading span {
     }
 
 }
-@media (min-width: 1600px) {
-    .drift_container{top:43%}
-    .left-branch-img .branch_img_01 {
-        width: 500px;
-        display:none;
-    }
-    .left-branch-img .branch_img_02 {
-        width: 500px;
-        display: none;
-    }
-}
+
 @media (min-width: 1920px) {
     .ab_part  {
         max-width: 1450px;
@@ -3562,12 +3308,6 @@ h1.issue_heading span {
         white-space: nowrap;
     }
 
-}
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill,
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill:hover,
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill:focus,
-.page-template-coming_soon #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill:active  {
-    transition: background-color 5000s ease-in-out 0s;
 }
 .footerNew_middle #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill,
 .footerNew_middle #mc_embed_signup .mc-field-group input#mce-EMAIL:-webkit-autofill:hover,
