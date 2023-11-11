@@ -75,9 +75,7 @@ button.search-submit {
 .more_link a {
     font-family: Avenir-Next-Thin, sans-serif;
 }
-.diff_font h2 a {
-    font-family: "proxy-nova", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
-}
+
 .single-post .mission_inner a {
     font-family: initial;
 }
@@ -461,21 +459,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     background: #CBCBCB !important;
     color: #000!important;
 }
-.diff_font p {
-    display: inline;
-    font-size: inherit;
-    letter-spacing: inherit;
-    line-height: inherit;
-    margin-bottom: 0;
-    color: inherit;
-}
-.issue_moreButt { display: block; }
-.issue_moreButt h2 {
-    display: inline-block;
-    border-bottom: 2px solid;
-    line-height: 48px;
-    margin-top: 40px;
-}
+
 .latest_articles .single_article {
     padding: 0 28px;
 }
@@ -1745,12 +1729,6 @@ button.search-submit:hover {
 #mc_embed_signup .mc-field-group input#mce-EMAIL:focus {
     outline: none;
 }
-.diff_font h2 a {
-    text-decoration: underline !important;
-    color: #69A7C2 !important;
-    margin-top: 20px !important;
-    display: block !important;
-}
 
 .footer_outer:after {
     background-image: url(/wp-content/uploads/2020/04/the_drift_arrow.png);
@@ -1913,9 +1891,7 @@ section.mission_outer {
     padding-top: 75px;
     padding-bottom: 75px;
 }
-.diff_font h4 {
-    font-weight: 400;
-}
+
 .error404 .wrap {
     width: 1200px;
     margin: 0 auto;
@@ -2004,10 +1980,6 @@ section.mission_outer {
 }
 
 .wpfs-w-60 {
-    position: relative;
-    z-index: 999;
-}
-.diff_font {
     position: relative;
     z-index: 999;
 }
@@ -2501,18 +2473,8 @@ div.asl_w .probox .promagnifier .innericon svg {
 .menu_outer ul.social_icons li:not(:last-child) {
     display: none;
 }
-.single-post .mission b,
-
-.wp-pagenavi {
+.single-post .mission b {
     text-align: center;
-}
-
-.wp-pagenavi span, a {
-    border: none !important;
-}
-
-.wp-pagenavi  {
-    margin: 5px 5px 0px 0px;
 }
 
 .single-post .article_editor p {
@@ -2697,9 +2659,6 @@ h1.issue_heading span {
         padding-left: 0;
         text-align: left;
     }
-    .diff_font {
-        padding-top: 0 !important;
-    }
     .contact01.headong0022 {
         margin-left: 20px !important;
     }
@@ -2811,18 +2770,6 @@ h1.issue_heading span {
     .latest_articles .single_article {
         padding-left: 15px;
         padding-right: 15px;
-    }
-    .diff_font {
-        padding-right: 25px !important;
-        padding-left: 25px !important;
-    }
-    .diff_font h4 {
-        font-size: 20px !important;
-    }
-    .issue_moreButt h2 {
-        font-size: 30px !important;
-        margin-top: 30px !important;
-        line-height: 32px !important;
     }
 }
 @media (max-width: 1152px) {
@@ -3054,13 +3001,6 @@ h1.issue_heading span {
 
 }
 
-@media (max-width: 992px) {
-    .diff_font {
-        padding-right: 15px !important;
-        padding-left: 15px !important;
-    }
-}
-
 @media (max-width: 823px) {
     .contact01.headong0022 .postDate {
         top: -20px;
@@ -3284,11 +3224,6 @@ h1.issue_heading span {
         display: block;
         width: 100%;
     }
-    .diff_font {
-        max-width: 100% !important;
-        padding: 0px 10px 20px 15px !important;
-    }
-
     .mission p {
         text-align: left !important;
     }
@@ -3412,21 +3347,8 @@ h1.issue_heading span {
     .signup4mail_Left h3 {
         text-align: center;
     }
-    .diff_font a h2 {
-        font-size: 36px;
-        margin-top: 10px;
-    }
     .support_heading h3 {
         padding-left: 0;
-    }
-    .diff_font h4 {
-        font-size: 22px !important;
-        line-height: normal !important;
-    }
-    .issue_moreButt h2 {
-        font-size: 30px !important;
-        margin-top: 20px !important;
-        line-height: 35px !important;
     }
     .seeMoreLink {
         margin-top: 0;
@@ -3602,20 +3524,12 @@ h1.issue_heading span {
         width: 100%;
         display: block;
     }
-    .page-template-homepage .diff_font h4 {
-        font-size: 28px;
-    }
     .page-template-homepage .ab_part_img img {
         width: 100%;
     }
     .page-template-homepage .contact01 {
         max-width: 100% !important;
     }
-    .page-template-homepage .diff_font {
-        max-width: 100% !important;
-        padding: 0px 35px 35px 35px !important;
-    }
-
     .ab_part_linner {
         width: calc(100% + 30px);
         margin-left: -15px;

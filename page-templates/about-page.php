@@ -27,7 +27,6 @@ else
 		    vertical-align: top;
 		    display: inline;;
         }
-		.mission_outer .mission{}
 		.mission p{
 		    font-size: 18px;
 		    margin-bottom: 30px;
