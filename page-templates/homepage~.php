@@ -54,7 +54,7 @@ $url = get_the_permalink($issue_ID);
         if ($issue_text != "") {
             $url = get_the_permalink(14);
         ?>
-        <h2 id="read_more">
+        <h2 id="read_now">
             <a href="<?php echo $url; ?>"><?php echo $issue_text; ?></a>
         </h2>
         <?php } ?>
