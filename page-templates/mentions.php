@@ -166,12 +166,13 @@ if($colorPick == "")
 $page_imageID = get_post_thumbnail_id($pageID);
 if($page_imageID != "")
 {
-  $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");
-  $page_imageURL = $page_imageURL[0];
+  list($page_imageURL, $width, $height) = wp_get_attachment_image_src($page_imageID, "full");
 }
 else
 {
 	$page_imageURL = get_bloginfo('template_url')."/assets/images/unnamed.jpg";
+	$width = "";
+	$height = "";
 }
 ?>
 
@@ -179,7 +180,7 @@ else
 		<div class="ab_part_l d-flex">
 			<div class="ab_part_linner">
 				<div class="ab_part_img">
-					<img src="<?php echo $page_imageURL; ?>">
+					<img src="<?php echo $page_imageURL; ?>" width="<?php echo $width;?>" height="<?php echo $height;?>">
 				</div>
 			</div>
 		</div>
@@ -201,11 +202,6 @@ else
 
 	</div>
 
-	<div class="ab_part_mobile">
-				<?php
-				    the_content();
-				?>
-		</div>
 	<?php
 	  $pageID = get_the_id();
 	   $content_loop = CFS()->get( 'content_loop', $pageID );
