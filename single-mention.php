@@ -5,12 +5,13 @@ $pageID = get_the_id();
 $page_imageID = get_post_thumbnail_id($pageID);
 if($page_imageID != "")
 {
-  $page_imageURL = wp_get_attachment_image_src($page_imageID, "full");	
-  $page_imageURL = $page_imageURL[0];
+  list($page_imageURL, $width, $height) = wp_get_attachment_image_src($page_imageID, "full");
 }
 else
 {
 	$page_imageURL = get_bloginfo('template_url')."/assets/images/unnamed.jpg";
+	$width = "";
+	$height = "";
 }
 ?>
 
@@ -161,14 +162,14 @@ if($colorPick == "")
 		<div class="ab_part_l d-flex">
 			<div class="ab_part_linner">
 				<div class="ab_part_img">
-					<img src="<?php echo $page_imageURL; ?>">
+					<img src="<?php echo $page_imageURL; ?>" width="<?php echo $width;?>" height="<?php echo $height;?>">
 				</div>
 			</div>
 		</div>
 		<div class="ab_part_r">
 			<div class="contact01">
 			<div class="com_heading">				
-				<h3><b>Mentions</b> <span style="color:<?php echo $colorPick; ?>"> | </span> <?php echo get_the_title(); ?> </b>​				
+				<h3><b>Mentions</b> <span style="color:<?php echo $colorPick; ?>"> | </span> <?php echo get_the_title(); ?> </b>​
 			 </h3>
 			</div>
 			<div class="mention_authors">
