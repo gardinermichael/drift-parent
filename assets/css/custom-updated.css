@@ -341,7 +341,7 @@ div.asl_w .probox .proinput input {
     text-transform: uppercase;
 }
 
-@media (width <= 1024px) {
+@media (max-wdith: 1024px) {
     .support_heading h3 {
         font-family: Avenir-Next-Thin, sans-serif;
         font-size: 40px;
@@ -350,7 +350,7 @@ div.asl_w .probox .proinput input {
     }
 }
 
-@media (width <= 1023px) {
+@media (max-wdith: 1023px) {
     .td-overlay-box ul li a {
         color: #303030;
         display: inline-block;
@@ -846,7 +846,7 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     outline: none;
 }
 
-@media(width >= 768px){
+@media(min-width: 768px){
 
     .navbar-header{display: none;}
 
@@ -1418,14 +1418,14 @@ button.search-submit:hover {
     overflow-y: hidden;
 }
 
-@media (width >= 515px) {
+@media (min-width: 515px) {
     input[id*='search-form'] {
         max-width: 500px;
         width: 50%;
     }
 }
 
-@media(width >= 768px){
+@media(min-width: 768px){
 
     .only_mobile_show {display: none; }
 
@@ -1458,7 +1458,7 @@ button.search-submit:hover {
 
 }
 
-@media(width <= 1023px) {
+@media(max-wdith: 1023px) {
     .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{
         margin-left: -15px;
         width: calc(100% + 30px);
@@ -1474,13 +1474,13 @@ button.search-submit:hover {
     }
 }
 
-@media (width >= 768px)and (width <=1025px){
+@media (min-width: 768px)and (max-wdith:1025px){
     .issues_list_ul.row {
         margin-top: 0;
     }
 }
 
-@media(width >= 768px)and (width <= 999px){
+@media(min-width: 768px)and (max-wdith: 999px){
     .page-id-51 .footer_outer::after {
         height: 410px;
     }
@@ -1491,7 +1491,7 @@ button.search-submit:hover {
 
 }
 
-@media(width <= 767px) {
+@media(max-wdith: 767px) {
     .page-template-subscribe .kudossubscribe .wpfs-form-check-group .wpfs-form-check .wpfs-form-check-label{
         display: inline-block;
         font-size: 18px;
@@ -1703,20 +1703,20 @@ button.search-submit:hover {
 
 }
 
-@media (width >= 381px) and (width <= 767px) {
+@media (min-width: 381px) and (max-wdith: 767px) {
     .com_heading span {
         top: 5px;
     }
 }
 
-@media(width <= 480px){
+@media(max-wdith: 480px){
     .mentions_container {
         padding-left: 0;
         padding-right: 0;
     }
 }
 
-@media(width <= 380px){
+@media(max-wdith: 380px){
     .drift_title {
         font-size: 34px;
         margin-top: 15px;
@@ -2479,7 +2479,7 @@ h1.issue_heading span {
 
 }
 
-@media (width <= 1280px) {
+@media (max-wdith: 1280px) {
     .single-post blockquote {
         max-width: 100%;
         right: -175px !important;
@@ -2487,7 +2487,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 1199px) {
+@media (max-wdith: 1199px) {
     .desktop_new_menu ul {
         padding-left: 20px;
         padding-right: 20px;
@@ -2526,7 +2526,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 1024px) {
+@media (max-wdith: 1024px) {
     .contact01.headong0022 {
         margin-left: 20px !important;
     }
@@ -2628,7 +2628,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 1152px) {
+@media (max-wdith: 1152px) {
     .drift_search_link {
         margin-left: 0;
     }
@@ -2672,7 +2672,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 1023px) {
+@media (max-wdith: 1023px) {
     .single-post .contact01 .article_editor {
         position: relative;
         top: -20px;
@@ -2837,7 +2837,7 @@ h1.issue_heading span {
 
 }
 
-@media (width <= 823px) {
+@media (max-wdith: 823px) {
     .contact01.headong0022 .postDate {
         top: -20px;
     }
@@ -2862,7 +2862,7 @@ h1.issue_heading span {
 
 }
 
-@media (width <= 768px) {
+@media (max-wdith: 768px) {
     .single-post .mission_inner {
         max-width: 400px;
     }
@@ -2896,7 +2896,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 767px) {
+@media (max-wdith: 767px) {
     .page-template-mentions .ab_part {
         padding-left: 15px;
         padding-right: 15px;
@@ -3272,7 +3272,7 @@ h1.issue_heading span {
 
 }
 
-@media (width <= 667px) {
+@media (max-wdith: 667px) {
     .single-post .mission_inner {
         max-width: 100%;
     }
@@ -3302,7 +3302,7 @@ h1.issue_heading span {
 
 }
 
-@media (width <= 568px) {
+@media (max-wdith: 568px) {
     .search_container h1.page-title {
         font-size: 30px;
     }
@@ -3334,7 +3334,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 480px) {
+@media (max-wdith: 480px) {
     .single-post figcaption{ font-size: 11px; padding-left: 0; }
     .more_from_issue h1{ font-size: 25px; }
 
@@ -3360,13 +3360,13 @@ h1.issue_heading span {
 
 }
 
-@media (width <= 414px) {
+@media (max-wdith: 414px) {
     .footer_inner .nav > li > a {
         font-size: 10px;
     }
 }
 
-@media (width <= 375px) {
+@media (max-wdith: 375px) {
     #footerFullMenu li {
         font-size: 10px;
     }
@@ -3386,7 +3386,7 @@ h1.issue_heading span {
 
 }
 
-@media (width >= 992px) {
+@media (min-width: 992px) {
     .high-title-container,
     .page-template-subscribe .container-fluid,
     .page-template-donate .container-fluid {
@@ -3394,7 +3394,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width >= 1200px) {
+@media (min-width: 1200px) {
     .page-template-homepage .ab_part {
         margin-left: auto;
         margin-right: auto;
@@ -3407,7 +3407,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width >= 1400px) {
+@media (min-width: 1400px) {
     .page-template-homepage .ab_part_linner {
         display: block;
         width: 100%;
@@ -3461,7 +3461,7 @@ h1.issue_heading span {
 
 }
 
-@media (width >= 1920px) {
+@media (min-width: 1920px) {
     .ab_part  {
         margin-left: auto;
         margin-right: auto;
@@ -3522,7 +3522,7 @@ h1.issue_heading span {
 
 
 
-@media (width >= 767px) {
+@media (min-width: 767px) {
     .donate-subscribe_txt {
         margin-top: 0;
         padding-left: 10px;
@@ -3536,7 +3536,7 @@ h1.issue_heading span {
     .page-template-mentions .com_heading h3 span{font-size:35px;}
 }
 
-@media (width <= 767px) {
+@media (max-wdith: 767px) {
     .more_from_issue h4 a{font-size:20px;}
     .more_from_issue .com_heading01 h4 b > a{font-size:26px;}
     .more_from_issue .com_heading01 span{margin-left: -8px;}
@@ -3575,7 +3575,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <= 400px) {
+@media (max-wdith: 400px) {
     .ab_part_r {
         padding-top: 30px;
     }
@@ -3586,7 +3586,7 @@ h1.issue_heading span {
 
 }
 
-@media (width >= 767px) and (width <=1024px) {
+@media (min-width: 767px) and (max-wdith:1024px) {
     .postDate{padding-bottom:2%;}
 
     .article_editor {
@@ -3599,7 +3599,7 @@ h1.issue_heading span {
 
 }
 
-@media (width >= 768px) and (width <= 828px) {
+@media (min-width: 768px) and (max-wdith: 828px) {
     h1.issue_heading {
         font-size: 24px;
     }
@@ -3610,7 +3610,7 @@ h1.issue_heading span {
 
 }
 
-@media (width >= 1025px) {
+@media (min-width: 1025px) {
     .support_heading {
         flex: 0 0 28%;
         margin: auto;
@@ -3642,7 +3642,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width >= 1025px) {
+@media (min-width: 1025px) {
     .donate-subscribe_txt {
         margin-top: 0;
         padding-left: 50px;
@@ -3663,7 +3663,7 @@ h1.issue_heading span {
     }
 }
 
-@media (width <=955px)
+@media (max-wdith:955px)
 
 {
 
@@ -3747,7 +3747,7 @@ h1.issue_heading span {
     max-width: 560px;
 }
 
-@media(width >= 768px){
+@media(min-width: 768px){
     .postid-2151 .boxzilla-content .serif-hed {
         font-size: 32px;
         line-height: 32px;
@@ -3922,7 +3922,7 @@ div[data-wpfs-amount-row="custom-amount"] {
     text-transform: capitalize;
 }
 
-@media screen and ( width >= 495px ) {
+@media screen and ( min-width: 495px ) {
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check {
         margin: .5rem 0;
         width: 35%;
@@ -3940,7 +3940,7 @@ div[data-wpfs-amount-row="custom-amount"] {
     }
 }
 
-@media screen and ( width >= 580px ) and ( width <= 767px ) {
+@media screen and ( min-width: 580px ) and ( max-wdith: 767px ) {
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:last-of-type,
     .page-template-donate .wpfs-form-check-group .fieldset-wrapper .wpfs-form-check:nth-child(7) {
         width: 25%;
@@ -3996,13 +3996,13 @@ form .wpfs-btn-link:visited {
     text-decoration: underline !important;
 }
 
-@media(width >= 768px){
+@media(min-width: 768px){
     .poem-pad {
         padding-left: 60px;
     }
 }
 
-@media(width >= 1024px){
+@media(min-width: 1024px){
     .poem-pad {
         padding-left: 160px;
     }
