@@ -117,6 +117,12 @@ button#submit--OGNhNmM:before {
     width: 200px;
 }
 
+@media (max-width: 1023px) {
+    .td-site-mobile-header {
+        display: block !important;
+    }
+}
+
 @media print {
     .hed-wrap,
     .td-site-mobile-header,
