@@ -1128,6 +1128,7 @@ input.unfocus_email::placeholder { font-size: 0; }
     padding: 0;
 }
 
+.high-title-container .contact01,
 .page-template-subscribe .contact01,
 .page-template-donate .contact01,
 .page-template-about-page .contact01,
@@ -1917,6 +1918,7 @@ section.mission_outer {
     margin-top: 0;
 }
 
+.high-title-container .ab_part_linner,
 .page-template-subscribe .ab_part_linner {
     width: 485px;
 }
@@ -2245,6 +2247,7 @@ label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
     box-shadow: none !important;
 }
 
+.high-title-container .contact01 p,
 .page-template-donate .contact01 p,
 .page-template-subscribe .contact01 p {
     font-size: 18px;
@@ -3107,6 +3110,7 @@ h1.issue_heading span {
         text-align: center !important;
     }
 
+    .high-title-container .ab_part_linner,
     .page-template-subscribe .ab_part_linner {
         width: 100%;
     }
@@ -3154,6 +3158,7 @@ h1.issue_heading span {
         height: auto;
     }
 
+    .high-title-container .ab_part,
     .page-template-donate .ab_part,
     .page-template-subscribe .ab_part {
         flex-direction: column-reverse;
@@ -3382,6 +3387,7 @@ h1.issue_heading span {
 }
 
 @media (width >= 992px) {
+    .high-title-container,
     .page-template-subscribe .container-fluid,
     .page-template-donate .container-fluid {
         max-width: 960px;
@@ -3433,11 +3439,13 @@ h1.issue_heading span {
         width: 100%;
     }
 
+    .high-title-container,
     .page-template-subscribe .container-fluid,
     .page-template-donate .container-fluid {
         max-width: 1140px;
     }
 
+    .high-title-container
     .page-template-subscribe .ab_part_linner {
         width: 485px;
     }
