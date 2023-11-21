@@ -408,10 +408,6 @@ form.search-form {
     outline: none;
 }
 
-.issues_container .footer_outerhtml {
-    overflow-x: hidden;
-}
-
 /* fonts were here */
 
 /* now just mission critical fonts */
@@ -852,8 +848,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 
 }
 
-section.footer_outer .container-fluid {padding-right:0 !important;}
-
 /* HEADER END
 ========================================== */
 
@@ -953,7 +947,6 @@ section.footer_outer .container-fluid {padding-right:0 !important;}
     font-size:  20px !important;
     width: 400px  !important;
 }
-.footer_inner .news_l input{ width: 550px !important; }
 
 .but61{
     background: #636363;
@@ -1168,26 +1161,6 @@ input.unfocus_email::placeholder { font-size: 0; }
 }
 
 /* FOOTER */
-
-
-.footer_outer {
-    overflow: hidden;
-    position: relative;
-}
-
-.page-id-51 .footer_outer {
-    padding: 50px 0 10px;
-}
-
-.page-id-51 .footer_outer::after {
-    height: 500px;
-}
-
-.footer_inner {
-    position: relative;
-    text-align: right;
-    z-index: 9;
-}
 
 .e_add{
     justify-content: flex-end;
@@ -1481,10 +1454,6 @@ button.search-submit:hover {
 }
 
 @media(min-width: 768px)and (max-width: 999px){
-    .page-id-51 .footer_outer::after {
-        height: 410px;
-    }
-
     ul.f_menu.nav {
         width: 400px;
     }
@@ -1675,11 +1644,6 @@ button.search-submit:hover {
         width: 100%;
     }
 
-    .footer_outer::after {
-        height: 600px;
-        width: 1000px;
-    }
-
     #mc_embed_signup .mc-field-group.news_l  {
         flex-wrap: wrap;
         width: 100%;
@@ -1691,15 +1655,13 @@ button.search-submit:hover {
         width: 100% !important;
     }
 
-    .page-id-51 .footer_outer::after {
-        height: 400px;
-        width: 700px;
-    }
     .page-template-subscribe .kudossubscribe form.wpfs-form{ padding: 0 !important; }
 
-    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{     background-size: auto !important;
+    .page-template-subscribe .kudossubscribe form.wpfs-form fieldset.wpfs-form-check-group{
+        background-size: auto !important;
         margin-left: 0;
-        width: 100%; }
+        width: 100%;
+    }
 
 }
 
@@ -1729,20 +1691,6 @@ button.search-submit:hover {
 
 #mc_embed_signup .mc-field-group input#mce-EMAIL:focus {
     outline: none;
-}
-
-.footer_outer::after {
-    background-image: url("/wp-content/uploads/2020/04/the_drift_arrow.png");
-    background-repeat: no-repeat;
-    background-size: 80%;
-    content: '';
-    display: none;
-    height: 51px;
-    left: 20%;
-    position: absolute;
-    top: 20%;
-    transform: rotate(215deg);
-    width: 475px;
 }
 
 .single-post .mission_inner a:hover {
@@ -1927,36 +1875,6 @@ section.mission_outer {
     width: 485px;
 }
 
-.page-template-subscribe .footer_outer {
-    display: none;
-    margin-top: -200px;
-}
-
-.page-template-donate .footer_outer {
-    display: none;
-    margin-top: -200px;
-}
-
-.single-issue.postid-198 .footer_outer {
-    margin-top: 0;
-}
-
-.single-post .footer_outer {
-    margin-top: -300px;
-}
-
-.page-template-homepage .footer_outer {
-    margin-top: -0;
-}
-
-.issues_container .footer_outer {
-    margin-top: -200px;
-}
-
-.page-template-about-page .footer_outer {
-    margin-top: -100px;
-}
-
 .page-template-about .about_r {
     position: relative;
     z-index: 999;
@@ -2089,10 +2007,6 @@ section.mission_outer {
     color: var(--issue_color);
 }
 
-.search-results .footer_outer {
-    margin-top: -100px;
-}
-
 .search-term-list .list-feature-info h2,
 .search-term-list .list-feature-info h3 {
     position: relative;
@@ -2188,10 +2102,6 @@ section.mission_outer {
     max-height: 34px;
 }
 
-.footer_outer ul.social_icons li:last-child {
-    padding-right: 0;
-}
-
 .search_container.article_container h4.article_date {
     color: #69A7C2;
     font-size: 20px;
@@ -2215,20 +2125,6 @@ section.mission_outer {
 
 .page-template-subscribe input.wpfs-form-control {
     border-color: #f6f6f6 !important;
-}
-
-.footer_outer ul.social_icons {
-    margin-left: 80px;
-}
-
-.footer_outer ul.social_icons li i.fa,
-.footer_outer ul.social_icons li i.fab {
-    font-size: 16px;
-}
-
-.footer_outer ul.social_icons li {
-    padding-left: 0;
-    padding-right: 16px;
 }
 
 label[for="wpfs-same-billing-and-shipping-address--ZTI4NGY"] {
@@ -2492,38 +2388,6 @@ h1.issue_heading span {
         padding-left: 20px;
         padding-right: 20px;
     }
-
-    .page-template-subscribe .footer_outer {
-        margin-top: -50px;
-    }
-
-    .page-template-donate .footer_outer {
-        margin-top: -50px;
-    }
-
-    .single-post .footer_outer {
-        margin-top: -50px;
-    }
-
-    .page-template-homepage .footer_outer {
-        margin-top: -50px;
-    }
-
-    .issues_container .footer_outer {
-        margin-top: -50px;
-    }
-
-    .page-template-about-page .footer_outer {
-        margin-top: -50px;
-    }
-
-    .search-results .footer_outer {
-        margin-top: -50px;
-    }
-
-    .footer_inner {
-        padding-bottom: 20px !important;
-    }
 }
 
 @media (max-width: 1024px) {
@@ -2534,10 +2398,6 @@ h1.issue_heading span {
     #footerFullMenu {
         padding-left: 20px;
         padding-right: 20px;
-    }
-
-    .footer_outer::after {
-        display: none;
     }
 
     .contact01.headong0022 h1 {
@@ -2559,10 +2419,6 @@ h1.issue_heading span {
     .single-post figure {
         margin: 0 !important;
         width: 100% !important;
-    }
-
-    .footer_inner {
-        padding-bottom: 10px !important;
     }
 
     .wpfs-w-60 {
@@ -2688,10 +2544,6 @@ h1.issue_heading span {
 
     ul.f_menu.nav {
         width: 100%;
-    }
-
-    .footer_inner .nav > li > a {
-        font-size: 15px;
     }
 
     .drift_container h6 {
@@ -3068,10 +2920,6 @@ h1.issue_heading span {
         text-align: center !important;
     }
 
-    .footer_inner::after {
-        height: 260vw !important;
-    }
-
     .issue_outer {
         margin-top: 25px !important;
     }
@@ -3148,10 +2996,6 @@ h1.issue_heading span {
     .search-term-list .term-list {
         padding-bottom: 20px;
         padding-top: 20px;
-    }
-
-    .footer_outer ul.social_icons li:last-child {
-        padding-right: 15px;
     }
 
     .search_container.article_container .search-term-list .list-feature-img img {
@@ -3311,15 +3155,6 @@ h1.issue_heading span {
         margin-bottom: 5px;
     }
 
-    .footer_inner .nav > li > a {
-        font-size: 14px;
-        padding: 0 5px 5px;
-    }
-
-    .footer_outer ul.social_icons li:last-child {
-        padding-right: 5px;
-    }
-
     .ab_part_img_abu div label {
         font-size: 16px !important;
     }
@@ -3358,12 +3193,6 @@ h1.issue_heading span {
     .moreissue_left{ padding-right: 0;width:100%;}
 
 
-}
-
-@media (max-width: 414px) {
-    .footer_inner .nav > li > a {
-        font-size: 10px;
-    }
 }
 
 @media (max-width: 375px) {
