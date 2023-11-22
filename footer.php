@@ -1,6 +1,9 @@
 <?php
 $pageID = get_the_id();
 ?>
+<!-- Closes content-wrap -->
+</div>
+<div class="footer">
 <?php
 if (true) {
 	$footer_style = get_post_meta($pageID, "footer_style", true);
@@ -80,6 +83,10 @@ if (true) {
 		}
 	} ?>
 	</div>
+<!-- Closes site_container -->
+</div>
+<!-- Closes page-container -->
+</div>
 	<!-- End Footer Container
 	================================================== -->
 	<!-- Scripts

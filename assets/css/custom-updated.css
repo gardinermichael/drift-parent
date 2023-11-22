@@ -426,6 +426,22 @@ form.search-form {
     url('../font/Savoy/Savoy-Regular.woff.svg#Savoy') format('svg');
 }
 
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 11.5rem; /* 11.5 rem == footer height */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 11.5rem; /* 11.5 rem == footer height */
+}
+
 :root{
     --white:#fff;
     --black:#000;

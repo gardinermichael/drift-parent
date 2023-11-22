@@ -10,6 +10,7 @@
 </head>
 
 <body <?php echo body_class(); ?>>
+    <div class="page-container">
 
 <style type="text/css">
 .form01 form .wpfs-w-20 {
@@ -121,6 +122,7 @@ button#submit--OGNhNmM:before {
 </style>
 
 <div class="site_container">
+    <div class="content-wrap">
  <section class="hed-wrap">
     <div class="Container" id="tf-hide-mob" style="display: none;">
 
