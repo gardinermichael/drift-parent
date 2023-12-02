@@ -1,3 +1,75 @@
+/* devel for better dono and subscribe */
+
+.drift-subscriptions-button {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #0e90cc;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    height: 44px;
+    font-size: 20px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    font-family: proxy-nova;
+}
+
+.drift-subscriptions-button:disabled {
+    cursor: default;
+}
+
+.drift-subscriptions-button:focus {
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+.option-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.option-row>* {
+    padding-right: 0.15rem;
+    padding-left: 0.15rem;
+}
+
+.option-column {
+    width: 33.3333%;
+    flex: 0 0 auto;
+}
+
+label.button-like {
+    border-radius: 3px;
+    width: 100%;
+    border: 1px solid rgb(0 0 0 / 100%);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 20pt;
+    height: 50px;
+    line-height: 44px;
+    font-family: proxy-nova;
+}
+
+input[type="radio"]:checked+label{
+    background-color: rgb(14, 144, 204, 0.8)
+}
+
+input.button-like {
+    position: absolute;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
+}
+
+
 /* Self-Hosted Google Fonts not picking up roboto */
 .page-template-mentions .about_r h4 {
     font-family: Roboto, sans-serif;
@@ -61,8 +133,8 @@ h1.issue_heading b {
     width: 125px;
 }
 
-.ab_part  label.wpfs-form-check-label strong,
-.ab_part  label.wpfs-form-check-label,
+.label.wpfs-form-check-label strong,
+.label.wpfs-form-check-label,
 .ab_part_img_abu div label{
     color: #303030;
     font-family: proxy-nova !important;
