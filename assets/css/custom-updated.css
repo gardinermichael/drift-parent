@@ -136,7 +136,16 @@ input.button-like {
 .currency-input > input {
     padding-left: 25px;
     padding-right: 0;
-  }
+}
+
+.page-template-checkout .mission_inner_body {
+    background-color: #fff1e2;
+    min-height: 620px;
+}
+
+.page-template-checkout .mission_inner_body > :last-child::after {
+    content: "" !important;
+}
 
 /* end new donation stuff */
 
