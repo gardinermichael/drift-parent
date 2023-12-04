@@ -30,6 +30,18 @@
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
 
+@media (min-width: 768px) {
+    .subscriptions-form {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 767px){
+    .subscriptions-form {
+        margin-top: 5px;
+    }
+}
+
 .option-row {
     display: flex;
     flex-wrap: wrap;
@@ -43,6 +55,14 @@
 .option-column {
     width: 33.3333%;
     flex: 0 0 auto;
+}
+
+.option-split {
+    width: 50.0%;
+    flex: 0 0 auto;
+    /* less padding for just two options */
+    padding-right: 0.05rem;
+    padding-left: 0.05rem;
 }
 
 label.button-like {
@@ -59,7 +79,11 @@ label.button-like {
     font-family: proxy-nova;
 }
 
-input[type="radio"]:checked+label{
+.option-split label.button-like {
+    border-radius: 2px;
+}
+
+.subscriptions-form input[type="radio"]:checked+label{
     background-color: rgb(14, 144, 204, 0.8)
 }
 
@@ -69,6 +93,52 @@ input.button-like {
     pointer-events: none;
 }
 
+.expand-container {
+    overflow: hidden;
+  }
+
+.expand-contract {
+    margin-top: -100%;
+    /*transition: all 0.05s;*/
+}
+
+.expand-contract.expanded {
+    margin-top: 0;
+}
+
+.subscriptions-form input.custom-amount {
+    width: 7rem;
+}
+
+.custom-amount-container {
+    font-family: proxy-nova;
+    font-size: 16pt;
+    position: absolute;
+    right: 20px;
+}
+
+.currency-input {
+    position: relative;
+    width: 7rem;
+}
+
+.currency-input > span {
+    position: absolute;
+    display: block;
+    transform: translate(0, -50%);
+    top: 50%;
+    pointer-events: none;
+    width: 25px;
+    text-align: center;
+    font-style: normal;
+}
+
+.currency-input > input {
+    padding-left: 25px;
+    padding-right: 0;
+  }
+
+/* end new donation stuff */
 
 /* Self-Hosted Google Fonts not picking up roboto */
 .page-template-mentions .about_r h4 {
