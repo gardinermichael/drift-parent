@@ -1,7 +1,13 @@
 <?php
 /* Template name: Donate form page */
 get_header();
+$check_image_url = get_bloginfo("template_url") . "/assets/images/check.svg";
 ?>
+<style>
+:root {
+  --check-img: url("<?php echo($check_image_url); ?>");
+}
+</style>
 
 <div class="the-drift-logo-mb" style="display: none;">
 	<a href="<?php echo home_url(); ?>">
