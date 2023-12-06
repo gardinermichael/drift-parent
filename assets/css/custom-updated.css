@@ -1,21 +1,56 @@
-/* devel for better dono and subscribe */
+/* devel for better dono and subscribe */ 
+
+.flex-container {
+    display: flex;
+    width: 220px;
+}
+
+.choose-subscription-form .flex-container {
+    width: 290px;
+}
+
+@media (max-width: 768px) {
+    .choose-subscription-form .drift-subscriptions-form-option {
+        width: 55%
+    }
+}
+
+.product-left {
+    flex: 3;
+}
+
+.price-right {
+    flex: 1;
+    text-align: right;
+}
+
+.central-form-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.central-form-options .drift-subscriptions-form-option {
+    text-align: left;
+}
 
 .payment-form-subheading {
     position: relative;
     text-align: left;
     margin-bottom: 22px;
     margin-top: 22px;
-    font-size: 22pt;
-    font-family: proxy-nova; 
+    font-size: 12pt;
+    font-family: proxy-nova;
+    /*font-family: Avenir-Next-Thin, Arial, sans-serif;*/
 }
 
-.donation-amount-input {
+.drift-subscriptions-input {
     position: absolute;
     clip: rect(0,0,0,0);
     pointer-events: none;
 }
 
-.input[type="checkbox"].donation-amount-input {
+.input[type="checkbox"].drift-subscriptions-input {
     width: 20px;
 }
 
@@ -24,7 +59,7 @@
     color: #303030;
     font-weight: 400;
     font-family: proxy-nova;
-    padding-left: 1.3rem;
+    padding-left: 2rem;
     margin-left: 0;
     margin-bottom: 0;
     vertical-align: baseline;
@@ -69,25 +104,7 @@ input[type="radio"] + .drift-subscriptions-label:after {
     display: inline-block;
 }
 
-@media (min-width: 768px) {
-    .drift-subscriptions-form-option {
-        width: 85%;
-    }
-}
-
-@media (max-width: 823px) {
-    .drift-subscriptions-form-option {
-        width: 55%;
-    }
-}
-
-@media (max-width: 767px) {
-    .drift-subscriptions-form-option {
-        width: 65%;
-    }
-}
-
-.subscriptions-form input[type="radio"]:checked+label:after{
+.drift-subscriptions-form input[type="radio"]:checked+label:after{
     display: block;
 }
 
@@ -98,7 +115,7 @@ input[type="radio"] + .drift-subscriptions-label:after {
     padding-left: 0.5rem;
 }
 
-input[type="checkbox"] + .donation-check-label:before {
+input[type="checkbox"] + .drift-subscriptions-check-label:before {
     content: "";
     background-color: #fff;
     border: 1px solid #303030;
@@ -113,7 +130,7 @@ input[type="checkbox"] + .donation-check-label:before {
     left: 0px;
 }
 
-input[type="checkbox"]:checked + .donation-check-label:after {
+input[type="checkbox"]:checked + .drift-subscriptions-check-label:after {
     background-image: var(--check-img);
     background-size: 24px;
     content: "";
@@ -158,13 +175,13 @@ input[type="checkbox"]:checked + .donation-check-label:after {
 }
 
 @media (min-width: 768px) {
-    .subscriptions-form {
+    .drift-subscriptions-form {
         margin-top: 30px;
     }
 }
 
 @media (max-width: 767px){
-    .subscriptions-form {
+    .drift-subscriptions-form {
         margin-top: 5px;
     }
 }
@@ -237,7 +254,7 @@ input.button-like {
     margin-top: 0;
 }
 
-.subscriptions-form input.custom-amount {
+.drift-subscriptions-form input.custom-amount {
     width: 6rem;
 }
 
