@@ -68,6 +68,7 @@
     cursor: pointer;
 }
 
+
 input[type="radio"] + .drift-subscriptions-label:before {
     content: "";
     background-color: #fff;
@@ -101,7 +102,12 @@ input[type="radio"] + .drift-subscriptions-label:after {
 
 .drift-subscriptions-form-option {
     position: relative;
-    display: inline-block;
+    display: flex;
+}
+
+.drift-subscriptions-label {
+    width: 50%;
+    text-align: left;
 }
 
 .drift-subscriptions-form input[type="radio"]:checked+label:after{
@@ -189,6 +195,7 @@ input[type="checkbox"]:checked + .drift-subscriptions-check-label:after {
 .option-row {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 30px;
 }
 
 .option-row>* {
