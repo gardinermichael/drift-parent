@@ -260,9 +260,11 @@ input.button-like {
 
 .custom-amount-container {
     font-family: proxy-nova;
-    font-size: 15pt;
-    position: absolute;
-    right: 20px;
+    font-size: 13pt;
+    display: flex;
+    justify-content: right;
+    padding-top: 5px;
+    padding-right: 20px;
 }
 
 .currency-input {
