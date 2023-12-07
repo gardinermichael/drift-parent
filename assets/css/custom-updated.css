@@ -13,6 +13,10 @@
     .choose-subscription-form .drift-subscriptions-form-option {
         width: 55%
     }
+
+    .choose-subscription-form .drift-subscriptions-form-option.drift-subscriptions-bonus-option {
+        width: 100%
+    }
 }
 
 .product-left {
@@ -67,7 +71,6 @@
     width: 100%;
     cursor: pointer;
 }
-
 
 input[type="radio"] + .drift-subscriptions-label:before {
     content: "";
@@ -263,6 +266,14 @@ input.button-like {
 
 .drift-subscriptions-form input.custom-amount {
     width: 6rem;
+}
+
+.choose-subscription-form .expand-container {
+    padding-top: 10px;
+}
+
+.expand-container input[type="email"] {
+    width: 20rem;
 }
 
 .custom-amount-container {
