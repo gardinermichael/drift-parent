@@ -1,7 +1,50 @@
 /* devel for better dono and subscribe */ 
 
+.login-group {
+    display: flex;
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+    font-family: proxy-nova;
+    font-size: 13pt;
+}
+
+.login-button-group {
+    display: flex;
+    justify-content: center;
+    font-family: proxy-nova;
+    font-size: 14pt;
+}
+
+.login-buttons-container {
+    padding-top: 2rem;
+}
+
+.login-buttons-container .login-group {
+    display: block;
+   width: 50%;
+   margin: 0 auto;
+}
+
+.label-left {
+   width: 35%
+}
+
+.input-right {
+    width: 30%
+}
+
+article.account-page .entry-title {
+    margin-bottom: 1rem !important;
+}
+
 .login-update-notice {
     margin-bottom: 20px;
+}
+
+.logout-container {
+    margin-top: 1rem;
+    font-size: 16pt;
 }
 
 .notice-container p {
