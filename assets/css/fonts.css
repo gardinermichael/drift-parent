@@ -3,6 +3,13 @@
     src: url(../font/adobe/ACaslonPro-Regular.otf);
 }
 
+/* for making Avenir-Next-Thin look bold */
+@font-face {
+    font-family: Avenir-Bolder;
+    src: url(../font/Avenir-Book.ttf);
+    font-display: swap;
+}
+
 @font-face {
 font-family: proxy-nova;
 src: url(../font/proxy/proxy.ttf);
