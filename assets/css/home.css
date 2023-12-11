@@ -2,10 +2,7 @@
 /* but manually checked that they only appeared on front page */
 
 /* font families */
-.home_mentions ul li {
-    font-family: 'Savoy', 'EB Garamond', Times, serif;
-}
-
+.home_mentions ul li,
 .home_mentions ul li a {
     font-family: 'Savoy', 'EB Garamond', Times, serif;
 }
@@ -66,25 +63,86 @@
     margin: auto;
 }
 
-.home_issue_page_text {margin-top: 0px;}
-
 /* end home page merge */
 
-.diff_font a {
+/* for the front page copy */
+.home_issue_page_text {
+    margin-top: 0px;
+    position: relative;
+    z-index: 999;
+    max-width: 620px;
+    padding: 0px 0 0 35px;
+}
+.home_issue_page_text a {
     color: var(--issue_color);
+}
+
+.home_issue_page_text h4 {
+    font-weight: 400;
+    font-size: 25px;
+    display: inline;
+}
+
+.read_now {
+    font-size: 48px;
+    font-weight: normal;
+    line-height: 48px;
+    margin-top: 40px;
+}
+.read_now a {
+    border-bottom: 2px solid;
+    display: inline-block;
+    color: #000;
+}
+
+@media (max-width: 1024px) {
+    .home_issue_page_text {
+        padding-top: 0;
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    .home_issue_page_text h4 {
+        font-size: 20px;
+    }
+    .read_now a {
+        font-size: 30px;
+        margin-top: 30px;
+        line-height: 32px;
+    }
+}
+@media (max-width: 992px) {
+    .home_issue_page_text {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+@media (max-width: 767px) {
+    .home_issue_page_text {
+        max-width: 100%;
+        padding: 0px 10px 20px 15px;
+    }
+    .read_now a {
+        font-size: 30px;
+        margin-top: 20px;
+        line-height: 35px;
+    }
+    .home_issue_page_text h4 {
+        font-size: 22px;
+        line-height: normal;
+    }
+}
+@media (min-width: 1400px) {
+    .home_issue_page_text h4 {
+        font-size: 28px;
+    }
+    .home_issue_page_text {
+        max-width: 100%;
+        padding: 0px 35px 35px 35px;
+    }
 }
 
 .ab_part_l {
     flex-wrap: wrap;
-}
-
-.diff_font {
-    max-width: 620px;
-    padding: 0px 0 0 35px;
-}
-
-.diff_font h4 {
-    font-size: 25px;
 }
 
 .sub_don {
@@ -109,16 +167,6 @@
     line-height: 1.2;
 }
 
-.diff_font h4 {
-    display: inline;
-}
-
-.diff_font h2 a,
-.diff_font h2 {
-    font-size: 48px;
-    font-weight: normal;
-}
-
 .sub_donl a:hover h4 {
     color: var(--issue_color);
 }
@@ -127,7 +175,7 @@
     color: var(--issue_color);
 }
 
-.arti_span {
+.article_span {
     /* === ADDED 6.8 === */
     color: var(--issue_color);
 }

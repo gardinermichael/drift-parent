@@ -945,7 +945,7 @@ add_action('admin_enqueue_scripts', 'pw_load_scripts');
 
 function set_paywall_cookie()
 {
-    $cookie_name = "dpp_stripeaccount";
+    $cookie_name = "dpp_stripeaccount_137";
     $cookie_value = "true";
     setcookie($cookie_name, $cookie_value, time() + (86400 * 180), "/"); // 86400 = 1 day
 }
@@ -1012,3 +1012,11 @@ function var_template_include($t)
     $GLOBALS['current_theme_template'] = basename($t);
     return $t;
 }
+
+function custom_login() {
+    $drift_all_style_path = get_theme_file_path('/assets/css/login.css');
+    $logo = get_theme_file_uri() . '/assets/images/login/drift_logo_login.png';
+    echo('<style type="text/css">:root { --login-logo-url: url(' . $logo . ') }</style>');
+    wp_enqueue_style('drift-login-style', get_theme_file_uri('/assets/css/login.css'), array(), filemtime($drift_all_style_path));
+}
+add_action('login_head', 'custom_login');
