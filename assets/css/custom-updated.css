@@ -73,10 +73,19 @@ article.account-page .entry-title {
     padding-bottom: 10px;
 }
 
+.embedded-checkout-container .notice-heading {
+    font-size: 18pt;
+}
+
+.embedded-checkout-container .notice-container {
+    font-size: 18pt !important;
+}
+
 .account-subscription {
     display: flex;
     flex-direction: row;
     font-family: proxy-nova;
+    padding-bottom: 5px;
 }
 
 .account-subscriptions-group {
