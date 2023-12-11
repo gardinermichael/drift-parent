@@ -10,6 +10,7 @@
 </head>
 
 <body <?php echo body_class(); ?>>
+    <div class="page-container">
 
 <style type="text/css">
 .form01 form .wpfs-w-20 {
@@ -35,13 +36,6 @@ button#submit--OGNhNmM:before {
     content: "Donate now";
     font-size: 22px;
 }
-.loaderImage {
-    margin: auto;
-    width: auto;
-    display: block;
-    margin-top: 20%;
-}
-
 .com_heading h3 b { 
     font-weight: 600;
   }
@@ -63,63 +57,21 @@ button#submit--OGNhNmM:before {
 .form01 { 
     position: relative;
 }
-.footer_inner {
-    padding: 200px 30px 10px 0;
-    overflow: hidden;
-    margin: 0 0 0px;
-}
-.footer_inner::after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -100vw;
-    width: 167vw;
-    height: 170vw;
-    background-repeat: no-repeat;
-    z-index: -1;
-    background-color: #f0f0f0;
-    outline: 1px dashed #000;
-    border: 10px solid #fff;
-    transform: rotate(64deg);
-}
 
 .cus_post_outer .container,
 .bredcrum01 .container { 
     max-width: 900px;
 }
 
-@media(min-width: 768px) and (max-width: 1250px) {
-    .footer_inner {
-        padding: 200px 10px 10px 10px;
+@media (max-width: 767px){
+    .ab_part_img_inner > div:nth-child(2n+1) {
+        width: 34%;
     }
-    .footer_inner::after{
-        right: -75vw;
-        width: 157vw;
-        height: 180vw;
+    .ab_part_img_inner div {
+        padding: 7px 6px;
     }
 }
 
-@media (max-width: 767px){
-.ab_part_img_inner > div:nth-child(2n+1) {
-    width: 34%;
-}
-.ab_part_img_inner div {
-    padding: 7px 6px;
-}
-.footer_outer::after {
-    width: 210vw;
-    height: 260vw;
-}
-.footer_inner {
-    padding: 200px 10px 10px 10px;
-}
-.footer_inner::after{
-    right: -50vw;
-    width: 187vw;
-    height: 280vw;
-}
-}
 .f_logo img { 
     width: 200px;
 }
@@ -170,6 +122,7 @@ button#submit--OGNhNmM:before {
 </style>
 
 <div class="site_container">
+    <div class="content-wrap">
  <section class="hed-wrap">
     <div class="Container" id="tf-hide-mob" style="display: none;">
 
