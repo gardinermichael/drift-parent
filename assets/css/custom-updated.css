@@ -1,5 +1,26 @@
 /* devel for better dono and subscribe */ 
 
+.drift-subscriptions-previous-button {
+    border: 1px solid;
+    border-radius: 1px;
+    background-color: #000;
+    color: #fff;
+    width: 40px;
+    margin-right: 5px;
+}
+
+.form-stage-header-inner {
+    display:inline-block;
+}
+
+#late-stage-header {
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14pt;
+    padding-top: 10px;
+    text-align: left;
+}
+
 .embedded-checkout-container .notice-outer {
     padding-top: 1rem;
 }
@@ -31,8 +52,8 @@
 
 .login-buttons-container .login-group {
     display: block;
-   width: 50%;
-   margin: 0 auto;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .label-left {
@@ -143,9 +164,8 @@ article.account-page .entry-title {
 .payment-form-subheading {
     position: relative;
     text-align: left;
-    margin-bottom: 22px;
-    margin-top: 22px;
     font-size: 12pt;
+    margin-bottom: 19px;
     font-family: proxy-nova;
 }
 
@@ -204,6 +224,10 @@ input[type="radio"] + .drift-subscriptions-label:after {
     display: none;
 }
 
+.options-cluster {
+    margin-bottom: 19px;
+}
+
 .drift-subscriptions-form-option {
     position: relative;
     display: flex;
@@ -219,7 +243,6 @@ input[type="radio"] + .drift-subscriptions-label:after {
 }
 
 .drift-subscriptions-bonus-option {
-    margin-top: 18px;
     text-align: left;
     width: 100%;
     padding-left: 0.5rem;
@@ -277,7 +300,8 @@ input[type="checkbox"]:checked + .drift-subscriptions-check-label:after {
 }
 
 .drift-subscriptions-button:disabled {
-    cursor: default;
+    cursor: wait;
+    background-color: rgba(143, 166, 179, 0.3);
 }
 
 .drift-subscriptions-button:focus {
@@ -292,7 +316,7 @@ input[type="checkbox"]:checked + .drift-subscriptions-check-label:after {
 
 @media (max-width: 767px){
     .drift-subscriptions-form {
-        margin-top: 5px;
+        margin-top: 15px;
     }
 }
 
