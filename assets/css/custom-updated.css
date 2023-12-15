@@ -4,10 +4,15 @@
     border-radius: 4px;
     padding: 0.75rem;
     display: block;
-    width: 480px;
     font-weight: 400;
     line-height: 1.15;
+    width: 100%;
 }
+
+.drift-subscriptions-form-option-standalone label {
+    width: 100%;
+}
+
 
 .drift-subscriptions-form-option-standalone {
     margin: 0;
@@ -2358,15 +2363,6 @@ section.mission_outer {
     margin-top: 0;
 }
 
-.high-title-container .ab_part_linner,
-.page-template-subscribe .ab_part_linner {
-    width: 485px;
-}
-
-.page-template-donate .ab_part_linner {
-    width: 485px;
-}
-
 .page-template-about .about_r {
     position: relative;
     z-index: 999;
@@ -3177,6 +3173,10 @@ h1.issue_heading span {
     .td-site-mobile-header .container {
         max-width: 100%;
         position: relative;
+    }
+
+    .ab_part_linner {
+        width: 90% !important;
     }
 
 }
