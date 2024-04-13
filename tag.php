@@ -21,7 +21,7 @@ $tag_posts = new WP_Query(array('tag' => $tag->slug, 'posts_per_page' => 10));
         <?php if ( $tag_posts->have_posts() ) : ?>
             <h1 class="page-title">
             <?php
-            printf($tag_title);
+            printf($tag->name);
             ?>
             </h1>
         <?php else : ?>
