@@ -12,8 +12,8 @@
 get_header(); ?>
 
 <?php
-$tag_title = single_tag_title(display: false);
-$tag_posts = new WP_Query(array('tag' => $tag_title, 'posts_per_page' => 10));
+$tag = get_queried_object();
+$tag_posts = new WP_Query(array('tag' => $tag, 'posts_per_page' => 10));
 ?>
 
 <div class="search_container">
