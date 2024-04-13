@@ -302,7 +302,7 @@ if ($supportText != "") {
 <?php
 $featuredPackage = get_post_meta($pageID, "package_description", true);
 $packageTagName = get_post_meta($pageID, "package_tag", true);
-$packageTag = get_term_by('name', $packageTagName, 'tag');
+$packageTag = get_term_by('name', $packageTagName, 'get_term_by');
 $featuredPosts = get_post_meta($pageID, "featured_package_posts", true);
 print_r($featuredPackage);
 if ($featuredPackage) {
