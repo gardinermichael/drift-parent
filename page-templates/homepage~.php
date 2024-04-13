@@ -304,8 +304,8 @@ $featuredPackage = get_post_meta($pageID, "package_description", true);
 $packageTagName = get_post_meta($pageID, "package_tag", true);
 $packageTag = get_term_by('name', $packageTagName, 'tag');
 $featuredPosts = get_post_meta($pageID, "featured_package_posts", true);
-
-if ($featuredPackage & $packageTag) {
+print_r($featuredPackage);
+if ($featuredPackage) {
 ?>
 <div class="latestArticle_Heading">
 <h1><?php echo($featuredPackage); ?></h1>
