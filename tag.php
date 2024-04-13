@@ -18,7 +18,7 @@ $tag_posts = new WP_Query(array('tag' => $tag_title, 'posts_per_page' => 10));
 
 <div class="search_container">
 <header class="page-header">
-		<?php if ( $package_posts->have_posts() ) : ?>
+		<?php if ( $tag_posts->have_posts() ) : ?>
 			<h1 class="page-title">
 			<?php
 			printf($tag_title);

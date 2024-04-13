@@ -301,13 +301,14 @@ if ($supportText != "") {
 
 <?php
 $featuredPackage = get_post_meta($pageID, "package_description", true);
-$packageTag = get_post_meta($pageID, "package_tag", true);
+$packageTagName = get_post_meta($pageID, "package_tag", true);
+$packageTag = get_term_by('name', $packageTagName, 'tag');
 $featuredPosts = get_post_meta($pageID, "featured_package_posts", true);
 
 if ($featuredPackage & $packageTag) {
 ?>
 <div class="latestArticle_Heading">
-<h1>Featured</h1>
+<h1><?php echo($featuredPackage); ?></h1>
 </div>
 <div class="row latest_articles">
 
@@ -344,10 +345,8 @@ if ($featuredPackage & $packageTag) {
                 }
             }
         }
-        //$article_editor_name = get_post_meta($postID, "article_editor_name", true);
     ?>
         <div class="col-md-4 single_article <?php echo "postid-" . $postID; ?>">
-
             <div class="article_feaImage">
                 <a href="<?php echo $postLink; ?>">
                     <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
@@ -380,7 +379,7 @@ if ($featuredPackage & $packageTag) {
         </div>
     <?php } ?>
     <div class="seeMoreLink featuredArticleMore">
-        <a href="<?php echo get_the_permalink(323); ?>">See more</a>
+        <a href="<?php echo site_url('tag/' . $packageTag->slug); ?>">See more</a>
     </div>
 </div>
 <hr class="mob-hide-line" />
