@@ -13,7 +13,7 @@ get_header(); ?>
 
 <?php
 $tag = get_queried_object();
-$tag_posts = new WP_Query(array('tag' => $tag, 'posts_per_page' => 10));
+$tag_posts = new WP_Query(array('tag' => $tag->slug, 'posts_per_page' => 10));
 ?>
 
 <div class="search_container">
