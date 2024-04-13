@@ -12,17 +12,15 @@
 get_header(); ?>
 
 <?php
-$tag_title = single_tag_title($display=false);
+$tag_title = single_tag_title(display: false);
 $tag_posts = new WP_Query(array('tag' => $tag_title, 'posts_per_page' => 10));
 ?>
 
 <div class="search_container">
 <header class="page-header">
-        <?php printf("outside if"); ?>
         <?php if ( $tag_posts->have_posts() ) : ?>
             <h1 class="page-title">
             <?php
-            printf("inside if");
             printf($tag_title);
             ?>
             </h1>
