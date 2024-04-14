@@ -383,8 +383,8 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
 
 <?php
 $featuredPackage = get_post_meta($pageID, "package_description", true);
-$packageTagName = get_post_meta($pageID, "package_tag", true);
-$packageTag = get_term_by('name', $packageTagName, 'post_tag');
+//$packageTagName = get_post_meta($pageID, "package_tag", true);
+//$packageTag = get_term_by('name', $packageTagName, 'post_tag');
 $featuredPosts = get_post_meta($pageID, "featured_package_posts", true);
 if ($featuredPackage) {
 ?>
@@ -459,9 +459,6 @@ if ($featuredPackage) {
 
         </div>
     <?php } ?>
-    <div class="seeMoreLink featuredArticleMore">
-        <a href="<?php echo site_url('tag/' . $packageTag->slug); ?>">See more</a>
-    </div>
 </div>
 <hr class="mob-hide-line" />
 <?php
