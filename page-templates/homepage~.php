@@ -225,6 +225,91 @@ $postLoop = new wp_query($postArgs);
 <hr />
 
 <?php
+$featuredPackage = get_post_meta($pageID, "package_description", true);
+//$packageTagName = get_post_meta($pageID, "package_tag", true);
+//$packageTag = get_term_by('name', $packageTagName, 'post_tag');
+$featuredPosts = get_post_meta($pageID, "featured_package_posts", true);
+if ($featuredPackage) {
+?>
+<div class="latestArticle_Heading">
+<h1><?php echo($featuredPackage); ?></h1>
+</div>
+<div class="row latest_articles">
+
+    <?php
+    foreach ($featuredPosts as $featuredPost) {
+        $postID = $featuredPost;
+        $postLink = get_the_permalink($postID);
+        $postTitle = get_the_title($postID);
+        $post_imageID = get_post_thumbnail_id($postID);
+
+        if ($post_imageID) {
+            list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
+        } else {
+            $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
+        }
+
+        $postSubtitle = get_post_meta($postID, "post_subsitle", true);
+
+
+        $post_authors = get_the_terms($postID, 'authors');
+        $loopNum = 0;
+
+        if (is_array($post_authors)) {
+            foreach ($post_authors as $post_author) {
+                $loopNum++;
+                $author_id = $post_author->term_id;
+
+                $author_link = get_term_link($post_author);
+                $author_name = $post_author->name;
+                $author_description = $post_author->description;
+
+                if ($loopNum == 1) {
+                    $article_editor_name = $post_author->name;
+                }
+            }
+        }
+    ?>
+        <div class="col-md-4 single_article <?php echo "postid-" . $postID; ?>">
+            <div class="article_feaImage">
+                <a href="<?php echo $postLink; ?>">
+                    <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
+                </a>
+            </div>
+
+            <div class="article_heading">
+                <h4>
+                    <a href="<?php echo $postLink; ?>">
+                        <strong><?php echo $postTitle; ?></strong>
+                        <?php
+                        if ($postSubtitle != "") {
+                        ?>
+                            <span class="article_span">|</span> <?php echo $postSubtitle; ?>
+                        <?php
+                        }
+                        ?>
+                    </a>
+                </h4>
+            </div>
+
+            <?php
+            if ($article_editor_name != "") {
+            ?>
+                <div class="article_sub_heading">
+                    <strong><a href="<?php echo $postLink; ?>"><?php echo $article_editor_name; ?></a></strong>
+                </div>
+            <?php } ?>
+
+        </div>
+    <?php } ?>
+</div>
+<hr class="mob-hide-line" />
+
+<?php
+}
+?>
+
+<?php
 wp_reset_postdata();
 wp_reset_query();
 $pageID = get_the_id();
@@ -380,90 +465,6 @@ $featuredPosts = get_post_meta($pageID, "select_featured_posts", true);
     </div>
 </div>
 <hr class="mob-hide-line" />
-
-<?php
-$featuredPackage = get_post_meta($pageID, "package_description", true);
-//$packageTagName = get_post_meta($pageID, "package_tag", true);
-//$packageTag = get_term_by('name', $packageTagName, 'post_tag');
-$featuredPosts = get_post_meta($pageID, "featured_package_posts", true);
-if ($featuredPackage) {
-?>
-<div class="latestArticle_Heading">
-<h1><?php echo($featuredPackage); ?></h1>
-</div>
-<div class="row latest_articles">
-
-    <?php
-    foreach ($featuredPosts as $featuredPost) {
-        $postID = $featuredPost;
-        $postLink = get_the_permalink($postID);
-        $postTitle = get_the_title($postID);
-        $post_imageID = get_post_thumbnail_id($postID);
-
-        if ($post_imageID) {
-            list($post_imageURL, $width, $height) = wp_get_attachment_image_src($post_imageID, "large");
-        } else {
-            $post_imageURL = get_bloginfo("template_url") . "/assets/images/dummy.jpg";
-        }
-
-        $postSubtitle = get_post_meta($postID, "post_subsitle", true);
-
-
-        $post_authors = get_the_terms($postID, 'authors');
-        $loopNum = 0;
-
-        if (is_array($post_authors)) {
-            foreach ($post_authors as $post_author) {
-                $loopNum++;
-                $author_id = $post_author->term_id;
-
-                $author_link = get_term_link($post_author);
-                $author_name = $post_author->name;
-                $author_description = $post_author->description;
-
-                if ($loopNum == 1) {
-                    $article_editor_name = $post_author->name;
-                }
-            }
-        }
-    ?>
-        <div class="col-md-4 single_article <?php echo "postid-" . $postID; ?>">
-            <div class="article_feaImage">
-                <a href="<?php echo $postLink; ?>">
-                    <img src="<?php echo $post_imageURL; ?>" width="<?php echo($width);?>" height="<?php echo($height);?>">
-                </a>
-            </div>
-
-            <div class="article_heading">
-                <h4>
-                    <a href="<?php echo $postLink; ?>">
-                        <strong><?php echo $postTitle; ?></strong>
-                        <?php
-                        if ($postSubtitle != "") {
-                        ?>
-                            <span class="article_span">|</span> <?php echo $postSubtitle; ?>
-                        <?php
-                        }
-                        ?>
-                    </a>
-                </h4>
-            </div>
-
-            <?php
-            if ($article_editor_name != "") {
-            ?>
-                <div class="article_sub_heading">
-                    <strong><a href="<?php echo $postLink; ?>"><?php echo $article_editor_name; ?></a></strong>
-                </div>
-            <?php } ?>
-
-        </div>
-    <?php } ?>
-</div>
-<hr class="mob-hide-line" />
-<?php
-}
-?>
 
 <?php
 $issue_args = array("post_type" => "issue", "posts_per_page" => "-1", "order" => "DESC", "orderby" => "date");
