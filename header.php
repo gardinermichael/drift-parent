@@ -136,9 +136,6 @@ button#submit--OGNhNmM:before {
       $pageID = get_the_id();
       if ($pageID != 6 && $pageID != 8) {?>
         <div class="menu_box_one">
-
-
-
             <div class="drift_searchForm"><?php echo get_search_form();?></div>
             <?php
               wp_nav_menu(array("menu" => "Top Left", "menu_class" => "menu-top-left", "menu_class" => "nav d-flex" ))
