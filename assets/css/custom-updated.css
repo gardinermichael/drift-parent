@@ -22,6 +22,8 @@
 
 .drift-subscriptions-like-stripe-label {
     font-size: 10pt;
+    line-height: 1.5;
+    margin-bottom: 8px;
 }
 
 .drift-subscriptions-previous-button {
