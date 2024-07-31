@@ -180,7 +180,7 @@ article.account-page .entry-title {
 }
 
 .price-right {
-    flex: 1;
+    /*flex: 1; */
     text-align: right;
 }
 
