@@ -1,4 +1,4 @@
-/* devel for better dono and subscribe */ 
+/* devel for better dono and subscribe */
 .drift-subscriptions-entry-field input {
     border: 1px solid #e6e6e6;
     border-radius: 4px;
@@ -161,9 +161,18 @@ article.account-page .entry-title {
     width: 220px;
 }
 
-.choose-subscription-form .flex-container {
-    width: 290px;
+@media (max-width: 767px) {
+    .choose-subscription-form .flex-container {
+        width: 290px;
+    }
 }
+@media (min-width: 768px) {
+    .choose-subscription-form .flex-container {
+        width: 320px;
+    }
+}
+
+
 
 @media (max-width: 768px) {
     .choose-subscription-form .drift-subscriptions-form-option {
