@@ -193,10 +193,26 @@ article.account-page .entry-title {
     text-align: right;
 }
 
+@media (max-width: 768px) {
+    .choose-subscription-form .drift-subscriptions-form-option {
+        width: 55%
+    }
+
+    .choose-subscription-form .drift-subscriptions-form-option.drift-subscriptions-bonus-option {
+        width: 100%
+    }
+}
+
 .central-form-options {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+@media (max-width: 500px) {
+    .central-form-options {
+        display: block;
+    }
 }
 
 .central-form-options .drift-subscriptions-form-option {
@@ -278,6 +294,10 @@ input[type="radio"] + .drift-subscriptions-label:after {
 .drift-subscriptions-label {
     width: 50%;
     text-align: left;
+}
+
+.drift-subscriptions-check-label {
+    width: 100%
 }
 
 .drift-subscriptions-form input[type="radio"]:checked+label:after{
@@ -1472,15 +1492,8 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     border: 2px solid #000;
 }
 
-
-/* FORM */
-.wpfs-form-control:not(.wpfs-form-control--error).wpfs-form-control--focus, .wpfs-form-control:not(.wpfs-form-control--error):focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 1px var(--black) !important;
-}
-
 .ab_part_l {
-    justify-content: flex-end;
+    justify-content: center;
     position: relative;
     text-align: right;
     top: 0;
