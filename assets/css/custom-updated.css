@@ -22,6 +22,8 @@
 
 .drift-subscriptions-like-stripe-label {
     font-size: 10pt;
+    line-height: 1.5;
+    margin-bottom: 8px;
 }
 
 .drift-subscriptions-previous-button {
@@ -114,7 +116,7 @@ article.account-page .entry-title {
 
 .notice-heading {
     font-family: 'Adobe-Caslon';
-    font-size: 28pt;
+    font-size: 16pt;
     padding-bottom: 10px;
 }
 
