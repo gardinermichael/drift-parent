@@ -31,7 +31,7 @@ $check_image_url = get_bloginfo("template_url") . "/assets/images/check.svg";
 			<div class="ab_part_l d-flex">
 				<div class="ab_part_linner">
 					<?php
-					echo do_shortcode( '[drift_subscriptions_old_donate_page]' );
+					echo do_shortcode(get_post_meta($post->ID, 'payment_plugin_shortcode', true));
 					?>
 				</div>
 			</div>
