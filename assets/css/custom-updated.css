@@ -3859,7 +3859,9 @@ h1.issue_heading span {
 
 .contact01.headong0022 h1{font-size:50px !important;}
 .contact01.headong0022 span{color:#696969 !important;}
-.com_heading01 span{padding: 0 5px;}
+.com_heading span{padding: 0 6px;}
+.com_heading01 span{padding: 0 1px;}
+
 
 .contact01.headong0022{margin-left:20px !important;}
 .com_heading  span.single_article_pipe{ display:inline-block;font-size:13px; top:0;}
@@ -4018,10 +4020,7 @@ h1.issue_heading span {
 
     .contact01.headong0022 h1{font-size:38px !important;}
 
-    .com_heading span, .com_heading01 span{margin-left: -6px;}
-
     .com_heading h3 b, .com_heading01 h4 b{
-        margin-right: 6px;
         margin-top: -24px;
     }
     .com_heading h3{font-size:30px;}

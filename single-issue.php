@@ -76,7 +76,7 @@ $issue_subtitle = get_post_meta($pageID, "issue_subtitle_acf", true);
                                         <div class="com_heading01" id="id_<?php echo $loopNum_test; ?>">
                                             <h4>
                                                 <a href="<?php echo $issuePermalink; ?>">
-                                                    <b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") { ?>color:  <?php echo $colorPick; } ?>">|</span><?php echo $articleValue["subtitle_acf"]; ?>
+                                                    <b><?php echo $articleValue["title_acf"]; ?></b>​<span class="issues_pipe" style=" <?php if ($colorPick != "") { ?>color:  <?php echo $colorPick; } ?>"> | </span><?php echo $articleValue["subtitle_acf"]; ?>
                                                 </a>
                                             </h4>
 
