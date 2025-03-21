@@ -9,7 +9,6 @@
 $pageID = get_the_id();
 wp_head();
 ?>
-
 </head>
 
 <body <?php echo body_class(); ?>>
