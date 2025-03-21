@@ -114,20 +114,6 @@ if (true) {
 			jQuery(".promagnifier").trigger("click");
 		});
 
-		/* On scroll header sticky starts code */
-		jQuery(window).scroll(function(){
-			if (jQuery(window).scrollTop() >= 1) {
-				jQuery('.main_container_custom').addClass('padding_top');
-				jQuery('.menu_box_two').addClass('fixed');
-				jQuery('#tf-hide-mob').addClass('fixed');
-			}
-			else {
-				jQuery('.main_container_custom').removeClass('padding_top');
-				jQuery('.menu_box_two').removeClass('fixed');
-				jQuery('#tf-hide-mob').removeClass('fixed');
-			}
-		});
-
 		jQuery(".drift_search_link a").click(function(){
 			jQuery(".drift_searchForm").slideToggle();
 			jQuery("#ajaxsearchlite1 input[type='search']").focus();
@@ -159,13 +145,6 @@ if (true) {
 			{
 				jQuery("#mce-EMAIL").focusout();
 			}, 1000);
-		});
-
-		jQuery(".mob-search").click(function(e){
-			e.preventDefault();
-			jQuery(".drift_searchForm").slideDown();
-			jQuery("#ajaxsearchlite3 input[type='search']").focus();
-			return false;
 		});
 
 		jQuery(".seach-mobile-view i").click(function(e){
