@@ -20,39 +20,14 @@
 #mc_embed_signup .mc-field-group input#mce-EMAIL {	
     color: #303030;
 }
-.wpfs-form-group .wpfs-form-control:not(.wpfs-form-control--error).wpfs-form-control--focus, 
-.wpfs-form-group .wpfs-form-control:not(.wpfs-form-control--error):focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0px 0px 0px 1px var(--black) !important;
-}	
+
 .mce_inline_error {
     font-family: proxy-nova;
 }
-button#submit--OGNhNmM {
-    font-size: 0 !important;
-    padding-bottom: 6px !important;
-}
-button#submit--OGNhNmM:before {
-    content: "Donate now";
-    font-size: 22px;
-}
+
 .com_heading h3 b { 
     font-weight: 600;
   }
-.ab_part_img_inner > div:nth-child(2n+1) {
-    width: 29%;
-}
-
-#other_amount,#other_amount_temp {
-    float: right !important;
-    width: 101px;
-    position: absolute;
-    right: 6%;
-    bottom: 20px;
-    border: 1px solid;
-    height: 29px;
-    padding-left: 10px;
-}
 
 .form01 { 
     position: relative;
@@ -61,15 +36,6 @@ button#submit--OGNhNmM:before {
 .cus_post_outer .container,
 .bredcrum01 .container { 
     max-width: 900px;
-}
-
-@media (max-width: 767px){
-    .ab_part_img_inner > div:nth-child(2n+1) {
-        width: 34%;
-    }
-    .ab_part_img_inner div {
-        padding: 7px 6px;
-    }
 }
 
 .f_logo img { 
@@ -109,15 +75,6 @@ button#submit--OGNhNmM:before {
     .mission_outer > .container-fluid {
         padding-bottom: 10rem;
     }
-}
-
-@media (max-width: 823px) {
-    #other_amount, #other_amount_temp {
-        position: static !important;
-        float: left !important;
-        width: 115px !important;
-        margin-left: 35px !important;
-     }
 }
 </style>
 
