@@ -1773,9 +1773,6 @@ button.search-submit:hover {
 }
 
 @media(min-width: 768px){
-
-    .only_mobile_show {display: none; }
-
     .footerNew_middle {
         padding-left: 40px;
         padding-right: 40px;
@@ -1939,25 +1936,6 @@ button.search-submit:hover {
         height: 2px;
         margin: 4px;
         width: 25px;
-    }
-
-    .only_mobile_show {
-        background: #fbfbfb;
-        display: none;
-        position: absolute;
-        top: 115px;
-        width: 100%;
-        z-index: 9999999;
-    }
-
-    .only_mobile_show .nav>li {
-        display: block;
-        position: relative;
-        width: 100%;
-    }
-
-    .only_mobile_show .nav>li > a{
-        padding: 15px 20px;
     }
 
     .ab_part {
@@ -4113,4 +4091,58 @@ form .wpfs-btn-link:visited {
 
 .poem-pad {
     padding-left: 30px;
+}
+
+/* HEADER CSS */
+
+#mc_embed_signup .mc-field-group input#mce-EMAIL {
+    color: #303030;
+}
+
+.mce_inline_error {
+    font-family: proxy-nova;
+}
+
+.com_heading h3 b {
+    font-weight: 600;
+  }
+
+.cus_post_outer .container,
+.bredcrum01 .container {
+    max-width: 900px;
+}
+
+@media (max-width: 1023px) {
+    .td-site-mobile-header {
+        display: block !important;
+    }
+}
+
+@media print {
+    .hed-wrap,
+    .td-site-mobile-header,
+    .more_from_issue,
+    .footer_style_new,
+    .footerFullMenu {
+        display: none;
+    }
+
+    .td-site-mobile-header,
+    .container.no-print {
+        display: none !important;
+        height: 1px !important;
+    }
+
+    .no-print .td-mobile-logo,
+    .no-print .td-mobile-menus {
+        display: none !important;
+    }
+
+    section.mission_outer {
+        margin-bottom: 6rem;
+    }
+
+    .mission_outer > .container-fluid {
+        padding-bottom: 10rem;
+    }
 }
