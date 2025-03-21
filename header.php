@@ -73,46 +73,6 @@ $pageID = get_the_id();
 <div class="site_container">
     <div class="content-wrap">
         <header class="hed-wrap">
-            <div class="Container" id="tf-hide-mob" style="display: none;">
-                <div class="menu_outer d-flex">
-                    <?php
-                    if ($pageID != 6 && $pageID != 8) {?>
-                    <div class="menu_box_one">
-                        <div class="drift_searchForm"><?php echo get_search_form();?></div>
-                        <?php
-                        wp_nav_menu(array("menu" => "Top Left", "menu_class" => "menu-top-left", "menu_class" => "nav d-flex" ))
-                        ?>
-                    </div>
-                    <?php
-                    }?>
-                    <div class="menu_box_two">
-                        <a class="navbar-brand" href="<?php echo site_url(); ?>"></a>
-                        <?php
-                        if ($pageID != 6 && $pageID != 8) {?>
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar9">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                        <?php
-                        }?>
-                    </div>
-                </div>
-                <div class="only_mobile_show">
-                    <ul id="menu-top-left" class="nav d-flex">
-                        <li><a href="<?php echo home_url(); ?>/about/">about</a></li>
-                        <li><a href="<?php echo home_url(); ?>/issues/">issues</a></li>
-                        <li><a href="<?php echo home_url(); ?>/donate/">donate</a></li>
-                        <li><a href="<?php echo home_url(); ?>/subscribe/">subscribe</a></li>
-                        <li class="mob-search"><a><i class="fa fa-search"></i></a></li>
-                        <div class="drift_searchForm"><?php echo get_search_form();?></div>
-                    </ul>
-                </div>
-            </div>
-
             <div class="desktop_new_menu">
                 <div class="desktop-logo">
                     <a href="<?php echo home_url(); ?>">
@@ -126,7 +86,7 @@ $pageID = get_the_id();
                     <?php echo get_search_form();?>
                 </div>
             </div>
-        </section>
+        </header>
         <header class="td-site-mobile-header-blocking-box hidden">
         </header>
         <header class="td-site-mobile-header" style="display: none;">
