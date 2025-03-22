@@ -4,6 +4,7 @@ $pageID = get_the_id();
 <!-- Closes content-wrap -->
 </div>
 <div class="footer">
+	<div id="substack-placeholder" class="substack-placerholder" style="padding-top: 300px"></div>
 	<iframe id="footer-substack-signup" src="https://thedriftmag.substack.com/embed" width="100%" height="300" style="display:none; border:2px solid #EEE; background:#f5f5f6;" onload="this.style.display='block';" frameborder="0" scrolling="no"></iframe>
 
 <?php
@@ -30,6 +31,18 @@ if (true) {?>
 	================================================== -->
 	<!-- Scripts
 	================================================== -->
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		var iframe = document.getElementById("footer-substack-signup");
+		var placeholder = document.getElementById("substack-placeholder");
+
+		iframe.onload = function() {
+			placeholder.style.display = "none";
+			iframe.style.display = "block";
+		};
+	});
+	</script>
+
 	<script>
 	jQuery(document).ready(function(){
 
