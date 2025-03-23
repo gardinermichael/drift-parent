@@ -1132,16 +1132,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 
 .article_sub_heading{ margin-top: 10px; }
 
-.signup4mail_Left::before
-{
-    color: #9800ff;
-    content: "|";
-    font-size: 52px;
-    font-weight: bold;
-    position: absolute;
-    top: 20px;
-}
-
 .support_heading::before {
     color: #9800ff;
     content: "|";
@@ -1176,6 +1166,10 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .signup4mail {
     background: #f5f5f6;
     padding: 30px 10px;
+}
+
+.signup4mail {
+    position: relative;
 }
 
 .signup4mail_Left h3 {

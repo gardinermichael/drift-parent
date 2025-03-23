@@ -4,8 +4,26 @@ $pageID = get_the_id();
 <!-- Closes content-wrap -->
 </div>
 <div class="footer">
-	<div id="substack-placeholder" class="substack-placerholder" style="padding-top: 300px"></div>
-	<iframe id="footer-substack-signup" src="https://thedriftmag.substack.com/embed" width="100%" height="300" style="display:none; border:2px solid #EEE; background:#f5f5f6;" onload="this.style.display='block';" frameborder="0" scrolling="no"></iframe>
+<div class="signup4mail mt_wrap footer_style_new" id="signup4mailanchor">
+	<div class="signup4mail_BG">
+		<div class="row ">
+			<div class="col-md-2 footerNewLogo">
+				<picture>
+					<source media="(min-width: 1010px)" srcset="<?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_1x.png'; ?> 1x,
+					<?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_2x.png'; ?> 2x,
+					<?php echo get_theme_file_uri() . '/assets/images/drift_logo_large_3x.png'; ?> 3x"
+					type="image/png">
+					<img type="image/png" alt="The Drift Magazine">
+				</picture>
+		</div>
+		<div class="col-md-10 footerNew_middle">
+			<div class="footerNew_middle_inner">
+				<a href="https://newsletter.thedriftmag.com/welcome"><h3>Sign up for our newsletter to read more from <i>The Drift</i></h3></a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 
 <?php
 if (true) {?>
@@ -31,18 +49,6 @@ if (true) {?>
 	================================================== -->
 	<!-- Scripts
 	================================================== -->
-	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-		var iframe = document.getElementById("footer-substack-signup");
-		var placeholder = document.getElementById("substack-placeholder");
-
-		iframe.onload = function() {
-			placeholder.style.display = "none";
-			iframe.style.display = "block";
-		};
-	});
-	</script>
-
 	<script>
 	jQuery(document).ready(function(){
 
