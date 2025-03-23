@@ -18,7 +18,7 @@ $pageID = get_the_id();
 		</div>
 		<div class="col-md-10 footerNew_middle">
 			<div class="footerNew_middle_inner">
-				<a href="https://newsletter.thedriftmag.com/welcome"><h3>Sign up for our newsletter to read more from <i>The Drift</i></h3></a>
+				<a href="https://newsletter.thedriftmag.com/welcome" target="_blank" rel="noopener noreferrer"><h3><u>Sign up</u> for our newsletter to read more from <i>The Drift.</i></h3></a>
 			</div>
 		</div>
 	</div>

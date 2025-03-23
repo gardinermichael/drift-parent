@@ -77,7 +77,7 @@ $url = get_the_permalink($issue_ID);
         <div class="row custom_wrap">
             <div class="col-md-1"></div>
             <div class="signup4mail_Left">
-                <a href="https://newsletter.thedriftmag.com/welcome"><h3>Sign up for our newsletter to read more from <i>The Drift</i></h3></a>
+                <a href="https://newsletter.thedriftmag.com/welcome" target="_blank" rel="noopener noreferrer"><h3><u>Sign up</u> for our newsletter to read more from <i>The Drift</i>.</h3></a>
             </div>
         </div>
     </div>

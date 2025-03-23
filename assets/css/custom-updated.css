@@ -939,14 +939,14 @@ form.search-form {
 }
 
 .content-wrap {
-    padding-bottom: 11.5rem; /* 11.5 rem == footer height */
+    padding-bottom: 9.5rem; /* 9.5 rem == footer height */
 }
 
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 11.5rem; /* 11.5 rem == footer height */
+    height: 9.5rem; /* 9.5 rem == footer height */
 }
 
 :root{
@@ -1171,9 +1171,14 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 .signup4mail {
     position: relative;
 }
+.footerNew_middle h3 u,
+.signup4mail_Left h3 u {
+    text-decoration-thickness: 2px;
+}
 
+.footerNew_middle h3,
 .signup4mail_Left h3 {
-    font-size: 36px;
+    font-size: 30px;
     padding-bottom: 8px;
     padding-left: 38px;
     padding-top: 13px;
@@ -1235,17 +1240,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
 
 .footer_style_new {
     overflow: hidden;
-}
-
-.footerNew_middle h4 {
-    display: inline-block;
-    float: left;
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 0;
-    padding-right: 0;
-    padding-top: 23px;
-    width: 280px;
 }
 
 .footerNew_middle #mc_embed_signup {
