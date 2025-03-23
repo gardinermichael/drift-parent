@@ -72,8 +72,16 @@ $url = get_the_permalink($issue_ID);
         </div>
     </div>
 </section>
-<iframe id="homepage-substack-signup" src="https://thedriftmag.substack.com/embed" width="100%" height="300" style="display:none; border:2px solid #EEE; background:#f5f5f6;" onload="this.style.display='block'" frameborder="0" scrolling="no"></iframe>
-
+<div class="signup4mail mt_wrap">
+    <div class="signup4mail_BG">
+        <div class="row custom_wrap">
+            <div class="col-md-1"></div>
+            <div class="signup4mail_Left">
+                <a href="https://newsletter.thedriftmag.com/welcome"><h3>Sign up for our newsletter to read more from <i>The Drift</i></h3></a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="latestArticle_Heading">
     <h1>Latest</h1>
 </div>
