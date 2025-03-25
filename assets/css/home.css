@@ -185,7 +185,7 @@
     content: "|";
     position: absolute;
     font-size: 52px;
-    top: 20px;
+    top: 45px;
     color: var(--issue_color);
     font-weight: bold;
 }
