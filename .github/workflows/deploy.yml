@@ -23,9 +23,9 @@ jobs:
           fetch-depth: '0'
 
       - name: Setup PHP Action
-        uses: shivammathur/setup-php@2.9.0
+        uses: shivammathur/setup-php@2.33.0
         with:
-          php-version: '7.4'
+          php-version: '8.2'
 
       - name: Build - Move files Into Project Folder
         run: |
