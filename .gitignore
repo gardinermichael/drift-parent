@@ -1,2 +1,8 @@
 .DS_Store
 .vscode/
+
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
