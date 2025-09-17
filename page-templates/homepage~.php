@@ -60,7 +60,7 @@ $url = get_the_permalink($issue_ID);
         <?php } ?>
     </div>
 </div>
-Test
+Test Test
 <section class="mission_outer">
     <div class="container">
         <div class="mission">
