@@ -330,7 +330,7 @@ if ($type_of_titles == "Style 2") {
                         <div class="share_text">
                             <?php
                             if (function_exists('ADDTOANY_SHARE_SAVE_KIT')) {
-                                ADDTOANY_SHARE_SAVE_KIT(array('buttons' => array( 'facebook', 'twitter', 'email' ),));
+                                ADDTOANY_SHARE_SAVE_KIT(array('buttons' => array( 'twitter', 'bluesky', 'facebook', 'email' ),));
                             }
                             echo($share_text);
                             ?>
