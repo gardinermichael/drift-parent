@@ -1763,6 +1763,7 @@ button.search-submit:hover {
 
     .footerNewSocials ul {
         margin-left: 63px;
+        gap: 5px;
     }
 
     form.search-form {
@@ -3006,7 +3007,8 @@ h1.issue_heading span {
     }
 
     .footerNewSocials ul {
-        justify-content: space-evenly;
+        gap: 15px;
+        justify-content: center;
         align-items: end;
     }
 }
@@ -3508,6 +3510,12 @@ h1.issue_heading span {
         align-items: end;
         margin-right: 25px;
         margin-left: 0px;
+        gap: 0px;
+    }
+
+    .footerNewSocials li, .footerNewSocials svg {
+        height: 23.1px !important;
+        width: 23.1px !important;
     }
 }
 
