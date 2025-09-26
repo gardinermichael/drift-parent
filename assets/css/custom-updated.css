@@ -3506,7 +3506,8 @@ h1.issue_heading span {
         flex-direction: column;
         justify-content: space-between;
         align-items: end;
-        margin-right: 30px;
+        margin-right: 25px;
+        margin-left: 0px;
     }
 }
 
