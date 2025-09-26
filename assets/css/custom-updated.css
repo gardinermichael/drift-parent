@@ -656,9 +656,10 @@ button.search-submit {
 }
 
 .single-post .mission_inner a {
-    font-family: initial;
+    font-family: inherit;
     position: relative;
     text-decoration: underline !important;
+    text-underline-offset: 2px;
 }
 
 .share_text_container p {
