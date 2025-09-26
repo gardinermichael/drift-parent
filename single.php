@@ -321,7 +321,7 @@ if ($type_of_titles == "Style 2") {
                     $donate_permalink = get_permalink(get_page_by_title('donate'));
                     $subscribe_permalink = get_permalink(get_page_by_title('subscribe'));
 
-                    $share_text = '<p>This ' . $post_type . ' ' . $appears_text . ' in <a href="'.$issue_permalink_for_appeal.'">' . $issue_name_for_appeal . '</a> of The Drift. To support our work, <a href="'.$subscribe_permalink.'">subscribe</a> or make a tax-deductible <a href="'.$donate_permalink.'">donation</a>. To receive our latest content, sign up for our <a href="#signup4mailanchor">email list</a>.</p>';
+                    $share_text = '<p>This ' . $post_type . ' ' . $appears_text . ' in <a href="'.$issue_permalink_for_appeal.'">' . $issue_name_for_appeal . '</a> of The Drift. To support our work, <a href="'.$subscribe_permalink.'">subscribe</a> or make a tax-deductible <a href="'.$donate_permalink.'">donation</a>. To receive our latest content, sign up for our <a href="https://newsletter.thedriftmag.com/welcome">email list</a>.</p>';
                 };
 
                 if ($share_text != "") {
