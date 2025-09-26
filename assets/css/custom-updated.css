@@ -1232,11 +1232,6 @@ input[type="email"].wpfs-form-control, input[type="text"].wpfs-form-control, .wp
     width: 145px;
 }
 
-.footerNewSocials ul {
-    float: right;
-    margin-right: 15px;
-    margin-top: 20px;
-}
 
 .footer_style_new {
     overflow: hidden;
@@ -1764,6 +1759,10 @@ button.search-submit:hover {
     .footerNew_middle {
         padding-left: 40px;
         padding-right: 40px;
+    }
+
+    .footerNewSocials ul {
+        margin-left: 63px;
     }
 
     form.search-form {
@@ -2630,6 +2629,25 @@ h1.issue_heading span {
 
 }
 
+
+.footerNewSocials {
+    display: block !important;
+}
+
+
+.footerNewSocials ul {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+}
+.footerNewSocials li {
+    height: 32px;
+    width: 32px;
+}
+
+
 @media (max-width: 1280px) {
     .single-post blockquote {
         max-width: 100%;
@@ -2707,11 +2725,6 @@ h1.issue_heading span {
     .footerNew_middle, .footerNewSocials {
         flex: 0 0 100%;
         max-width: 100%;
-    }
-
-    .footerNewSocials ul {
-        float: none;
-        justify-content: center;
     }
 
     .support_heading, .support_content, .support_subheadings {
@@ -2987,7 +3000,17 @@ h1.issue_heading span {
     .page-template-subscribe #tf-hide-mob {
         display: none !important;
     }
+
+    .footerNewSocials {
+        padding-bottom: 7px;
+    }
+
+    .footerNewSocials ul {
+        justify-content: space-evenly;
+        align-items: end;
+    }
 }
+
 
 @media (max-width: 767px) {
     .page-template-mentions .ab_part {
@@ -3410,6 +3433,7 @@ h1.issue_heading span {
     }
 }
 
+
 @media (max-width: 480px) {
     .single-post figcaption{ font-size: 11px; padding-left: 0; }
     .more_from_issue h1{ font-size: 25px; }
@@ -3463,6 +3487,29 @@ h1.issue_heading span {
         max-width: 960px;
     }
 }
+
+@media (min-width: 1025px) {
+    .footerNew_middle {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .footerNew_middle_inner {
+        margin: 0 auto;
+    }
+
+    .footerNew_middle h3 {
+        text-align: center;
+    }
+
+    .footerNewSocials ul {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+        margin-right: 30px;
+    }
+}
+
 
 @media (min-width: 1200px) {
     .page-template-homepage .ab_part {
