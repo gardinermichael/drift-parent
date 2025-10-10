@@ -1,7 +1,7 @@
 <?php
 $pageID = get_the_id();
 ?>
-<!-- Closes content-wrap -->
+<!-- Closes  content-wrap -->
 </div>
 <div class="footer">
 <div class="signup4mail mt_wrap footer_style_new" id="signup4mailanchor">
