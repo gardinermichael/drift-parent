@@ -24,7 +24,7 @@
 
 function fixQuoteSpacing()
 {
-	// the minimum padding between blocks (or the top block and the header) in pixels
+	// the minimum padding between blocks  (or the top block and the header) in pixels
 	var min_padding = 4;
 	// for a fixed width each margin block has a known height based on its line breaks
 	// and no margin block may be placed above the maximum y of the page
