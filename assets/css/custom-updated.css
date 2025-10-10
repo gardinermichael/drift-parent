@@ -3824,12 +3824,12 @@ h1.issue_heading span {
 
 /* boxzilla zone */
 
-.boxzilla-overlay,
+/*.boxzilla-overlay,
 .boxzilla-container {
     display: none !important;
 }
 
-.single.postid-2151 {
+/*.single.postid-2151 {
     overflow-y: hidden;
 }
 
@@ -3885,7 +3885,7 @@ h1.issue_heading span {
         line-height: 32px;
     }
 }
-
+*/*/
 /* New form styling */
 
 label[for^="wpfs-same-billing-and-shipping-address"]::before,
