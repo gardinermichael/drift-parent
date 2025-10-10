@@ -60,7 +60,6 @@ $url = get_the_permalink($issue_ID);
         <?php } ?>
     </div>
 </div>
-
 <section class="mission_outer">
     <div class="container">
         <div class="mission">
@@ -90,7 +89,6 @@ $postArgs = array("post_type" => "post", "posts_per_page" => "3", "order" => "de
 $postLoop = new wp_query($postArgs);
 ?>
 <div class="row latest_articles">
-
     <?php
     while ($postLoop->have_posts()) : $postLoop->the_post();
         $postID = get_the_id();
