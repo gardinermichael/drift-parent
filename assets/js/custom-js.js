@@ -24,7 +24,7 @@
 
 function fixQuoteSpacing()
 {
-	// the minimum padding between blocks (or the top block and the header) in pixels
+	// the minimum padding between blocks  (or the top block and the header) in pixels
 	var min_padding = 4;
 	// for a fixed width each margin block has a known height based on its line breaks
 	// and no margin block may be placed above the maximum y of the page
@@ -124,27 +124,37 @@ function fixQuoteSpacing()
 jQuery(window).on("load", function(){ // jQuery(document).ready(function(){
 
 	jQuery(".single .mission_inner a").each(function(){
-	var anchorTitle = jQuery(this).attr("title");	
-	var anchorLink = jQuery(this).attr("href");
-	var anchorTarget = "_blank";
+		var anchorTitle = jQuery(this).attr("title");	
+		var anchorLink = jQuery(this).attr("href");
+		var anchorTarget = "_blank";
 
-	if(anchorTitle != "" && anchorTitle != undefined)
-	{
-		if (anchorLink == undefined) { // a margin block used for translations, not actual hyperlinks
-			jQuery(this).before("<blockquote class='margin_block'><p>"+anchorTitle+"</p></blockquote>");
-		} else {
-			jQuery(this).before("<blockquote class='margin_block'><p><a href='"+anchorLink+"'target="+anchorTarget+">"+anchorTitle+"</a></p></blockquote>");
-		}
-	}
-
-	setTimeout(
-		function() 
+		if(anchorTitle != "" && anchorTitle != undefined)
 		{
-		fixQuoteSpacing();
-		}, 200);
+			if (anchorLink == undefined) { // a margin block used for translations, not actual hyperlinks
+				jQuery(this).before("<blockquote class='margin_block'><p>"+anchorTitle+"</p></blockquote>");
+			} else {
+				jQuery(this).before("<blockquote class='margin_block'><p><a href='"+anchorLink+"'target="+anchorTarget+">"+anchorTitle+"</a></p></blockquote>");
+			}
+		}
+
+		setTimeout(
+			function() 
+			{
+			fixQuoteSpacing();
+			}, 200);
 	});
 
 	jQuery(".big-image").parent("figure").addClass("bigfigure");
+
+	// Automatically add target = "_blank" and rel/role attributes to all links in a post body
+  jQuery( '.mission_inner_body a[href^="http"]' )
+  	.attr('target', '_blank')
+	  .each(function () {
+  	  let linkTypes = (this.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+		  if (!linkTypes.includes('noopener')) linkTypes.push('noopener');
+		  this.setAttribute('rel', linkTypes.join(' '));
+		  this.setAttribute('role', 'link');
+  	});
 });
 
 
