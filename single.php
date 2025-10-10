@@ -16,7 +16,7 @@ if ($page_imageID != "") {
 
 // query the issue by the one that matches the slug of the corresponding category
 // this will only work for well-categorized pieces, and for previews,
-// we expect an inheritance structure like Issue 8 Preview < Issue 8
+// we expect an inheritance structure like Issue 8 Preview < Issue  8
 
 $issue_slug = $category->slug;
 $is_preview = strpos($issue_slug, "preview");
