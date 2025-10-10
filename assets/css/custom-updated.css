@@ -886,7 +886,7 @@ div.asl_w .probox .proinput input {
 }
 
 /* 2151 = editor's note explaining first issue in print */
-.postid-2151 .boxzilla-content .serif-hed {
+/*.postid-2151 .boxzilla-content .serif-hed {
     font-family: Adobe-Caslon;
     font-size: 26px;
     line-height: 26px;
@@ -897,7 +897,7 @@ div.asl_w .probox .proinput input {
     font-size: 22px;
     font-weight: 500;
     line-height: 26px;
-}
+}*/
 
 .com_heading h3 strong,
 .com_heading h3 b,
