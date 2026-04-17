@@ -364,7 +364,13 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
         $add_article = $sectionVal["add_article_acf"];
         if (!empty($add_article)) {
             foreach ($add_article as $articleValue) {
-                $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
+                $link_value = $articleValue["article_link_2"] ?? null;
+
+                if (is_array($link_value) && !empty($link_value[0])) {
+                    $article_id_array[$issueListId][] = $link_value[0];
+                } elseif (!is_array($link_value) && !empty($link_value)) {
+                    $article_id_array[$issueListId][] = $link_value;
+                }
             }
         }
     }
