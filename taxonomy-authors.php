@@ -72,17 +72,29 @@ while($author_query->have_posts()): $author_query->the_post();
 					}
 			    ?>
 			    </h2>
-				 
+				
 				<h3>
-					<a href="<?php echo $pagePermalink; ?>">
-							<?php
-							/* translators: Search query. */
-				                $authorName = single_term_title();
-							    $tresty = get_query_var( 'author' );							
-							    printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
-							?>
-			        </a>		        
-		        </h3>
+					<?php
+						$post_authors = get_the_terms($pageID, 'authors');
+						$loopNum = 0;
+
+						if (is_array($post_authors)) {
+							foreach ($post_authors as $post_author) {
+								$loopNum++;
+								$author_link = get_term_link($post_author);
+								$author_name = $post_author->name;
+
+								if (!is_wp_error($author_link)) {
+									if ($loopNum == 1) {
+										?><a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name); ?></a><?php
+									} else {
+										?>, <a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name); ?></a><?php
+									}
+								}
+							}
+						}
+					?>
+				</h3>
 				<p><?php echo  wp_trim_words( get_the_content(), 70, '...' ); ?></p>
 			</div>
 		</div>
