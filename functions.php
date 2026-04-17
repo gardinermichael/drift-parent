@@ -1087,29 +1087,38 @@ function drift_get_author_archive_query($term_id)
 {
     $term_id = (int) $term_id;
 
-    error_log('DRIFT AUTHOR ARCHIVE term_id=' . $term_id);
-
-    $term = get_term($term_id, 'authors');
-    if ($term && !is_wp_error($term)) {
-        error_log('DRIFT AUTHOR ARCHIVE term_slug=' . $term->slug . ' term_name=' . $term->name);
-    } else {
-        error_log('DRIFT AUTHOR ARCHIVE term lookup failed');
+    $visible_statuses = array('publish');
+    if (is_user_logged_in() && current_user_can('read_private_posts')) {
+        $visible_statuses[] = 'private';
     }
 
+    // Start with anything attached to the author term.
     $written_ids = get_objects_in_term($term_id, 'authors');
     if (is_wp_error($written_ids) || !is_array($written_ids)) {
-        error_log('DRIFT AUTHOR ARCHIVE written_ids lookup failed');
         $written_ids = array();
     }
 
     $written_ids = array_map('intval', $written_ids);
     $written_ids = array_values(array_unique(array_filter($written_ids)));
 
-    error_log('DRIFT AUTHOR ARCHIVE written_ids=' . json_encode($written_ids));
+    // Normalize authored IDs down to visible standard posts only.
+    if (!empty($written_ids)) {
+        $written_ids = get_posts(array(
+            'post_type'           => 'post',
+            'post_status'         => $visible_statuses,
+            'fields'              => 'ids',
+            'posts_per_page'      => -1,
+            'ignore_sticky_posts' => true,
+            'post__in'            => $written_ids,
+            'orderby'             => 'date',
+            'order'               => 'DESC',
+        ));
+    }
 
+    // Pull translated posts from helper meta.
     $translated_ids = get_posts(array(
         'post_type'           => 'post',
-        'post_status'         => 'publish',
+        'post_status'         => $visible_statuses,
         'fields'              => 'ids',
         'posts_per_page'      => -1,
         'ignore_sticky_posts' => true,
@@ -1120,28 +1129,26 @@ function drift_get_author_archive_query($term_id)
                 'compare' => '=',
             ),
         ),
+        'orderby'             => 'date',
+        'order'               => 'DESC',
     ));
 
     if (!is_array($translated_ids)) {
         $translated_ids = array();
     }
 
+    $written_ids = array_map('intval', $written_ids);
     $translated_ids = array_map('intval', $translated_ids);
-    $translated_ids = array_values(array_unique(array_filter($translated_ids)));
-
-    error_log('DRIFT AUTHOR ARCHIVE translated_ids=' . json_encode($translated_ids));
 
     $post_ids = array_values(array_unique(array_merge($written_ids, $translated_ids)));
-
-    error_log('DRIFT AUTHOR ARCHIVE merged_post_ids=' . json_encode($post_ids));
 
     if (empty($post_ids)) {
         $post_ids = array(0);
     }
 
-    $query = new WP_Query(array(
+    return new WP_Query(array(
         'post_type'           => 'post',
-        'post_status'         => 'publish',
+        'post_status'         => $visible_statuses,
         'posts_per_page'      => 5,
         'paged'               => max(1, (int) get_query_var('paged'), (int) get_query_var('page')),
         'ignore_sticky_posts' => true,
@@ -1149,10 +1156,6 @@ function drift_get_author_archive_query($term_id)
         'orderby'             => 'date',
         'order'               => 'DESC',
     ));
-
-    error_log('DRIFT AUTHOR ARCHIVE found_posts=' . (int) $query->found_posts . ' max_num_pages=' . (int) $query->max_num_pages);
-
-    return $query;
 }
 
 
