@@ -910,19 +910,29 @@ add_action("authors_edit_form_fields", 'add_form_fields_example', 10, 2);
 
 function add_form_fields_example($term, $taxonomy)
 {
-?>
-    <tr valign="top">
-        <th scope="row">Author Bio</th>
+    $content = html_entity_decode($term->description);
+    ?>
+    <tr valign="top" class="form-field term-description-wrap drift-author-bio-wrap">
+        <th scope="row">
+            <label for="drift_author_bio_editor">Author Bio</label>
+        </th>
         <td>
-            <?php wp_editor(html_entity_decode($term->description), 'description', array('media_buttons' => false)); ?>
-            <script>
-                jQuery(window).ready(function() {
-                    jQuery('label[for=description]').parent().parent().remove();
-                });
-            </script>
+            <?php
+            wp_editor($content, 'drift_author_bio_editor', array(
+                'textarea_name' => 'description',
+                'media_buttons' => false,
+                'textarea_rows' => 12,
+                'teeny'         => false,
+                'quicktags'     => true,
+                'tinymce'       => array(
+                    'wpautop'       => true,
+                    'forced_root_block' => 'p',
+                ),
+            ));
+            ?>
         </td>
     </tr>
-<?php
+    <?php
 }
 
 add_action('admin_enqueue_scripts', 'ds_admin_theme_style');
@@ -958,22 +968,18 @@ add_action('admin_head', 'my_custom_fonts');
 function my_custom_fonts()
 {
     echo '<style>
-    .taxonomy-authors  .form-field.term-slug-wrap,
-    .taxonomy-authors  .form-field.term-parent-wrap,
+    .taxonomy-authors .form-field.term-slug-wrap,
+    .taxonomy-authors .form-field.term-parent-wrap,
     .taxonomy-authors .term-row-head,
-    .taxonomy-authors  .terms-tfp-wrap,
-    .taxonomy-authors .term-description-wrap p
-    {display:none !important;}    
+    .taxonomy-authors .terms-tfp-wrap {
+        display: none !important;
+    }
 
-
-.taxonomy-authors .term-description-wrap label[for="tag-description"]{ font-size:0;}
-.taxonomy-authors .term-description-wrap label[for="tag-description"]:after {
-    content: "Author Bio";
-    font-size: 13px;
-}
-
-
-  </style>';
+    /* Hide only the default WP description row, not our custom editor row */
+    .taxonomy-authors .form-field.term-description-wrap:not(.drift-author-bio-wrap) {
+        display: none !important;
+    }
+    </style>';
 }
 
 // Change # of posts per page for search queries
