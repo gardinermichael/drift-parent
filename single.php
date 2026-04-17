@@ -269,37 +269,46 @@ if ($type_of_titles == "Style 2") {
                     </div>
                 <?php endif; ?>
 
-                 <?php
-                 wp_reset_postdata();
-                 wp_reset_query();
-                  $pageID = get_the_id();
-                     $post_authors = get_the_terms($pageID, 'authors');
-                      $loopNum = 0;
-                if (is_array($post_authors)) {
-                    foreach ($post_authors as $post_author) {
-                        $loopNum++;
-                        $author_id = $post_author->term_id;
+                <?php
+                    wp_reset_postdata();
+                    wp_reset_query();
 
-                        $author_link = get_term_link($post_author);
-                        $author_name = $post_author->name;
-                        $author_description = $post_author->description;
+                    $pageID = get_the_id();
 
-                        if ($loopNum == 1) {
-                            $author_description = $post_author->description;
-                        } else {
-                            $author_description = " "; //ADDED
-                        }
+                    $post_authors = get_the_terms($pageID, 'authors');
+                    if (!is_array($post_authors)) {
+                        $post_authors = array();
                     }
-                }
 
-                     $about_editor = get_post_meta($pageID, "about_editor", true);
+                    $post_translators = drift_get_translator_terms($pageID);
 
-                ?>
+                    $bio_terms = array();
+                    $seen_term_ids = array();
+
+                    foreach (array_merge($post_authors, $post_translators) as $term) {
+                        if (!$term instanceof WP_Term) {
+                            continue;
+                        }
+
+                        if (isset($seen_term_ids[$term->term_id])) {
+                            continue;
+                        }
+
+                        $seen_term_ids[$term->term_id] = true;
+
+                        if (trim((string) $term->description) === '') {
+                            continue;
+                        }
+
+                        $bio_terms[] = $term;
+                    }
+
+                    $about_editor = get_post_meta($pageID, "about_editor", true);
+                    ?>
                     <div class="article_editor">
-                        <?php
-                          // echo $about_editor;
-                        ?>
-                        <?php  echo wpautop($author_description); ?>
+                        <?php foreach ($bio_terms as $term) : ?>
+                            <?php echo wpautop($term->description); ?>
+                        <?php endforeach; ?>
                     </div>
                 <?php
 
@@ -355,7 +364,13 @@ while ($issue_loop->have_posts()):$issue_loop->the_post();
         $add_article = $sectionVal["add_article_acf"];
         if (!empty($add_article)) {
             foreach ($add_article as $articleValue) {
-                $article_id_array[$issueListId][] = $articleValue["article_link_2"][0];
+                $link_value = $articleValue["article_link_2"] ?? null;
+
+                if (is_array($link_value) && !empty($link_value[0])) {
+                    $article_id_array[$issueListId][] = $link_value[0];
+                } elseif (!is_array($link_value) && !empty($link_value)) {
+                    $article_id_array[$issueListId][] = $link_value;
+                }
             }
         }
     }

@@ -1,39 +1,31 @@
 <?php 
 get_header();
+$term = get_queried_object();
+$author_query = drift_get_author_archive_query($term->term_id);
 ?>
 <div class="search_container">
 <header class="page-header">
-		<?php if ( have_posts() ) : ?>
-			<h1 class="page-title">
-			<?php
-			/* translators: Search query. */
-                $authorName = single_term_title();
-			echo $tresty = get_query_var( 'author' );
-			
-			printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
-			?>
-			  <?php 
-			         // echo $terMeta = term_description();		
-			         $termID = get_queried_object()->term_id;	         
-			         $terDesc = get_term($termID)->description;
-			         if($terDesc != "")
-			         {
-			         	?>
-			         	<span class="author_desc"><?php echo $terDesc; ?></span>
-			         	<?php
-			         }
-			        ?>	
-			</h1>
+<h1 class="page-title">
+	<?php
+		$authorName = single_term_title('', false);
+		echo esc_html($authorName);
+	?>
 
-			      
-		<?php else : ?>
-			<h1 class="page-title"><?php _e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
-		<?php endif; ?>
-	</header><!-- .page-header -->
+	<?php
+		$termID = get_queried_object()->term_id;
+		$terDesc = get_term($termID)->description;
+		if ($terDesc != "") {
+	?>
+		<span class="author_desc"><?php echo $terDesc; ?></span>
+	<?php
+		}
+	?>
+</h1>
+</header><!-- .page-header -->
 
 <div class="search-term-list">
 <?php 
-while(have_posts()):the_post();
+while($author_query->have_posts()): $author_query->the_post();
 		$postID = get_the_id();
 	  	$thumbID = get_post_thumbnail_id($postID);
 	  	
@@ -80,17 +72,29 @@ while(have_posts()):the_post();
 					}
 			    ?>
 			    </h2>
-				 
+				
 				<h3>
-					<a href="<?php echo $pagePermalink; ?>">
-							<?php
-							/* translators: Search query. */
-				                $authorName = single_term_title();
-							    $tresty = get_query_var( 'author' );							
-							    printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
-							?>
-			        </a>		        
-		        </h3>
+					<?php
+						$post_authors = get_the_terms($pageID, 'authors');
+						$loopNum = 0;
+
+						if (is_array($post_authors)) {
+							foreach ($post_authors as $post_author) {
+								$loopNum++;
+								$author_link = get_term_link($post_author);
+								$author_name = $post_author->name;
+
+								if (!is_wp_error($author_link)) {
+									if ($loopNum == 1) {
+										?><a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name); ?></a><?php
+									} else {
+										?>, <a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name); ?></a><?php
+									}
+								}
+							}
+						}
+					?>
+				</h3>
 				<p><?php echo  wp_trim_words( get_the_content(), 70, '...' ); ?></p>
 			</div>
 		</div>
@@ -102,7 +106,7 @@ endwhile;
 
 <div class="page_navigation">
 	<?php
-		wp_pagenavi( array('query'=>$wp_query)) ;
+		wp_pagenavi( array('query' => $author_query) );
 		wp_reset_postdata();
 	?>
 </div>
