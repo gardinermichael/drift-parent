@@ -1,39 +1,40 @@
 <?php 
 get_header();
+$term = get_queried_object();
+$author_query = drift_get_author_archive_query($term->term_id);
 ?>
 <div class="search_container">
 <header class="page-header">
-		<?php if ( have_posts() ) : ?>
-			<h1 class="page-title">
-			<?php
-			/* translators: Search query. */
-                $authorName = single_term_title();
-			echo $tresty = get_query_var( 'author' );
-			
-			printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
-			?>
-			  <?php 
-			         // echo $terMeta = term_description();		
-			         $termID = get_queried_object()->term_id;	         
-			         $terDesc = get_term($termID)->description;
-			         if($terDesc != "")
-			         {
-			         	?>
-			         	<span class="author_desc"><?php echo $terDesc; ?></span>
-			         	<?php
-			         }
-			        ?>	
-			</h1>
+	<?php if ( $author_query->have_posts() ) : ?>
+		<h1 class="page-title">
+		<?php
+		/* translators: Search query. */
+			$authorName = single_term_title();
+		echo $tresty = get_query_var( 'author' );
+		
+		printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
+	?>
+	<?php 
+		// echo $terMeta = term_description();		
+		$termID = get_queried_object()->term_id;	         
+		$terDesc = get_term($termID)->description;
+		if($terDesc != "")
+		{
+		?>
+		<span class="author_desc"><?php echo $terDesc; ?></span>
+		<?php
+		}
+	?>	
+		</h1>
 
-			      
-		<?php else : ?>
-			<h1 class="page-title"><?php _e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
-		<?php endif; ?>
-	</header><!-- .page-header -->
+	<?php else : ?>
+		<h1 class="page-title"><?php _e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
+	<?php endif; ?>
+</header><!-- .page-header -->
 
 <div class="search-term-list">
 <?php 
-while(have_posts()):the_post();
+while($author_query->have_posts()): $author_query->the_post();
 		$postID = get_the_id();
 	  	$thumbID = get_post_thumbnail_id($postID);
 	  	
@@ -102,7 +103,7 @@ endwhile;
 
 <div class="page_navigation">
 	<?php
-		wp_pagenavi( array('query'=>$wp_query)) ;
+		wp_pagenavi( array('query' => $author_query) );
 		wp_reset_postdata();
 	?>
 </div>
