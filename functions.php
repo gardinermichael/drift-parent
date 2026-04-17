@@ -1087,16 +1087,26 @@ function drift_get_author_archive_query($term_id)
 {
     $term_id = (int) $term_id;
 
-    // Get authored posts directly from taxonomy relationships.
+    error_log('DRIFT AUTHOR ARCHIVE term_id=' . $term_id);
+
+    $term = get_term($term_id, 'authors');
+    if ($term && !is_wp_error($term)) {
+        error_log('DRIFT AUTHOR ARCHIVE term_slug=' . $term->slug . ' term_name=' . $term->name);
+    } else {
+        error_log('DRIFT AUTHOR ARCHIVE term lookup failed');
+    }
+
     $written_ids = get_objects_in_term($term_id, 'authors');
     if (is_wp_error($written_ids) || !is_array($written_ids)) {
+        error_log('DRIFT AUTHOR ARCHIVE written_ids lookup failed');
         $written_ids = array();
     }
 
     $written_ids = array_map('intval', $written_ids);
     $written_ids = array_values(array_unique(array_filter($written_ids)));
 
-    // Get translated posts from helper meta.
+    error_log('DRIFT AUTHOR ARCHIVE written_ids=' . json_encode($written_ids));
+
     $translated_ids = get_posts(array(
         'post_type'           => 'post',
         'post_status'         => 'publish',
@@ -1119,15 +1129,17 @@ function drift_get_author_archive_query($term_id)
     $translated_ids = array_map('intval', $translated_ids);
     $translated_ids = array_values(array_unique(array_filter($translated_ids)));
 
-    // Merge and dedupe.
+    error_log('DRIFT AUTHOR ARCHIVE translated_ids=' . json_encode($translated_ids));
+
     $post_ids = array_values(array_unique(array_merge($written_ids, $translated_ids)));
 
-    // Force no results cleanly if truly empty.
+    error_log('DRIFT AUTHOR ARCHIVE merged_post_ids=' . json_encode($post_ids));
+
     if (empty($post_ids)) {
         $post_ids = array(0);
     }
 
-    return new WP_Query(array(
+    $query = new WP_Query(array(
         'post_type'           => 'post',
         'post_status'         => 'publish',
         'posts_per_page'      => 5,
@@ -1137,6 +1149,10 @@ function drift_get_author_archive_query($term_id)
         'orderby'             => 'date',
         'order'               => 'DESC',
     ));
+
+    error_log('DRIFT AUTHOR ARCHIVE found_posts=' . (int) $query->found_posts . ' max_num_pages=' . (int) $query->max_num_pages);
+
+    return $query;
 }
 
 
