@@ -1085,21 +1085,18 @@ function drift_get_translator_terms($post_id)
 
 function drift_get_author_archive_query($term_id)
 {
-    $written_ids = get_posts(array(
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'fields'              => 'ids',
-        'posts_per_page'      => -1,
-        'ignore_sticky_posts' => true,
-        'tax_query'           => array(
-            array(
-                'taxonomy' => 'authors',
-                'field'    => 'term_id',
-                'terms'    => (int) $term_id,
-            ),
-        ),
-    ));
+    $term_id = (int) $term_id;
 
+    // Get authored posts directly from taxonomy relationships.
+    $written_ids = get_objects_in_term($term_id, 'authors');
+    if (is_wp_error($written_ids) || !is_array($written_ids)) {
+        $written_ids = array();
+    }
+
+    $written_ids = array_map('intval', $written_ids);
+    $written_ids = array_values(array_unique(array_filter($written_ids)));
+
+    // Get translated posts from helper meta.
     $translated_ids = get_posts(array(
         'post_type'           => 'post',
         'post_status'         => 'publish',
@@ -1109,21 +1106,34 @@ function drift_get_author_archive_query($term_id)
         'meta_query'          => array(
             array(
                 'key'     => '_translator_term_id',
-                'value'   => (string) (int) $term_id,
+                'value'   => (string) $term_id,
                 'compare' => '=',
             ),
         ),
     ));
 
+    if (!is_array($translated_ids)) {
+        $translated_ids = array();
+    }
+
+    $translated_ids = array_map('intval', $translated_ids);
+    $translated_ids = array_values(array_unique(array_filter($translated_ids)));
+
+    // Merge and dedupe.
     $post_ids = array_values(array_unique(array_merge($written_ids, $translated_ids)));
+
+    // Force no results cleanly if truly empty.
+    if (empty($post_ids)) {
+        $post_ids = array(0);
+    }
 
     return new WP_Query(array(
         'post_type'           => 'post',
         'post_status'         => 'publish',
         'posts_per_page'      => 5,
-        'paged'               => max(1, get_query_var('paged'), get_query_var('page')),
+        'paged'               => max(1, (int) get_query_var('paged'), (int) get_query_var('page')),
         'ignore_sticky_posts' => true,
-        'post__in'            => empty($post_ids) ? array(0) : $post_ids,
+        'post__in'            => $post_ids,
         'orderby'             => 'date',
         'order'               => 'DESC',
     ));
