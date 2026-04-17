@@ -1020,3 +1020,126 @@ function custom_login() {
     wp_enqueue_style('drift-login-style', get_theme_file_uri('/assets/css/login.css'), array(), filemtime($drift_all_style_path));
 }
 add_action('login_head', 'custom_login');
+
+
+/**
+ * Translators
+ */
+function drift_sync_translator_term_meta($post_id)
+{
+    if (!function_exists('get_field') || !is_numeric($post_id)) {
+        return;
+    }
+
+    $post_id = (int) $post_id;
+
+    if ($post_id <= 0 || wp_is_post_revision($post_id)) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (get_post_type($post_id) !== 'post') {
+        return;
+    }
+
+    $translator_ids = get_field('translators', $post_id, false);
+
+    if (!is_array($translator_ids)) {
+        $translator_ids = empty($translator_ids) ? array() : array($translator_ids);
+    }
+
+    $translator_ids = array_values(array_unique(array_map('intval', array_filter($translator_ids))));
+
+    delete_post_meta($post_id, '_translator_term_id');
+
+    foreach ($translator_ids as $term_id) {
+        add_post_meta($post_id, '_translator_term_id', $term_id, false);
+    }
+}
+add_action('acf/save_post', 'drift_sync_translator_term_meta', 20);
+
+function drift_get_translator_terms($post_id)
+{
+    $term_ids = array_map('intval', get_post_meta($post_id, '_translator_term_id', false));
+    $terms = array();
+
+    foreach ($term_ids as $term_id) {
+        $term = get_term($term_id, 'authors');
+
+        if ($term && !is_wp_error($term)) {
+            $terms[] = $term;
+        }
+    }
+
+    return $terms;
+}
+
+function drift_get_author_archive_query($term_id)
+{
+    $written_ids = get_posts(array(
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'fields'              => 'ids',
+        'posts_per_page'      => -1,
+        'ignore_sticky_posts' => true,
+        'tax_query'           => array(
+            array(
+                'taxonomy' => 'authors',
+                'field'    => 'term_id',
+                'terms'    => (int) $term_id,
+            ),
+        ),
+    ));
+
+    $translated_ids = get_posts(array(
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'fields'              => 'ids',
+        'posts_per_page'      => -1,
+        'ignore_sticky_posts' => true,
+        'meta_query'          => array(
+            array(
+                'key'     => '_translator_term_id',
+                'value'   => (string) (int) $term_id,
+                'compare' => '=',
+            ),
+        ),
+    ));
+
+    $post_ids = array_values(array_unique(array_merge($written_ids, $translated_ids)));
+
+    return new WP_Query(array(
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'posts_per_page'      => 5,
+        'paged'               => max(1, get_query_var('paged'), get_query_var('page')),
+        'ignore_sticky_posts' => true,
+        'post__in'            => empty($post_ids) ? array(0) : $post_ids,
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+    ));
+}
+
+
+/**
+ * Allow full HTML in authors taxonomy descriptions.
+ */
+function drift_allow_html_in_author_descriptions()
+{
+    if (!is_admin()) {
+        return;
+    }
+
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+    if (!$screen || $screen->taxonomy !== 'authors') {
+        return;
+    }
+
+    remove_filter('pre_term_description', 'wp_filter_kses');
+    remove_filter('term_description', 'wp_kses_data');
+}
+add_action('current_screen', 'drift_allow_html_in_author_descriptions');
