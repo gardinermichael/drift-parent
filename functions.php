@@ -910,19 +910,29 @@ add_action("authors_edit_form_fields", 'add_form_fields_example', 10, 2);
 
 function add_form_fields_example($term, $taxonomy)
 {
-?>
-    <tr valign="top">
-        <th scope="row">Author Bio</th>
+    $content = html_entity_decode($term->description);
+    ?>
+    <tr valign="top" class="form-field term-description-wrap drift-author-bio-wrap">
+        <th scope="row">
+            <label for="drift_author_bio_editor">Author Bio</label>
+        </th>
         <td>
-            <?php wp_editor(html_entity_decode($term->description), 'description', array('media_buttons' => false)); ?>
-            <script>
-                jQuery(window).ready(function() {
-                    jQuery('label[for=description]').parent().parent().remove();
-                });
-            </script>
+            <?php
+            wp_editor($content, 'drift_author_bio_editor', array(
+                'textarea_name' => 'description',
+                'media_buttons' => false,
+                'textarea_rows' => 12,
+                'teeny'         => false,
+                'quicktags'     => true,
+                'tinymce'       => array(
+                    'wpautop'       => true,
+                    'forced_root_block' => 'p',
+                ),
+            ));
+            ?>
         </td>
     </tr>
-<?php
+    <?php
 }
 
 add_action('admin_enqueue_scripts', 'ds_admin_theme_style');
@@ -958,22 +968,18 @@ add_action('admin_head', 'my_custom_fonts');
 function my_custom_fonts()
 {
     echo '<style>
-    .taxonomy-authors  .form-field.term-slug-wrap,
-    .taxonomy-authors  .form-field.term-parent-wrap,
+    .taxonomy-authors .form-field.term-slug-wrap,
+    .taxonomy-authors .form-field.term-parent-wrap,
     .taxonomy-authors .term-row-head,
-    .taxonomy-authors  .terms-tfp-wrap,
-    .taxonomy-authors .term-description-wrap p
-    {display:none !important;}    
+    .taxonomy-authors .terms-tfp-wrap {
+        display: none !important;
+    }
 
-
-.taxonomy-authors .term-description-wrap label[for="tag-description"]{ font-size:0;}
-.taxonomy-authors .term-description-wrap label[for="tag-description"]:after {
-    content: "Author Bio";
-    font-size: 13px;
-}
-
-
-  </style>';
+    /* Hide only the default WP description row, not our custom editor row */
+    .taxonomy-authors .form-field.term-description-wrap:not(.drift-author-bio-wrap) {
+        display: none !important;
+    }
+    </style>';
 }
 
 // Change # of posts per page for search queries
@@ -1020,3 +1026,155 @@ function custom_login() {
     wp_enqueue_style('drift-login-style', get_theme_file_uri('/assets/css/login.css'), array(), filemtime($drift_all_style_path));
 }
 add_action('login_head', 'custom_login');
+
+
+/**
+ * Translators
+ */
+function drift_sync_translator_term_meta($post_id)
+{
+    if (!function_exists('get_field') || !is_numeric($post_id)) {
+        return;
+    }
+
+    $post_id = (int) $post_id;
+
+    if ($post_id <= 0 || wp_is_post_revision($post_id)) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (get_post_type($post_id) !== 'post') {
+        return;
+    }
+
+    $translator_ids = get_field('translators', $post_id, false);
+
+    if (!is_array($translator_ids)) {
+        $translator_ids = empty($translator_ids) ? array() : array($translator_ids);
+    }
+
+    $translator_ids = array_values(array_unique(array_map('intval', array_filter($translator_ids))));
+
+    delete_post_meta($post_id, '_translator_term_id');
+
+    foreach ($translator_ids as $term_id) {
+        add_post_meta($post_id, '_translator_term_id', $term_id, false);
+    }
+}
+add_action('acf/save_post', 'drift_sync_translator_term_meta', 20);
+
+function drift_get_translator_terms($post_id)
+{
+    $term_ids = array_map('intval', get_post_meta($post_id, '_translator_term_id', false));
+    $terms = array();
+
+    foreach ($term_ids as $term_id) {
+        $term = get_term($term_id, 'authors');
+
+        if ($term && !is_wp_error($term)) {
+            $terms[] = $term;
+        }
+    }
+
+    return $terms;
+}
+
+function drift_get_author_archive_query($term_id)
+{
+    $term_id = (int) $term_id;
+
+    $visible_statuses = array('publish');
+    if (is_user_logged_in() && current_user_can('read_private_posts')) {
+        $visible_statuses[] = 'private';
+    }
+
+    // Start with anything attached to the author term.
+    $written_ids = get_objects_in_term($term_id, 'authors');
+    if (is_wp_error($written_ids) || !is_array($written_ids)) {
+        $written_ids = array();
+    }
+
+    $written_ids = array_map('intval', $written_ids);
+    $written_ids = array_values(array_unique(array_filter($written_ids)));
+
+    // Normalize authored IDs down to visible standard posts only.
+    if (!empty($written_ids)) {
+        $written_ids = get_posts(array(
+            'post_type'           => 'post',
+            'post_status'         => $visible_statuses,
+            'fields'              => 'ids',
+            'posts_per_page'      => -1,
+            'ignore_sticky_posts' => true,
+            'post__in'            => $written_ids,
+            'orderby'             => 'date',
+            'order'               => 'DESC',
+        ));
+    }
+
+    // Pull translated posts from helper meta.
+    $translated_ids = get_posts(array(
+        'post_type'           => 'post',
+        'post_status'         => $visible_statuses,
+        'fields'              => 'ids',
+        'posts_per_page'      => -1,
+        'ignore_sticky_posts' => true,
+        'meta_query'          => array(
+            array(
+                'key'     => '_translator_term_id',
+                'value'   => (string) $term_id,
+                'compare' => '=',
+            ),
+        ),
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+    ));
+
+    if (!is_array($translated_ids)) {
+        $translated_ids = array();
+    }
+
+    $written_ids = array_map('intval', $written_ids);
+    $translated_ids = array_map('intval', $translated_ids);
+
+    $post_ids = array_values(array_unique(array_merge($written_ids, $translated_ids)));
+
+    if (empty($post_ids)) {
+        $post_ids = array(0);
+    }
+
+    return new WP_Query(array(
+        'post_type'           => 'post',
+        'post_status'         => $visible_statuses,
+        'posts_per_page'      => 5,
+        'paged'               => max(1, (int) get_query_var('paged'), (int) get_query_var('page')),
+        'ignore_sticky_posts' => true,
+        'post__in'            => $post_ids,
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+    ));
+}
+
+
+/**
+ * Allow full HTML in authors taxonomy descriptions.
+ */
+function drift_allow_html_in_author_descriptions()
+{
+    if (!is_admin()) {
+        return;
+    }
+
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+    if (!$screen || $screen->taxonomy !== 'authors') {
+        return;
+    }
+
+    remove_filter('pre_term_description', 'wp_filter_kses');
+    remove_filter('term_description', 'wp_kses_data');
+}
+add_action('current_screen', 'drift_allow_html_in_author_descriptions');
