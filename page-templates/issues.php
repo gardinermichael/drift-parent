@@ -68,6 +68,8 @@ if (is_array($sectionLoop)) /* Check Array */
 
         <?php
         $loopNum = 0;
+        $loopNum_test = 0;
+        
         if (is_array($add_article)) /*Check Array*/
         {
             foreach ($add_article as $articleValue) {
