@@ -1178,3 +1178,13 @@ function drift_allow_html_in_author_descriptions()
     remove_filter('term_description', 'wp_kses_data');
 }
 add_action('current_screen', 'drift_allow_html_in_author_descriptions');
+
+add_filter('auth_cookie_expiration', function ($expiration, $user_id, $remember) {
+    $day = defined('DAY_IN_SECONDS') ? DAY_IN_SECONDS : 86400;
+
+    if ($remember) {
+        return 180 * $day;
+    }
+
+    return $expiration;
+}, 10, 3);
