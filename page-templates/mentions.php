@@ -1,6 +1,7 @@
 <?php
 /* Template name: Mentions */
 get_header();
+$colorPick = "#69a7c2";
 ?>
 
 <?php
