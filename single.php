@@ -280,6 +280,13 @@ if ($type_of_titles == "Style 2") {
                         $post_authors = array();
                     }
 
+                    $has_multiple_authors = count($post_authors) > 1;
+
+                    $show_multi_author_bios = false;
+                    if (function_exists('get_field')) {
+                        $show_multi_author_bios = (bool) get_field('show_multi_author_bios', $pageID);
+                    }
+
                     $post_translators = drift_get_translator_terms($pageID);
 
                     $bio_terms = array();
@@ -305,11 +312,13 @@ if ($type_of_titles == "Style 2") {
 
                     $about_editor = get_post_meta($pageID, "about_editor", true);
                     ?>
-                    <div class="article_editor">
-                        <?php foreach ($bio_terms as $term) : ?>
-                            <?php echo wpautop($term->description); ?>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php if ((!$has_multiple_authors || $show_multi_author_bios) && !empty($bio_terms)) : ?>
+                        <div class="article_editor">
+                            <?php foreach ($bio_terms as $term) : ?>
+                                <?php echo wpautop($term->description); ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 <?php
 
 
