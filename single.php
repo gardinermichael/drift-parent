@@ -28,6 +28,9 @@ if ($is_preview) {
     //print_r($parent_slug);
 }
 
+$colorPick = '';
+$issue_permalink = '';
+
 $issue_args = array("post_type" => "issue", "name" => $issue_slug, "posts_per_page" => -1);
 $issue_loop = new wp_query($issue_args);
 
@@ -195,16 +198,17 @@ if ($type_of_titles == "Style 2") {
                     <b>
                   <?php
                     $home_pageID = 109;
-                     $currenatPostID = get_the_id();
-                     $featuredPosts = get_post_meta($home_pageID, "select_featured_posts", true);
-
-                     if ($subsitle != "") {
-                         if (in_array($currenatPostID, $featuredPosts)) {
-                             $spanText =  "<span style='color: ".$colorPick."'> | </span>".$subsitle;
-                         } else {
-                             $spanText =  "<span> | </span>".$subsitle;
-                         }
-                     } ?>
+                    $currenatPostID = get_the_id();
+                    $featuredPosts = get_post_meta($home_pageID, "select_featured_posts", true);
+                    $spanText = '';
+                    
+                    if ($subsitle != "") {
+                        if (in_array($currenatPostID, $featuredPosts)) {
+                            $spanText =  "<span style='color: ".$colorPick."'> | </span>".$subsitle;
+                        } else {
+                            $spanText =  "<span> | </span>".$subsitle;
+                        }
+                    } ?>
                     <?php
                     wp_reset_postdata();
                     wp_reset_query();
