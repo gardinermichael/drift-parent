@@ -1265,6 +1265,13 @@ function drift_collect_archive_urls_for_post($post)
 
 function drift_purge_urls(array $urls)
 {
+    // Debug: WPE exposes the purge helper as `WpeCommon` on most stacks, but
+    // some older plans use the lowercase `wpecommon` class name. If purges
+    // aren't firing in production, check the PHP error log — if this logs
+    // "no", swap WpeCommon::purge_varnish_cache_url for the lowercase form.
+    // Safe to remove once verified in production.
+    error_log('drift_purge_urls: WpeCommon class_exists = ' . (class_exists('WpeCommon') ? 'yes' : 'no'));
+
     if (!function_exists('wpecommon') && !class_exists('WpeCommon')) {
         return;
     }
