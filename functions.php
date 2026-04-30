@@ -1188,3 +1188,181 @@ add_filter('auth_cookie_expiration', function ($expiration, $user_id, $remember)
 
     return $expiration;
 }, 10, 3);
+
+/**
+ * Cache busting for archive/index pages on WP Engine.
+ *
+ * WPE's Varnish auto-purges the single post URL on publish but misses the
+ * archive/index pages the post appears on (home, category, tag, author tax,
+ * date archives, custom post type archives). These hooks purge those URLs
+ * surgically so the site stays fast while editors see fresh listings.
+ */
+
+function drift_collect_archive_urls_for_post($post)
+{
+    if (!$post instanceof WP_Post) {
+        $post = get_post($post);
+    }
+    if (!$post) {
+        return array();
+    }
+
+    $urls = array(home_url('/'));
+
+    foreach ((array) get_the_category($post->ID) as $term) {
+        $link = get_term_link($term);
+        if (!is_wp_error($link)) {
+            $urls[] = $link;
+        }
+    }
+
+    $tags = get_the_tags($post->ID);
+    if (is_array($tags)) {
+        foreach ($tags as $term) {
+            $link = get_term_link($term);
+            if (!is_wp_error($link)) {
+                $urls[] = $link;
+            }
+        }
+    }
+
+    $author_terms = wp_get_post_terms($post->ID, 'authors');
+    if (is_array($author_terms)) {
+        foreach ($author_terms as $term) {
+            $link = get_term_link($term);
+            if (!is_wp_error($link)) {
+                $urls[] = $link;
+            }
+        }
+    }
+
+    $translator_term_ids = array_map('intval', get_post_meta($post->ID, '_translator_term_id', false));
+    foreach (array_unique(array_filter($translator_term_ids)) as $term_id) {
+        $link = get_term_link($term_id, 'authors');
+        if (!is_wp_error($link)) {
+            $urls[] = $link;
+        }
+    }
+
+    $year = get_the_time('Y', $post);
+    $month = get_the_time('m', $post);
+    if ($year) {
+        $urls[] = get_year_link($year);
+        if ($month) {
+            $urls[] = get_month_link($year, $month);
+        }
+    }
+
+    if ($post->post_type !== 'post') {
+        $type_archive = get_post_type_archive_link($post->post_type);
+        if ($type_archive) {
+            $urls[] = $type_archive;
+        }
+    }
+
+    return array_values(array_unique(array_filter($urls)));
+}
+
+function drift_purge_urls(array $urls)
+{
+    if (!function_exists('wpecommon') && !class_exists('WpeCommon')) {
+        return;
+    }
+
+    foreach ($urls as $url) {
+        if (method_exists('WpeCommon', 'purge_varnish_cache_url')) {
+            WpeCommon::purge_varnish_cache_url($url);
+        } elseif (function_exists('wpecommon::purge_varnish_cache_url')) {
+            wpecommon::purge_varnish_cache_url($url);
+        }
+    }
+}
+
+function drift_purge_archives_for_post($post)
+{
+    $urls = drift_collect_archive_urls_for_post($post);
+    if (!empty($urls)) {
+        drift_purge_urls($urls);
+    }
+
+    delete_transient('twentyseventeen_categories');
+}
+
+/**
+ * Primary trigger: any publish/unpublish/trash transition for tracked types.
+ * Covers manual publish, scheduled (future_to_publish), unpublish, and trash.
+ */
+add_action('transition_post_status', function ($new_status, $old_status, $post) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (!$post instanceof WP_Post || wp_is_post_revision($post->ID)) {
+        return;
+    }
+    if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+    if ($new_status !== 'publish' && $old_status !== 'publish') {
+        return;
+    }
+
+    drift_purge_archives_for_post($post);
+}, 10, 3);
+
+/**
+ * Edge case: ACF/CFS meta-only saves on already-published posts.
+ *
+ * transition_post_status doesn't fire when only meta changes (e.g. an editor
+ * updates ACF fields on a live post via acf/save_post). Hook save_post at a
+ * late priority so meta is already written, then purge if the post is live.
+ */
+add_action('save_post', function ($post_id, $post, $update) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish') {
+        return;
+    }
+    if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+
+    drift_purge_archives_for_post($post);
+}, 99, 3);
+
+/**
+ * Edge case: author/translator term edits.
+ *
+ * Editing an 'authors' term (bio, name, description) doesn't touch any post,
+ * so transition_post_status never fires — but the author archive page renders
+ * that bio and stays cached. Purge the term's archive URL on edit.
+ */
+add_action('edited_term', function ($term_id, $tt_id, $taxonomy) {
+    if ($taxonomy !== 'authors') {
+        return;
+    }
+
+    $link = get_term_link((int) $term_id, 'authors');
+    if (is_wp_error($link)) {
+        return;
+    }
+
+    drift_purge_urls(array($link, home_url('/')));
+}, 10, 3);
+
+/**
+ * Edge case: scheduled posts whose archives were cached while empty.
+ *
+ * future_to_publish flows through transition_post_status above, but adding
+ * an explicit 'publish_future_post' handler ensures the purge fires even if
+ * a plugin short-circuits the transition action.
+ */
+add_action('publish_future_post', function ($post_id) {
+    $post = get_post($post_id);
+    if ($post && in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        drift_purge_archives_for_post($post);
+    }
+}, 10, 1);
