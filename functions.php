@@ -1265,21 +1265,16 @@ function drift_collect_archive_urls_for_post($post)
 
 function drift_purge_urls(array $urls)
 {
-    // Debug: WPE exposes the purge helper as `WpeCommon` on most stacks, but
-    // some older plans use the lowercase `wpecommon` class name. If purges
-    // aren't firing in production, check the PHP error log — if this logs
-    // "no", swap WpeCommon::purge_varnish_cache_url for the lowercase form.
-    // Safe to remove once verified in production.
-    error_log('drift_purge_urls: WpeCommon class_exists = ' . (class_exists('WpeCommon') ? 'yes' : 'no'));
-
-    if (!function_exists('wpecommon') && !class_exists('WpeCommon')) {
+    // WPE exposes the purge helper as `WpeCommon` on most stacks, but some
+    // older plans use the lowercase `wpecommon` class name. Support both.
+    if (!class_exists('WpeCommon') && !class_exists('wpecommon')) {
         return;
     }
 
     foreach ($urls as $url) {
-        if (method_exists('WpeCommon', 'purge_varnish_cache_url')) {
+        if (is_callable(array('WpeCommon', 'purge_varnish_cache_url'))) {
             WpeCommon::purge_varnish_cache_url($url);
-        } elseif (function_exists('wpecommon::purge_varnish_cache_url')) {
+        } elseif (is_callable(array('wpecommon', 'purge_varnish_cache_url'))) {
             wpecommon::purge_varnish_cache_url($url);
         }
     }
