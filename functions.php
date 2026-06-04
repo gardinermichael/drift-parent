@@ -1265,24 +1265,73 @@ function drift_collect_archive_urls_for_post($post)
 
 function drift_purge_urls(array $urls)
 {
-    // WPE exposes the purge helper as `WpeCommon` on most stacks, but some
-    // older plans use the lowercase `wpecommon` class name. Support both.
-    if (!class_exists('WpeCommon') && !class_exists('wpecommon')) {
+    // WPE exposes the purge helper as the static method
+    // WpeCommon::purge_varnish_cache_url(). PHP resolves class and method
+    // names case-insensitively, so this guard also covers stacks that declare
+    // the class as `wpecommon`.
+    if (!is_callable(array('WpeCommon', 'purge_varnish_cache_url'))) {
         return;
     }
 
+    // De-dupe purges across the whole request: several hooks (transition,
+    // save_post, set_object_terms) can target the same URL on one save.
+    static $already_purged = array();
+
     foreach ($urls as $url) {
-        if (is_callable(array('WpeCommon', 'purge_varnish_cache_url'))) {
-            WpeCommon::purge_varnish_cache_url($url);
-        } elseif (is_callable(array('wpecommon', 'purge_varnish_cache_url'))) {
-            wpecommon::purge_varnish_cache_url($url);
+        if (!$url || isset($already_purged[$url])) {
+            continue;
         }
+        $already_purged[$url] = true;
+        WpeCommon::purge_varnish_cache_url($url);
     }
+}
+
+/**
+ * Stash/recall the archive URLs a post appeared on *before* an update, so we
+ * can purge the archives it has just left (old category/tag/author/date) on
+ * top of the ones it now belongs to. Pass $urls to store, omit to recall (and
+ * clear) the stored set.
+ */
+function drift_remembered_archive_urls($post_id, array $urls = null)
+{
+    static $store = array();
+
+    $post_id = (int) $post_id;
+
+    if ($urls !== null) {
+        $store[$post_id] = $urls;
+        return $urls;
+    }
+
+    $remembered = isset($store[$post_id]) ? $store[$post_id] : array();
+    unset($store[$post_id]);
+
+    return $remembered;
 }
 
 function drift_purge_archives_for_post($post)
 {
-    $urls = drift_collect_archive_urls_for_post($post);
+    if (!$post instanceof WP_Post) {
+        $post = get_post($post);
+    }
+    if (!$post) {
+        return;
+    }
+
+    // Purge each post only once per request: a single update can fire
+    // transition_post_status, save_post and publish_future_post together.
+    static $purged_posts = array();
+    if (isset($purged_posts[$post->ID])) {
+        return;
+    }
+    $purged_posts[$post->ID] = true;
+
+    $urls = array_merge(
+        drift_collect_archive_urls_for_post($post),
+        drift_remembered_archive_urls($post->ID)
+    );
+    $urls = array_values(array_unique(array_filter($urls)));
+
     if (!empty($urls)) {
         drift_purge_urls($urls);
     }
@@ -1368,3 +1417,75 @@ add_action('publish_future_post', function ($post_id) {
         drift_purge_archives_for_post($post);
     }
 }, 10, 1);
+
+/**
+ * Edge case: relationships removed from an already-published post.
+ *
+ * When an editor changes a live post's category, tag, author/translator, or
+ * publish date, drift_purge_archives_for_post() only knows the post's *new*
+ * state — the archive it just left (e.g. the old category or author page, or
+ * the previous date archive rendered by taxonomy-authors.php) would stay
+ * cached and keep showing the moved/removed post. pre_post_update fires before
+ * the row, terms and meta are rewritten, so snapshot the pre-update archive
+ * URLs here; drift_purge_archives_for_post() then purges them alongside the new
+ * ones on the subsequent save_post/transition.
+ */
+add_action('pre_post_update', function ($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+    $post = get_post($post_id);
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish') {
+        return;
+    }
+    if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+
+    drift_remembered_archive_urls($post_id, drift_collect_archive_urls_for_post($post));
+}, 10, 1);
+
+/**
+ * Edge case: taxonomy relationship changes (both editors).
+ *
+ * In the block editor terms are written *after* save_post fires, so the new (or
+ * just-removed) term archive can be missed by the post-level purge above.
+ * set_object_terms fires whenever a relationship actually changes and exposes
+ * both the old and new term_taxonomy_ids — purge the archives of every term
+ * that was added or removed so both the old and new listings refresh.
+ */
+add_action('set_object_terms', function ($object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids) {
+    if (!in_array($taxonomy, array('category', 'post_tag', 'authors'), true)) {
+        return;
+    }
+
+    $post = get_post($object_id);
+    if (!$post instanceof WP_Post || !in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+
+    $changed = array_unique(array_merge(
+        array_diff((array) $old_tt_ids, (array) $tt_ids),
+        array_diff((array) $tt_ids, (array) $old_tt_ids)
+    ));
+    if (empty($changed)) {
+        return;
+    }
+
+    $urls = array(home_url('/'));
+    foreach ($changed as $tt_id) {
+        $term = get_term_by('term_taxonomy_id', (int) $tt_id);
+        if ($term && !is_wp_error($term)) {
+            $link = get_term_link($term);
+            if (!is_wp_error($link)) {
+                $urls[] = $link;
+            }
+        }
+    }
+
+    drift_purge_urls($urls);
+}, 10, 6);
