@@ -1262,14 +1262,18 @@ function drift_collect_archive_urls_for_post($post)
         // issue/mention are registered without has_archive (see post_type.php),
         // so get_post_type_archive_link() returns false. Their public listings
         // are Pages built on the issues.php / mentions.php templates — purge
-        // those so the index reflects new/updated entries.
+        // those so the index reflects new/updated entries. An issue also feeds
+        // the Mentions page (mentions.php loops every issue's select_mentions_acf
+        // and color), so issue saves purge both listings.
         $listing_templates = array(
-            'issue'   => 'page-templates/issues.php',
-            'mention' => 'page-templates/mentions.php',
+            'issue'   => array('page-templates/issues.php', 'page-templates/mentions.php'),
+            'mention' => array('page-templates/mentions.php'),
         );
         if (isset($listing_templates[$post->post_type])) {
-            foreach (drift_get_template_page_urls($listing_templates[$post->post_type]) as $page_url) {
-                $urls[] = $page_url;
+            foreach ($listing_templates[$post->post_type] as $template) {
+                foreach (drift_get_template_page_urls($template) as $page_url) {
+                    $urls[] = $page_url;
+                }
             }
         }
     }
@@ -1284,6 +1288,13 @@ function drift_collect_archive_urls_for_post($post)
  */
 function drift_get_template_page_urls($template)
 {
+    // Cache per request: this can be called several times on one save (e.g.
+    // pre_post_update then save_post) for the same template.
+    static $cache = array();
+    if (isset($cache[$template])) {
+        return $cache[$template];
+    }
+
     $page_ids = get_posts(array(
         'post_type'        => 'page',
         'post_status'      => 'publish',
@@ -1302,6 +1313,7 @@ function drift_get_template_page_urls($template)
         }
     }
 
+    $cache[$template] = $urls;
     return $urls;
 }
 
