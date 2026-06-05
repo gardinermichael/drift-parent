@@ -811,12 +811,17 @@ if (!function_exists('redirect_404_to_homepage')) {
             return;
         }
 
-        // Never redirect the homepage to itself: if the front page resolves to
-        // a 404 (e.g. stale rewrite rules after a deploy), redirecting / -> /
-        // produces an infinite loop (ERR_TOO_MANY_REDIRECTS). Let it 404 instead.
-        $home_path = trim((string) parse_url(home_url('/'), PHP_URL_PATH), '/');
-        $request_path = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH), '/');
-        if ($request_path === $home_path) {
+        // Never redirect the bare homepage to itself: if the front page
+        // resolves to a 404 (e.g. stale rewrite rules after a deploy),
+        // redirecting / -> / loops forever (ERR_TOO_MANY_REDIRECTS). Only skip
+        // the true / case — a 404 like /?p=999 can still be redirected to a
+        // clean /, since dropping the query string makes the target differ from
+        // the request (so it can't loop).
+        $home_path = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
+        $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $request_path = trim((string) wp_parse_url($request_uri, PHP_URL_PATH), '/');
+        $request_query = (string) wp_parse_url($request_uri, PHP_URL_QUERY);
+        if ($request_path === $home_path && $request_query === '') {
             return;
         }
 
