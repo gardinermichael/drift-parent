@@ -807,10 +807,26 @@ if (!function_exists('redirect_404_to_homepage')) {
 
     function redirect_404_to_homepage()
     {
-        if (is_404()) :
-            wp_safe_redirect(home_url('/'));
-            exit;
-        endif;
+        if (!is_404()) {
+            return;
+        }
+
+        // Never redirect the bare homepage to itself: if the front page
+        // resolves to a 404 (e.g. stale rewrite rules after a deploy),
+        // redirecting / -> / loops forever (ERR_TOO_MANY_REDIRECTS). Only skip
+        // the true / case — a 404 like /?p=999 can still be redirected to a
+        // clean /, since dropping the query string makes the target differ from
+        // the request (so it can't loop).
+        $home_path = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
+        $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $request_path = trim((string) wp_parse_url($request_uri, PHP_URL_PATH), '/');
+        $request_query = (string) wp_parse_url($request_uri, PHP_URL_QUERY);
+        if ($request_path === $home_path && $request_query === '') {
+            return;
+        }
+
+        wp_safe_redirect(home_url('/'));
+        exit;
     }
 }
 
@@ -1209,6 +1225,18 @@ function drift_collect_archive_urls_for_post($post)
 
     $urls = array(home_url('/'));
 
+    // With a static front page, the blog index is a separate posts page, not
+    // home_url('/') — purge it too so the main post listing stays fresh.
+    if (get_option('show_on_front') === 'page') {
+        $page_for_posts = (int) get_option('page_for_posts');
+        if ($page_for_posts) {
+            $blog_url = get_permalink($page_for_posts);
+            if ($blog_url) {
+                $urls[] = $blog_url;
+            }
+        }
+    }
+
     foreach ((array) get_the_category($post->ID) as $term) {
         $link = get_term_link($term);
         if (!is_wp_error($link)) {
@@ -1258,22 +1286,24 @@ function drift_collect_archive_urls_for_post($post)
         if ($type_archive) {
             $urls[] = $type_archive;
         }
+    }
 
-        // issue/mention are registered without has_archive (see post_type.php),
-        // so get_post_type_archive_link() returns false. Their public listings
-        // are Pages built on the issues.php / mentions.php templates — purge
-        // those so the index reflects new/updated entries. An issue also feeds
-        // the Mentions page (mentions.php loops every issue's select_mentions_acf
-        // and color), so issue saves purge both listings.
-        $listing_templates = array(
-            'issue'   => array('page-templates/issues.php', 'page-templates/mentions.php'),
-            'mention' => array('page-templates/mentions.php'),
-        );
-        if (isset($listing_templates[$post->post_type])) {
-            foreach ($listing_templates[$post->post_type] as $template) {
-                foreach (drift_get_template_page_urls($template) as $page_url) {
-                    $urls[] = $page_url;
-                }
+    // Template-driven listing pages. These post types have no usable archive
+    // (issue/mention have no has_archive) or appear on extra index pages, so
+    // purge every published Page built on the relevant template:
+    //  - post: page-templates/latest_articles.php (WP_Query over post_type=post)
+    //  - issue: issues.php, plus mentions.php (mentions.php loops every issue's
+    //    select_mentions_acf and color)
+    //  - mention: mentions.php
+    $listing_templates = array(
+        'post'    => array('page-templates/latest_articles.php'),
+        'issue'   => array('page-templates/issues.php', 'page-templates/mentions.php'),
+        'mention' => array('page-templates/mentions.php'),
+    );
+    if (isset($listing_templates[$post->post_type])) {
+        foreach ($listing_templates[$post->post_type] as $template) {
+            foreach (drift_get_template_page_urls($template) as $page_url) {
+                $urls[] = $page_url;
             }
         }
     }
@@ -1515,7 +1545,7 @@ add_action('pre_post_update', function ($post_id) {
  * both the old and new term_taxonomy_ids — purge the archives of every term
  * that was added or removed so both the old and new listings refresh.
  */
-add_action('set_object_terms', function ($object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids) {
+add_action('set_object_terms', function ($object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids = array()) {
     if (!in_array($taxonomy, array('category', 'post_tag', 'authors'), true)) {
         return;
     }
