@@ -1258,9 +1258,51 @@ function drift_collect_archive_urls_for_post($post)
         if ($type_archive) {
             $urls[] = $type_archive;
         }
+
+        // issue/mention are registered without has_archive (see post_type.php),
+        // so get_post_type_archive_link() returns false. Their public listings
+        // are Pages built on the issues.php / mentions.php templates — purge
+        // those so the index reflects new/updated entries.
+        $listing_templates = array(
+            'issue'   => 'page-templates/issues.php',
+            'mention' => 'page-templates/mentions.php',
+        );
+        if (isset($listing_templates[$post->post_type])) {
+            foreach (drift_get_template_page_urls($listing_templates[$post->post_type]) as $page_url) {
+                $urls[] = $page_url;
+            }
+        }
     }
 
     return array_values(array_unique(array_filter($urls)));
+}
+
+/**
+ * Return permalinks of published Pages that use a given page template, e.g.
+ * 'page-templates/issues.php'. Used to purge template-driven listing pages that
+ * stand in for CPTs registered without has_archive.
+ */
+function drift_get_template_page_urls($template)
+{
+    $page_ids = get_posts(array(
+        'post_type'        => 'page',
+        'post_status'      => 'publish',
+        'numberposts'      => -1,
+        'fields'           => 'ids',
+        'meta_key'         => '_wp_page_template',
+        'meta_value'       => $template,
+        'suppress_filters' => true,
+    ));
+
+    $urls = array();
+    foreach ($page_ids as $page_id) {
+        $link = get_permalink($page_id);
+        if ($link) {
+            $urls[] = $link;
+        }
+    }
+
+    return $urls;
 }
 
 function drift_purge_urls(array $urls)
@@ -1340,8 +1382,14 @@ function drift_purge_archives_for_post($post)
 }
 
 /**
- * Primary trigger: any publish/unpublish/trash transition for tracked types.
- * Covers manual publish, scheduled (future_to_publish), unpublish, and trash.
+ * Trigger for posts *leaving* publish: unpublish, trash, or going private.
+ *
+ * Publishing and publish-to-publish updates are handled by the save_post hook
+ * below instead. transition_post_status fires *before* save_post (and therefore
+ * before acf/save_post syncs _translator_term_id), so purging here on a publish
+ * save would run with stale meta and trip the per-post guard, blocking the
+ * later, correct purge. Handle only the removal transitions, which save_post
+ * (post_status === 'publish') can't catch, here.
  */
 add_action('transition_post_status', function ($new_status, $old_status, $post) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -1353,7 +1401,7 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
     if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
         return;
     }
-    if ($new_status !== 'publish' && $old_status !== 'publish') {
+    if ($old_status !== 'publish' || $new_status === 'publish') {
         return;
     }
 
@@ -1361,11 +1409,12 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
 }, 10, 3);
 
 /**
- * Edge case: ACF/CFS meta-only saves on already-published posts.
+ * Primary trigger for publishes and updates of live posts.
  *
- * transition_post_status doesn't fire when only meta changes (e.g. an editor
- * updates ACF fields on a live post via acf/save_post). Hook save_post at a
- * late priority so meta is already written, then purge if the post is live.
+ * Runs at priority 99 — after acf/save_post (priority 20) has synced
+ * _translator_term_id and after core has written terms — so the collected
+ * archive set reflects the post's final state. Covers manual publish,
+ * publish-to-publish edits, and ACF/CFS meta-only saves on live posts.
  */
 add_action('save_post', function ($post_id, $post, $update) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -1391,18 +1440,14 @@ add_action('save_post', function ($post_id, $post, $update) {
  * so transition_post_status never fires — but the author archive page renders
  * that bio and stays cached. Purge the term's archive URL on edit.
  */
-add_action('edited_term', function ($term_id, $tt_id, $taxonomy) {
-    if ($taxonomy !== 'authors') {
-        return;
-    }
-
+add_action('edited_authors', function ($term_id, $tt_id) {
     $link = get_term_link((int) $term_id, 'authors');
     if (is_wp_error($link)) {
         return;
     }
 
     drift_purge_urls(array($link, home_url('/')));
-}, 10, 3);
+}, 10, 2);
 
 /**
  * Edge case: scheduled posts whose archives were cached while empty.
@@ -1464,7 +1509,7 @@ add_action('set_object_terms', function ($object_id, $terms, $tt_ids, $taxonomy,
     }
 
     $post = get_post($object_id);
-    if (!$post instanceof WP_Post || !in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish' || !in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
         return;
     }
 
