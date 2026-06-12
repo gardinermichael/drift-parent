@@ -4221,3 +4221,9 @@ form .wpfs-btn-link:visited {
     font-size: 24px;
     font-weight: 600;
 }
+
+/* The black rule under the contributors box replaces the grey separator
+   above the first result; keep the grey line when the box isn't shown. */
+.search-author-matches + .search-term-list .term-list:first-child {
+    border-top: 0;
+}
