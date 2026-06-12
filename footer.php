@@ -130,6 +130,10 @@ if (true) {?>
 	});
 
 	jQuery(document).on("click", function(event){
+		// The search bar stays open on search results pages.
+		if(jQuery("body").hasClass("search")){
+			return;
+		}
 		var $trigger = jQuery(".drift_searchForm, .drift_search_link, .drift_search_link a");
 		if($trigger !== event.target && !$trigger.has(event.target).length){
 			jQuery(".drift_searchForm").slideUp();

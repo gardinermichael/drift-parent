@@ -50,7 +50,7 @@ wp_head();
                             </div>
                             <span onclick="openMobileNav()" class="openMobMenuIcon">&#9776;</span>
                         </div>
-                        <div class="drift_searchForm" style="display: none;"><?php echo get_search_form();?></div>
+                        <div class="drift_searchForm"<?php if (!is_search()) { echo ' style="display: none;"'; } ?>><?php echo get_search_form();?></div>
                         <div id="myMobileNav" class="td-overlay-box">
                             <div class="td-overlay-content">
                                 <?php
