@@ -38,22 +38,32 @@ get_header(); ?>
 	</header><!-- .page-header -->
 
 <?php
-// Surface contributor pages whose name matches the search, since taxonomy
-// archives can never appear among post results.
+// Surface contributor pages whose name or bio matches the search, since
+// taxonomy archives can never appear among post results.
 $drift_search_string = trim(get_search_query());
 $drift_matching_authors = array();
 
 if ($drift_search_string !== '') {
-	$drift_matching_authors = get_terms(array(
-		'taxonomy'   => 'authors',
-		'name__like' => $drift_search_string,
-		'hide_empty' => false,
-		'number'     => 10,
-	));
+	$drift_author_matches = array();
 
-	if (is_wp_error($drift_matching_authors)) {
-		$drift_matching_authors = array();
+	foreach (array('name__like', 'description__like') as $drift_match_field) {
+		$drift_found = get_terms(array(
+			'taxonomy'        => 'authors',
+			$drift_match_field => $drift_search_string,
+			'hide_empty'      => false,
+			'number'          => 10,
+		));
+
+		if (is_wp_error($drift_found)) {
+			continue;
+		}
+
+		foreach ($drift_found as $drift_found_term) {
+			$drift_author_matches[$drift_found_term->term_id] = $drift_found_term;
+		}
 	}
+
+	$drift_matching_authors = array_slice(array_values($drift_author_matches), 0, 10);
 }
 
 if (!empty($drift_matching_authors)) :
