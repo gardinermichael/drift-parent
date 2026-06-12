@@ -1046,6 +1046,14 @@ function drift_extend_search_matches($search, $query)
     return ($count === 1 && $extended !== null) ? $extended : $search;
 }
 
+// Escape characters that carry special meaning in a MySQL REGEXP pattern so a
+// search string is matched literally. Backslashes here survive $wpdb->prepare:
+// it doubles them in the SQL literal and MySQL collapses them back on parse.
+function drift_search_regexp_quote($string)
+{
+    return preg_replace('/[.\\\\+*?()\[\]{}^$|]/', '\\\\$0', $string);
+}
+
 // SQL condition matching posts the searched person is credited on, either as
 // an 'authors' term or as a translator. Used both to widen the search and to
 // rank those posts above ones that merely mention the name in the body.
@@ -1053,7 +1061,13 @@ function drift_search_byline_match_sql($search_string)
 {
     global $wpdb;
 
-    $like = '%' . $wpdb->esc_like($search_string) . '%';
+    // Match the credited name with the same word-boundary semantics as the
+    // contributor box in search.php, so a query like "test" boosts a name
+    // such as "Test ..." but not "Latest ...". REGEXP keeps the SQL filter
+    // in step with the PHP-side check (MySQL 8 supports \b in REGEXP). Only
+    // anchor the boundary when the query itself starts with a word character.
+    $boundary = preg_match('/^\w/u', $search_string) ? '\\b' : '';
+    $regex = $boundary . drift_search_regexp_quote($search_string);
 
     $author_match = $wpdb->prepare(
         "EXISTS (
@@ -1063,9 +1077,9 @@ function drift_search_byline_match_sql($search_string)
             INNER JOIN {$wpdb->terms} drift_at ON drift_att.term_id = drift_at.term_id
             WHERE drift_atr.object_id = {$wpdb->posts}.ID
               AND drift_att.taxonomy = 'authors'
-              AND drift_at.name LIKE %s
+              AND drift_at.name REGEXP %s
         )",
-        $like
+        $regex
     );
 
     $translator_match = $wpdb->prepare(
@@ -1075,9 +1089,9 @@ function drift_search_byline_match_sql($search_string)
             INNER JOIN {$wpdb->terms} drift_tl ON drift_tl.term_id = CAST(drift_tlm.meta_value AS UNSIGNED)
             WHERE drift_tlm.post_id = {$wpdb->posts}.ID
               AND drift_tlm.meta_key = '_translator_term_id'
-              AND drift_tl.name LIKE %s
+              AND drift_tl.name REGEXP %s
         )",
-        $like
+        $regex
     );
 
     return '(' . $author_match . ' OR ' . $translator_match . ')';
