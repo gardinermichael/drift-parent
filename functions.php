@@ -998,6 +998,82 @@ function my_custom_fonts()
     </style>';
 }
 
+// Extend front-end search beyond post title/excerpt/body, which is all core
+// matches. A post also matches when the search string matches:
+//   - one of its 'authors', tag, or category term names
+//   - its subtitle ('post_subsitle' meta)
+//   - the name of a translator credited on it ('_translator_term_id' meta)
+add_filter('posts_search', 'drift_extend_search_matches', 10, 2);
+
+function drift_extend_search_matches($search, $query)
+{
+    global $wpdb;
+
+    if (is_admin() || !$query->is_main_query() || !$query->is_search() || $search === '') {
+        return $search;
+    }
+
+    $search_string = trim((string) $query->get('s'));
+    if ($search_string === '') {
+        return $search;
+    }
+
+    $like = '%' . $wpdb->esc_like($search_string) . '%';
+
+    $term_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->term_relationships} drift_tr
+            INNER JOIN {$wpdb->term_taxonomy} drift_tt ON drift_tr.term_taxonomy_id = drift_tt.term_taxonomy_id
+            INNER JOIN {$wpdb->terms} drift_t ON drift_tt.term_id = drift_t.term_id
+            WHERE drift_tr.object_id = {$wpdb->posts}.ID
+              AND drift_tt.taxonomy IN ('authors', 'post_tag', 'category')
+              AND drift_t.name LIKE %s
+        )",
+        $like
+    );
+
+    $subtitle_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->postmeta} drift_sm
+            WHERE drift_sm.post_id = {$wpdb->posts}.ID
+              AND drift_sm.meta_key = 'post_subsitle'
+              AND drift_sm.meta_value LIKE %s
+        )",
+        $like
+    );
+
+    $translator_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->postmeta} drift_tlm
+            INNER JOIN {$wpdb->terms} drift_tl ON drift_tl.term_id = CAST(drift_tlm.meta_value AS UNSIGNED)
+            WHERE drift_tlm.post_id = {$wpdb->posts}.ID
+              AND drift_tlm.meta_key = '_translator_term_id'
+              AND drift_tl.name LIKE %s
+        )",
+        $like
+    );
+
+    $extra_match = $term_match . ' OR ' . $subtitle_match . ' OR ' . $translator_match;
+
+    // Core builds this clause as " AND (<keyword conditions>) AND (post_password = '')".
+    // Inject the extra matches as ORs inside the first group so the password
+    // and status constraints still apply to posts they match.
+    $extended = preg_replace_callback(
+        '/^(\s*AND\s*)\(/',
+        function ($matches) use ($extra_match) {
+            return $matches[1] . '(' . $extra_match . ' OR ';
+        },
+        $search,
+        1,
+        $count
+    );
+
+    return ($count === 1 && $extended !== null) ? $extended : $search;
+}
+
 // Change # of posts per page for search queries
 add_action('pre_get_posts', 'manage_posts_per_page');
 
