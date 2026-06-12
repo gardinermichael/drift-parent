@@ -10,37 +10,14 @@
  * @version 1.0
  */
 
-get_header(); ?>
-<div class="search_container">
-<header class="page-header">
-		<?php if ( have_posts() ) : ?>
-			<h1 class="page-title">
-			<?php
-			/* translators: Search query. */
-			printf( __( 'Results for: "%s"', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
-			?>
-			</h1>
-		<?php else : ?>	
+get_header();
 
-		<div class="searchPage_Form_container">
-			<div class="searchPage_Form">
-				<i class="fa fa-search search_icon_custom"></i>
-				<button class="searchPage_Form_Button">Submit</button>
-				<input type="text" name="" class="searchPage_Form_Box" placeholder="Search here...">				
-			</div>	
-	    </div>	
-
-			<h1 class="page-title"><?php _e( 'No Results.', 'twentyseventeen' ); ?></h1>	
-			
-
-
-		<?php endif; ?>
-	</header><!-- .page-header -->
-
-<?php
 // Surface contributor pages whose name or bio matches the search, since
-// taxonomy archives can never appear among post results.
-$drift_search_string = trim(get_search_query());
+// taxonomy archives can never appear among post results. Computed before the
+// header so the "No Results." heading can account for contributor matches.
+// Uses the raw query: get_search_query() HTML-escapes, which would make names
+// like O'Connor miss.
+$drift_search_string = trim(get_search_query(false));
 $drift_matching_authors = array();
 
 if ($drift_search_string !== '') {
@@ -65,7 +42,34 @@ if ($drift_search_string !== '') {
 
 	$drift_matching_authors = array_slice(array_values($drift_author_matches), 0, 10);
 }
+?>
+<div class="search_container">
+<header class="page-header">
+		<?php if ( have_posts() || !empty($drift_matching_authors) ) : ?>
+			<h1 class="page-title">
+			<?php
+			/* translators: Search query. */
+			printf( __( 'Results for: "%s"', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
+			?>
+			</h1>
+		<?php else : ?>
 
+		<div class="searchPage_Form_container">
+			<div class="searchPage_Form">
+				<i class="fa fa-search search_icon_custom"></i>
+				<button class="searchPage_Form_Button">Submit</button>
+				<input type="text" name="" class="searchPage_Form_Box" placeholder="Search here...">
+			</div>
+	    </div>
+
+			<h1 class="page-title"><?php _e( 'No Results.', 'twentyseventeen' ); ?></h1>
+
+
+
+		<?php endif; ?>
+	</header><!-- .page-header -->
+
+<?php
 if (!empty($drift_matching_authors)) :
 ?>
 <div class="search-author-matches">
@@ -138,11 +142,10 @@ if (!empty($drift_matching_authors)) :
 				<h3>
 							<?php
 							 $post_authors = get_the_terms( $pageID, 'authors' );
-							 $loopNum = 0;
 								if (is_array($post_authors)){
+								 $is_first_author = true;
 					 			 foreach($post_authors as $post_author)
 					 			 {
-					 			 	$loopNum++;
 					 			 	$author_link = get_term_link($post_author);
 					 			 	$author_name = $post_author->name;
 
@@ -150,14 +153,12 @@ if (!empty($drift_matching_authors)) :
 					 			 		continue;
 					 			 	}
 
-					 			 	if($loopNum == 1)
+					 			 	if(!$is_first_author)
 					 			 	{
-					 			 		?><a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name);?></a><?php
+					 			 		echo ', ';
 					 			 	}
-					 			 	else
-					 			 	{
-					 			 		?>, <a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name);?></a><?php
-					 			 	}
+					 			 	?><a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name);?></a><?php
+					 			 	$is_first_author = false;
 					 			 }
 							}
 							?>
