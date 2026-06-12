@@ -35,7 +35,7 @@ if ($drift_search_string !== '') {
 	// title containing the word. Bios only match deliberate multi-word
 	// phrases ("The Hearing Test").
 	$drift_match_fields = array('name__like');
-	if (preg_match('/\s/', $drift_search_string)) {
+	if (preg_match('/\s/u', $drift_search_string)) {
 		$drift_match_fields[] = 'description__like';
 	}
 
@@ -57,11 +57,11 @@ if ($drift_search_string !== '') {
 		foreach ($drift_found as $drift_found_term) {
 			// Check the candidate against the field it was found by, so a
 			// name lookup can't slip through on bio text. Bios may contain
-			// HTML, so strip tags before matching to avoid false positives
-			// on markup (tag names, attributes, URLs).
+			// HTML, so strip tags (against markup false positives) and decode
+			// entities (so "Smith &amp; Jones" matches the raw query).
 			$drift_haystack = ($drift_match_field === 'name__like')
 				? $drift_found_term->name
-				: wp_strip_all_tags($drift_found_term->description);
+				: html_entity_decode(wp_strip_all_tags($drift_found_term->description), ENT_QUOTES, 'UTF-8');
 
 			if (!preg_match($drift_word_pattern, $drift_haystack)) {
 				continue;
