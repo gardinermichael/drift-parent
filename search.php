@@ -37,6 +37,43 @@ get_header(); ?>
 		<?php endif; ?>
 	</header><!-- .page-header -->
 
+<?php
+// Surface contributor pages whose name matches the search, since taxonomy
+// archives can never appear among post results.
+$drift_search_string = trim(get_search_query());
+$drift_matching_authors = array();
+
+if ($drift_search_string !== '') {
+	$drift_matching_authors = get_terms(array(
+		'taxonomy'   => 'authors',
+		'name__like' => $drift_search_string,
+		'hide_empty' => false,
+		'number'     => 10,
+	));
+
+	if (is_wp_error($drift_matching_authors)) {
+		$drift_matching_authors = array();
+	}
+}
+
+if (!empty($drift_matching_authors)) :
+?>
+<div class="search-author-matches">
+	<h2>Contributors</h2>
+	<ul>
+	<?php
+	foreach ($drift_matching_authors as $drift_matching_author) :
+		$drift_author_link = get_term_link($drift_matching_author);
+		if (is_wp_error($drift_author_link)) {
+			continue;
+		}
+	?>
+		<li><a href="<?php echo esc_url($drift_author_link); ?>"><?php echo esc_html($drift_matching_author->name); ?></a></li>
+	<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
+
 <div class="search-term-list">
 	<?php 
 	  while(have_posts()):the_post();
@@ -92,31 +129,27 @@ get_header(); ?>
 							<?php
 							 $post_authors = get_the_terms( $pageID, 'authors' );
 							 $loopNum = 0;
-								if (is_array($post_authors)){ //ADDED
+								if (is_array($post_authors)){
 					 			 foreach($post_authors as $post_author)
 					 			 {
 					 			 	$loopNum++;
-					 			 	$author_id = $post_author->term_id;
-					 			 	
 					 			 	$author_link = get_term_link($post_author);
 					 			 	$author_name = $post_author->name;
-					 			 	$author_description = $post_author->description;
-					 			 	
+
+					 			 	if (is_wp_error($author_link)) {
+					 			 		continue;
+					 			 	}
+
 					 			 	if($loopNum == 1)
 					 			 	{
-					 			 		?><a href="<?php echo $pagePermalink; ?>"><?php echo $author_name;?></a><?php
+					 			 		?><a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name);?></a><?php
 					 			 	}
 					 			 	else
 					 			 	{
-					 			 		?>, <a href="<?php echo $author_link; ?>"><?php echo $author_name;?></a><?php
+					 			 		?>, <a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name);?></a><?php
 					 			 	}
 					 			 }
 							}
-							/* translators: Search query. */
-				                $authorName = single_term_title();
-							echo $tresty = get_query_var( 'author' );
-							
-							printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
 							?>
 			</h3>
 				<p><?php echo  wp_trim_words( get_the_content(), 70, '...' ); ?></p>
