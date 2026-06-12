@@ -23,6 +23,10 @@ $drift_matching_authors = array();
 if ($drift_search_string !== '') {
 	$drift_author_matches = array();
 
+	// The LIKE lookups match anywhere in a word ("test" matches "latest"),
+	// so require the query to start at a word boundary in the name or bio.
+	$drift_word_pattern = '/\b' . preg_quote($drift_search_string, '/') . '/iu';
+
 	foreach (array('name__like', 'description__like') as $drift_match_field) {
 		$drift_found = get_terms(array(
 			'taxonomy'        => 'authors',
@@ -36,6 +40,10 @@ if ($drift_search_string !== '') {
 		}
 
 		foreach ($drift_found as $drift_found_term) {
+			if (!preg_match($drift_word_pattern, $drift_found_term->name . ' ' . $drift_found_term->description)) {
+				continue;
+			}
+
 			$drift_author_matches[$drift_found_term->term_id] = $drift_found_term;
 		}
 	}
