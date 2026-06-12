@@ -1011,7 +1011,7 @@ function drift_extend_search_matches($search, $query)
             INNER JOIN {$wpdb->term_taxonomy} drift_tt ON drift_tr.term_taxonomy_id = drift_tt.term_taxonomy_id
             INNER JOIN {$wpdb->terms} drift_t ON drift_tt.term_id = drift_t.term_id
             WHERE drift_tr.object_id = {$wpdb->posts}.ID
-              AND drift_tt.taxonomy IN ('authors', 'post_tag', 'category')
+              AND drift_tt.taxonomy IN ('post_tag', 'category')
               AND drift_t.name LIKE %s
         )",
         $like
@@ -1028,19 +1028,7 @@ function drift_extend_search_matches($search, $query)
         $like
     );
 
-    $translator_match = $wpdb->prepare(
-        "EXISTS (
-            SELECT 1
-            FROM {$wpdb->postmeta} drift_tlm
-            INNER JOIN {$wpdb->terms} drift_tl ON drift_tl.term_id = CAST(drift_tlm.meta_value AS UNSIGNED)
-            WHERE drift_tlm.post_id = {$wpdb->posts}.ID
-              AND drift_tlm.meta_key = '_translator_term_id'
-              AND drift_tl.name LIKE %s
-        )",
-        $like
-    );
-
-    $extra_match = $term_match . ' OR ' . $subtitle_match . ' OR ' . $translator_match;
+    $extra_match = drift_search_byline_match_sql($search_string) . ' OR ' . $term_match . ' OR ' . $subtitle_match;
 
     // Core builds this clause as " AND (<keyword conditions>) AND (post_password = '')".
     // Inject the extra matches as ORs inside the first group so the password
@@ -1056,6 +1044,63 @@ function drift_extend_search_matches($search, $query)
     );
 
     return ($count === 1 && $extended !== null) ? $extended : $search;
+}
+
+// SQL condition matching posts the searched person is credited on, either as
+// an 'authors' term or as a translator. Used both to widen the search and to
+// rank those posts above ones that merely mention the name in the body.
+function drift_search_byline_match_sql($search_string)
+{
+    global $wpdb;
+
+    $like = '%' . $wpdb->esc_like($search_string) . '%';
+
+    $author_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->term_relationships} drift_atr
+            INNER JOIN {$wpdb->term_taxonomy} drift_att ON drift_atr.term_taxonomy_id = drift_att.term_taxonomy_id
+            INNER JOIN {$wpdb->terms} drift_at ON drift_att.term_id = drift_at.term_id
+            WHERE drift_atr.object_id = {$wpdb->posts}.ID
+              AND drift_att.taxonomy = 'authors'
+              AND drift_at.name LIKE %s
+        )",
+        $like
+    );
+
+    $translator_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->postmeta} drift_tlm
+            INNER JOIN {$wpdb->terms} drift_tl ON drift_tl.term_id = CAST(drift_tlm.meta_value AS UNSIGNED)
+            WHERE drift_tlm.post_id = {$wpdb->posts}.ID
+              AND drift_tlm.meta_key = '_translator_term_id'
+              AND drift_tl.name LIKE %s
+        )",
+        $like
+    );
+
+    return '(' . $author_match . ' OR ' . $translator_match . ')';
+}
+
+// Rank pieces written (or translated) by a matching contributor above posts
+// that only mention the search string in their text.
+add_filter('posts_orderby', 'drift_search_authored_first_orderby', 10, 2);
+
+function drift_search_authored_first_orderby($orderby, $query)
+{
+    if (is_admin() || !$query->is_main_query() || !$query->is_search()) {
+        return $orderby;
+    }
+
+    $search_string = trim((string) $query->get('s'));
+    if ($search_string === '') {
+        return $orderby;
+    }
+
+    $authored_first = '(CASE WHEN ' . drift_search_byline_match_sql($search_string) . ' THEN 0 ELSE 1 END) ASC';
+
+    return $orderby ? $authored_first . ', ' . $orderby : $authored_first;
 }
 
 // Change # of posts per page for search queries
