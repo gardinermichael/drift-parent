@@ -2312,6 +2312,11 @@ section.mission_outer {
     display: none;
 }
 
+/* Keep the search bar open on search results pages. */
+.search .drift_searchForm {
+    display: block;
+}
+
 .single-issue .com_heading01 {
     margin-bottom: 20px;
 }
