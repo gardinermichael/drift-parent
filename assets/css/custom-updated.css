@@ -4191,3 +4191,33 @@ form .wpfs-btn-link:visited {
         padding-bottom: 10rem;
     }
 }
+.search-author-matches {
+    border-bottom: 1px solid #000;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.search-author-matches h2 {
+    font-family: franklin-gothic, 'Libre Franklin', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.search-author-matches ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-author-matches ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.search-author-matches ul li a {
+    font-family: Adobe-Caslon;
+    font-size: 24px;
+    font-weight: 600;
+}

@@ -982,6 +982,53 @@ function my_custom_fonts()
     </style>';
 }
 
+// Extend front-end search so a query matching a contributor's name (the
+// 'authors' taxonomy) returns that contributor's pieces, not only posts that
+// happen to contain the name in their body text.
+add_filter('posts_search', 'drift_search_author_terms', 10, 2);
+
+function drift_search_author_terms($search, $query)
+{
+    global $wpdb;
+
+    if (is_admin() || !$query->is_main_query() || !$query->is_search() || $search === '') {
+        return $search;
+    }
+
+    $search_string = trim((string) $query->get('s'));
+    if ($search_string === '') {
+        return $search;
+    }
+
+    $term_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->term_relationships} drift_tr
+            INNER JOIN {$wpdb->term_taxonomy} drift_tt ON drift_tr.term_taxonomy_id = drift_tt.term_taxonomy_id
+            INNER JOIN {$wpdb->terms} drift_t ON drift_tt.term_id = drift_t.term_id
+            WHERE drift_tr.object_id = {$wpdb->posts}.ID
+              AND drift_tt.taxonomy = 'authors'
+              AND drift_t.name LIKE %s
+        )",
+        '%' . $wpdb->esc_like($search_string) . '%'
+    );
+
+    // Core builds this clause as " AND (<keyword conditions>) AND (post_password = '')".
+    // Inject the author-term match as an OR inside the first group so the
+    // password and status constraints still apply to author-matched posts.
+    $extended = preg_replace_callback(
+        '/^(\s*AND\s*)\(/',
+        function ($matches) use ($term_match) {
+            return $matches[1] . '(' . $term_match . ' OR ';
+        },
+        $search,
+        1,
+        $count
+    );
+
+    return ($count === 1 && $extended !== null) ? $extended : $search;
+}
+
 // Change # of posts per page for search queries
 add_action('pre_get_posts', 'manage_posts_per_page');
 
