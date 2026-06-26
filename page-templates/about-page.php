@@ -199,7 +199,7 @@ else
 						{
 				?>
 					<div class="about_subsection">
-						<h5><?php echo $subsection_heading; ?></h5>
+						<h5><?php echo esc_html( $subsection_heading ); ?></h5>
 					</div>
 				<?php } ?>
 
