@@ -27,8 +27,26 @@ subsection (for example, splitting **Editorial** from **Business** within a
 single masthead section). Leave it blank on entries that continue the current
 subsection.
 
-### Importing
+### Adding the `subsection_heading` field
 
-In WordPress admin: **Field Groups → Tools → Import**, then upload this file
-(or paste its contents). This adds the `subsection_heading` field without
-affecting existing entries.
+The About field group already exists on any site running this template, and
+CFS's **Tools → Import** does *not* merge into an existing group — it skips
+groups whose slug (`post_name`, here `about`) is already present. So importing
+this file on a live/staging site will **not** add the new field. Use the manual
+path below for existing sites; entered data is unaffected either way.
+
+**Existing site (manual — recommended):**
+
+1. WordPress admin → **Field Groups** → edit **About**.
+2. Inside the **Content** (`submit_content`) loop, add a new **Text** field:
+   - **Name:** `subsection_heading` (must match exactly)
+   - **Label:** `Subsection heading (e.g. Editorial / Business)`
+   - Drag it above the **Title** (`about_title`) field.
+3. **Save**. The field config in `about-page.json` is the reference for these
+   values.
+
+**Fresh site (no About group yet):** **Tools → Import** this file to create the
+whole group, including `subsection_heading`.
+
+> Avoid deleting the existing group to re-import — that can drop other manual
+> edits to the group. Add the single field manually instead.
