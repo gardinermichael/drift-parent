@@ -40,6 +40,20 @@ else
 		.about_outer:last-child {
 			margin-bottom: 0;
 		}
+		/* Dividing line + label that demarks a subsection (e.g. Editorial / Business)
+		   within a masthead content section. Rendered only when an entry has a
+		   subsection heading set, so existing entries are unaffected. */
+		.about_subsection {
+			border-top: 1px solid rgba(0,0,0,0.3);
+			margin: 50px 0 35px;
+			padding-top: 22px;
+		}
+		.about_subsection h5 {
+			font-family: proxy-nova;
+			font-size: 23px;
+			line-height: 1;
+			margin: 0;
+		}
 		.about_o {
 			flex-wrap: wrap;
 		}
@@ -174,12 +188,21 @@ else
 				<?php  }  ?>
 
 
-				<?php 
+				<?php
 					foreach($submit_content as $content_value)
 					{
 						$about_title = $content_value["about_title"];
 						$about_text = $content_value["about_text"];
+						$subsection_heading = isset($content_value["subsection_heading"]) ? $content_value["subsection_heading"] : "";
+
+						if($subsection_heading != "")
+						{
 				?>
+					<div class="about_subsection">
+						<h5><?php echo $subsection_heading; ?></h5>
+					</div>
+				<?php } ?>
+
 					<div class="about_o d-flex">
 
 						<div class="about_l">
