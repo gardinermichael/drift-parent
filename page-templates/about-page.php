@@ -45,7 +45,8 @@ else
 		   subsection heading set, so existing entries are unaffected. */
 		.about_subsection {
 			border-top: 1px solid rgba(0,0,0,0.3);
-			margin: 50px 0 35px;
+			width: 75%;
+			margin: 50px auto 35px;
 			padding-top: 22px;
 		}
 		.about_subsection h5 {
