@@ -88,7 +88,14 @@ if (true) {?>
 		});
 
 		jQuery(".drift_search_link a").click(function(){
-			jQuery(".drift_searchForm").slideToggle();
+			// On search results pages the bar stays open: open-only, no toggle,
+			// since a slide-up writes an inline display:none that overrides
+			// the .search .drift_searchForm CSS rule.
+			if(jQuery("body").hasClass("search")){
+				jQuery(".drift_searchForm").slideDown();
+			} else {
+				jQuery(".drift_searchForm").slideToggle();
+			}
 			jQuery("#ajaxsearchlite1 input[type='search']").focus();
 			jQuery("#ajaxsearchlite3 input[type='search']").focus();
 			jQuery("#ajaxsearchlite4 input[type='search']").focus();
@@ -130,6 +137,10 @@ if (true) {?>
 	});
 
 	jQuery(document).on("click", function(event){
+		// The search bar stays open on search results pages.
+		if(jQuery("body").hasClass("search")){
+			return;
+		}
 		var $trigger = jQuery(".drift_searchForm, .drift_search_link, .drift_search_link a");
 		if($trigger !== event.target && !$trigger.has(event.target).length){
 			jQuery(".drift_searchForm").slideUp();
@@ -186,7 +197,12 @@ if (true) {?>
 
 		jQuery(".seach-mobile-view a").click(function(e){
 			e.preventDefault();
-			jQuery(".drift_searchForm").slideToggle();
+			// Open-only on search results pages; see the desktop handler above.
+			if(jQuery("body").hasClass("search")){
+				jQuery(".drift_searchForm").slideDown();
+			} else {
+				jQuery(".drift_searchForm").slideToggle();
+			}
 			jQuery("#search-form-1").focus();
 			jQuery("#ajaxsearchlite4 input[type='search']").focus();
 			return false;

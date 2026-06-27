@@ -2312,6 +2312,11 @@ section.mission_outer {
     display: none;
 }
 
+/* Keep the search bar open on search results pages. */
+.search .drift_searchForm {
+    display: block;
+}
+
 .single-issue .com_heading01 {
     margin-bottom: 20px;
 }
@@ -4190,4 +4195,40 @@ form .wpfs-btn-link:visited {
     .mission_outer > .container-fluid {
         padding-bottom: 10rem;
     }
+}
+.search-author-matches {
+    border-bottom: 1px solid #000;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.search-author-matches h2 {
+    font-family: franklin-gothic, 'Libre Franklin', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.search-author-matches ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-author-matches ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.search-author-matches ul li a {
+    font-family: Adobe-Caslon;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* The black rule under the contributors box replaces the grey separator
+   above the first result; keep the grey line when the box isn't shown. */
+.search-author-matches + .search-term-list .term-list:first-child {
+    border-top: 0;
 }

@@ -807,10 +807,26 @@ if (!function_exists('redirect_404_to_homepage')) {
 
     function redirect_404_to_homepage()
     {
-        if (is_404()) :
-            wp_safe_redirect(home_url('/'));
-            exit;
-        endif;
+        if (!is_404()) {
+            return;
+        }
+
+        // Never redirect the bare homepage to itself: if the front page
+        // resolves to a 404 (e.g. stale rewrite rules after a deploy),
+        // redirecting / -> / loops forever (ERR_TOO_MANY_REDIRECTS). Only skip
+        // the true / case — a 404 like /?p=999 can still be redirected to a
+        // clean /, since dropping the query string makes the target differ from
+        // the request (so it can't loop).
+        $home_path = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
+        $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $request_path = trim((string) wp_parse_url($request_uri, PHP_URL_PATH), '/');
+        $request_query = (string) wp_parse_url($request_uri, PHP_URL_QUERY);
+        if ($request_path === $home_path && $request_query === '') {
+            return;
+        }
+
+        wp_safe_redirect(home_url('/'));
+        exit;
     }
 }
 
@@ -980,6 +996,141 @@ function my_custom_fonts()
         display: none !important;
     }
     </style>';
+}
+
+// Extend front-end search beyond post title/excerpt/body, which is all core
+// matches. A post also matches when the search string matches:
+//   - one of its 'authors', tag, or category term names
+//   - its subtitle ('post_subsitle' meta)
+//   - the name of a translator credited on it ('_translator_term_id' meta)
+add_filter('posts_search', 'drift_extend_search_matches', 10, 2);
+
+function drift_extend_search_matches($search, $query)
+{
+    global $wpdb;
+
+    if (is_admin() || !$query->is_main_query() || !$query->is_search() || $search === '') {
+        return $search;
+    }
+
+    $search_string = trim((string) $query->get('s'));
+    if ($search_string === '') {
+        return $search;
+    }
+
+    $like = '%' . $wpdb->esc_like($search_string) . '%';
+
+    $term_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->term_relationships} drift_tr
+            INNER JOIN {$wpdb->term_taxonomy} drift_tt ON drift_tr.term_taxonomy_id = drift_tt.term_taxonomy_id
+            INNER JOIN {$wpdb->terms} drift_t ON drift_tt.term_id = drift_t.term_id
+            WHERE drift_tr.object_id = {$wpdb->posts}.ID
+              AND drift_tt.taxonomy IN ('post_tag', 'category')
+              AND drift_t.name LIKE %s
+        )",
+        $like
+    );
+
+    $subtitle_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->postmeta} drift_sm
+            WHERE drift_sm.post_id = {$wpdb->posts}.ID
+              AND drift_sm.meta_key = 'post_subsitle'
+              AND drift_sm.meta_value LIKE %s
+        )",
+        $like
+    );
+
+    $extra_match = drift_search_byline_match_sql($search_string) . ' OR ' . $term_match . ' OR ' . $subtitle_match;
+
+    // Core builds this clause as " AND (<keyword conditions>) AND (post_password = '')".
+    // Inject the extra matches as ORs inside the first group so the password
+    // and status constraints still apply to posts they match.
+    $extended = preg_replace_callback(
+        '/^(\s*AND\s*)\(/',
+        function ($matches) use ($extra_match) {
+            return $matches[1] . '(' . $extra_match . ' OR ';
+        },
+        $search,
+        1,
+        $count
+    );
+
+    return ($count === 1 && $extended !== null) ? $extended : $search;
+}
+
+// Escape characters that carry special meaning in a MySQL REGEXP pattern so a
+// search string is matched literally. Backslashes here survive $wpdb->prepare:
+// it doubles them in the SQL literal and MySQL collapses them back on parse.
+function drift_search_regexp_quote($string)
+{
+    return preg_replace('/[.\\\\+*?()\[\]{}^$|]/', '\\\\$0', $string);
+}
+
+// SQL condition matching posts the searched person is credited on, either as
+// an 'authors' term or as a translator. Used both to widen the search and to
+// rank those posts above ones that merely mention the name in the body.
+function drift_search_byline_match_sql($search_string)
+{
+    global $wpdb;
+
+    // Match the credited name with the same word-boundary semantics as the
+    // contributor box in search.php, so a query like "test" boosts a name
+    // such as "Test ..." but not "Latest ...". REGEXP keeps the SQL filter
+    // in step with the PHP-side check (MySQL 8 supports \b in REGEXP). Only
+    // anchor the boundary when the query itself starts with a word character.
+    $boundary = preg_match('/^\w/u', $search_string) ? '\\b' : '';
+    $regex = $boundary . drift_search_regexp_quote($search_string);
+
+    $author_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->term_relationships} drift_atr
+            INNER JOIN {$wpdb->term_taxonomy} drift_att ON drift_atr.term_taxonomy_id = drift_att.term_taxonomy_id
+            INNER JOIN {$wpdb->terms} drift_at ON drift_att.term_id = drift_at.term_id
+            WHERE drift_atr.object_id = {$wpdb->posts}.ID
+              AND drift_att.taxonomy = 'authors'
+              AND drift_at.name REGEXP %s
+        )",
+        $regex
+    );
+
+    $translator_match = $wpdb->prepare(
+        "EXISTS (
+            SELECT 1
+            FROM {$wpdb->postmeta} drift_tlm
+            INNER JOIN {$wpdb->terms} drift_tl ON drift_tl.term_id = CAST(drift_tlm.meta_value AS UNSIGNED)
+            WHERE drift_tlm.post_id = {$wpdb->posts}.ID
+              AND drift_tlm.meta_key = '_translator_term_id'
+              AND drift_tl.name REGEXP %s
+        )",
+        $regex
+    );
+
+    return '(' . $author_match . ' OR ' . $translator_match . ')';
+}
+
+// Rank pieces written (or translated) by a matching contributor above posts
+// that only mention the search string in their text.
+add_filter('posts_orderby', 'drift_search_authored_first_orderby', 10, 2);
+
+function drift_search_authored_first_orderby($orderby, $query)
+{
+    if (is_admin() || !$query->is_main_query() || !$query->is_search()) {
+        return $orderby;
+    }
+
+    $search_string = trim((string) $query->get('s'));
+    if ($search_string === '') {
+        return $orderby;
+    }
+
+    $authored_first = '(CASE WHEN ' . drift_search_byline_match_sql($search_string) . ' THEN 0 ELSE 1 END) ASC';
+
+    return $orderby ? $authored_first . ', ' . $orderby : $authored_first;
 }
 
 // Change # of posts per page for search queries
@@ -1188,3 +1339,375 @@ add_filter('auth_cookie_expiration', function ($expiration, $user_id, $remember)
 
     return $expiration;
 }, 10, 3);
+
+/**
+ * Cache busting for archive/index pages on WP Engine.
+ *
+ * WPE's Varnish auto-purges the single post URL on publish but misses the
+ * archive/index pages the post appears on (home, category, tag, author tax,
+ * date archives, custom post type archives). These hooks purge those URLs
+ * surgically so the site stays fast while editors see fresh listings.
+ */
+
+function drift_collect_archive_urls_for_post($post)
+{
+    if (!$post instanceof WP_Post) {
+        $post = get_post($post);
+    }
+    if (!$post) {
+        return array();
+    }
+
+    $urls = array(home_url('/'));
+
+    // With a static front page, the blog index is a separate posts page, not
+    // home_url('/') — purge it too so the main post listing stays fresh.
+    if (get_option('show_on_front') === 'page') {
+        $page_for_posts = (int) get_option('page_for_posts');
+        if ($page_for_posts) {
+            $blog_url = get_permalink($page_for_posts);
+            if ($blog_url) {
+                $urls[] = $blog_url;
+            }
+        }
+    }
+
+    foreach ((array) get_the_category($post->ID) as $term) {
+        $link = get_term_link($term);
+        if (!is_wp_error($link)) {
+            $urls[] = $link;
+        }
+    }
+
+    $tags = get_the_tags($post->ID);
+    if (is_array($tags)) {
+        foreach ($tags as $term) {
+            $link = get_term_link($term);
+            if (!is_wp_error($link)) {
+                $urls[] = $link;
+            }
+        }
+    }
+
+    $author_terms = wp_get_post_terms($post->ID, 'authors');
+    if (is_array($author_terms)) {
+        foreach ($author_terms as $term) {
+            $link = get_term_link($term);
+            if (!is_wp_error($link)) {
+                $urls[] = $link;
+            }
+        }
+    }
+
+    $translator_term_ids = array_map('intval', get_post_meta($post->ID, '_translator_term_id', false));
+    foreach (array_unique(array_filter($translator_term_ids)) as $term_id) {
+        $link = get_term_link($term_id, 'authors');
+        if (!is_wp_error($link)) {
+            $urls[] = $link;
+        }
+    }
+
+    $year = get_the_time('Y', $post);
+    $month = get_the_time('m', $post);
+    if ($year) {
+        $urls[] = get_year_link($year);
+        if ($month) {
+            $urls[] = get_month_link($year, $month);
+        }
+    }
+
+    if ($post->post_type !== 'post') {
+        $type_archive = get_post_type_archive_link($post->post_type);
+        if ($type_archive) {
+            $urls[] = $type_archive;
+        }
+    }
+
+    // Template-driven listing pages. These post types have no usable archive
+    // (issue/mention have no has_archive) or appear on extra index pages, so
+    // purge every published Page built on the relevant template:
+    //  - post: page-templates/latest_articles.php (WP_Query over post_type=post)
+    //  - issue: issues.php, plus mentions.php (mentions.php loops every issue's
+    //    select_mentions_acf and color)
+    //  - mention: mentions.php
+    $listing_templates = array(
+        'post'    => array('page-templates/latest_articles.php'),
+        'issue'   => array('page-templates/issues.php', 'page-templates/mentions.php'),
+        'mention' => array('page-templates/mentions.php'),
+    );
+    if (isset($listing_templates[$post->post_type])) {
+        foreach ($listing_templates[$post->post_type] as $template) {
+            foreach (drift_get_template_page_urls($template) as $page_url) {
+                $urls[] = $page_url;
+            }
+        }
+    }
+
+    return array_values(array_unique(array_filter($urls)));
+}
+
+/**
+ * Return permalinks of published Pages that use a given page template, e.g.
+ * 'page-templates/issues.php'. Used to purge template-driven listing pages that
+ * stand in for CPTs registered without has_archive.
+ */
+function drift_get_template_page_urls($template)
+{
+    // Cache per request: this can be called several times on one save (e.g.
+    // pre_post_update then save_post) for the same template.
+    static $cache = array();
+    if (isset($cache[$template])) {
+        return $cache[$template];
+    }
+
+    $page_ids = get_posts(array(
+        'post_type'        => 'page',
+        'post_status'      => 'publish',
+        'numberposts'      => -1,
+        'fields'           => 'ids',
+        'meta_key'         => '_wp_page_template',
+        'meta_value'       => $template,
+        'suppress_filters' => true,
+    ));
+
+    $urls = array();
+    foreach ($page_ids as $page_id) {
+        $link = get_permalink($page_id);
+        if ($link) {
+            $urls[] = $link;
+        }
+    }
+
+    $cache[$template] = $urls;
+    return $urls;
+}
+
+function drift_purge_urls(array $urls)
+{
+    // WPE exposes the purge helper as the static method
+    // WpeCommon::purge_varnish_cache_url(). PHP resolves class and method
+    // names case-insensitively, so this guard also covers stacks that declare
+    // the class as `wpecommon`.
+    if (!is_callable(array('WpeCommon', 'purge_varnish_cache_url'))) {
+        return;
+    }
+
+    // De-dupe purges across the whole request: several hooks (transition,
+    // save_post, set_object_terms) can target the same URL on one save.
+    static $already_purged = array();
+
+    foreach ($urls as $url) {
+        if (!$url || isset($already_purged[$url])) {
+            continue;
+        }
+        $already_purged[$url] = true;
+        WpeCommon::purge_varnish_cache_url($url);
+    }
+}
+
+/**
+ * Stash/recall the archive URLs a post appeared on *before* an update, so we
+ * can purge the archives it has just left (old category/tag/author/date) on
+ * top of the ones it now belongs to. Pass $urls to store, omit to recall (and
+ * clear) the stored set.
+ */
+function drift_remembered_archive_urls($post_id, array $urls = null)
+{
+    static $store = array();
+
+    $post_id = (int) $post_id;
+
+    if ($urls !== null) {
+        $store[$post_id] = $urls;
+        return $urls;
+    }
+
+    $remembered = isset($store[$post_id]) ? $store[$post_id] : array();
+    unset($store[$post_id]);
+
+    return $remembered;
+}
+
+function drift_purge_archives_for_post($post)
+{
+    if (!$post instanceof WP_Post) {
+        $post = get_post($post);
+    }
+    if (!$post) {
+        return;
+    }
+
+    // Purge each post only once per request: a single update can fire
+    // transition_post_status, save_post and publish_future_post together.
+    static $purged_posts = array();
+    if (isset($purged_posts[$post->ID])) {
+        return;
+    }
+    $purged_posts[$post->ID] = true;
+
+    $urls = array_merge(
+        drift_collect_archive_urls_for_post($post),
+        drift_remembered_archive_urls($post->ID)
+    );
+    $urls = array_values(array_unique(array_filter($urls)));
+
+    if (!empty($urls)) {
+        drift_purge_urls($urls);
+    }
+
+    delete_transient('twentyseventeen_categories');
+}
+
+/**
+ * Trigger for posts *leaving* publish: unpublish, trash, or going private.
+ *
+ * Publishing and publish-to-publish updates are handled by the save_post hook
+ * below instead. transition_post_status fires *before* save_post (and therefore
+ * before acf/save_post syncs _translator_term_id), so purging here on a publish
+ * save would run with stale meta and trip the per-post guard, blocking the
+ * later, correct purge. Handle only the removal transitions, which save_post
+ * (post_status === 'publish') can't catch, here.
+ */
+add_action('transition_post_status', function ($new_status, $old_status, $post) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (!$post instanceof WP_Post || wp_is_post_revision($post->ID)) {
+        return;
+    }
+    if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+    if ($old_status !== 'publish' || $new_status === 'publish') {
+        return;
+    }
+
+    drift_purge_archives_for_post($post);
+}, 10, 3);
+
+/**
+ * Primary trigger for publishes and updates of live posts.
+ *
+ * Runs at priority 99 — after acf/save_post (priority 20) has synced
+ * _translator_term_id and after core has written terms — so the collected
+ * archive set reflects the post's final state. Covers manual publish,
+ * publish-to-publish edits, and ACF/CFS meta-only saves on live posts.
+ */
+add_action('save_post', function ($post_id, $post, $update) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish') {
+        return;
+    }
+    if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+
+    drift_purge_archives_for_post($post);
+}, 99, 3);
+
+/**
+ * Edge case: author/translator term edits.
+ *
+ * Editing an 'authors' term (bio, name, description) doesn't touch any post,
+ * so transition_post_status never fires — but the author archive page renders
+ * that bio and stays cached. Purge the term's archive URL on edit.
+ */
+add_action('edited_authors', function ($term_id, $tt_id) {
+    $link = get_term_link((int) $term_id, 'authors');
+    if (is_wp_error($link)) {
+        return;
+    }
+
+    drift_purge_urls(array($link, home_url('/')));
+}, 10, 2);
+
+/**
+ * Edge case: scheduled posts whose archives were cached while empty.
+ *
+ * future_to_publish flows through transition_post_status above, but adding
+ * an explicit 'publish_future_post' handler ensures the purge fires even if
+ * a plugin short-circuits the transition action.
+ */
+add_action('publish_future_post', function ($post_id) {
+    $post = get_post($post_id);
+    if ($post && in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        drift_purge_archives_for_post($post);
+    }
+}, 10, 1);
+
+/**
+ * Edge case: relationships removed from an already-published post.
+ *
+ * When an editor changes a live post's category, tag, author/translator, or
+ * publish date, drift_purge_archives_for_post() only knows the post's *new*
+ * state — the archive it just left (e.g. the old category or author page, or
+ * the previous date archive rendered by taxonomy-authors.php) would stay
+ * cached and keep showing the moved/removed post. pre_post_update fires before
+ * the row, terms and meta are rewritten, so snapshot the pre-update archive
+ * URLs here; drift_purge_archives_for_post() then purges them alongside the new
+ * ones on the subsequent save_post/transition.
+ */
+add_action('pre_post_update', function ($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+    $post = get_post($post_id);
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish') {
+        return;
+    }
+    if (!in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+
+    drift_remembered_archive_urls($post_id, drift_collect_archive_urls_for_post($post));
+}, 10, 1);
+
+/**
+ * Edge case: taxonomy relationship changes (both editors).
+ *
+ * In the block editor terms are written *after* save_post fires, so the new (or
+ * just-removed) term archive can be missed by the post-level purge above.
+ * set_object_terms fires whenever a relationship actually changes and exposes
+ * both the old and new term_taxonomy_ids — purge the archives of every term
+ * that was added or removed so both the old and new listings refresh.
+ */
+add_action('set_object_terms', function ($object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids = array()) {
+    if (!in_array($taxonomy, array('category', 'post_tag', 'authors'), true)) {
+        return;
+    }
+
+    $post = get_post($object_id);
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish' || !in_array($post->post_type, array('post', 'issue', 'mention'), true)) {
+        return;
+    }
+
+    $changed = array_unique(array_merge(
+        array_diff((array) $old_tt_ids, (array) $tt_ids),
+        array_diff((array) $tt_ids, (array) $old_tt_ids)
+    ));
+    if (empty($changed)) {
+        return;
+    }
+
+    $urls = array(home_url('/'));
+    foreach ($changed as $tt_id) {
+        $term = get_term_by('term_taxonomy_id', (int) $tt_id);
+        if ($term && !is_wp_error($term)) {
+            $link = get_term_link($term);
+            if (!is_wp_error($link)) {
+                $urls[] = $link;
+            }
+        }
+    }
+
+    drift_purge_urls($urls);
+}, 10, 6);

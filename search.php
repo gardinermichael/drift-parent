@@ -10,32 +10,114 @@
  * @version 1.0
  */
 
-get_header(); ?>
+get_header();
+
+// Surface contributor pages whose name or bio matches the search, since
+// taxonomy archives can never appear among post results. Computed before the
+// header so the "No Results." heading can account for contributor matches.
+// Uses the raw query: get_search_query() HTML-escapes, which would make names
+// like O'Connor miss.
+$drift_search_string = trim(get_search_query(false));
+$drift_matching_authors = array();
+
+if ($drift_search_string !== '') {
+	$drift_author_matches = array();
+
+	// The LIKE lookups match anywhere in a word ("test" matches "latest"),
+	// so require the query to start at a word boundary in the name or bio.
+	// Only prepend \b when the query itself starts with a word character;
+	// otherwise (e.g. ".net", "@handle") the boundary would never match.
+	$drift_boundary = preg_match('/^\w/u', $drift_search_string) ? '\b' : '';
+	$drift_word_pattern = '/' . $drift_boundary . preg_quote($drift_search_string, '/') . '/iu';
+
+	// A single-word query must match the contributor's name: searching
+	// "test" shouldn't pull in a contributor whose bio mentions a book
+	// title containing the word. Bios only match deliberate multi-word
+	// phrases ("The Hearing Test").
+	$drift_match_fields = array('name__like');
+	if (preg_match('/\s/u', $drift_search_string)) {
+		$drift_match_fields[] = 'description__like';
+	}
+
+	foreach ($drift_match_fields as $drift_match_field) {
+		$drift_found = get_terms(array(
+			'taxonomy'        => 'authors',
+			$drift_match_field => $drift_search_string,
+			'hide_empty'      => false,
+			// Fetch a wide candidate pool: the LIKE lookup also returns
+			// mid-word hits that the word-boundary filter below drops, so a
+			// small cap here could starve out genuine matches that sort later.
+			'number'          => 100,
+		));
+
+		if (is_wp_error($drift_found)) {
+			continue;
+		}
+
+		foreach ($drift_found as $drift_found_term) {
+			// Check the candidate against the field it was found by, so a
+			// name lookup can't slip through on bio text. Bios may contain
+			// HTML, so strip tags (against markup false positives) and decode
+			// entities (so "Smith &amp; Jones" matches the raw query).
+			$drift_haystack = ($drift_match_field === 'name__like')
+				? $drift_found_term->name
+				: html_entity_decode(wp_strip_all_tags($drift_found_term->description), ENT_QUOTES, 'UTF-8');
+
+			if (!preg_match($drift_word_pattern, $drift_haystack)) {
+				continue;
+			}
+
+			$drift_author_matches[$drift_found_term->term_id] = $drift_found_term;
+		}
+	}
+
+	$drift_matching_authors = array_slice(array_values($drift_author_matches), 0, 10);
+}
+?>
 <div class="search_container">
 <header class="page-header">
-		<?php if ( have_posts() ) : ?>
+		<?php if ( have_posts() || !empty($drift_matching_authors) ) : ?>
 			<h1 class="page-title">
 			<?php
 			/* translators: Search query. */
 			printf( __( 'Results for: "%s"', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
 			?>
 			</h1>
-		<?php else : ?>	
+		<?php else : ?>
 
 		<div class="searchPage_Form_container">
 			<div class="searchPage_Form">
 				<i class="fa fa-search search_icon_custom"></i>
 				<button class="searchPage_Form_Button">Submit</button>
-				<input type="text" name="" class="searchPage_Form_Box" placeholder="Search here...">				
-			</div>	
-	    </div>	
+				<input type="text" name="" class="searchPage_Form_Box" placeholder="Search here...">
+			</div>
+	    </div>
 
-			<h1 class="page-title"><?php _e( 'No Results.', 'twentyseventeen' ); ?></h1>	
-			
+			<h1 class="page-title"><?php _e( 'No Results.', 'twentyseventeen' ); ?></h1>
+
 
 
 		<?php endif; ?>
 	</header><!-- .page-header -->
+
+<?php
+if (!empty($drift_matching_authors)) :
+?>
+<div class="search-author-matches">
+	<h2>Contributors</h2>
+	<ul>
+	<?php
+	foreach ($drift_matching_authors as $drift_matching_author) :
+		$drift_author_link = get_term_link($drift_matching_author);
+		if (is_wp_error($drift_author_link)) {
+			continue;
+		}
+	?>
+		<li><a href="<?php echo esc_url($drift_author_link); ?>"><?php echo esc_html($drift_matching_author->name); ?></a></li>
+	<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
 
 <div class="search-term-list">
 	<?php 
@@ -91,32 +173,25 @@ get_header(); ?>
 				<h3>
 							<?php
 							 $post_authors = get_the_terms( $pageID, 'authors' );
-							 $loopNum = 0;
-								if (is_array($post_authors)){ //ADDED
+								if (is_array($post_authors)){
+								 $is_first_author = true;
 					 			 foreach($post_authors as $post_author)
 					 			 {
-					 			 	$loopNum++;
-					 			 	$author_id = $post_author->term_id;
-					 			 	
 					 			 	$author_link = get_term_link($post_author);
 					 			 	$author_name = $post_author->name;
-					 			 	$author_description = $post_author->description;
-					 			 	
-					 			 	if($loopNum == 1)
-					 			 	{
-					 			 		?><a href="<?php echo $pagePermalink; ?>"><?php echo $author_name;?></a><?php
+
+					 			 	if (is_wp_error($author_link)) {
+					 			 		continue;
 					 			 	}
-					 			 	else
+
+					 			 	if(!$is_first_author)
 					 			 	{
-					 			 		?>, <a href="<?php echo $author_link; ?>"><?php echo $author_name;?></a><?php
+					 			 		echo ', ';
 					 			 	}
+					 			 	?><a href="<?php echo esc_url($author_link); ?>"><?php echo esc_html($author_name);?></a><?php
+					 			 	$is_first_author = false;
 					 			 }
 							}
-							/* translators: Search query. */
-				                $authorName = single_term_title();
-							echo $tresty = get_query_var( 'author' );
-							
-							printf( __( $authorName, 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
 							?>
 			</h3>
 				<p><?php echo  wp_trim_words( get_the_content(), 70, '...' ); ?></p>
