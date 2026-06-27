@@ -1,0 +1,121 @@
+[
+    {
+        "post_title": "About",
+        "post_name": "about",
+        "cfs_fields": [
+            {
+                "id": "25",
+                "name": "about_content_section",
+                "label": "Content section",
+                "type": "loop",
+                "notes": "",
+                "parent_id": 0,
+                "weight": 0,
+                "options": {
+                    "row_display": "0",
+                    "row_label": "Loop Row",
+                    "button_label": "Add Row",
+                    "limit_min": "",
+                    "limit_max": ""
+                }
+            },
+            {
+                "id": "21",
+                "name": "heading_line",
+                "label": "Heading",
+                "type": "text",
+                "notes": "",
+                "parent_id": 25,
+                "weight": 1,
+                "options": {
+                    "default_value": "",
+                    "required": "0"
+                }
+            },
+            {
+                "id": "26",
+                "name": "about_subtitle",
+                "label": "Subtitle",
+                "type": "text",
+                "notes": "",
+                "parent_id": 25,
+                "weight": 2,
+                "options": {
+                    "default_value": "",
+                    "required": "0"
+                }
+            },
+            {
+                "id": "22",
+                "name": "submit_content",
+                "label": "Content",
+                "type": "loop",
+                "notes": "",
+                "parent_id": 25,
+                "weight": 3,
+                "options": {
+                    "row_display": "0",
+                    "row_label": "Loop Row",
+                    "button_label": "Add Row",
+                    "limit_min": "",
+                    "limit_max": ""
+                }
+            },
+            {
+                "id": "27",
+                "name": "subsection_heading",
+                "label": "Subsection heading (e.g. Editorial / Business)",
+                "type": "text",
+                "notes": "Optional. When set, a dividing line and this label are shown above the entry, demarking a new subsection within the masthead. Leave blank for entries that continue the current subsection.",
+                "parent_id": 22,
+                "weight": 3,
+                "options": {
+                    "default_value": "",
+                    "required": "0"
+                }
+            },
+            {
+                "id": "23",
+                "name": "about_title",
+                "label": "Title",
+                "type": "text",
+                "notes": "",
+                "parent_id": 22,
+                "weight": 4,
+                "options": {
+                    "default_value": "",
+                    "required": "0"
+                }
+            },
+            {
+                "id": "24",
+                "name": "about_text",
+                "label": "Text",
+                "type": "textarea",
+                "notes": "",
+                "parent_id": 22,
+                "weight": 5,
+                "options": {
+                    "default_value": "",
+                    "formatting": "auto_br",
+                    "required": "0"
+                }
+            }
+        ],
+        "cfs_rules": {
+            "post_types": {
+                "operator": "==",
+                "values": ["page"]
+            },
+            "page_templates": {
+                "operator": "==",
+                "values": ["page-templates\/about-page.php"]
+            }
+        },
+        "cfs_extras": {
+            "order": "0",
+            "context": "normal",
+            "hide_editor": "0"
+        }
+    }
+]
