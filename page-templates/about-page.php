@@ -40,9 +40,6 @@ else
 		.about_outer:last-child {
 			margin-bottom: 0;
 		}
-		/* Dividing line + label that demarks a subsection (e.g. Editorial / Business)
-		   within a masthead content section. Rendered only when an entry has a
-		   subsection heading set, so existing entries are unaffected. */
 		.about_subsection {
 			border-top: 1px solid rgba(0,0,0,0.3);
 			width: 75%;
