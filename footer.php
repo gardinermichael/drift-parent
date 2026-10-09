@@ -88,9 +88,7 @@ if (true) {?>
 		});
 
 		jQuery(".drift_search_link a").click(function(){
-			// On search results pages the bar stays open: open-only, no toggle,
-			// since a slide-up writes an inline display:none that overrides
-			// the .search .drift_searchForm CSS rule.
+			// keep the bar open on search results
 			if(jQuery("body").hasClass("search")){
 				jQuery(".drift_searchForm").slideDown();
 			} else {
@@ -197,7 +195,7 @@ if (true) {?>
 
 		jQuery(".seach-mobile-view a").click(function(e){
 			e.preventDefault();
-			// Open-only on search results pages; see the desktop handler above.
+			// keep the bar open on search results
 			if(jQuery("body").hasClass("search")){
 				jQuery(".drift_searchForm").slideDown();
 			} else {
